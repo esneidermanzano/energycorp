@@ -11,3 +11,9 @@ djangorestframework = "*"
 
 [requires]
 python_version = "3.7"
+
+
+[scripts]
+dev = "python manage.py runserver"
+make = "python manage.py makemigrations"
+migrate = "python manage.py migrate"
