@@ -1,8 +1,13 @@
-matrix:
+dist: xenial
+os: linux
+git:
+  depth: 3 
+
+jobs:
   include:
+    # ======== Parte del frontend ========
     - language: node_js
-        node_js:  
-          - "12"
+      node_js:  '12'
 
       warnings_are_errors: false
 
@@ -24,13 +29,13 @@ matrix:
 
       deploy:
         provider: firebase
-        cleanup: true
+        skip_cleanup: true
         token: $FIRE_TOKEN
-
-
+    
+    # ======== Parte de Backend ========
     - language: python
-        python:
-          - "3.6"
+      python:
+        - "3.6"
 
       cache: pip
 
@@ -52,8 +57,7 @@ matrix:
 
       deploy:
         provider: heroku
-        cleanup: true
-        api_key: $HEROKU_TOKEN
+        api_key: ceb5ac04-5ab8-4ccf-b813-f22b4865abfb
         app: energycorp
         on: 
           repo: esneidermanzano/energyCorp
