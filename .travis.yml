@@ -34,7 +34,7 @@ jobs:
 
       deploy:
         provider: firebase
-        cleanup: true
+        skip_cleanup: true
         token: $FIRE_TOKEN
     
     # ======== Parte de Backend ========
