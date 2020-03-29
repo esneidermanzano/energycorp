@@ -1,0 +1,70 @@
+
+dist: xenial
+os: linux
+git:
+  depth: 3 
+
+language: node_js
+  node_js:  
+    - "12"
+
+jobs:
+  include:
+    # ======== Parte del frontend ========
+    - stage: frontend
+      language: node_js
+      warnings_are_errors: false
+
+      cache: 
+        directories:
+          - node_modules
+
+      branches:
+        only:
+          - master
+
+      before_install: 
+        - cd Frontend/
+
+      install:
+        - npm install
+      script:
+        - npm run build
+
+      deploy:
+        provider: firebase
+        cleanup: true
+        token: $FIRE_TOKEN
+    
+    # ======== Parte de Backend ========
+  - stage: backend
+    language: python
+      python:
+        - "3.6"
+
+    cache: pip
+
+    branches:
+      only:
+        - master
+
+    env:
+      - DJANGO=3.0
+
+    before_install:
+      - cd Backend/
+
+    install:
+      - "pip install -r requirements.txt"
+
+    script: 
+      - python src/manage.py test
+
+    deploy:
+      provider: heroku
+      cleanup: true
+      api_key: $HEROKU_TOKEN
+      app: energycorp
+      on: 
+        repo: esneidermanzano/energyCorp
+        branch: master

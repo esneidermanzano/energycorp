@@ -6,14 +6,14 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
-django = "*"
-djangorestframework = "*"
+django = "==3.0.3"
+djangorestframework = "==3.11.0"
 
 [requires]
-python_version = "3.7"
-
+python_version = "3.6"
 
 [scripts]
 dev = "python manage.py runserver"
 make = "python manage.py makemigrations"
 migrate = "python manage.py migrate"
+super = "python manage.py createsuperuser"
