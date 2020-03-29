@@ -6,7 +6,6 @@ git:
 
 matrix:
   include:
-    # ======== Parte del frontend ========
     - language: node_js
         node_js:  
           - "12"
@@ -35,7 +34,6 @@ matrix:
         token: $FIRE_TOKEN
 
 
-    # ======== Parte de Backend ========
     - language: python
         python:
           - "3.6"
