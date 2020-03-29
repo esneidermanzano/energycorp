@@ -1,9 +1,3 @@
-
-dist: xenial
-os: linux
-git:
-  depth: 3 
-
 matrix:
   include:
     - language: node_js
