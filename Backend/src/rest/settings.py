@@ -25,7 +25,11 @@ SECRET_KEY = 'owqu_%57jjdxfdd-ckhc)p@49bfzc#1h@ei&wlyaqg&#23grr&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '0.0.0.0',
+    'localhost',
+    'energycorp.herokuapp.com'
+]
 
 
 # Application definition
@@ -38,6 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'users',
+    'rest_framework.authtoken'
+
 ]
 
 MIDDLEWARE = [
@@ -119,3 +126,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+AUTH_USER_MODEL = 'users.CustomUser'
+
+REST_AUTH_SERIALIZERS = {
+    "USER_DETAILS_SERIALIZER": "users.serializers.UserSerializer",
+}
+REST_AUTH_REGISTER_SERIALIZERS = {
+    "REGISTER_SERIALIZER": "users.serializers.RegisterUserSerializer",
+}
