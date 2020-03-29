@@ -10,8 +10,7 @@ node_js:
 jobs:
   include:
     # ======== Parte del frontend ========
-    - stage: Frontend
-      language: node_js
+    - language: node_js
       node_js:  '12'
 
       warnings_are_errors: false
@@ -38,8 +37,7 @@ jobs:
         token: $FIRE_TOKEN
     
     # ======== Parte de Backend ========
-    - stage: Bakend
-      language: python
+    - language: python
       python:
         - "3.6"
 
