@@ -7,7 +7,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CustomUser
-        fields = ['id', 'id_user', 'name', 'email', 'password', 'phone', 'address', 'date_of_birth', 'is_admin', 'is_active', 'is_staff', 'is_superuser']
+        fields = ['id', 'id_user', 'name', 'email', 'password', 'phone', 'address', 'date_of_birth', 'is_active', 'is_staff', 'is_superuser']
 
 
 #========== Serializador para crear el usuario ========== 
@@ -17,7 +17,7 @@ class CreateUserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CustomUser
-        fields = ['id_user', 'name', 'email', 'password', 'phone', 'address', 'date_of_birth', 'is_admin', 'is_active', 'is_staff', 'is_admin', 'is_superuser']
+        fields = ['id_user', 'name', 'email', 'password', 'phone', 'address', 'date_of_birth', 'is_active', 'is_staff', 'is_superuser']
         extra_kwargs = {'password': {'write_only': True}}
     
     def create(self, validated_data):
@@ -30,7 +30,6 @@ class CreateUserSerializer(serializers.ModelSerializer):
             address=validated_data['address'],
             date_of_birth=validated_data['date_of_birth'],
             is_active=validated_data['is_active'],
-            is_admin=validated_data['is_admin'],
             is_staff=validated_data['is_staff'],
             is_superuser=validated_data['is_superuser']
         )

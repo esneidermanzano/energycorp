@@ -43,8 +43,7 @@ class CustomUser(AbstractUser):
     address = models.CharField(max_length=50)
     date_of_birth = models.DateField(default=datetime.date.today)    
     is_active = models.BooleanField(default=True)
-    is_admin = models.BooleanField(default=False)
-    is_staff = models.BooleanField(default=False)
+    is_staff = models.BooleanField(default=True)
     is_superuser = models.BooleanField(default=False)
 
     USERNAME_FIELD = 'email'
