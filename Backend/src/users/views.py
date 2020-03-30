@@ -28,7 +28,27 @@ from rest_framework.response import Response
 from django.contrib.auth.hashers import check_password
 from rest_framework.authtoken.models import Token
 
-class AllowAn(BasePermission):
+""" ===================================================
+Las siguientes clases verifican si quien consulta una ruta
+tiene el cargo para poder hacer dicha consulta.
+"""
+class AllowAdmin(BasePermission):
+    def has_permission(self, request, view):
+        if request.user.is_authenticated:
+            quey = Worker.objects.filter(user=request.user.id).values('user_type')
+            return bool(quey[0]['user_type']==1)            
+        else:
+            return False
+
+class AllowManager(BasePermission):
+    def has_permission(self, request, view):
+        if request.user.is_authenticated:
+            quey = Worker.objects.filter(user=request.user.id).values('user_type')
+            return bool(quey[0]['user_type']==2)            
+        else:
+            return False
+
+class AllowOperator(BasePermission):
     def has_permission(self, request, view):
         if request.user.is_authenticated:
             quey = Worker.objects.filter(user=request.user.id).values('user_type')
@@ -36,6 +56,7 @@ class AllowAn(BasePermission):
         else:
             return False
 
+# ============== Metodo del login =================
 class Login(APIView):
   def post(self,request):
     id_user = request.data.get('id_user',None)
@@ -47,7 +68,7 @@ class Login(APIView):
             if(check_password(password, user['user__password'])):
                 user.pop('user__password')
                 user.pop('user__is_active')
-                token, created = Token.objects.get_or_create(user=user['user'])
+                token = Token.objects.get_or_create(user=user['user'])
                 return Response({"message": "Login exitoso",  "code": 200, "token": token.key, "data":  user})
             else:
                 message= "Contraseña incorrecta"
@@ -67,7 +88,7 @@ class Login(APIView):
 class UserList(ListAPIView):
     queryset = CustomUser.objects.all()
     serializer_class = UserSerializer
-#    permission_classes = (AllowAn,)
+    permission_classes = (AllowOperator,)
 
 
 #Listar un usuario por id
