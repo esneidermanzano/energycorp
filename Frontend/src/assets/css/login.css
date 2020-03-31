@@ -1,0 +1,10 @@
+#cardLogin{
+  -webkit-box-shadow: 0px 0px 58px 0px rgba(0,0,0,0.26);
+  -moz-box-shadow: 0px 0px 58px 0px rgba(0,0,0,0.26);
+  box-shadow: 0px 0px 58px 0px rgba(0,0,0,0.26);
+}
+
+#login{
+  margin: 0px auto;
+  margin-top: 100px;
+}

@@ -1,0 +1,54 @@
+.contentStart{
+    margin-top: 100px;
+}
+
+.leaflet-container {
+    height: 600px;
+    width: 100%;
+  }
+  
+.amapa{
+    margin-top: 85px;
+    margin-bottom: 50px;
+    background-color: red;
+  }
+
+.creatorsMap{
+  position: fixed;
+}
+
+.removeBtn{
+  background-color: white;
+  border-style: none;
+  border-radius: 20px;
+  color: red;
+}
+
+.removeBtn:hover{
+  background-color: red;
+  color: white;
+}
+
+.newTrans{
+  background-color: blue;
+  border-style: none;
+  border-radius: 30px;
+  font-size: 20px;
+  color: white;
+}
+
+.newTrans:hover{
+  background-color: darkturquoise;
+}
+
+.newSubs{
+  background-color: firebrick;
+  border-style: none;
+  border-radius: 30px;
+  font-size: 20px;
+  color: white;
+}
+
+.newSubs:hover{
+  background-color: coral;
+}
