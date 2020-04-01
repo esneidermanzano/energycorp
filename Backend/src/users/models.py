@@ -38,16 +38,19 @@ class CustomUser(AbstractUser):
     id_user = models.CharField(validators = [phone_validate], max_length=10, unique=True)
     name = models.CharField(max_length=100)
     email = models.EmailField(max_length=70, blank=True, null= True, unique= True)
-    #password = models.CharField(max_length=20,default="")
+    #photo = models.ImageField('Foto de perfil', upload_to= 'users/photos/', blank=True, null=True)
     phone = models.CharField(validators = [phone_validate], max_length=10, unique=True)
     address = models.CharField(max_length=50)
-    date_of_birth = models.DateField(default=datetime.date.today)    
+    neighborhood = models.CharField(max_length=20)
+    stratus =  models.PositiveSmallIntegerField()
+    #password = models.CharField(max_length=20,default="")
     is_active = models.BooleanField(default=True)
+    #date_of_birth = models.DateField(default=datetime.date.today)    
     is_staff = models.BooleanField(default=True)
     is_superuser = models.BooleanField(default=False)
 
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = [ 'id_user','name', 'phone']
+    USERNAME_FIELD = 'id_user'
+    REQUIRED_FIELDS = [ 'name', 'email, ''phone']
 
     objects = UserManager()
 
@@ -59,19 +62,7 @@ class CustomUser(AbstractUser):
         
     def __str__(self):
         return str(self.email)
-"""
-class Cliente(CustomUser):
 
-    users = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="usuario_cliente")
-    #users = models.OneToOneField(CustomUser,parent_link=True, on_delete=models.CASCADE)
-
-    #photo = models.ImageField('Foto de perfil', upload_to= 'users/photos/', blank=True, null=True)
-
-    biography = models.CharField(max_length=100, blank=True)
-
-    def __str__(self):
-        return str(self.users)
-"""
 # ========== Modelo del cliente que contiene un usuario ========== 
 class Client(models.Model):
     USER_TYPE_CHOICES = (
@@ -81,12 +72,11 @@ class Client(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     type_client = models.PositiveSmallIntegerField(choices=USER_TYPE_CHOICES)
     interes_mora = models.FloatField()
-    category = models.CharField(max_length=10)
+    #category = models.CharField(max_length=10)
     cycle = models.CharField(max_length=10)
     contrat_number = models.IntegerField(unique=True)
-    estrato =  models.PositiveSmallIntegerField()
-    billing = models.CharField(max_length=10)
     financial_state = models.CharField(max_length=10)
+    billing = models.CharField(max_length=10)
 
 #==========  Modelo del trabajador que extiende de usuario basico ========== 
 class Worker(models.Model):

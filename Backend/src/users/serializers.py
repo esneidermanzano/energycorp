@@ -7,7 +7,20 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CustomUser
-        fields = ['id', 'id_user', 'name', 'email', 'password', 'phone', 'address', 'date_of_birth', 'is_active', 'is_staff', 'is_superuser']
+        fields = [
+            'id',
+            'id_user',
+            'name', 
+            'email', 
+            'password', 
+            'phone', 
+            'address', 
+            'neighborhood', 
+            'stratus',
+            'is_active', 
+            'is_staff', 
+            'is_superuser'
+        ]
 
 
 #========== Serializador para crear el usuario ========== 
@@ -17,7 +30,20 @@ class CreateUserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CustomUser
-        fields = ['id_user', 'name', 'email', 'password', 'phone', 'address', 'date_of_birth', 'is_active', 'is_staff', 'is_superuser']
+        fields = [
+            'id',
+            'id_user',
+            'name', 
+            'email', 
+            'password', 
+            'phone', 
+            'address', 
+            'neighborhood', 
+            'stratus',
+            'is_active', 
+            'is_staff', 
+            'is_superuser'
+        ]        
         extra_kwargs = {'password': {'write_only': True}}
     
     def create(self, validated_data):
@@ -28,7 +54,9 @@ class CreateUserSerializer(serializers.ModelSerializer):
             password=make_password(validated_data['password']),
             phone = validated_data['phone'],
             address=validated_data['address'],
-            date_of_birth=validated_data['date_of_birth'],
+            neighborhood=validated_data['neighborhood'],
+            stratus=validated_data['stratus'],
+            #date_of_birth=validated_data['date_of_birth'],
             is_active=validated_data['is_active'],
             is_staff=validated_data['is_staff'],
             is_superuser=validated_data['is_superuser']
@@ -42,8 +70,20 @@ class UpdateUserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CustomUser
-        fields = ['name', 'email', 'password', 'phone', 'address', 'is_active']
-
+        fields = [
+            'id',
+            'id_user',
+            'name', 
+            'email', 
+            'password', 
+            'phone', 
+            'address', 
+            'neighborhood', 
+            'stratus',
+            'is_active', 
+            'is_staff', 
+            'is_superuser'
+        ]
     def update(self, instance, validated_data):
         print(validated_data)
         validated_data['password'] = make_password(validated_data['password'])
@@ -64,10 +104,9 @@ class ClientSerializer(serializers.ModelSerializer):
             'category', 
             'cycle', 
             'contrat_number',
-            'estrato',
-            'billing',
             'financial_state',
-            'user', 
+            'billing',
+            'user',
         ]
 
 #========== Serializador para crear el cliente ========== 
@@ -82,9 +121,8 @@ class CreateClientSerializer(serializers.ModelSerializer):
             'category', 
             'cycle', 
             'contrat_number',
-            'estrato',
-            'billing',
-            'financial_state'
+            'financial_state',
+            'billing'
         ]
 
 
@@ -101,9 +139,8 @@ class CreateNewClientSerializer(serializers.ModelSerializer):
             'category', 
             'cycle', 
             'contrat_number',
-            'estrato',
-            'billing',
             'financial_state',
+            'billing',
             'user', 
         ]
 
@@ -112,20 +149,6 @@ class CreateNewClientSerializer(serializers.ModelSerializer):
         usuario['password'] = make_password(usuario['password'])
         custom = CustomUser.objects.create(**usuario)
         #cliente['user'] = custom
-        """
-        cliente = Client.objects.create(
-            user=custom,
-            type_client=validated_data['type_client'],
-            interes_mora=validated_data['interes_mora'],
-            category=validated_data['category'],
-            cycle=validated_data['cycle'],
-            contrat_number=validated_data['contrat_number'],
-            estrato=validated_data['estrato'],
-            billing=validated_data['billing'],
-            financial_state=validated_data['financial_state'],
-        )
-        cliente.save()
-        """
         cliente = Client.objects.create(user=custom, **validated_data)
         return cliente        
 
@@ -141,9 +164,8 @@ class UpdateClientSerializer(serializers.ModelSerializer):
             'category',
             'cycle',
             'contrat_number',
-            'estrato',
-            'billing',
-            'financial_state'
+            'financial_state',
+            'billing'
         ]
 
     def update(self, instance, validated_data):
@@ -175,48 +197,3 @@ class CreateNewWorkerSerializer(serializers.ModelSerializer):
         custom = CustomUser.objects.create(**usuario)
         worker = Worker.objects.create(user=custom, **validated_data)
         return worker  
-"""
-class ClientSerializers(serializers.ModelSerializer):
-    
-    usuario = UserSerializer(read_only=True)
-    #userId = serializers.PrimaryKeyRelatedField(write_only=True, queryset=CustomUser.objects.all(), source='usuario')
-
-    class Meta:
-        model = Cliente
-        fields = ['biography', 'usuario']
-
-
-class RegisterClientSerializer(serializers.ModelSerializer):
-
-    #usuario = UserSerializer(many=False, read_only=True)
-
-    usuario = serializers.PrimaryKeyRelatedField(queryset=CustomUser.objects.all())
-    
-    class Meta:
-        model = Cliente
-        fields = ['biography', 'usuario']
-
-    def create(self, validated_data):
-        user = User.objects.create_user()
-        return user
-
-
-class RegisterClientSerializer(serializers.ModelSerializer):
-    usuario = UserSerializer()
-
-    #usuario_cliente = UserSerializer(many=False, read_only=True)
-    #id = serializers.PrimaryKeyRelatedField(write_only=True, queryset=CustomUser.objects.all(), source='usuario_cliente')
-
-    #usuario_cliente = serializers.PrimaryKeyRelatedField(many=False, queryset=CustomUser.objects.all(), write_only=True)
-    class Meta:
-        model = Cliente
-        fields = ['biography', 'usuario']
-
-    def create(self, validated_data):
-        client_user = validated_data.pop('usuario')
-        cliente = Cliente.objects.create(**validated_data)
-        print("El cliente" + client_user)
-        CustomUser.objects.create(cliente=cliente, **client_user)
-        return cliente
-
-"""
