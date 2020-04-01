@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'users',
-    'rest_framework.authtoken'
+    'rest_framework.authtoken',
     'corsheaders'
 ]
 
@@ -136,3 +136,5 @@ REST_AUTH_SERIALIZERS = {
 REST_AUTH_REGISTER_SERIALIZERS = {
     "REGISTER_SERIALIZER": "users.serializers.RegisterUserSerializer",
 }
+
+CORS_ORIGIN_ALLOW_ALL = True
