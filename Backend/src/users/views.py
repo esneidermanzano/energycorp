@@ -68,7 +68,8 @@ class Login(APIView):
             if(check_password(password, user['user__password'])):
                 user.pop('user__password')
                 user.pop('user__is_active')
-                token = Token.objects.get_or_create(user=user['user'])
+                userC = CustomUser.objects.filter(id_user__iexact=id_user)
+                token = Token.objects.get_or_create(user=userC[0])
                 return Response({"message": "Login exitoso",  "code": 200, "token": token.key, "data":  user})
             else:
                 message= "Contraseña incorrecta"
