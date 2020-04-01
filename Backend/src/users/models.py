@@ -48,9 +48,9 @@ class CustomUser(AbstractUser):
     #date_of_birth = models.DateField(default=datetime.date.today)    
     is_staff = models.BooleanField(default=True)
     is_superuser = models.BooleanField(default=False)
-
-    USERNAME_FIELD = 'id_user'
-    REQUIRED_FIELDS = [ 'name', 'email, ''phone']
+    
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = [ 'id_user','name', 'phone']
 
     objects = UserManager()
 
