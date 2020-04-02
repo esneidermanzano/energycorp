@@ -5,15 +5,13 @@ from energytransfers.models import Substation, Transformator
 import re
 
 # ========== Serializador para la substation ==========
-
-
 class SubstationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Substation
         fields = ['latitude', 'length', 'is_active']
 
-
+    
 # ========== Serializador para crear la substation ==========
 class CreateSubstationSerializer(serializers.ModelSerializer):
 
@@ -113,7 +111,10 @@ class InactivateTransformatorSerializer(serializers.ModelSerializer):
     def inactivate(self, instance):
         print("===============IMPORMIENDO================")
         validated_data = instance
-        valiated_data['is_active'] = False
+        if instance['is_active'] is True:
+            valiated_data['is_active'] = False
+        else:
+            valiated_data['is_active'] = True
         print(validated_data)
         Transformator = super().update(instance, validated_data)
         return Transformator

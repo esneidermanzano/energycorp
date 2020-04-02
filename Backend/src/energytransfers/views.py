@@ -13,7 +13,7 @@ from energytransfers.models import Substation, Transformator
 
 
 from energytransfers.serializers import (
-    SubstationSerializer, 
+    SubstationSerializer,
     UpdateSubstationSerializer,
     CreateSubstationSerializer, 
     InactivateSubstationSerializer,

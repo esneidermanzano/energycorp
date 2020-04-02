@@ -3,6 +3,7 @@ from django.urls import path
 from .views import (
 
     SubstationList,
+    SubstationDelete,
     SubstationDetail,
     SubstationCreate,
     SubstationUpdate,
