@@ -60,7 +60,6 @@ class AllowOperator(BasePermission):
 class SubstationList(ListAPIView):
     queryset = Substation.objects.all()
     serializer_class = SubstationSerializer
-    permission_classes = (AllowOperator,)
 
 
 #Listar un Substation por id
