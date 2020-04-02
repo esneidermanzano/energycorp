@@ -101,7 +101,6 @@ class ClientSerializer(serializers.ModelSerializer):
             'id',            
             'type_client', 
             'interes_mora', 
-            'category', 
             'cycle', 
             'contrat_number',
             'financial_state',
@@ -118,7 +117,6 @@ class CreateClientSerializer(serializers.ModelSerializer):
             'user', 
             'type_client', 
             'interes_mora', 
-            'category', 
             'cycle', 
             'contrat_number',
             'financial_state',
@@ -136,7 +134,6 @@ class CreateNewClientSerializer(serializers.ModelSerializer):
         fields = [            
             'type_client', 
             'interes_mora', 
-            'category', 
             'cycle', 
             'contrat_number',
             'financial_state',
@@ -183,6 +180,7 @@ class WorkerSerializer(serializers.ModelSerializer):
             'id', 'user', 'user_type'
         ]
 
+
 #========== Serializador: crea trabajador con usuario al tiempo ========== 
 class CreateNewWorkerSerializer(serializers.ModelSerializer):
     user = UserSerializer()
@@ -197,3 +195,4 @@ class CreateNewWorkerSerializer(serializers.ModelSerializer):
         custom = CustomUser.objects.create(**usuario)
         worker = Worker.objects.create(user=custom, **validated_data)
         return worker  
+
