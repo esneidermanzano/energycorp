@@ -183,6 +183,7 @@ class WorkerSerializer(serializers.ModelSerializer):
             'id', 'user', 'user_type'
         ]
 
+
 #========== Serializador: crea trabajador con usuario al tiempo ========== 
 class CreateNewWorkerSerializer(serializers.ModelSerializer):
     user = UserSerializer()
@@ -197,3 +198,4 @@ class CreateNewWorkerSerializer(serializers.ModelSerializer):
         custom = CustomUser.objects.create(**usuario)
         worker = Worker.objects.create(user=custom, **validated_data)
         return worker  
+

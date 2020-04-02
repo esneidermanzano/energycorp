@@ -7,6 +7,8 @@ from rest_framework.generics import (
     DestroyAPIView
 )
 from rest_framework.permissions import IsAdminUser, BasePermission
+from rest_framework import viewsets
+from django.contrib.auth.hashers import make_password
 
 from users.models import CustomUser, Client, Worker
 
@@ -20,7 +22,7 @@ from users.serializers import (
     CreateClientSerializer,
     UpdateClientSerializer,
     WorkerSerializer,
-    CreateNewWorkerSerializer
+    CreateNewWorkerSerializer,
 )
 from rest_framework.views import APIView 
 from rest_framework.response import Response
@@ -141,6 +143,19 @@ class NewClientCreate(ListCreateAPIView):
     queryset = Client.objects.all()
     serializer_class = CreateNewClientSerializer
 
+#Crear un grupo de clientes completos
+class CreateMultipleClient(APIView):
+    queryset = Client.objects.all()
+    def post(self,request):
+        data = request.data
+        for user in data:
+            print(user)
+            usuario = user.pop('user')
+            usuario['password'] = make_password(usuario['password'])
+            custom = CustomUser.objects.create(**usuario)
+            client = Client.objects.create(user=custom, **user)
+
+        return Response({"message": "Creacion exitoso",  "code": 200})
 
 #Actualizar datos de Cliente por id
 class ClientUpdate(UpdateAPIView):
@@ -172,6 +187,19 @@ class CreateWorker(ListCreateAPIView):
     queryset = Worker.objects.all()
     serializer_class = WorkerSerializer
 
+#Crear un grupo de trabajadores
+class CreateMultipleWorker(APIView):
+    queryset = Worker.objects.all()
+    def post(self,request):
+        data = request.data
+        for user in data:
+            print(user)
+            usuario = user.pop('user')
+            usuario['password'] = make_password(usuario['password'])
+            custom = CustomUser.objects.create(**usuario)
+            worker = Worker.objects.create(user=custom, **user)
+
+        return Response({"message": "Creacion exitoso",  "code": 200})
 
 #Crear cliente incluyendo usuario al mismo tiempo
 class NewWorkerCreate(ListCreateAPIView):
