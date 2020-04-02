@@ -101,7 +101,6 @@ class ClientSerializer(serializers.ModelSerializer):
             'id',            
             'type_client', 
             'interes_mora', 
-            'category', 
             'cycle', 
             'contrat_number',
             'financial_state',
@@ -118,7 +117,6 @@ class CreateClientSerializer(serializers.ModelSerializer):
             'user', 
             'type_client', 
             'interes_mora', 
-            'category', 
             'cycle', 
             'contrat_number',
             'financial_state',
@@ -136,7 +134,6 @@ class CreateNewClientSerializer(serializers.ModelSerializer):
         fields = [            
             'type_client', 
             'interes_mora', 
-            'category', 
             'cycle', 
             'contrat_number',
             'financial_state',
