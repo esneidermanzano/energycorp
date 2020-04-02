@@ -13,6 +13,7 @@ from .views import (
     ClientDetail,
     ClientCreate,
     NewClientCreate,
+    CreateMultipleClient,
     ClientUpdate,
     DeleteClient,
 
@@ -34,7 +35,7 @@ urlpatterns = [
     path('client/', ClientList.as_view()),
     path('client/create/', ClientCreate.as_view()),
     path('client/create-new/', NewClientCreate.as_view()),
-    path('client/create/bulk/', NewClientCreate.as_view()),
+    path('client/create/bulk/', CreateMultipleClient.as_view()),
     path('client/<pk>/', ClientDetail.as_view()),
     path('client/<pk>/update/', ClientUpdate.as_view()),
     path('client/<pk>/delete/', DeleteClient.as_view()),
