@@ -9,7 +9,7 @@ class CreateUserForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = this.props.user || {
-            user_type: 'operador',
+            user_type: 2,
             id_user: '',
             name: '',
             email: '',
@@ -34,13 +34,9 @@ class CreateUserForm extends React.Component {
             } else {
                 val = false;
             }
-        }
-
-        if (e.target.name === "stratus") {
+        }else if (e.target.name === "stratus") {
             val = parseInt(val);
-        }
-
-        if (e.target.name === "user_type") {
+        }else if (e.target.name === "user_type") {
             val = parseInt(val);
         }
 
@@ -141,8 +137,8 @@ class CreateUserForm extends React.Component {
                     <div>
                         <Label for="">Tipo de usuario</Label>
                         <select onChange={this.handleInput} value={this.state.user_type} className="form-control" name="user_type" required>
-                            <option value = "2">Operador</option>
-                            <option value = "3">Gerente</option>
+                            <option value="2">Operador</option>
+                            <option value="3">Gerente</option>
                         </select>
                         <Row>
                             <Col>
