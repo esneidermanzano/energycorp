@@ -49,6 +49,7 @@ class CreateUser extends React.Component {
                 is_superuser: user.is_superuser
             }
         }
+
         return parsed;
     }
 
@@ -86,7 +87,7 @@ class CreateUser extends React.Component {
                     <Alert color="success" key={key} toggle={() => this.onDismiss(key)}>
                         #{key + 1} <b>{n.name}</b> - {n.id_user}
                         <br></br>
-                        <i>{n.user_type}</i>
+                        <i>{(n.user_type === 2) ? "Operador" : "Gerente" }</i>
                     </Alert>
                 )
             })

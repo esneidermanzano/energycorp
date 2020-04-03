@@ -64,7 +64,7 @@ class GetUser extends React.Component {
                 }            
         }
 
-        if(user.usertype === 2){
+        if(user.user_type === 2){
             parsed.user_type = 'operador';
         }else{
             parsed.user_type = 'gerente';
