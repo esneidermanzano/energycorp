@@ -51,6 +51,7 @@ class Login extends React.Component {
 
         let obj, given;
 
+        // dummy
         // obj = {
         //     "token": "asdasdsa",
         //     "user_id": "awqweqweqw",
