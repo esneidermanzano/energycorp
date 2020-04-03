@@ -173,7 +173,7 @@ class DeleteClient(DestroyAPIView):
 #Listar todos los trabajadores
 class WorkerList(ListAPIView):
     queryset = Worker.objects.all()
-    serializer_class = WorkerSerializer
+    serializer_class = CreateNewWorkerSerializer
 
 
 #Listar un cliente por id
