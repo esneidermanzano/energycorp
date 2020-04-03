@@ -86,7 +86,7 @@ class TransformatorSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Transformator
-        fields = ['latitude', 'length', 'is_active', 'substation']
+        fields = ['pk','latitude', 'length', 'is_active', 'substation']
 
 
 # ========== Serializador para crear el transformator ==========
