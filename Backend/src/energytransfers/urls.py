@@ -19,6 +19,7 @@ from .views import (
 )
 
 
+
 urlpatterns = [
     path('substation/', SubstationList.as_view()),
     path('substation/create/', SubstationCreate.as_view()),

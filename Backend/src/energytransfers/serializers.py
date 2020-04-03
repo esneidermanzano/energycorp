@@ -29,6 +29,7 @@ class CreateSubstationSerializer(serializers.ModelSerializer):
         return substation
 
 
+
 # ========== Serializador para actualizar la substation ==========
 class UpdateSubstationSerializer(serializers.ModelSerializer):
 

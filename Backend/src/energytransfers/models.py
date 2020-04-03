@@ -20,6 +20,7 @@ class Transformator(models.Model):
     substation = models.name = models.ForeignKey(Substation,
                                                  on_delete=models.CASCADE)
 
+
 class Counter(models.Model):
     is_active= models.BooleanField(default=True)
     location= models.CharField(max_length=30)
