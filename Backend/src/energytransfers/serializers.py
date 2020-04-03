@@ -6,7 +6,7 @@ import re
 
 # ========== Serializador para la substation ==========
 class SubstationSerializer(serializers.ModelSerializer):
-
+    
     class Meta:
         model = Substation
         fields = ['latitude', 'length', 'is_active']
@@ -43,11 +43,29 @@ class UpdateSubstationSerializer(serializers.ModelSerializer):
         return substation
 
 # ========== Serializador para inactivar la substation ==========
+
+
 class InactivateSubstationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Substation
         fields = ['latitude', 'length', 'is_active']
+
+    def patch(self, request, *args, **kwargs):
+        Substation = self.partial_update(request, *args, **kwargs)
+        return Substation
+    
+
+
+class DeleteSubstationSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Substation
+        fields = ['latitude', 'length', 'is_active', 'substation']
+
+    def perform_destroy(self, instance):
+            instance.delete()
+
 
     def inactivate(self, instance):
         print("===============IMPORMIENDO================")
@@ -102,12 +120,30 @@ class UpdateTransformatorSerializer(serializers.ModelSerializer):
         return transformator
 
 # ========== Serializador para inactivar la Transformator ==========
+
+
 class InactivateTransformatorSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Transformator
         fields = ['latitude', 'length', 'is_active']
 
+    def patch(self, request, *args, **kwargs):
+        transformator = self.partial_update(request, *args, **kwargs)
+        return transformator
+    
+    
+ # ========== Serializador para actualizar el transformator ==========
+
+
+class DeleteTransformatorSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Transformator
+        fields = ['latitude', 'length', 'is_active', 'substation']
+
+    def perform_destroy(self, instance):
+            instance.delete()
     def inactivate(self, instance):
         print("===============IMPORMIENDO================")
         validated_data = instance
