@@ -6,7 +6,7 @@ from energytransfers.models import Counter
 # Create your models here.
 class History(models.Model):
     #id_history= models.AutoField(primary_key= True)
-    counter= models.ForeignKey(Counter,on_delete=models.CASCADE)
+    #counter= models.name= models.ForeignKey(Counter,on_delete=models.CASCADE)
     init_date= models.DateField()
     final_date=models.DateField()
 
@@ -97,12 +97,12 @@ class Payment(models.Model):
 
 class BankPayment(models.Model):
     transaction_code= models.OneToOneField(Payment,on_delete=models.CASCADE,primary_key=True)
-    bank= models.ForeignKey(Bank, on_delete= models.CASCADE) 
+   # bank= models.name=models.ForeignKey(Bank, on_delete= models.CASCADE) 
 
 
 class DirectPayment(models.Model):
     transaction_code= models.OneToOneField(Payment,on_delete=models.CASCADE,primary_key=True)
-    worker= models.ForeignKey(Worker, on_delete= models.CASCADE)
+   # worker= models.name= models.ForeignKey(Worker, on_delete= models.CASCADE)
 
 
 

@@ -24,6 +24,6 @@ class Transformator(models.Model):
 class Counter(models.Model):
     is_active= models.BooleanField(default=True)
     location= models.CharField(max_length=30)
-    transformator= models.ForeignKey(Transformator,
-                                                 on_delete=models.CASCADE)
+    #transformator= models.name= models.ForeignKey(Transformator,
+     #                                            on_delete=models.CASCADE)
                         
