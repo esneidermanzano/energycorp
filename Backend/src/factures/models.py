@@ -78,6 +78,11 @@ class Bill(models.Model):
 
 
 
+
+
+
+
+
     publicity= models.ForeignKey(Publicity)"""
 
 class Bank(models.Model):
