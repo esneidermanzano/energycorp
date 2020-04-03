@@ -29,9 +29,10 @@ class TransformersMap extends Component {
   }
 
   newPoint = (type) => {
+    var obj;
     if (type === "transformer") {
 
-      var obj = {
+      obj = {
         latitude: this.state.movingMarker[0].toString(),
         length: this.state.movingMarker[1].toString(),
         is_active: true,
@@ -47,7 +48,7 @@ class TransformersMap extends Component {
         })
 
     } else {
-      var obj = {
+      obj = {
         latitude: this.state.movingMarker[0].toString(),
         length: this.state.movingMarker[1].toString(),
         is_active: true
@@ -88,8 +89,9 @@ class TransformersMap extends Component {
 
   inactiveActivePoint = (key, type) => {
     var copy;
+    var k; 
     if (type === "transformer") {
-      var k = key+1;
+      k = key+1;
       axios.patch("https://energycorp.herokuapp.com/api/energytransfers/transformator/inactivate/"+k+"/", {"is_active": !this.state.transformer[key].is_active })
         .then(res => {
           copy = [...this.state.transformer];
@@ -101,7 +103,7 @@ class TransformersMap extends Component {
         })
 
     }else{
-      var k = key+1;
+      k = key+1;
       axios.patch("https://energycorp.herokuapp.com/api/energytransfers/substation/inactivate/"+k+"/", {"is_active": !this.state.substations[key].is_active })
         .then(res => {
           copy = [...this.state.substations];
