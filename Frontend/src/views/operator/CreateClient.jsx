@@ -1,5 +1,6 @@
 import React from "react";
 import CreateClientForm from "views/operator/CreateClientForm.jsx";
+import axios from "axios";
 
 // reactstrap components
 import {
@@ -33,7 +34,15 @@ class CreateClient extends React.Component {
 
     sendNews = () => {
         // AXIOS
-        alert("Axios");
+        // alert("Axios");
+        console.log(this.state.list);
+        axios.post("https://energycorp.herokuapp.com/api/user/client/create/bulk/", this.state.list)
+            .then(res => {
+                alert("AXION REALIZADA CON EXITO");
+            })
+            .catch(err => {
+                console.log(err);
+            })
         this.setState({ list: [] });
     }
 
@@ -44,9 +53,9 @@ class CreateClient extends React.Component {
             news = this.state.list.map((n, key) => {
                 return (
                     <Alert color="warning" key={key} toggle={() => this.onDismiss(key)}>
-                        #{key + 1} <b>{n.name} {n.lastname}</b> - {n.ID}
+                        #{key + 1} <b>{n.user.name}</b> - {n.user.id_user}
                         <br></br>
-                        <i>{n.type}</i>
+                        <i>Cliente</i>
                     </Alert>
                 )
             })
@@ -60,7 +69,7 @@ class CreateClient extends React.Component {
                     <Col md="6" >
                         <Card>
                             <CardBody>
-                                <CreateClientForm submitAction={this.createEle} />
+                                <CreateClientForm submitAction={this.createEle} editMode={false}/>
                             </CardBody>
                         </Card>
                     </Col>
