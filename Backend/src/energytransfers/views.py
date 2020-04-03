@@ -67,7 +67,6 @@ class AllowOperator(BasePermission):
 # ========== CRUD para la informacion basica del substation ==========
 # Listar todos las substation
 
-
 class SubstationList(ListAPIView):
     queryset = Substation.objects.all()
     serializer_class = SubstationSerializer
