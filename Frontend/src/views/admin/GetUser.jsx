@@ -13,144 +13,7 @@ class GetUser extends React.Component {
     constructor(props) {
         super(props);
         this.state = { //PHONE IS NUMBER
-            persons: [
-                {
-                    ID: 121,
-                    name: 'charles',
-                    lastname: 'pirlo',
-                    email: 'murillo.carlos@correounivalle.edu.co',
-                    adress: 'sdsds',
-                    phone: 3001234567,
-                    sex: 'Male',
-                    date: '2020-02-26',
-                    type: 'Cliente',
-                    client: {
-                        typeCli: 'Natural',
-                        tasa_interes_Mora: 2.0,
-                        ciclo: 1,
-                        contrato: '1001',
-                        facturacion: '3343442',
-                        estado_financiero: 'Mora',
-                        ID_contador: '100021',
-                    }
-                },
-                {
-                    ID: 232,
-                    name: 'Aida',
-                    lastname: 'Merlano',
-                    email: 'messi.carlos@correounivalle.edu.co',
-                    adress: 'sdsds',
-                    phone: 3001234567,
-                    sex: 'Female',
-                    date: '2020-02-26',
-                    type: 'Operador',
-                    client: {}
-                },
-                {
-                    ID: 233,
-                    name: 'James',
-                    lastname: 'Rodriguez',
-                    email: 'james.carlos@correounivalle.edu.co',
-                    adress: 'sdsds',
-                    phone: 3001234567,
-                    sex: 'Female',
-                    date: '2020-02-26',
-                    type: 'Operador',
-                    client: {}
-                },
-                {
-                    ID: 344,
-                    name: 'Trevor',
-                    lastname: 'Philips',
-                    email: 'ronaldo@cristiano.com',
-                    adress: 'sdsds',
-                    phone: 3001234567,
-                    sex: 'Male',
-                    date: '2020-02-26',
-                    type: 'Gerente',
-                    client: {}
-                },
-                {
-                    ID: 345,
-                    name: 'Duvan',
-                    lastname: 'vergara',
-                    email: 'zlatan@correounivalle.edu.co',
-                    adress: 'sdsds',
-                    phone: 3001234567,
-                    sex: 'Female',
-                    date: '2020-02-26',
-                    type: 'Operador',
-                    client: {}
-                },
-                {
-                    ID: 346,
-                    name: 'Reinaldo',
-                    lastname: 'Rueda',
-                    email: 'rodallega@correounivalle.edu.co',
-                    adress: 'sdsds',
-                    phone: 3001234567,
-                    sex: 'Female',
-                    date: '2020-02-26',
-                    type: 'Operador',
-                    client: {}
-                },
-                {
-                    ID: 347,
-                    name: 'charles',
-                    lastname: 'Perez',
-                    email: 'maradona@gmail.com',
-                    adress: 'sdsds',
-                    phone: 3001234567,
-                    sex: 'Male',
-                    date: '2020-02-26',
-                    type: 'Gerente',
-                    client: {}
-                },
-                {
-                    ID: 457,
-                    name: 'Mariana',
-                    lastname: 'Pajon',
-                    email: 'modric@gmail.com',
-                    adress: 'sdsds',
-                    phone: 3001234567,
-                    sex: 'Male',
-                    date: '2020-02-26',
-                    type: 'Operador',
-                    client: {}
-                },
-                {
-                    ID: 458,
-                    name: 'Quentin',
-                    lastname: 'Tarantino',
-                    email: 'suarez@gmail.com',
-                    adress: 'sdsds',
-                    phone: 3001234567,
-                    sex: 'Male',
-                    date: '2020-02-26',
-                    type: 'Gerente',
-                    client: {}
-                },
-                {
-                    ID: 569,
-                    name: 'Bong',
-                    lastname: 'Jonh Jo',
-                    email: 'parasite@gmail.com',
-                    adress: 'sdsds',
-                    phone: 3001234567,
-                    sex: 'Male',
-                    date: '2020-02-26',
-                    type: 'Cliente',
-                    client: {
-                        typeCli: 'Juridica',
-                        tasa_interes_Mora: 2.0,
-                        ciclo: 1,
-                        contrato: '1001',
-                        facturacion: '3343442',
-                        estado_financiero: 'Mora',
-                        ID_contador: '330021',
-                    }
-                },
-            ],
+            persons: [],
             search: '',
             modal: false,
             selected: 'All',
@@ -178,8 +41,36 @@ class GetUser extends React.Component {
     }
 
     editUser = () => {
-        alert('Axios');
         this.closeToggle();
+    }
+
+    parseToShow = user => {      
+        let parsed = {
+                user_type: '',
+                id_user: user.user.id_user,
+                name: user.user.name,
+                email: user.user.email,
+                address: user.user.address,
+                neighborhood: user.user.neighborhood,
+                phone: user.user.phone,
+                is_active: user.user.is_active,
+                client: {
+                    type_client: user.type_client,
+                    interes_mora: user.interes_mora,
+                    cycle: user.cycle,
+                    contrat_number: user.contrat_number,
+                    billing: user.billing,
+                    financial_state: user.financial_state,
+                }            
+        }
+
+        if(user.usertype === 2){
+            parsed.user_type = 'operador';
+        }else{
+            parsed.user_type = 'gerente';
+        }
+    
+        return parsed;
     }
 
     render() {
@@ -188,7 +79,7 @@ class GetUser extends React.Component {
 
         if (this.state.selected !== 'All') { //Filtrar por ambas formas al tiempo
             filteredPeople = this.state.persons.filter(p => (
-                p.type.toLowerCase() === this.state.selected.toLowerCase() &&
+                p.user_type.toLowerCase() === this.state.selected.toLowerCase() &&
                 p.email.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1
             ));
         }else{ //Filtrar solo por busqueda
@@ -201,10 +92,9 @@ class GetUser extends React.Component {
             <tr key={k}>
                 <th scope="row">#{k + 1}</th>
                 <th>{p.name}</th>
-                <th>{p.lastname}</th>
-                <th>{p.ID}</th>
+                <th>{p.id_user}</th>
                 <th>{p.email}</th>
-                <th>{p.type}</th>
+                <th>{p.user_type}</th>
                 <th>
                     <Button color="success" onClick={() => this.openToggle(p)}>
                         <i className="nc-icon nc-zoom-split" />
@@ -227,7 +117,6 @@ class GetUser extends React.Component {
                                                 <option>All</option>
                                                 <option>Operador</option>
                                                 <option>Gerente</option>
-                                                <option>Cliente</option>
                                             </select>
                                         </Col>
                                         <Col>
@@ -242,7 +131,6 @@ class GetUser extends React.Component {
                                             <tr>
                                                 <th>#</th>
                                                 <th>First Name</th>
-                                                <th>Last Name</th>
                                                 <th>ID</th>
                                                 <th>Email</th>
                                                 <th>Type</th>
@@ -261,7 +149,7 @@ class GetUser extends React.Component {
                         <Modal md="7" isOpen={this.state.modal} toggle={this.closeToggle} className="danger">
                             <ModalHeader toggle={this.closeToggle}>Edit User</ModalHeader>
                             <ModalBody>
-                                <CreateUserForm submitAction={this.editUser} user={this.state.user} />
+                                <CreateUserForm submitAction={this.editUser} user={this.state.user} editMode={true}/>
                             </ModalBody>
                         </Modal>
                     </div>
@@ -270,6 +158,20 @@ class GetUser extends React.Component {
             </div>
         )
     }
+
+    async componentDidMount() {
+        const res = await fetch('https://energycorp.herokuapp.com/api/user/worker/');
+        const data = await res.json();
+
+        var parsedData = [];
+        for(let i=0; i<data.length; i++){
+            parsedData.push(this.parseToShow(data[i]));
+        }
+
+        this.setState({persons: parsedData});
+    }
+
 };
 
 export default GetUser;
+

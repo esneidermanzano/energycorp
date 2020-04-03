@@ -8,6 +8,7 @@ import {
     Row,
     Col, Button, Alert
 } from "reactstrap";
+import Axios from "axios";
 
 class CreateUser extends React.Component {
     constructor(props) {
@@ -31,23 +32,49 @@ class CreateUser extends React.Component {
         })
     }
 
-    sendNews = () => {
-        // AXIOS
-        alert("Axios");
-        var users = {operadores: null, gerentes: null};
-        var operadores = [];
-        var gerentes = [];
-        for (let i = 0; i < this.state.list.length; i++) {
-            let user = this.state.list[i];
-            if (user.type === 'operador') {
-                operadores.push(user);
-            }else{
-                gerentes.push(user);
+    parseToSend = user => {      
+        let parsed = {
+            user_type: user.user_type,
+            user: {
+                id_user: user.id_user,
+                name: user.name,
+                email: user.email,
+                password: user.password,
+                phone: user.phone,
+                address: user.address,
+                neighborhood: user.neighborhood,
+                stratus: user.stratus,
+                is_active: user.is_active,
+                is_staff: user.is_staff,
+                is_superuser: user.is_superuser
             }
         }
-        users.operadores = operadores;
-        users.gerentes = gerentes;
-        console.log(users);
+        return parsed;
+    }
+
+    sendNews = () => {
+        // AXIOS
+        var data = [];
+        
+        for (let i = 0; i < this.state.list.length; i++) {
+            let user = this.state.list[i];
+            data.push(this.parseToSend(user));
+        }
+
+        Axios.post('https://energycorp.herokuapp.com/api/user/worker/create/bulk/', data)
+        .then(res => {
+            let given = res.data;
+            if(given.code === 200){
+                alert('Registro exitoso.');
+            }else{
+                alert('Algo salió mal.');
+            }
+        })
+        .catch(err => {
+            console.log(err);
+        })
+
+        console.log(data);
         this.setState({ list: [] });
     }
 
@@ -57,9 +84,9 @@ class CreateUser extends React.Component {
             news = this.state.list.map((n, key) => {
                 return (
                     <Alert color="success" key={key} toggle={() => this.onDismiss(key)}>
-                        #{key + 1} <b>{n.name} {n.lastname}</b> - {n.ID}
+                        #{key + 1} <b>{n.name}</b> - {n.id_user}
                         <br></br>
-                        <i>{n.type}</i>
+                        <i>{n.user_type}</i>
                     </Alert>
                 )
             })
@@ -73,7 +100,7 @@ class CreateUser extends React.Component {
                     <Col md="6" >
                         <Card>
                             <CardBody>
-                                <CreateUserForm submitAction={this.createEle} editMode={true} />
+                                <CreateUserForm submitAction={this.createEle} editMode={false} />
                             </CardBody>
                         </Card>
                     </Col>
