@@ -29,6 +29,18 @@
   color: white;
 }
 
+.inactiveBtn{
+  background-color: white;
+  border-style: none;
+  border-radius: 20px;
+  color: blueviolet;
+}
+
+.inactiveBtn:hover{
+  background-color: blueviolet;
+  color: white;
+}
+
 .newTrans{
   background-color: blue;
   border-style: none;
