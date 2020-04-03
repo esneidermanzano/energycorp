@@ -1,13 +1,13 @@
 class Auth{
     constructor(){
-        this.authenticated = localStorage.getItem('token') || null;
+        this.authenticated = localStorage.getItem('session') || null;
     }
 
-    login(cb, type){
-        localStorage.setItem('token', JSON.stringify({dat: 'XXXX', userType: type}));
-        this.authenticated = localStorage.getItem('token');
+    login(obj, cb){
+        localStorage.setItem('session', JSON.stringify(obj));
+        this.authenticated = localStorage.getItem('session');
         // Retorna la ruta correspondiente al tipo de usuario
-        cb(type);
+        cb(obj.user_type_name);
     }
 
     logout(cb){
@@ -23,7 +23,11 @@ class Auth{
 
     getType(){
         var t = JSON.parse(this.authenticated); 
-        return t.userType;
+        return t.user_type_name;
+    }
+
+    getSession(){
+        return JSON.parse(this.authenticated); 
     }
 }
 
