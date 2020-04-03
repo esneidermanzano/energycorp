@@ -4,6 +4,7 @@ import logo from "logo.png";
 
 import auth from "components/auth/auth.js";
 import ReCAPTCHA from "react-google-recaptcha";
+import axios from 'axios';
 
 import { Link } from "react-router-dom";
 
@@ -24,7 +25,8 @@ class Login extends React.Component {
             username: '',
             password: '',
             doAnime: false,
-            errorLogin: false
+            errorLogin: false,
+            messageError: "",
         };
     }
 
@@ -42,51 +44,80 @@ class Login extends React.Component {
 
     signin = e => {
         e.preventDefault();
+
         const delay = 800;
-        // var data = {username: this.state.username, password: this.state.password};
-        if (this.state.username === '100') {
 
-            auth.login(rou => {
-                this.setState({ doAnime: true });
-                window.setTimeout(() => {
-                    this.props.history.push("/" + rou)
-                }, delay);
+        let data = { id_user: this.state.username, password: this.state.password };
 
-            }, "admin");
-        } else if (this.state.username === '200') {
+        let obj, given;
 
-            auth.login(rou => {
-                this.setState({ doAnime: true });
-                window.setTimeout(() => {
-                    this.props.history.push("/" + rou)
-                }, delay);
+        // obj = {
+        //     "token": "asdasdsa",
+        //     "user_id": "awqweqweqw",
+        //     "user_type": 1,
+        //     "user_type_name": "admin"
+        // };
 
-            }, "operator");
+        // auth.login(obj, rou => {
+        //     this.setState({ doAnime: true });
+        //     window.setTimeout(() => {
+        //         this.props.history.push("/" + rou)
+        //     }, delay);
+        // });
 
-        } else if (this.state.username === '300') {
+        axios.post("https://energycorp.herokuapp.com/api/user/login/", data)
+            .then(res => {
+                given = res.data;
+                if (given.code === 200) {
 
-            auth.login(rou => {
-                this.setState({ doAnime: true });
-                window.setTimeout(() => {
-                    this.props.history.push("/" + rou)
-                }, delay);
+                    let user_type_name;
 
-            }, "manager");
+                    switch (given.data.user_type) {
+                        case 1:
+                            user_type_name = "admin";
+                            break;
+                        case 2:
+                            user_type_name = "manager"
+                            break;
+                        case 3:
+                            user_type_name = "operator";
+                            break
+                        default:
+                            break;
+                    }
 
-        } else {
-            document.getElementById("loginForm").reset();
-            this.setState({ errorLogin: true });
-            window.setTimeout(() => {
-                this.setState({ errorLogin: false });
-            }, 1500);
-        }
+                    obj = {
+                        "token": given.token,
+                        "user_id": given.data.user__id_user,
+                        "user_type": given.data.user_type,
+                        "user_type_name": user_type_name
+                    };
+
+                    auth.login(obj, rou => {
+                        this.setState({ doAnime: true });
+                        window.setTimeout(() => {
+                            this.props.history.push("/" + rou)
+                        }, delay);
+                    });
+
+                } else {
+                    document.getElementById("loginForm").reset();
+                    this.setState({ errorLogin: true, messageError: given.message });
+                    window.setTimeout(() => {
+                        this.setState({ errorLogin: false });
+                    }, 2000);
+                }
+            })
+            .catch(err => {
+                console.log(err);
+            })
     }
 
     render() {
 
         const alert = (this.state.errorLogin) ? <Alert className="animated rubberBand" color="danger">
             <center>
-                <h6>Verifica la entrada</h6>
+                <h6>{this.state.messageError}</h6>
             </center>
         </Alert> : true;
 
@@ -94,7 +125,7 @@ class Login extends React.Component {
             <div>
                 <Col md="4" id="login">
                     {alert}
-                    <Card id="cardLogin" className={this.state.doAnime ? "animated zoomOutUp" : ""}>
+                    <Card id="cardLogin" className={this.state.doAnime ? "animated zoomOutUp" : " "}>
                         <CardHeader>
                             <center>
                                 <img src={logo} width="110px" height="110px" alt="description"></img>
@@ -104,8 +135,8 @@ class Login extends React.Component {
                         <CardBody>
                             <Form onSubmit={this.signin} id="loginForm">
                                 <FormGroup>
-                                    <Label for="exampleEmail">ID</Label>
-                                    <Input onChange={this.handleInput} type="number" name="username" id="exampleEmail" placeholder="Login" requiered />
+                                    <Label for="exampleEmail">email</Label>
+                                    <Input onChange={this.handleInput} type="email" name="username" id="exampleEmail" placeholder="Login" requiered />
                                 </FormGroup>
                                 <FormGroup>
                                     <Label for="examplePassword">Password</Label>
