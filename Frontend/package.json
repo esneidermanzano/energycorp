@@ -2,7 +2,7 @@
   "name": "energyCorp",
   "version": "1.1.0",
   "private": true,
-  "homepage": "https://demos.creative-tim.com/paper-dashboard-react/#/dashboard",
+  "homepage": "https://energy-corp.web.app/",
   "dependencies": {
     "axios": "^0.19.2",
     "bootstrap": "4.3.1",
