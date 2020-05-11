@@ -1,5 +1,11 @@
 from rest_framework import serializers
-from users.models import CustomUser, Client, Worker
+from energytransfers.serializers import CounterSerializer
+
+from users.models import (
+    CustomUser,
+    Client,
+    Worker
+    )
 from django.contrib.auth.hashers import make_password
 
 #========== Serializador para el usuario ========== 
@@ -95,6 +101,7 @@ class UpdateUserSerializer(serializers.ModelSerializer):
 class ClientSerializer(serializers.ModelSerializer):
     
     user = UserSerializer()
+    counters = CounterSerializer(many=True, read_only=True)  
     class Meta:
         model = Client
         fields = [
@@ -106,6 +113,7 @@ class ClientSerializer(serializers.ModelSerializer):
             'financial_state',
             'billing',
             'user',
+            'counters'
         ]
 
 #========== Serializador para crear el cliente ========== 

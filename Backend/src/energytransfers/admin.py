@@ -1,20 +1,37 @@
 # Django
 from django.contrib import admin
 # Models
-from energytransfers.models import Substation, Transformator
+from energytransfers.models import (
+    Substation,
+    Transformator,
+    Counter
+)
 
 # Register yours models here.
 @admin.register(Substation)
 class SubstationAdmin(admin.ModelAdmin):
-    list_display = ('pk', 'latitude', 'length', 'is_active')
-    list_editable = ('latitude', 'length', 'is_active')
+    list_display = ('codeSubstation', 'latitudeSubstation',
+                    'lengthSubstation', 'is_active')
+    list_editable = ('latitudeSubstation', 'lengthSubstation', 'is_active')
     search_fields = ('substation__latitude',
                      'substation__length')
 
 
 @admin.register(Transformator)
 class TransformatorAdmin(admin.ModelAdmin):
-      list_display = ('pk', 'latitude', 'length', 'substation', 'is_active')
-      list_editable = ('latitude', 'length', 'substation', 'is_active')
-      search_fields = ('transformator__latitude',
-                       'transformator__length')
+    list_display = ('codeTransformator', 'latitudeTransformator',
+                    'lengthTransformator', 'substationTransformator', 'is_active')
+    list_editable = ('latitudeTransformator', 'lengthTransformator',
+                     'substationTransformator', 'is_active')
+    search_fields = ('transformator__latitudeTransformator',
+                     'transformator__lengthTransformator')
+
+
+@admin.register(Counter)
+class TransformatorAdmin(admin.ModelAdmin):
+    list_display = ('codeCounter', 'latitudeCounter',
+                    'lengthCounter', 'transformatorCounter', 'clientCounter',
+                    'addressCounter', 'counter', 'is_active')
+    list_editable = ('clientCounter', 'is_active')
+    search_fields = ('counter__latitudeCounter',
+                     'counter__lengthCounter')

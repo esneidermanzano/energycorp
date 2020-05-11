@@ -1,158 +1,216 @@
+# Modelos para los Transformadores de Energia.
+from energytransfers.models import (
+    Substation,
+    Transformator,
+    Counter
+)
+# Serializer
 from rest_framework import serializers
-from energytransfers.models import Substation, Transformator
 
-# importamos regular expressions
-import re
+# =========================== Serializador para el Modulo Energy Transfer ==========================
 
-# ========== Serializador para la substation ==========
-class SubstationSerializer(serializers.ModelSerializer):
-    
-    class Meta:
-        model = Substation
-        fields = ['latitude', 'length', 'is_active']
+# -------------------------------------------Subestaciones-------------------------------------------
 
-    
-# ========== Serializador para crear la substation ==========
+#                                               CRUD
+
 class CreateSubstationSerializer(serializers.ModelSerializer):
-
+    """Serializador para las operaciones Create"""
     class Meta:
         model = Substation
-        fields = ['latitude', 'length', 'is_active']
+        fields = [
+            'latitudeSubstation',
+            'lengthSubstation',
+            'is_activeSubstation'
+        ]
 
     def create(self, validated_data):
         substation = Substation.objects.create(
-            latitude=validated_data['latitude'],
-            length=validated_data['length'],
-            is_active=validated_data['is_active']
+            latitudeSubstation=validated_data['latitudeSubstation'],
+            lengthSubstation=validated_data['lengthSubstation'],
+            is_active=validated_data['is_activeSubstation']
         )
         substation.save()
         return substation
 
 
-
-# ========== Serializador para actualizar la substation ==========
-class UpdateSubstationSerializer(serializers.ModelSerializer):
-
+class SubstationSerializer(serializers.ModelSerializer):
+    """Serializador para las operaciones Retrive"""
     class Meta:
         model = Substation
-        fields = ['latitude', 'length', 'is_active']
+        fields = '__all__'
+
+class UpdateSubstationSerializer(serializers.ModelSerializer):
+    """Serializador para las operaciones Update"""
+    class Meta:
+        model = Substation
+        fields = [
+            'latitudeSubstation',
+            'lengthSubstation'
+        ]
 
     def update(self, instance, validated_data):
-        print("===============IMPORMIENDO================")
-        print(validated_data)
         substation = super().update(instance, validated_data)
         return substation
-
-# ========== Serializador para inactivar la substation ==========
-
-
-class InactivateSubstationSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = Substation
-        fields = ['latitude', 'length', 'is_active']
-
-    def patch(self, request, *args, **kwargs):
-        Substation = self.partial_update(request, *args, **kwargs)
-        return Substation
-    
-
 
 class DeleteSubstationSerializer(serializers.ModelSerializer):
-
+    """Serializador para las operaciones Delete"""
     class Meta:
         model = Substation
-        fields = ['latitude', 'length', 'is_active', 'substation']
+        fields = '__all__'
 
     def perform_destroy(self, instance):
-            instance.delete()
+        instance.delete()
 
+class InactivateSubstationSerializer(serializers.ModelSerializer):
+    """Serializador para las operaciones Inactivate"""
+    class Meta:
+        model = Substation
+        fields = [
+            'is_active'
+        ]
 
-    def inactivate(self, instance):
-        print("===============IMPORMIENDO================")
-        validated_data = instance
-        if instance['is_active'] is True:
-            valiated_data['is_active'] = False
-        else:
-            valiated_data['is_active'] = True
-        print(validated_data)
-        substation = super().update(instance, validated_data)
+    def patch(self, request, *args, **kwargs):
+        substation = self.partial_update(request, *args, **kwargs)
         return substation
- 
-# ========== Serializador para el Transformator ==========
+    
 
+#                                            Querys
 
-class TransformatorSerializer(serializers.ModelSerializer):
+# -----------------------------------------Transformator------------------------------------------------
 
-    class Meta:
-        model = Transformator
-        fields = ['pk','latitude', 'length', 'is_active', 'substation']
-
-
-# ========== Serializador para crear el transformator ==========
+#                                              CRUD
 class CreateTransformatorSerializer(serializers.ModelSerializer):
-
+    """Transformator para las operaciones Create"""
     class Meta:
         model = Transformator
-        fields = ['latitude', 'length', 'is_active', 'substation']
+        fields = [
+            'latitudeTransformator',
+            'lengthTransformator',
+            'is_active',
+            'substationTransformator'
+            ]
 
     def create(self, validated_data):
         transformator = Transformator.objects.create(
-            latitude=validated_data['latitude'],
-            length=validated_data['length'],
+            latitudeTransformator=validated_data['latitudeTransformator'],
+            lengthTransformator=validated_data['lengthTransformator'],
             is_active=validated_data['is_active'],
-            substation=validated_data['substation']
+            substationTransformator=validated_data['substationTransformator']
         )
+        
         transformator.save()
         return transformator
 
-
-# ========== Serializador para actualizar el transformator ==========
-class UpdateTransformatorSerializer(serializers.ModelSerializer):
-
+class TransformatorSerializer(serializers.ModelSerializer):
+    """Transformator para las operaciones Retrive"""
     class Meta:
         model = Transformator
-        fields = ['latitude', 'length', 'is_active', 'substation']
+        fields = '__all__'
+
+class UpdateTransformatorSerializer(serializers.ModelSerializer):
+    """Transformator para las operaciones Update"""
+    class Meta:
+        model = Transformator
+        fields = [
+            'latitudeTransformator',
+            'lengthTransformator',
+            'substationTransformator'
+            ]
 
     def update(self, instance, validated_data):
-        print("===============IMPORMIENDO================")
-        print(validated_data)
         transformator = super().update(instance, validated_data)
         return transformator
 
-# ========== Serializador para inactivar la Transformator ==========
-
-
-class InactivateTransformatorSerializer(serializers.ModelSerializer):
-
+class DeleteTransformatorSerializer(serializers.ModelSerializer):
+    """Transformator para las operaciones Delete"""
     class Meta:
         model = Transformator
-        fields = ['latitude', 'length', 'is_active']
+        fields = '__all__'
+
+    def perform_destroy(self, instance):
+        instance.delete()
+
+class InactivateTransformatorSerializer(serializers.ModelSerializer):
+    """Transformator para las operaciones Inactive"""
+    class Meta:
+        model = Transformator
+        fields = ['is_active']
 
     def patch(self, request, *args, **kwargs):
         transformator = self.partial_update(request, *args, **kwargs)
         return transformator
-    
-    
- # ========== Serializador para actualizar el transformator ==========
 
+#                                      Query
 
-class DeleteTransformatorSerializer(serializers.ModelSerializer):
+# -----------------------------------------Counter------------------------------------------------
 
+#                                              CRUD
+class CreateCounterSerializer(serializers.ModelSerializer):
+    """Counter para las operaciones Create"""
     class Meta:
-        model = Transformator
-        fields = ['latitude', 'length', 'is_active', 'substation']
+        model = Counter
+        fields = [
+            'latitudeCounter',
+            'lengthCounter',
+            'counter',
+            'addressCounter',
+            'is_active',
+            'transformatorCounter'
+            ]
+
+    def create(self, validated_data):
+        counter = Transformator.objects.create(
+            latitudeCounter=validated_data['latitudeCounter'],
+            lengthCounter=validated_data['lengthCounter'],
+            is_active=validated_data['is_active'],
+            counter=validated_data['counter'],
+            addressCounter=validated_data['addressCounter'],
+            transformatorCounter=validated_data['transformatorCounter']
+        )
+        
+        counter.save()
+        return counter
+    
+class CounterSerializer(serializers.ModelSerializer):
+    """Counter para las operaciones Retrive"""
+    class Meta:
+        model = Counter
+        fields = '__all__'
+        
+class UpdateCounterSerializer(serializers.ModelSerializer):
+    """Counter para las operaciones Update"""
+    class Meta:
+        model = Counter
+        fields = [
+            'latitudeCounter',
+            'lengthCounter',
+            'counter',
+            'addressCounter',
+            'transformatorCounter'
+            ]
+
+    def update(self, instance, validated_data):
+        counter = super().update(instance, validated_data)
+        return counter
+    
+class DeleteCounterSerializer(serializers.ModelSerializer):
+    """Counter para las operaciones Delete"""
+    class Meta:
+        model = Counter
+        fields = '__all__'
 
     def perform_destroy(self, instance):
-            instance.delete()
-    def inactivate(self, instance):
-        print("===============IMPORMIENDO================")
-        validated_data = instance
-        if instance['is_active'] is True:
-            valiated_data['is_active'] = False
-        else:
-            valiated_data['is_active'] = True
-        print(validated_data)
-        Transformator = super().update(instance, validated_data)
-        return Transformator
- 
+        instance.delete()
+        
+class InactivateCounterSerializer(serializers.ModelSerializer):
+    """Transformator para las operaciones Inactive"""
+    class Meta:
+        model = Counter
+        fields = ['is_active']
+
+    def patch(self, request, *args, **kwargs):
+        counter = self.partial_update(request, *args, **kwargs)
+        return counter
+    
+#                                           Query
+   
