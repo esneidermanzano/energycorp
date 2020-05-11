@@ -24,16 +24,12 @@ import {
   NavbarToggler,
   NavbarBrand,
   Nav,
-  NavItem,
   Dropdown,
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
   Container,
-  InputGroup,
-  InputGroupText,
-  InputGroupAddon,
-  Input, Button, Row, Col
+  Button, Row, Col
 } from "reactstrap";
 
 import auth from "components/auth/auth.js";

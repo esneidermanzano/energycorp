@@ -1,14 +1,14 @@
 import React from "react";
 
 import counterpart from "counterpart";
-import * as Tr from "react-translate-component";
+// import * as Tr from "react-translate-component";
 import spanish from "../../langs/spanish.js";
 import english from "../../langs/english.js";
 
 import {
-    Button, Card, Row, CardBody,
+    Card, Row, CardBody,
     Col, Input, Form, FormGroup, CardFooter,
-    ListGroup, ListGroupItem, CardHeader, CardTitle
+    ListGroup, ListGroupItem
 } from "reactstrap";
 
 import axios from 'axios';
@@ -99,7 +99,7 @@ class ChatBot extends React.Component {
 
                                             <ListGroupItem key={i}>
                                                 {
-                                                    i % 2 != 0 && i !== 0 ? (
+                                                    i % 2 !== 0 && i !== 0 ? (
                                                         <div>
                                                             <b>Bot: </b> <i>{item}</i>
                                                         </div>
