@@ -64,3 +64,45 @@
 .newSubs:hover{
   background-color: coral;
 }
+
+
+/************************* CHAT BOT **********************/
+
+
+#chat{
+  margin: 0px auto;
+  margin-top: 50px;
+}
+
+.chat_msglist{
+    flex: 1;
+    overflow-y: scroll;
+}
+
+.msgContainer{
+  display: flex;
+  flex-direction: row;
+  height: 200px;
+}
+
+.floatingBot{
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+  margin-right: 30px;
+  cursor: pointer;
+  
+}
+
+.bot_on_chat{
+  cursor: pointer;
+}
+
+.floatingChat{
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+  margin-right: 30px;
+  width: 300px;
+}
+
