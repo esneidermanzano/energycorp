@@ -4,108 +4,35 @@ from users.models import Worker
 from energytransfers.models import Counter
 
 # Create your models here.
+""" The models in this File are the objetcs than respresent the history,
+    publicity, invoice services and counters."""
+
+
 class History(models.Model):
-    #id_history= models.AutoField(primary_key= True)
-    #counter= models.name= models.ForeignKey(Counter,on_delete=models.CASCADE)
-    init_date= models.DateField()
-    final_date=models.DateField()
-
-
-class Publicity(models.Model):
-    #code_publicity= models.AutoField(primary_key=True)
-    contractor= models.CharField(max_length=30)
-    category= models.CharField(max_length=15)
-    url_resource= models.URLField(max_length=200)
-
-
-class Bill(models.Model):
-    #bill_number= models.AutoField(primay_key=True)
-    consumption_days= models.PositiveIntegerField()
-    payment_deadline= models.DateField()
-    billing_date= models.DateField(default=datetime.date.today) 
-    state= models.BooleanField(default=False)
-    reference_code= models.CharField(max_length=30)
-    history= models.OneToOneField(History, on_delete= models.CASCADE)
-    publicity= models.ManyToManyField(Publicity)
-
-"""class BillPublicity(models.Model):
-    bill= models.ForeignKey(Bill)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    publicity= models.ForeignKey(Publicity)"""
-
-class Bank(models.Model):
-    #id_bank= models.AutoField(primary_key=True)
-    name= models.CharField(max_length=30)
-
-class Payment(models.Model):
-    #transaction_code= models.AutoField(primary_key= True)
-    hour= models.TimeField(default=datetime.time)
-    transaction_date= models.DateField(default= datetime.date.today)
-    bill= models.OneToOneField(Bill,on_delete=models.CASCADE) 
-
-class BankPayment(models.Model):
-    transaction_code= models.OneToOneField(Payment,on_delete=models.CASCADE,primary_key=True)
-   # bank= models.name=models.ForeignKey(Bank, on_delete= models.CASCADE) 
-
-
-class DirectPayment(models.Model):
-    transaction_code= models.OneToOneField(Payment,on_delete=models.CASCADE,primary_key=True)
-   # worker= models.name= models.ForeignKey(Worker, on_delete= models.CASCADE)
-
-
-
-
-
+    """Modelo para representar el objero history"""
+    codeHistory = models.AutoField(
+        auto_created=True,
+        primary_key=True,
+        serialize=False,
+        verbose_name='ID'
+        )
+    counterHistory = models.ForeignKey(
+        Counter, related_name='historys', on_delete=models.CASCADE)
+    registryHistory = models.DateField(auto_now_add=True, unique=True)
+
+
+class InvoiceServices(models.Model):
+    """Modelo para reprsentar el objeto Recibo"""
+    codeInvoice = models.AutoField(
+        auto_created=True,
+        primary_key=True,
+        serialize=False,
+        verbose_name='ID'
+    )
+    consumptiondaysInvoice = models.PositiveIntegerField()
+    paymentdeadlineInvoice = models.DateField()
+    billingdateInvoice = models.DateField(default=datetime.date.today)
+    stateInvoice = models.BooleanField(default=False)
+    referencecodeInvoice = models.CharField(max_length=30)
+    history = models.OneToOneField(History, on_delete=models.CASCADE)
 
