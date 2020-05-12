@@ -9,6 +9,7 @@ verify_ssl = true
 django = "==3.0.3"
 djangorestframework = "==3.11.0"
 django-cors-headers = "==3.2.1"
+weasyprint = "*"
 
 [requires]
 python_version = "3.6"
