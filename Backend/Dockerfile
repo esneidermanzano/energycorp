@@ -7,9 +7,9 @@ WORKDIR /app
 COPY ./requirements.txt .
 COPY ./src .
 
-RUN pip3 install --no-cache-dir --force-reinstall cffi
-RUN pip3 install --no-cache-dir cairocffi
-RUN pip3 install -r requirements.txt
+RUN apk add --no-cache --virtual .build-deps gcc musl-dev \
+    && pip3 install -r requirements.txt \
+    && apk del .build-deps
 
 RUN adduser -D myuser
 USER myuser
