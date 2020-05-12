@@ -7,6 +7,8 @@ WORKDIR /app
 COPY ./requirements.txt .
 COPY ./src .
 
+RUN pip3 install --no-cache-dir --force-reinstall cffi
+RUN pip3 install --no-cache-dir cairocffi
 RUN pip3 install -r requirements.txt
 
 RUN adduser -D myuser
