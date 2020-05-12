@@ -11,6 +11,7 @@ RUN apk add --no-cache --virtual .build-deps gcc musl-dev \
     && pip3 install -r requirements.txt \
     && apk del .build-deps
 
+
 RUN adduser -D myuser
 USER myuser
 
