@@ -14,9 +14,11 @@ from .views import (
     InvoiceServicesCreate,
     InvoiceServicesUpdate,
     InvoiceServicesDelete,
-    InvoiceServicesInactivate
-    
+    InvoiceServicesInactivate,    
 #   QUERY
+
+#   Generate pdf
+    GeneratePdf
 )
 
 urlpatterns = [
@@ -35,4 +37,6 @@ urlpatterns = [
     path('invoiceservices/delete/<pk>', InvoiceServicesDelete.as_view()),
     path('invoiceservices/inactivate/<pk>/', InvoiceServicesInactivate.as_view()),
     #QUERY
+    #PDf invoice generator
+    path('pdf/', GeneratePdf.as_view()),
 ]
