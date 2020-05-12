@@ -10,7 +10,7 @@ COPY ./src .
 RUN pip install -r requirements.txt
 
 
-RUN adduser -D myuser
+RUN useradd -s /bin/bash myuser
 USER myuser
 
 #If you wanna test with compose, enable the follow lines
