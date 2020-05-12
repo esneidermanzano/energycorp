@@ -1,5 +1,7 @@
 from django.db import models
+
 from factures.models import InvoiceServices
+from bancks.models import Banck
 from users.models import Worker
 
 # Create your models here.
@@ -17,7 +19,7 @@ class Payment(models.Model):
     )
     valuePayment = models.PositiveIntegerField()
     datePayment = models.DateTimeField(auto_now_add=True)
-    facturaPayment = models.OneToOneField("app.Model",
+    facturaPayment = models.OneToOneField(InvoiceServices,
                                           on_delete=models.CASCADE)
 
 
@@ -31,19 +33,24 @@ class DirectPayment(models.Model):
     )
     payment = models.OneToOneField(
         Payment, on_delete=models.CASCADE)
-    workerPayment = models.ForeignKey(Worker, on_delete=models.CASCADE)
-    
-
+    workerPayment = models.ForeignKey(
+        Worker,
+        related_name='payments',
+        on_delete=models.CASCADE
+        )
 
 class BanckPayment(models.Model):
     """Modelo para representar el objero Pago"""
-    codePayment = models.AutoField(
+    codeBanckPayment = models.AutoField(
         auto_created=True,
         primary_key=True,
         serialize=False,
         verbose_name='ID'
     )
-    valuePayment = models.PositiveIntegerField()
-    datePayment = models.DateTimeField(auto_now_add=True)
-    facturaPayment = models.OneToOneField("app.Model",
-                                          on_delete=models.CASCADE)
+    payment = models.OneToOneField(
+        Payment, on_delete=models.CASCADE)
+    banckPayment = models.ForeignKey(
+        Banck, 
+        related_name='payments',
+        on_delete=models.CASCADE
+        )
