@@ -68,7 +68,7 @@ class CustomUser(AbstractUser):
         return self.name
 
     def __str__(self):
-        return str(self.email)
+        return str(self.id_user)
 
 # ========== Modelo del cliente que contiene un usuario ==========
 
@@ -86,6 +86,10 @@ class Client(models.Model):
     contrat_number = models.IntegerField(unique=True)
     financial_state = models.CharField(max_length=10)
     billing = models.CharField(max_length=10)
+    
+    def __str__(self):
+        return 'The Client: {}'.format(
+            self.user)
 
 # ==========  Modelo del trabajador que extiende de usuario basico ==========
 

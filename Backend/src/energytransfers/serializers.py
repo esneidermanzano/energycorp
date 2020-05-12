@@ -20,14 +20,14 @@ class CreateSubstationSerializer(serializers.ModelSerializer):
         fields = [
             'latitudeSubstation',
             'lengthSubstation',
-            'is_activeSubstation'
+            'is_active'
         ]
 
     def create(self, validated_data):
         substation = Substation.objects.create(
             latitudeSubstation=validated_data['latitudeSubstation'],
             lengthSubstation=validated_data['lengthSubstation'],
-            is_active=validated_data['is_activeSubstation']
+            is_active=validated_data['is_active']
         )
         substation.save()
         return substation
@@ -155,17 +155,19 @@ class CreateCounterSerializer(serializers.ModelSerializer):
             'counter',
             'addressCounter',
             'is_active',
-            'transformatorCounter'
+            'transformatorCounter',
+            'clientCounter'
             ]
 
     def create(self, validated_data):
-        counter = Transformator.objects.create(
+        counter = Counter.objects.create(
             latitudeCounter=validated_data['latitudeCounter'],
             lengthCounter=validated_data['lengthCounter'],
             is_active=validated_data['is_active'],
             counter=validated_data['counter'],
             addressCounter=validated_data['addressCounter'],
-            transformatorCounter=validated_data['transformatorCounter']
+            transformatorCounter=validated_data['transformatorCounter'],
+            clientCounter=validated_data['clientCounter']
         )
         
         counter.save()
