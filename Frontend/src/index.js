@@ -20,6 +20,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 // import { createBrowserHistory } from "history";
 // import { Router, Route, Switch, Redirect } from "react-router-dom";
+import * as serviceWorker from "./serviceWorker.js";
 
 import "bootstrap/dist/css/bootstrap.css";
 import "assets/scss/paper-dashboard.scss?v=1.1.0";
@@ -32,3 +33,4 @@ import "assets/css/login.css";
 import App from 'App.js';
 
 ReactDOM.render(<App />, document.getElementById('root'));
+serviceWorker.register();
