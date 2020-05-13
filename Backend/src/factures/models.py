@@ -16,9 +16,10 @@ class History(models.Model):
         serialize=False,
         verbose_name='ID'
         )
-    counterHistory = models.ForeignKey(
+    counter = models.ForeignKey(
         Counter, related_name='historys', on_delete=models.CASCADE)
-    registryHistory = models.DateField(auto_now_add=True, unique=True)
+    registryHistory = models.DateField(auto_now_add=True)
+    
 
 
 class InvoiceServices(models.Model):
