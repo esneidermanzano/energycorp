@@ -52,21 +52,21 @@ class Login extends React.Component {
         let obj, given;
 
         // dummy
-        // obj = {
-        //     "token": "asdasdsa",
-        //     "user_id": "awqweqweqw",
-        //     "user_type": 1,
-        //     "user_type_name": "operator"
-        // };
+         obj = {
+             "token": "asdasdsa",
+             "user_id": "awqweqweqw",
+             "user_type": 1,
+             "user_type_name": "operator"
+         };
 
-        // auth.login(obj, rou => {
-        //     this.setState({ doAnime: true });
-        //     window.setTimeout(() => {
-        //         this.props.history.push("/" + rou)
-        //     }, delay);
-        // });
+         auth.login(obj, rou => {
+             this.setState({ doAnime: true });
+             window.setTimeout(() => {
+                 this.props.history.push("/" + rou)
+             }, delay);
+         });
 
-        axios.post("https://energycorp.herokuapp.com/api/user/login/", data)
+       /* axios.post("https://energycorp.herokuapp.com/api/user/login/", data)
             .then(res => {
                 given = res.data;
                 if (given.code === 200) {
@@ -111,7 +111,7 @@ class Login extends React.Component {
             })
             .catch(err => {
                 console.log(err);
-            })
+            })*/
     }
 
     render() {
