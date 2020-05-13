@@ -287,17 +287,31 @@ for i in range (len(transcoor)):
 
 histories = []
 
-if i in range (1, len(counters)*2):
-    history = {
+for i in range (1, len(counters) + 1):
+    history1 = {
         "model": "factures.history",
-        "pk": 1,
+        "pk": i*2 - 1,
         "fields": {
             "counter": i,
+            "consumption": random.randint(10,50),
+            "registryHistory": "2020-04-30"
+        }
+    }
+    history2 = {
+        "model": "factures.history",
+        "pk": i*2,
+        "fields": {
+            "counter": i,
+            "consumption": random.randint(10,50),
             "registryHistory": "2020-05-13"
         }
     }
+    
+    histories.append(history1)
+    histories.append(history2)
 
-jsonData=json.dumps(counters, ensure_ascii=False)
+
+jsonData=json.dumps(histories, ensure_ascii=False)
 
 
 

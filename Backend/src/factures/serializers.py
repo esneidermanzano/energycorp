@@ -19,7 +19,7 @@ class CreateHistorySerializer(serializers.ModelSerializer):
     class Meta:
         model = History
         fields = [
-            'counter'
+            'counter',
             'consumption'
             #'registryHistory'
         ]
