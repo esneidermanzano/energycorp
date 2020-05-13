@@ -48,7 +48,8 @@ INSTALLED_APPS = [
     'corsheaders',
     'energytransfers',
     'factures',
-    'bancks'
+    'bancks',
+    'commercial'
 ]
 
 MIDDLEWARE = [
