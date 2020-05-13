@@ -2,6 +2,8 @@ import json
 import random
 import math
 import geopy.distance
+from datetime import datetime
+
 from geopy.geocoders import Nominatim
 from django.contrib.auth.hashers import make_password
 
@@ -311,10 +313,41 @@ for i in range (1, len(counters) + 1):
     histories.append(history2)
 
 
-jsonData=json.dumps(histories, ensure_ascii=False)
+invoices = []
+
+for i in range (1, len(histories) + 1):
+    invoice1 = {
+        "model": "factures.history",
+        "pk": i*2 - 1,
+        "fields": {
+            "counter": i,
+            "consumption": random.randint(10,50),
+            "registryHistory": "2020-04-30"
+        }
+    }
+    invoice2 = {
+        "model": "factures.history",
+        "pk": i*2,
+        "fields": {
+            "counter": i,
+            "consumption": random.randint(10,50),
+            "registryHistory": "2020-05-13"
+        }
+    }
+    
+    invoices.append(invoice1)
+    invoices.append(invoice2)
+    
+
+now = datetime.now()
+code = str(now).replace(':', '').replace('.', '').replace('-','').split()
+reference = code[0] + "("+ code[1]+")"+ str(random.randint(1111111,9999999))
+print("Current Time =", )
+
+#jsonData=json.dumps(histories, ensure_ascii=False)
 
 
 
-print(jsonData)
+#print(jsonData)
 
 #========================== FIN generate clientes ================================

@@ -70,7 +70,7 @@ class DeleteHistorySerializer(serializers.ModelSerializer):
 #                                              CRUD
 class CreateInvoiceServicesSerializer(serializers.ModelSerializer):
     """InvoiceServices para las operaciones Create"""
-    
+    history = CreateHistorySerializer()
     class Meta:
         model = InvoiceServices
         fields = [
@@ -83,13 +83,11 @@ class CreateInvoiceServicesSerializer(serializers.ModelSerializer):
             ]
 
     def create(self, validated_data):
+        history = validated_data.pop('history')
+        custom = History.objects.create(**history)
+
         invoiceServices = InvoiceServices.objects.create(
-            consumptiondaysInvoice=validated_data['latitudeInvoiceServices'],
-            paymentdeadlineInvoice=validated_data['lengthInvoiceServices'],
-            billingdateInvoice=validated_data['is_active'],
-            stateInvoice=validated_data['HistoryInvoiceServices'],
-            referencecodeInvoice=validated_data['HistoryInvoiceServices'],
-            history=validated_data['HistoryInvoiceServices']
+            history=custom, **validated_data
         )
         
         invoiceServices.save()

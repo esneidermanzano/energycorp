@@ -90,7 +90,7 @@ class HistoryDelete(DestroyAPIView):
 class InvoiceServicesCreate(ListCreateAPIView):
     """View para delete un InvoiceServices"""
     queryset = InvoiceServices.objects.all()
-    serializer_class = InvoiceServicesSerializer
+    serializer_class = CreateInvoiceServicesSerializer
 
 class InvoiceServicesDetail(RetrieveAPIView):
     """View para retrive un InvoiceServices"""
