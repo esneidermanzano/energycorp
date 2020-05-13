@@ -52,7 +52,7 @@ class Login extends React.Component {
         let obj, given;
 
         // dummy
-         obj = {
+         /*obj = {
              "token": "asdasdsa",
              "user_id": "awqweqweqw",
              "user_type": 1,
@@ -64,9 +64,9 @@ class Login extends React.Component {
              window.setTimeout(() => {
                  this.props.history.push("/" + rou)
              }, delay);
-         });
+         });*/
 
-       /* axios.post("https://energycorp.herokuapp.com/api/user/login/", data)
+        axios.post("https://energycorp.herokuapp.com/api/user/login/", data)
             .then(res => {
                 given = res.data;
                 if (given.code === 200) {
@@ -111,7 +111,7 @@ class Login extends React.Component {
             })
             .catch(err => {
                 console.log(err);
-            })*/
+            })
     }
 
     render() {
