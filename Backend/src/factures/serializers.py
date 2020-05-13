@@ -19,14 +19,14 @@ class CreateHistorySerializer(serializers.ModelSerializer):
     class Meta:
         model = History
         fields = [
-            'counterHistory',
-            'registryHistory'
+            'counter'
+            #'registryHistory'
         ]
 
     def create(self, validated_data):
         history = History.objects.create(
-            counterHistory=validated_data['counterHistory'],
-            registryHistory=validated_data['registryHistory']
+            counter=validated_data['counter']
+            #registryHistory=validated_data['registryHistory']
         )
         history.save()
         return history
