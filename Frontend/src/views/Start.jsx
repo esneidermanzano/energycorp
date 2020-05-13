@@ -8,6 +8,7 @@ import counterpart from "counterpart";
 import * as Tr from "react-translate-component";
 import spanish from "../langs/spanish.js";
 import english from "../langs/english.js";
+import portuguese from "../langs/portuguese.js";
 
 import bot_gif from "./bot_gif.gif";
 
@@ -15,6 +16,7 @@ import { connect } from "react-redux";
 
 counterpart.registerTranslations('en', english);
 counterpart.registerTranslations('es', spanish);
+counterpart.registerTranslations('po', portuguese);
 
  
 // counterpart.setLocale('en');

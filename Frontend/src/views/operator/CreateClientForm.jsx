@@ -1,9 +1,21 @@
 import React from "react";
 
+import counterpart from "counterpart";
+import * as Tr from "react-translate-component";
+import spanish from "../../langs/spanish.js";
+import english from "../../langs/english.js";
+import portuguese from "../../langs/portuguese.js";
+
+import { connect } from "react-redux";
+
 // reactstrap components
 import {
     Row, Col, Form, FormGroup, Label, Input, Button
 } from "reactstrap";
+
+counterpart.registerTranslations('en', english);
+counterpart.registerTranslations('es', spanish);
+counterpart.registerTranslations('po', portuguese);
 
 class CreateClientForm extends React.Component {
     constructor(props) {
@@ -132,55 +144,87 @@ class CreateClientForm extends React.Component {
 
     render() {
 
-        const addBtn = (!this.props.user) ? <Button color="warning">Add</Button> : <Button color="warning">Edit</Button>;
+        const addBtn = (!this.props.user) ? 
+            <Button color="warning">
+                 <Tr content="clientForm.add"/>
+            </Button> : 
+            <Button color="warning">
+                 <Tr content="clientForm.edit"/>
+            </Button>;
 
-        const showStateAttr = this.props.editMode ? <div> <Label for="">Estado</Label>
+        const showStateAttr = this.props.editMode ? <div> 
+                <Label for="">
+                    <Tr content="clientForm.state"/>
+                </Label>
             <select onChange={this.handleInput} value={this.state.user.is_active} className="form-control" name="is_active" required>
-                <option>Activo</option>
-                <option>Inactivo</option>
+                <Tr content="clientForm.active" component="option"/>
+                <Tr content="clientForm.inactive" component="option"/>
             </select>
         </div> : true
 
+        const placeholderRate = counterpart.translate('clientForm.rate');
+        const placeholderCycle = counterpart.translate('clientForm.cycle');
+        const placeholderContractN = counterpart.translate('clientForm.contractN');
+        const placeholderBilling = counterpart.translate('clientForm.billing');
+        const placeholderName = counterpart.translate('clientForm.name');
+        const placeholderAddress = counterpart.translate('clientForm.address');
+        const placeholderNeighborhood = counterpart.translate('clientForm.neighborhood');
+        const placeholderPhone = counterpart.translate('clientForm.phone');
+        const placeholderStratum = counterpart.translate('clientForm.stratum');
 
         const aditional =
             <div>
-                <center style={{ marginTop: "2em" }}>Aditional Information</center>
+                <center style={{ marginTop: "2em" }}>
+                    <Tr content="clientForm.aditionalInfo"/>
+                </center>
 
                 <Row>
                     <Col>
-                        <Label for="">Tipo</Label>
+                        <Label for="">
+                            <Tr content="clientForm.type"/>
+                        </Label>
                         <select onChange={this.handleInputClient} value={this.state.type_client} className="form-control" name="type_client" required>
-                            <option value="1">Natural</option>
-                            <option value="2">Juridica</option>
+                            <Tr content="clientForm.natural" component="option" value="1"/>
+                            <Tr content="clientForm.legal" component="option" value="2"/>
                         </select>
                     </Col>
                     <Col>
-                        <Label for="">Tasa Interes mora</Label>
-                        <Input onChange={this.handleInputClient} value={this.state.interes_mora} type="number" step="0.01" name="interes_mora" placeholder="Tasa Interes mora" required />
+                        <Label for="">
+                            <Tr content="clientForm.rate"/>
+                        </Label>
+                        <Input onChange={this.handleInputClient} value={this.state.interes_mora} type="number" step="0.01" name="interes_mora" placeholder={placeholderRate} required />
                     </Col>
                 </Row>
 
                 <Row>
                     <Col>
-                        <Label for="">Ciclo</Label>
-                        <Input onChange={this.handleInputClient} value={this.state.cycle} type="number" name="cycle" placeholder="ciclo" required />
+                        <Label for="">
+                            <Tr content="clientForm.cycle"/>
+                        </Label>
+                        <Input onChange={this.handleInputClient} value={this.state.cycle} type="number" name="cycle" placeholder={placeholderCycle} required />
                     </Col>
                     <Col>
-                        <Label for="">Numero de contrato</Label>
-                        <Input onChange={this.handleInputClient} value={this.state.contrat_number} type="text" name="contrat_number" placeholder="contrato" required />
+                        <Label for="">
+                            <Tr content="clientForm.contractN"/>
+                        </Label>
+                        <Input onChange={this.handleInputClient} value={this.state.contrat_number} type="text" name="contrat_number" placeholder={placeholderContractN} required />
                     </Col>
                 </Row>
 
                 <Row>
                     <Col>
-                        <Label for="">Facturacion</Label>
-                        <Input onChange={this.handleInputClient} value={this.state.billing} type="number" name="billing" placeholder="facturacion" required />
+                        <Label for="">
+                            <Tr content="clientForm.billing"/>
+                        </Label>
+                        <Input onChange={this.handleInputClient} value={this.state.billing} type="number" name="billing" placeholder={placeholderBilling} required />
                     </Col>
                     <Col>
-                        <Label for="">Estado Financiero</Label>
+                        <Label for="">
+                            <Tr content="clientForm.stateF"/>
+                        </Label>
                         <select onChange={this.handleInputClient} value={this.state.financial_state} className="form-control" name="financial_state" required>
-                            <option value="Mora">Mora</option>
-                            <option value="No Mora">No Mora</option>
+                            <Tr content="clientForm.mora" component="option" value="Mora"/>
+                            <Tr content="clientForm.noMora" component="option" value="No Mora"/>
                         </select>
                     </Col>
                 </Row>
@@ -200,8 +244,10 @@ class CreateClientForm extends React.Component {
 
                         <Row>
                             <Col>
-                                <Label for="">Nombre</Label>
-                                <Input onChange={this.handleInput} value={this.state.user.name} type="text" name="name" placeholder="Nombre" required />
+                                <Label for="">
+                                    <Tr content="clientForm.name"/>
+                                </Label>
+                                <Input onChange={this.handleInput} value={this.state.user.name} type="text" name="name" placeholder={placeholderName} required />
                             </Col>
                         </Row>
                         <Label for="">Email</Label>
@@ -209,21 +255,29 @@ class CreateClientForm extends React.Component {
 
                         <Row>
                             <Col>
-                                <Label for="">Direccion</Label>
-                                <Input onChange={this.handleInput} value={this.state.user.address} type="text" name="address" placeholder="Direccion" required />
+                                <Label for="">
+                                    <Tr content="clientForm.address"/>
+                                </Label>
+                                <Input onChange={this.handleInput} value={this.state.user.address} type="text" name="address" placeholder={placeholderAddress} required />
                             </Col>
                             <Col>
-                                <Label for="">Barrio</Label>
-                                <Input onChange={this.handleInput} value={this.state.user.neighborhood} type="text" name="neighborhood" placeholder="Barrio" required />
+                                <Label for="">
+                                    <Tr content="clientForm.neighborhood"/>
+                                </Label>
+                                <Input onChange={this.handleInput} value={this.state.user.neighborhood} type="text" name="neighborhood" placeholder={placeholderNeighborhood} required />
                             </Col>
                             <Col>
-                                <Label for="">Estrato</Label>
-                                <Input onChange={this.handleInput} value={this.state.user.stratus} type="number" name="stratus" placeholder="Estrato" required />
+                                <Label for="">
+                                    <Tr content="clientForm.stratum"/>
+                                </Label>
+                                <Input onChange={this.handleInput} value={this.state.user.stratus} type="number" name="stratus" placeholder={placeholderStratum} required />
                             </Col>
                         </Row>
 
-                        <Label for="">Telefono</Label>
-                        <Input onChange={this.handleInput} value={this.state.user.phone} type="number" name="phone" placeholder="Telefono" required />
+                        <Label for="">
+                            <Tr content="clientForm.phone"/>
+                        </Label>
+                        <Input onChange={this.handleInput} value={this.state.user.phone} type="number" name="phone" placeholder={placeholderPhone} required />
                         {showStateAttr}
                         {aditional}
                     </div>
@@ -234,4 +288,11 @@ class CreateClientForm extends React.Component {
     }
 };
 
-export default CreateClientForm;
+const mapStateToProps = state => {
+    counterpart.setLocale(state.language);
+    return { lng: state.language }
+}
+
+const mapDispatchToProps = dispatch => ({});
+
+export default connect(mapStateToProps, mapDispatchToProps)(CreateClientForm);

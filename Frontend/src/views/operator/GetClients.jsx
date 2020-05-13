@@ -2,6 +2,13 @@ import React from "react";
 import CreateClientForm from "views/operator/CreateClientForm.jsx";
 // import axios from 'axios';
 
+import counterpart from "counterpart";
+import * as Tr from "react-translate-component";
+import spanish from "../../langs/spanish.js";
+import english from "../../langs/english.js";
+import portuguese from "../../langs/portuguese.js";
+
+import { connect } from "react-redux";
 
 import {
     Card,
@@ -10,6 +17,10 @@ import {
     Col, FormGroup, Input, Button, Table,
     Modal, ModalHeader, ModalBody
 } from "reactstrap";
+
+counterpart.registerTranslations('en', english);
+counterpart.registerTranslations('es', spanish);
+counterpart.registerTranslations('po', portuguese);
 
 class GetClients extends React.Component {
     constructor(props) {
@@ -85,6 +96,8 @@ class GetClients extends React.Component {
             </tr>
         ));
 
+        const placeholderSearch = counterpart.translate('getClients.search');
+
         return (
             <div className="content">
                 <Row>
@@ -95,7 +108,7 @@ class GetClients extends React.Component {
                                 <Col>
                                     <Row>
                                         <FormGroup>
-                                            <Input onChange={this.handleInput} name="search" placeholder="Search"></Input>
+                                            <Input onChange={this.handleInput} name="search" placeholder={placeholderSearch}></Input>
                                         </FormGroup>
                                     </Row>
                                     <br></br>
@@ -104,10 +117,16 @@ class GetClients extends React.Component {
                                             <tr>
                                                 <th>#</th>
                                                 <th>ID</th>
-                                                <th>Name</th>
-                                                <th>Phone</th>
+                                                <th>
+                                                    <Tr content="clientForm.name"/>
+                                                </th>
+                                                <th>
+                                                    <Tr content="clientForm.phone"/>
+                                                </th>
                                                 <th>Email</th>
-                                                <th>Review</th>
+                                                <th>
+                                                    <Tr content="getClients.review"/>
+                                                </th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -121,7 +140,9 @@ class GetClients extends React.Component {
 
                     <div>
                         <Modal md="7" isOpen={this.state.modal} toggle={this.closeToggle} className="danger">
-                            <ModalHeader toggle={this.closeToggle}>Edit User</ModalHeader>
+                            <ModalHeader toggle={this.closeToggle}>
+                                <Tr content="getClients.edit"/>
+                            </ModalHeader>
                             <ModalBody>
                                 <CreateClientForm submitAction={this.editUser} user={this.state.user} editMode={true} />
                             </ModalBody>
@@ -134,4 +155,11 @@ class GetClients extends React.Component {
     }
 };
 
-export default GetClients;
+const mapStateToProps = state => {
+    counterpart.setLocale(state.language);
+    return { lng: state.language }
+}
+
+const mapDispatchToProps = dispatch => ({});
+
+export default connect(mapStateToProps, mapDispatchToProps)(GetClients);
