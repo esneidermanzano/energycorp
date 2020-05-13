@@ -285,7 +285,17 @@ for i in range (len(transcoor)):
     print (geopy.distance.vincenty(tuple(transcoor[i]), coors3).km)
 """
 
+histories = []
 
+if i in range (1, len(counters)*2):
+    history = {
+        "model": "factures.history",
+        "pk": 1,
+        "fields": {
+            "counter": i,
+            "registryHistory": "2020-05-13"
+        }
+    }
 
 jsonData=json.dumps(counters, ensure_ascii=False)
 

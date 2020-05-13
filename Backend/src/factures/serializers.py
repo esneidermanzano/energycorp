@@ -20,12 +20,14 @@ class CreateHistorySerializer(serializers.ModelSerializer):
         model = History
         fields = [
             'counter'
+            'consumption'
             #'registryHistory'
         ]
 
     def create(self, validated_data):
         history = History.objects.create(
-            counter=validated_data['counter']
+            counter=validated_data['counter'],
+            consumption=validated_data['consumption']
             #registryHistory=validated_data['registryHistory']
         )
         history.save()
@@ -43,7 +45,8 @@ class UpdateHistorySerializer(serializers.ModelSerializer):
     class Meta:
         model = History
         fields = [
-            'registryHistory'
+            'registryHistory',
+            'consumption'
         ]
 
     def update(self, instance, validated_data):

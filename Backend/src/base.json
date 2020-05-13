@@ -182,6 +182,7 @@
   "pk": 1,
   "fields": {
     "counter": 1,
+    "consumption": 30,
     "registryHistory": "2020-05-13"
   }
 },
@@ -190,6 +191,7 @@
   "pk": 2,
   "fields": {
     "counter": 1,
+    "consumption": 30,
     "registryHistory": "2020-05-13"
   }
 },
@@ -198,6 +200,7 @@
   "pk": 3,
   "fields": {
     "counter": 1,
+    "consumption": 30,
     "registryHistory": "2020-05-13"
   }
 },
