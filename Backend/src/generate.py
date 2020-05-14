@@ -11,24 +11,15 @@ from django.contrib.auth.hashers import make_password
 a,b = 'áéíóúüñÁÉÍÓÚÜÑ','aeiouunAEIOUUN'
 trans = str.maketrans(a,b)
 names= [
-    "Shamika Voces Ferrero",
-    "Kiova Baz Badiola",
     "Cristóbal Cero Buedo",
     "Cecilia Urquijo Barma",
     "Teófilo Egusquiza Madariaga",
-    "Nayelli Orbiz Espinosa",
     "Pancracio Ispuzua Chave",
-    "Begsaida Cora Balpuesta",
     "Celeste Ganzo Vicente",
     "Luis Valino Vango",
     "Florencia Cucho Ahedo",
-    "Nicomedes Monteagudo Ceniceros",
-    "Stephanie Ludueña Gavilanes",
     "Mariano Mogrovejo Gante",
-    "Maixa Troncoso Mazuelas",
-    "América Olar Narganes",
     "Angélica Ter Tosantos",
-    "Tzuruhan Berrueta Egusquiza",
     "Antonio Incera Fontoria",
     "Lupita Soret Garmendia",
     "Sayana Villarruel Saga",
@@ -41,10 +32,8 @@ names= [
     "Leonela Suane Ayuso",
     "Mariela Brasa Collazos",
     "Patricia Sesmilo Aranda",
-    "Ataulfo Pañalosa Lera",
     "Maribel Urizar Castañiza",
     "Aleyda Valverde Villena",
-    "Orsini Baraña Soret",
     "Erinelva Revuelta Ribero",
     "Nayade Artadi Urquijo",
     "Adam Idigoras Faes",
@@ -55,32 +44,20 @@ names= [
     "Yasnin Cedron Grandas",
     "Yosniel Estancion Cospedal",
     "América Rayon Sereno",
-    "Viannette Orodea Rebellon",
     "Adelaida Carces Surco",
     "Danila Torienzo Piñeiros",
     "Jordana Charlo Jara",
-    "Visitación Machicao Gañona",
     "Felisa Senabres Brochero",
     "Pamela Briñas Telego",
-    "Yamila Vizcaya Arbaiza",
-    "Ibar Escobar Verdeces",
     "Jeronimo Villarragut Bullido",
-    "Yadel Herreria Atienza",
-    "Pía Manzanedo Pedrueza",
     "Salomé Lejobeitia Courel",
     "Marlon Avalos Marentos",
-    "Frida Ciaño Esqueira",
     "Amanda Marote Mortal",
-    "Erlantz Bocinos Pierredonda",
     "Mariela Pablo Palma",
     "Marina Hernaez Iñarra",
     "Leonela Azcoitia Poladura",
-    "Bruk Hoz Osaviaga",
-    "Nerea Zuya Anderica",
     "Wenceslao Verga Maria",
     "Nieves Estua Galdia",
-    "Rodame Paredes Cotarelo",
-    "Lisbeth Riesgo Riguera",
     "Faustino Candolias Jalon",
     "Argelia Cifontes Lasarte",
     "Aaron Davila Landeta",
@@ -88,7 +65,6 @@ names= [
     "Sabine Taran Inguanzo",
     "Bradley Bispo Valdecañas",
     "Natali Chumacero Folgar",
-    "Ubaldo Cavallosa Rioseco",
     "Lasset Santotis Bernabeytia",
     "Jacinto Tablares Pico",
     "Aique Monterrey Ordoñez",
@@ -99,16 +75,12 @@ names= [
     "Crispín Corneja Argos",
     "Joel Espantoso Duran",
     "Gilda Alcivia Rubio",
-    "Odaliz Curro Marote",
     "Jade Vidaurre Negro",
     "Ricardo Briceño Marcha",
-    "Irmin Lordaliego Ruales",
     "Naylu Amilburu Angeriz",
     "Yadira Villamediana Toro",
     "Sabrina Mancobo Barcaiztegui",
     "David Nurueña Pizaño",
-    "Elo San Tros",
-    "Vladimir Iruz Urquioja",
     "Silvia Cardeiro Olavarria"
 ]
 
@@ -143,7 +115,8 @@ nncalle = ['A', 'B', 'C', 'D', 'E']
 mails = ['gmail', 'yahoo', 'hotmail']
 users = []
 clients= []
-for i in range (4,10):
+
+for i in range (1,11):
     name = names[i]
     fname = name.split()[0].translate(trans)
     user ={
@@ -173,7 +146,89 @@ for i in range (4,10):
     }    
     users.append(user)
     clients.append(client)
+
+#============================== trabajadores =======================
+
+workers = [
+{
+  "model": "users.CustomUser",
+  "pk": 11,
+  "fields": {
+    "id_user": "1144189914",
+    "name": "Esneider Manzano",
+    "email": "esneider@gmail.com",
+    "password": "pbkdf2_sha256$180000$W4DSmgbKj7dK$s6p1mSZZ7bhhcbaKuQxpXLN8QP03eGULkW9/Rd+819w=",
+    "phone": "4455971",
+    "address": "cra28 C # 54-123",
+    "neighborhood": "sindical",
+    "stratus": 2,
+    "is_active": True,
+    "is_staff": True,
+    "is_superuser": False    
+  }
+},
+{
+  "model": "users.CustomUser",
+  "pk": 12,
+  "fields": {
+    "id_user": "1144189915",
+    "name": "Luis de Huevosalva",
+    "email": "luis@gmail.com",
+    "password": "pbkdf2_sha256$180000$W4DSmgbKj7dK$s6p1mSZZ7bhhcbaKuQxpXLN8QP03eGULkW9/Rd+819w=",
+    "phone": "4455972",
+    "address": "cra28 C # 54-124",
+    "neighborhood": "sindical",
+    "stratus": 2,
+    "is_active": True,
+    "is_staff": True,
+    "is_superuser": False
+  }
+},
+{
+    "model": "users.CustomUser",
+    "pk": 13,
+    "fields": {
+        "id_user": "1144189910",
+        "name": "Taborda",
+        "email": "taborda@gmail.com",
+        "password": "pbkdf2_sha256$180000$W4DSmgbKj7dK$s6p1mSZZ7bhhcbaKuQxpXLN8QP03eGULkW9/Rd+819w=",
+        "phone": "4455970",
+        "address": "cra28 C # 54-127",
+        "neighborhood": "sindical",
+        "stratus": 2,
+        "is_active": True,
+        "is_staff": True,
+        "is_superuser": False
+    }
+  },
+{
+    "model": "users.Worker",
+    "pk": 1,
+    "fields": {
+        "user": 11,
+        "user_type": 1
+    }
+},
+{
+    "model": "users.Worker",
+    "pk": 2,
+    "fields": {
+        "user": 12,
+        "user_type": 2
+    }
+},
+{
+    "model": "users.Worker",
+    "pk": 3,
+    "fields": {
+        "user": 13,
+        "user_type": 3
+    }
+}
+]
+users.extend(workers)
 users.extend(clients)
+
 
 #============================== energytrasfer ======================
 subcoor = [
@@ -256,19 +311,19 @@ countdir = [
 ]
 counters = []
 
-for i in range (4, 14):
+for i in range (1, 11):
     number = 1
-    if i > 8:
+    if i > 5:
         number = 2
     counter = {
         "model": "energytransfers.counter",
-        "pk": i-3,
+        "pk": i,
         "fields": {
-            "latitudeCounter": str(countercoors[i-4][0]),
-            "lengthCounter": str(countercoors[i-4][1]),
+            "latitudeCounter": str(countercoors[i-1][0]),
+            "lengthCounter": str(countercoors[i-1][1]),
             "counter": random.randint(30, 50),
             "is_active": True,
-            "addressCounter": countdir[i-4],
+            "addressCounter": countdir[i-1],
             "clientCounter": i,
             "transformatorCounter": number
         }
@@ -287,6 +342,7 @@ for i in range (len(transcoor)):
     print (geopy.distance.vincenty(tuple(transcoor[i]), coors3).km)
 """
 
+#================================ INVOICES ========================
 histories = []
 
 for i in range (1, len(counters) + 1):
@@ -317,21 +373,31 @@ invoices = []
 
 for i in range (1, len(histories) + 1):
     invoice1 = {
-        "model": "factures.history",
+        "model": "factures.invoiceservices",
         "pk": i*2 - 1,
         "fields": {
-            "counter": i,
-            "consumption": random.randint(10,50),
-            "registryHistory": "2020-04-30"
+            "consumptiondaysInvoice": 30,
+            "paymentdeadlineInvoice": "2020-05-05",
+            "billingdateInvoice": "2020-04-30",
+            "stateInvoice": True,
+            "referencecodeInvoice": "20200430(175915326153)" + str(random.randint(1111111,9999999)),
+            "history": i*2 - 1
         }
     }
+    now = datetime.now()
+    code = str(now).replace(':', '').replace('.', '').replace('-','').split()
+    reference = code[0] + "("+ code[1]+")"+ str(random.randint(1111111,9999999))
+
     invoice2 = {
-        "model": "factures.history",
+        "model": "factures.invoiceservices",
         "pk": i*2,
         "fields": {
-            "counter": i,
-            "consumption": random.randint(10,50),
-            "registryHistory": "2020-05-13"
+            "consumptiondaysInvoice": 13,
+            "paymentdeadlineInvoice": "2020-05-15",
+            "billingdateInvoice": "2020-05-13",
+            "stateInvoice": False,
+            "referencecodeInvoice": reference,
+            "history": i*2
         }
     }
     
@@ -339,15 +405,13 @@ for i in range (1, len(histories) + 1):
     invoices.append(invoice2)
     
 
-now = datetime.now()
-code = str(now).replace(':', '').replace('.', '').replace('-','').split()
-reference = code[0] + "("+ code[1]+")"+ str(random.randint(1111111,9999999))
-print("Current Time =", )
-
-#jsonData=json.dumps(histories, ensure_ascii=False)
 
 
 
-#print(jsonData)
+jsonData=json.dumps(users, ensure_ascii=False)
+
+
+
+print(jsonData)
 
 #========================== FIN generate clientes ================================
