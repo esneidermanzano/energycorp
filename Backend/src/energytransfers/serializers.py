@@ -143,82 +143,6 @@ class InactivateTransformatorSerializer(serializers.ModelSerializer):
 
 #                                      Query
 
-# -----------------------------------------Counter------------------------------------------------
-
-#                                              CRUD
-class CreateCounterSerializer(serializers.ModelSerializer):
-    """Counter para las operaciones Create"""
-    class Meta:
-        model = Counter
-        fields = [
-            'latitudeCounter',
-            'lengthCounter',
-            'value',
-            'addressCounter',
-            'is_active',
-            'transformatorCounter',
-            'clientCounter'
-            ]
-
-    def create(self, validated_data):
-        counter = Counter.objects.create(
-            latitudeCounter=validated_data['latitudeCounter'],
-            lengthCounter=validated_data['lengthCounter'],
-            is_active=validated_data['is_active'],
-            value=validated_data['value'],
-            addressCounter=validated_data['addressCounter'],
-            transformatorCounter=validated_data['transformatorCounter'],
-            clientCounter=validated_data['clientCounter']
-        )
-        
-        counter.save()
-        return counter
-    
-class CounterSerializer(serializers.ModelSerializer):
-    """Counter para las operaciones Retrive"""
-    class Meta:
-        model = Counter
-        fields = '__all__'
-        
-class UpdateCounterSerializer(serializers.ModelSerializer):
-    """Counter para las operaciones Update"""
-    class Meta:
-        model = Counter
-        fields = [
-            'latitudeCounter',
-            'lengthCounter',
-            'value',
-            'addressCounter',
-            'transformatorCounter'
-            ]
-
-    def update(self, instance, validated_data):
-        counter = super().update(instance, validated_data)
-        return counter
-    
-class DeleteCounterSerializer(serializers.ModelSerializer):
-    """Counter para las operaciones Delete"""
-    class Meta:
-        model = Counter
-        fields = '__all__'
-
-    def perform_destroy(self, instance):
-        instance.delete()
-        
-class InactivateCounterSerializer(serializers.ModelSerializer):
-    """Transformator para las operaciones Inactive"""
-    class Meta:
-        model = Counter
-        fields = ['is_active']
-
-    def patch(self, request, *args, **kwargs):
-        counter = self.partial_update(request, *args, **kwargs)
-        return counter
-    
-#                                           Query
-   
-
-
 # -------------------------------------------History-------------------------------------------
 
 #                                               CRUD
@@ -273,3 +197,89 @@ class DeleteHistorySerializer(serializers.ModelSerializer):
 
 
 #                                            Querys
+# -----------------------------------------Counter------------------------------------------------
+
+#                                              CRUD
+class CreateCounterSerializer(serializers.ModelSerializer):
+    """Counter para las operaciones Create"""
+    class Meta:
+        model = Counter
+        fields = [
+            'latitudeCounter',
+            'lengthCounter',
+            'value',
+            'addressCounter',
+            'is_active',
+            'transformatorCounter',
+            'clientCounter'
+            ]
+
+    def create(self, validated_data):
+        counter = Counter.objects.create(
+            latitudeCounter=validated_data['latitudeCounter'],
+            lengthCounter=validated_data['lengthCounter'],
+            is_active=validated_data['is_active'],
+            value=validated_data['value'],
+            addressCounter=validated_data['addressCounter'],
+            transformatorCounter=validated_data['transformatorCounter'],
+            clientCounter=validated_data['clientCounter']
+        )
+        
+        counter.save()
+        return counter
+    
+class CounterSerializer(serializers.ModelSerializer):
+    """Counter para las operaciones Retrive"""
+    
+    
+    historys = HistorySerializer(many=True, read_only= True)
+    
+    class Meta:
+        model = Counter
+        fields = [
+            'codeCounter',
+            'latitudeCounter',
+            'lengthCounter',
+            'value',
+            'addressCounter',
+            'transformatorCounter',
+            'historys'
+            ]
+        
+class UpdateCounterSerializer(serializers.ModelSerializer):
+    """Counter para las operaciones Update"""
+    class Meta:
+        model = Counter
+        fields = [
+            'latitudeCounter',
+            'lengthCounter',
+            'value',
+            'addressCounter',
+            'transformatorCounter'
+            ]
+
+    def update(self, instance, validated_data):
+        counter = super().update(instance, validated_data)
+        return counter
+    
+class DeleteCounterSerializer(serializers.ModelSerializer):
+    """Counter para las operaciones Delete"""
+    class Meta:
+        model = Counter
+        fields = '__all__'
+
+    def perform_destroy(self, instance):
+        instance.delete()
+        
+class InactivateCounterSerializer(serializers.ModelSerializer):
+    """Transformator para las operaciones Inactive"""
+    class Meta:
+        model = Counter
+        fields = ['is_active']
+
+    def patch(self, request, *args, **kwargs):
+        counter = self.partial_update(request, *args, **kwargs)
+        return counter
+    
+#                                           Query
+   

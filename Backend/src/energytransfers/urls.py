@@ -29,9 +29,10 @@ from .views import (
     HistoryDetail,
     HistoryCreate,
     HistoryUpdate,
-    HistoryDelete
+    HistoryDelete,
     
 #   QUERY
+    HistoryListLastFive
 )
 
 urlpatterns = [
@@ -66,4 +67,5 @@ urlpatterns = [
     path('history/update/<pk>/', HistoryUpdate.as_view()),
     path('history/delete/<pk>', HistoryDelete.as_view()),
     #QUERY
+    path('history/lastfive-bycounter/<counter>', HistoryListLastFive.as_view()),
 ]
