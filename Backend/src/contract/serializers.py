@@ -12,6 +12,7 @@ from rest_framework import serializers
 
 # -----------------------------------------Contract------------------------------------------------
 
+
 #get contrat with nested counter (that counter contains nested histories)
 class ContractSerializer(serializers.ModelSerializer):
     counter = CounterSerializer()
