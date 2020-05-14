@@ -1,7 +1,7 @@
 from django.db import models
 # Para asociar los contadores a su respectivo Cliente
 from users.models import Client
-from factures.models import InvoiceServices
+from contract.models import InvoiceServices
 
 # Create models here........................................................................
 """ The models in this File are the objetcs than respresent the Publicity."""

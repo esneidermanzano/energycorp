@@ -1,6 +1,6 @@
 from django.db import models
 
-from factures.models import InvoiceServices
+from contract.models import InvoiceServices
 from bancks.models import Banck
 from users.models import Worker
 

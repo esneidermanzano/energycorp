@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'corsheaders',
     'energytransfers',
-    'factures',
+    'contract',
     'payments',
     'bancks',
     'commercial'

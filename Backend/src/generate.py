@@ -142,7 +142,11 @@ for i in range (1,11):
         "pk": i,
         "fields": {
             "user": i,
-            "user_type": 1
+            "type_client": 1,
+            "interes_mora": 0,
+            "cycle": "1",
+            "financial_state": "libre",
+            "billing": "no se",
         }
     }    
     users.append(user)
