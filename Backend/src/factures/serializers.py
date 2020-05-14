@@ -79,6 +79,8 @@ class CreateInvoiceServicesSerializer(serializers.ModelSerializer):
             'billingdateInvoice',
             'stateInvoice',
             'referencecodeInvoice',
+            'total',
+            'client',
             'history'
             ]
 
@@ -107,6 +109,8 @@ class InvoiceServicesSerializer(serializers.ModelSerializer):
             'billingdateInvoice',
             'stateInvoice',
             'referencecodeInvoice',
+            'total',
+            'client',
             'history'
             ]
 
