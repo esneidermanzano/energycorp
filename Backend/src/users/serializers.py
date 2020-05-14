@@ -109,7 +109,6 @@ class ClientSerializer(serializers.ModelSerializer):
             'type_client', 
             'interes_mora', 
             'cycle', 
-            'contrat_number',
             'financial_state',
             'billing',
             'user',
@@ -126,7 +125,6 @@ class CreateClientSerializer(serializers.ModelSerializer):
             'type_client', 
             'interes_mora', 
             'cycle', 
-            'contrat_number',
             'financial_state',
             'billing'
         ]
@@ -143,7 +141,6 @@ class CreateNewClientSerializer(serializers.ModelSerializer):
             'type_client', 
             'interes_mora', 
             'cycle', 
-            'contrat_number',
             'financial_state',
             'billing',
             'user', 
@@ -168,7 +165,6 @@ class UpdateClientSerializer(serializers.ModelSerializer):
             'interes_mora',
             'category',
             'cycle',
-            'contrat_number',
             'financial_state',
             'billing'
         ]

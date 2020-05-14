@@ -1,7 +1,7 @@
 from django.db import models
 # Para asociar los contadores a su respectivo Cliente
 from users.models import Client
-from factures.models import InvoiceServices
+from contract.models import Invoice
 
 # Create models here........................................................................
 """ The models in this File are the objetcs than respresent the Publicity."""
@@ -31,9 +31,9 @@ class CommercialInvoice(models.Model):
         primary_key=True,
         serialize=False,
         verbose_name='ID')
-    invoiceservices =  models.ManyToManyField(
-        InvoiceServices,
-        related_name='invoiceservices')
+    Invoice =  models.ManyToManyField(
+        Invoice,
+        related_name='Invoice')
     commercial = models.ManyToManyField(
         Commercial,
         related_name='commercials')

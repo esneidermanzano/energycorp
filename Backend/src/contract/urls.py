@@ -1,0 +1,34 @@
+from django.urls import path
+
+from .views import (
+#   CRUDS
+    ContractList,
+    CreateContract,
+
+    InvoiceList,
+    InvoiceDetail,
+    InvoiceCreate,
+    InvoiceUpdate,
+    InvoiceDelete,
+    InvoiceInactivate,    
+#   QUERY
+
+#   Generate pdf
+    GeneratePdf
+)
+
+urlpatterns = [
+    #CRUD
+    path('', InvoiceList.as_view()),
+    path('create/', InvoiceCreate.as_view()),
+    path('update/<pk>', InvoiceUpdate.as_view()),
+    path('delete/<pk>', InvoiceDelete.as_view()),
+    path('inactivate/<pk>/', InvoiceInactivate.as_view()),
+    path('<pk>', InvoiceDetail.as_view()),
+    #QUERY
+    #PDf invoice generator
+    path('pdf/', GeneratePdf.as_view()),
+
+    path('contract/', ContractList.as_view()),
+    path('contract/create/', CreateContract.as_view())
+]

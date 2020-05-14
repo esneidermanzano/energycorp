@@ -49,7 +49,7 @@ class Counter(models.Model):
         verbose_name='ID')
     latitudeCounter = models.CharField(max_length=255)
     lengthCounter = models.CharField(max_length=255)
-    counter = models.FloatField()
+    value = models.FloatField()
     is_active = models.BooleanField(default=True)
     addressCounter = models.CharField(max_length=255)
     clientCounter = models.ForeignKey(Client, related_name='counters',
@@ -61,3 +61,17 @@ class Counter(models.Model):
         return 'The Couter was created in the coordinates: {} , {}'.format(
             self.latitudeCounter,
              self.lengthCounter)
+
+
+class History(models.Model):
+    """Modelo para representar el objero history"""
+    codeHistory = models.AutoField(
+        auto_created=True,
+        primary_key=True,
+        serialize=False,
+        verbose_name='ID'
+        )
+    consumption = models.PositiveIntegerField()
+    counter = models.ForeignKey(
+        Counter, related_name='historys', on_delete=models.CASCADE)
+    registryHistory = models.DateField(auto_now_add=True)

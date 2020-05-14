@@ -22,7 +22,14 @@ from .views import (
     CounterDetail,
     CounterCreate,
     CounterUpdate,
-    CounterInactivate
+    CounterInactivate,
+
+    HistoryList,
+    HistoryDelete,
+    HistoryDetail,
+    HistoryCreate,
+    HistoryUpdate,
+    HistoryDelete
     
 #   QUERY
 )
@@ -50,6 +57,13 @@ urlpatterns = [
     path('counter/<pk>', CounterDetail.as_view()),
     path('counter/update/<pk>', CounterUpdate.as_view()),
     path('counter/delete/<pk>', CounterDelete.as_view()),
-    path('counter/inactivate/<pk>/', CounterInactivate.as_view())
+    path('counter/inactivate/<pk>/', CounterInactivate.as_view()),
+    #QUERY
+        #CRUD
+    path('history/', HistoryList.as_view()),
+    path('history/create/', HistoryCreate.as_view()),
+    path('history/<pk>/', HistoryDetail.as_view()),
+    path('history/update/<pk>/', HistoryUpdate.as_view()),
+    path('history/delete/<pk>', HistoryDelete.as_view()),
     #QUERY
 ]

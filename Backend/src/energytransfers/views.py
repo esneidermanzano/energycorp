@@ -2,7 +2,6 @@ from rest_framework.generics import (
     ListAPIView,
     RetrieveAPIView,
     ListCreateAPIView,
-    RetrieveAPIView,
     UpdateAPIView,
     DestroyAPIView
 )
@@ -10,7 +9,8 @@ from rest_framework.generics import (
 from energytransfers.models import (
     Substation,
     Transformator,
-    Counter
+    Counter,
+    History
     )
 
 from energytransfers.serializers import (
@@ -31,7 +31,12 @@ from energytransfers.serializers import (
     CreateCounterSerializer,
     UpdateCounterSerializer,
     InactivateCounterSerializer,
-    DeleteCounterSerializer
+    DeleteCounterSerializer,
+
+    HistorySerializer,
+    UpdateHistorySerializer,
+    CreateHistorySerializer,
+    DeleteHistorySerializer
     # QUERY SERIALIZERS
 )
 
@@ -152,3 +157,37 @@ class CounterInactivate(UpdateAPIView):
     """View para inactivate un Counter"""
     queryset = Counter.objects.all()
     serializer_class = InactivateCounterSerializer
+
+
+#----------------------------------------------------Historys-------------------------------------                                      
+
+#                                                       CRUD
+
+
+class HistoryCreate(ListCreateAPIView):
+    """View para crear una Subestacion"""
+    queryset = History.objects.all()
+    serializer_class = CreateHistorySerializer
+
+class HistoryDetail(RetrieveAPIView):
+    """View para retrive una Subestacion""" 
+    queryset = History.objects.all()
+    serializer_class = HistorySerializer
+
+class HistoryList(ListAPIView):
+    """View para retrive todas las Subestaciones"""
+    queryset = History.objects.all()
+    serializer_class = HistorySerializer
+
+class HistoryUpdate(UpdateAPIView):
+    """View para update una Subestacion"""
+    queryset = History.objects.all()
+    serializer_class = UpdateHistorySerializer
+
+class HistoryDelete(DestroyAPIView):
+    """View para delete una Subestacion"""
+    queryset = History.objects.all()
+    serializer_class = DeleteHistorySerializer
+
+
+#                                                   QUERY

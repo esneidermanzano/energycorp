@@ -1,6 +1,6 @@
 from django.db import models
 
-from factures.models import InvoiceServices
+from contract.models import Invoice
 from bancks.models import Banck
 from users.models import Worker
 
@@ -19,7 +19,7 @@ class Payment(models.Model):
     )
     valuePayment = models.PositiveIntegerField()
     datePayment = models.DateTimeField(auto_now_add=True)
-    facturaPayment = models.OneToOneField(InvoiceServices,
+    facturaPayment = models.OneToOneField(Invoice,
                                           on_delete=models.CASCADE)
 
 

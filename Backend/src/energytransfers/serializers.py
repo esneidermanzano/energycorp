@@ -2,7 +2,8 @@
 from energytransfers.models import (
     Substation,
     Transformator,
-    Counter
+    Counter,
+    History
 )
 # Serializer
 from rest_framework import serializers
@@ -152,7 +153,7 @@ class CreateCounterSerializer(serializers.ModelSerializer):
         fields = [
             'latitudeCounter',
             'lengthCounter',
-            'counter',
+            'value',
             'addressCounter',
             'is_active',
             'transformatorCounter',
@@ -164,7 +165,7 @@ class CreateCounterSerializer(serializers.ModelSerializer):
             latitudeCounter=validated_data['latitudeCounter'],
             lengthCounter=validated_data['lengthCounter'],
             is_active=validated_data['is_active'],
-            counter=validated_data['counter'],
+            value=validated_data['value'],
             addressCounter=validated_data['addressCounter'],
             transformatorCounter=validated_data['transformatorCounter'],
             clientCounter=validated_data['clientCounter']
@@ -186,7 +187,7 @@ class UpdateCounterSerializer(serializers.ModelSerializer):
         fields = [
             'latitudeCounter',
             'lengthCounter',
-            'counter',
+            'value',
             'addressCounter',
             'transformatorCounter'
             ]
@@ -216,3 +217,59 @@ class InactivateCounterSerializer(serializers.ModelSerializer):
     
 #                                           Query
    
+
+
+# -------------------------------------------History-------------------------------------------
+
+#                                               CRUD
+
+class CreateHistorySerializer(serializers.ModelSerializer):
+    """Serializador para las operaciones Create"""
+    class Meta:
+        model = History
+        fields = [
+            'counter',
+            'consumption'
+            #'registryHistory'
+        ]
+
+    def create(self, validated_data):
+        history = History.objects.create(
+            counter=validated_data['counter'],
+            consumption=validated_data['consumption']
+            #registryHistory=validated_data['registryHistory']
+        )
+        history.save()
+        return history
+
+
+class HistorySerializer(serializers.ModelSerializer):
+    """Serializador para las operaciones Retrive"""
+    class Meta:
+        model = History
+        fields = '__all__'
+
+class UpdateHistorySerializer(serializers.ModelSerializer):
+    """Serializador para las operaciones Update"""
+    class Meta:
+        model = History
+        fields = [
+            'registryHistory',
+            'consumption'
+        ]
+
+    def update(self, instance, validated_data):
+        history = super().update(instance, validated_data)
+        return history
+
+class DeleteHistorySerializer(serializers.ModelSerializer):
+    """Serializador para las operaciones Delete"""
+    class Meta:
+        model = History
+        fields = '__all__'
+
+    def perform_destroy(self, instance):
+        instance.delete()
+
+
+#                                            Querys
