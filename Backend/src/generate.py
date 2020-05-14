@@ -7,6 +7,7 @@ from datetime import datetime
 from geopy.geocoders import Nominatim
 from django.contrib.auth.hashers import make_password
 
+basejson = []
 #========================== generate clientes ================================
 a,b = 'áéíóúüñÁÉÍÓÚÜÑ','aeiouunAEIOUUN'
 trans = str.maketrans(a,b)
@@ -229,7 +230,7 @@ workers = [
 users.extend(workers)
 users.extend(clients)
 
-
+basejson.extend(users)
 #============================== energytrasfer ======================
 subcoor = [
     [3.372908, -76.532479], 
@@ -251,6 +252,7 @@ for i in range (1,len(subcoor)+1):
     }
     substations.append(substation)
     
+basejson.extend(substations)
 
 transcoor = [
     [3.395716, -76.548220], 
@@ -279,6 +281,7 @@ for i in range (1,len(transcoor)+1):
     }
     ransformators.append(transformator)
 
+basejson.extend(ransformators)
 
 countercoors = [
     #transf 1
@@ -330,6 +333,8 @@ for i in range (1, 11):
     }
     counters.append(counter)
 
+basejson.extend(counters)
+
 """
 geolocator = Nominatim(user_agent="geogenerator")
 for i in range (len(countercoors)):
@@ -368,10 +373,12 @@ for i in range (1, len(counters) + 1):
     histories.append(history1)
     histories.append(history2)
 
+basejson.extend(histories)
+
 
 invoices = []
 
-for i in range (1, len(histories) + 1):
+for i in range (1, len(counters) + 1):
     invoice1 = {
         "model": "factures.invoiceservices",
         "pk": i*2 - 1,
@@ -408,11 +415,27 @@ for i in range (1, len(histories) + 1):
     invoices.append(invoice1)
     invoices.append(invoice2)
     
+basejson.extend(invoices)
+
+payments = []
+
+for i in range (1,11):
+    pay = {
+        "model": "payments.payment",
+        "pk": i,
+        "fields": {
+            "valuePayment": 130000,
+            "datePayment": "2020-05-01T01:53:37.426Z",
+            "facturaPayment": i*2 - 1
+        }
+    }
+    payments.append(pay)
 
 
+basejson.extend(payments)
 
 
-jsonData=json.dumps(users, ensure_ascii=False)
+jsonData=json.dumps(basejson, ensure_ascii=False)
 
 
 

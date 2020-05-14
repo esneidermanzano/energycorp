@@ -20,14 +20,12 @@ class CreatePaymentSerializer(serializers.ModelSerializer):
         model = Payment
         fields = [
             'valuePayment',
-            'datePayment',
             'facturaPayment'
         ]
 
     def create(self, validated_data):
         payment = Payment.objects.create(
             valuePayment=validated_data['valuePayment'],
-            datePayment=validated_data['datePayment'],
             facturaPayment=validated_data['facturaPayment']
         )
         payment.save()
@@ -47,7 +45,6 @@ class UpdatePaymentSerializer(serializers.ModelSerializer):
         model = Payment
         fields = [
             'valuePayment',
-            'datePayment',
             'facturaPayment'
         ]
 
