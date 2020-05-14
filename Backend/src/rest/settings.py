@@ -83,7 +83,13 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'rest.wsgi.application'
+#constants for send email
 
+EMAIL_HOST = 'smtp.googlemail.com'
+EMAIL_PORT= 587
+EMAIL_HOST_USER= 'wwwenergycorp@gmail.com'
+EMAIL_HOST_PASSWORD = 'energycorp2020'
+EMAIL_USE_TLS = True
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
@@ -144,3 +150,4 @@ REST_AUTH_REGISTER_SERIALIZERS = {
 }
 
 CORS_ORIGIN_ALLOW_ALL = True
+
