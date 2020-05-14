@@ -56,7 +56,7 @@ class Login extends React.Component {
              "token": "asdasdsa",
              "user_id": "awqweqweqw",
              "user_type": 1,
-             "user_type_name": "operator"
+             "user_type_name": "admin"
          };
 
          auth.login(obj, rou => {

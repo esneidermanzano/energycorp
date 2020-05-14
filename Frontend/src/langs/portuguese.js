@@ -6,7 +6,8 @@ export default {
     createClient: {
         client: 'Cliente',
         noUsers: 'Ainda não existem utilizadores',
-        create: 'Crio'
+        create: 'Crio',
+        exito: 'Ação realizada com sucesso'
     },
     clientForm: {
         add: 'Adicionar',
@@ -35,5 +36,20 @@ export default {
         search: 'Pesquisar',
         review: 'Verifica',
         edit: 'Editar utilizador'
+    },
+    createUser: {
+        exito: 'Registro bem sucedido',
+        noExito: 'Algo deu errado',
+        userType: 'Tipo de usuário',
+        operator: 'Operador',
+        manager: 'Gerente'
+    },
+    getUser: {
+        all: 'Todos'
+    },
+    getBill: {
+        insert: 'Digite seu ID',
+        download: 'Baixar',
+        home: 'Começo'
     }
 }

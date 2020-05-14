@@ -1,6 +1,14 @@
 import React from "react";
 import CreateUserForm from "views/admin/CreateUserForm.jsx";
 
+import counterpart from "counterpart";
+import * as Tr from "react-translate-component";
+import spanish from "../../langs/spanish.js";
+import english from "../../langs/english.js";
+import portuguese from "../../langs/portuguese.js";
+
+import { connect } from "react-redux";
+
 import {
     Card,
     CardBody,
@@ -8,6 +16,10 @@ import {
     Col, FormGroup, Input, Button, Table,
     Modal, ModalHeader, ModalBody
 } from "reactstrap";
+
+counterpart.registerTranslations('en', english);
+counterpart.registerTranslations('es', spanish);
+counterpart.registerTranslations('po', portuguese);
 
 class GetUser extends React.Component {
     constructor(props) {
@@ -75,11 +87,20 @@ class GetUser extends React.Component {
 
     render() {
 
+        const trans = (tipo) => {
+            if(tipo === 'operador'){
+                return counterpart.translate('createUser.operator');
+            }else{
+                return counterpart.translate('createUser.manager');
+            }
+        }
+
         var filteredPeople = [];
 
-        if (this.state.selected !== 'All') { //Filtrar por ambas formas al tiempo
+        if (this.state.selected !== counterpart.translate('getUser.all')) { 
+            //Filtrar por ambas formas al tiempo
             filteredPeople = this.state.persons.filter(p => (
-                p.user_type.toLowerCase() === this.state.selected.toLowerCase() &&
+                trans(p.user_type).toLowerCase() === this.state.selected.toLowerCase() &&
                 p.email.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1
             ));
         }else{ //Filtrar solo por busqueda
@@ -94,7 +115,7 @@ class GetUser extends React.Component {
                 <th>{p.name}</th>
                 <th>{p.id_user}</th>
                 <th>{p.email}</th>
-                <th>{p.user_type}</th>
+                <th>{trans(p.user_type)}</th>
                 <th>
                     <Button color="success" onClick={() => this.openToggle(p)}>
                         <i className="nc-icon nc-zoom-split" />
@@ -102,6 +123,8 @@ class GetUser extends React.Component {
                 </th>
             </tr>
         ));
+
+        const placeholderSearch = counterpart.translate('getClients.search');
 
         return (
             <div className="content">
@@ -114,14 +137,14 @@ class GetUser extends React.Component {
                                     <Row>
                                         <Col>
                                             <select onChange={this.handleInput} className="form-control" name="selected">
-                                                <option>All</option>
-                                                <option>Operador</option>
-                                                <option>Gerente</option>
+                                                <Tr content="getUser.all" component="option"/>
+                                                <Tr content="createUser.operator" component="option"/>
+                                                <Tr content="createUser.manager" component="option"/>
                                             </select>
                                         </Col>
                                         <Col>
                                             <FormGroup>
-                                                <Input onChange={this.handleInput} name="search" placeholder="Search"></Input>
+                                                <Input onChange={this.handleInput} name="search" placeholder={placeholderSearch}></Input>
                                             </FormGroup>
                                         </Col>
                                     </Row>
@@ -130,10 +153,10 @@ class GetUser extends React.Component {
                                         <thead>
                                             <tr>
                                                 <th>#</th>
-                                                <th>First Name</th>
+                                                <th><Tr content="clientForm.name"/></th>
                                                 <th>ID</th>
                                                 <th>Email</th>
-                                                <th>Type</th>
+                                                <th><Tr content="clientForm.type"/></th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -147,7 +170,9 @@ class GetUser extends React.Component {
 
                     <div>
                         <Modal md="7" isOpen={this.state.modal} toggle={this.closeToggle} className="danger">
-                            <ModalHeader toggle={this.closeToggle}>Edit User</ModalHeader>
+                            <ModalHeader toggle={this.closeToggle}>
+                                <Tr content="getClients.edit"/>
+                            </ModalHeader>
                             <ModalBody>
                                 <CreateUserForm submitAction={this.editUser} user={this.state.user} editMode={true}/>
                             </ModalBody>
@@ -173,5 +198,12 @@ class GetUser extends React.Component {
 
 };
 
-export default GetUser;
+const mapStateToProps = state => {
+    counterpart.setLocale(state.language);
+    return { lng: state.language }
+}
+
+const mapDispatchToProps = dispatch => ({});
+
+export default connect(mapStateToProps, mapDispatchToProps)(GetUser);
 
