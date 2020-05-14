@@ -321,7 +321,7 @@ for i in range (1, 11):
         "fields": {
             "latitudeCounter": str(countercoors[i-1][0]),
             "lengthCounter": str(countercoors[i-1][1]),
-            "counter": random.randint(30, 50),
+            "counter": random.randint(100, 500),
             "is_active": True,
             "addressCounter": countdir[i-1],
             "clientCounter": i,
@@ -381,6 +381,8 @@ for i in range (1, len(histories) + 1):
             "billingdateInvoice": "2020-04-30",
             "stateInvoice": True,
             "referencecodeInvoice": "20200430(175915326153)" + str(random.randint(1111111,9999999)),
+            "total": 130000,
+            "client": i,
             "history": i*2 - 1
         }
     }
@@ -397,6 +399,8 @@ for i in range (1, len(histories) + 1):
             "billingdateInvoice": "2020-05-13",
             "stateInvoice": False,
             "referencecodeInvoice": reference,
+            "total": 70000,
+            "client": i,
             "history": i*2
         }
     }

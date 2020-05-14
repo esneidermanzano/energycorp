@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'energytransfers',
     'factures',
+    'payments',
     'bancks',
     'commercial'
 ]

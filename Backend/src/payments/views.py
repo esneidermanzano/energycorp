@@ -19,19 +19,16 @@ from .serializers import (
     PaymentSerializer,
     UpdatePaymentSerializer,
     CreatePaymentSerializer,
-    InactivatePaymentSerializer,
     DeletePaymentSerializer,
 
     BanckPaymentSerializer,
     CreateBanckPaymentSerializer,
     UpdateBanckPaymentSerializer,
-    InactivateBanckPaymentSerializer,
     DeleteBanckPaymentSerializer,
 
     DirectPaymentSerializer,
     CreateDirectPaymentSerializer,
     UpdateDirectPaymentSerializer,
-    InactivateDirectPaymentSerializer,
     DeleteDirectPaymentSerializer
     # QUERY SERIALIZERS
 )
@@ -77,10 +74,6 @@ class PaymentDelete(DestroyAPIView):
     queryset = Payment.objects.all()
     serializer_class = DeletePaymentSerializer
 
-class PaymentInactivate(UpdateAPIView):
-    """View para delete una Subestacion"""
-    queryset = Payment.objects.all()
-    serializer_class = InactivatePaymentSerializer
 
 #                                                   QUERY
 
@@ -113,10 +106,6 @@ class BanckPaymentDelete(DestroyAPIView):
     queryset = BanckPayment.objects.all()
     serializer_class = DeleteBanckPaymentSerializer
 
-class BanckPaymentInactivate(UpdateAPIView):
-    """View para inactivate un BanckPayment"""
-    queryset = BanckPayment.objects.all()
-    serializer_class = InactivateBanckPaymentSerializer
 
 #                                               QUERY
 
@@ -149,7 +138,3 @@ class DirectPaymentDelete(DestroyAPIView):
     queryset = DirectPayment.objects.all()
     serializer_class = DeleteDirectPaymentSerializer
 
-class DirectPaymentInactivate(UpdateAPIView):
-    """View para inactivate un DirectPayment"""
-    queryset = DirectPayment.objects.all()
-    serializer_class = InactivateDirectPaymentSerializer

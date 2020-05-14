@@ -8,21 +8,18 @@ from .views import (
     PaymentCreate,
     PaymentUpdate,
     PaymentDelete,
-    PaymentInactivate,
 
     BanckPaymentList,
     BanckPaymentDetail,
     BanckPaymentCreate,
     BanckPaymentUpdate,
     BanckPaymentDelete,
-    BanckPaymentInactivate,
     
     DirectPaymentList,
     DirectPaymentDelete,
     DirectPaymentDetail,
     DirectPaymentCreate,
     DirectPaymentUpdate,
-    DirectPaymentInactivate
     
 #   QUERY
 )
@@ -33,7 +30,6 @@ urlpatterns = [
     path('payment/create/', PaymentCreate.as_view()),
     path('payment/<pk>/', PaymentDetail.as_view()),
     path('payment/update/<pk>/', PaymentUpdate.as_view()),
-    path('payment/inactivate/<pk>/', PaymentInactivate.as_view()),
     path('payment/delete/<pk>', PaymentDelete.as_view()),
     #QUERY
     #CRUD
@@ -42,7 +38,6 @@ urlpatterns = [
     path('banckpayment/<pk>', BanckPaymentDetail.as_view()),
     path('banckpayment/update/<pk>', BanckPaymentUpdate.as_view()),
     path('banckpayment/delete/<pk>', BanckPaymentDelete.as_view()),
-    path('banckpayment/inactivate/<pk>/', BanckPaymentInactivate.as_view()),
     #QUERY
     #CRUD
     path('directpayment/', DirectPaymentList.as_view()),
@@ -50,6 +45,5 @@ urlpatterns = [
     path('directpayment/<pk>', DirectPaymentDetail.as_view()),
     path('directpayment/update/<pk>', DirectPaymentUpdate.as_view()),
     path('directpayment/delete/<pk>', DirectPaymentDelete.as_view()),
-    path('directpayment/inactivate/<pk>/', DirectPaymentInactivate.as_view())
     #QUERY
 ]
