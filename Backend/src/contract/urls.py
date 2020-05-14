@@ -14,7 +14,9 @@ from .views import (
 #   QUERY
 
 #   Generate pdf
-    GeneratePdf
+    GeneratePdf,
+#   Send email 
+    SendEmail
 )
 
 urlpatterns = [
@@ -28,6 +30,9 @@ urlpatterns = [
     #QUERY
     #PDf invoice generator
     path('pdf/', GeneratePdf.as_view()),
+    #Send invoice 
+    path('sendemail/', SendEmail.as_view()),
+
 
     path('contract/', ContractList.as_view()),
     path('contract/create/', CreateContract.as_view())
