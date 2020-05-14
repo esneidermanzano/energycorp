@@ -35,5 +35,6 @@ class Invoice(models.Model):
     stateInvoice = models.BooleanField(default=False)
     referencecodeInvoice = models.CharField(max_length=30)
     total = models.FloatField(null=False)
-    #history = models.OneToOneField(History, on_delete=models.CASCADE)
+    contract = models.ForeignKey(
+        Contract, related_name='contract', on_delete=models.PROTECT)
 

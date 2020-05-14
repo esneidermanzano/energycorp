@@ -38,19 +38,19 @@ class CreateInvoiceSerializer(serializers.ModelSerializer):
             'stateInvoice',
             'referencecodeInvoice',
             'total',
-            'client',
+            'contract',
             ]
 
     def create(self, validated_data):
         #history = validated_data.pop('history')
         #custom = History.objects.create(**history)
 
-        Invoice = Invoice.objects.create(
+        invoice = Invoice.objects.create(
             **validated_data
         )
         
-        Invoice.save()
-        return Invoice
+        invoice.save()
+        return invoice
 
 class InvoiceSerializer(serializers.ModelSerializer):
     """Invoice para las operaciones Retrive"""
@@ -67,7 +67,7 @@ class InvoiceSerializer(serializers.ModelSerializer):
             'stateInvoice',
             'referencecodeInvoice',
             'total',
-            'client',
+            'contract',
             ]
 
 class UpdateInvoiceSerializer(serializers.ModelSerializer):
@@ -83,8 +83,8 @@ class UpdateInvoiceSerializer(serializers.ModelSerializer):
             ]
 
     def update(self, instance, validated_data):
-        Invoice = super().update(instance, validated_data)
-        return Invoice
+        invoice = super().update(instance, validated_data)
+        return invoice
 
 class DeleteInvoiceSerializer(serializers.ModelSerializer):
     """Invoice para las operaciones Delete"""
@@ -102,7 +102,7 @@ class InactivateInvoiceSerializer(serializers.ModelSerializer):
         fields = ['stateInvoice']
 
     def patch(self, request, *args, **kwargs):
-        Invoice = self.partial_update(request, *args, **kwargs)
-        return Invoice
+        invoice = self.partial_update(request, *args, **kwargs)
+        return invoice
 
 #                                      Query

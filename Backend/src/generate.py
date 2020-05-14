@@ -328,7 +328,7 @@ for i in range (1, 11):
         "fields": {
             "latitudeCounter": str(countercoors[i-1][0]),
             "lengthCounter": str(countercoors[i-1][1]),
-            "counter": random.randint(100, 500),
+            "value": random.randint(100, 500),
             "is_active": True,
             "addressCounter": countdir[i-1],
             "clientCounter": i,
@@ -339,6 +339,33 @@ for i in range (1, 11):
 
 basejson.extend(counters)
 
+
+histories = []
+
+for i in range (1, len(counters) + 1):
+    history1 = {
+        "model": "energytransfers.history",
+        "pk": i*2 - 1,
+        "fields": {
+            "consumption": random.randint(10,50),
+            "counter": i,
+            "registryHistory": "2020-04-30"
+        }
+    }
+    history2 = {
+        "model": "energytransfers.history",
+        "pk": i*2,
+        "fields": {
+            "consumption": random.randint(10,50),
+            "counter": i,
+            "registryHistory": "2020-05-13"
+        }
+    }
+    
+    histories.append(history1)
+    histories.append(history2)
+
+basejson.extend(histories)
 """
 geolocator = Nominatim(user_agent="geogenerator")
 for i in range (len(countercoors)):
@@ -352,39 +379,24 @@ for i in range (len(transcoor)):
 """
 
 #================================ INVOICES ========================
-histories = []
 
-for i in range (1, len(counters) + 1):
-    history1 = {
-        "model": "factures.history",
-        "pk": i*2 - 1,
+contracts = []
+
+for i in range (1, len(counters+1)):
+    contract = {
+        "model": "contract.contract",
+        "pk": i,
         "fields": {
-            "counter": i,
-            "consumption": random.randint(10,50),
-            "registryHistory": "2020-04-30"
+            "client": i,
+            "counter": i
         }
     }
-    history2 = {
-        "model": "factures.history",
-        "pk": i*2,
-        "fields": {
-            "counter": i,
-            "consumption": random.randint(10,50),
-            "registryHistory": "2020-05-13"
-        }
-    }
-    
-    histories.append(history1)
-    histories.append(history2)
-
-basejson.extend(histories)
-
 
 invoices = []
 
 for i in range (1, len(counters) + 1):
     invoice1 = {
-        "model": "factures.invoiceservices",
+        "model": "contract.Invoice",
         "pk": i*2 - 1,
         "fields": {
             "consumptiondaysInvoice": 30,
@@ -402,7 +414,7 @@ for i in range (1, len(counters) + 1):
     reference = code[0] + "("+ code[1]+")"+ str(random.randint(1111111,9999999))
 
     invoice2 = {
-        "model": "factures.invoiceservices",
+        "model": "contract.Invoice",
         "pk": i*2,
         "fields": {
             "consumptiondaysInvoice": 13,
