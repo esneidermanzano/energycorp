@@ -50,7 +50,7 @@ class CreateClient extends React.Component {
         console.log(this.state.list);
         axios.post("https://energycorp.herokuapp.com/api/user/client/create/bulk/", this.state.list)
             .then(res => {
-                alert("AXION REALIZADA CON EXITO");
+                alert(counterpart.translate('createClient.exito'));
             })
             .catch(err => {
                 console.log(err);

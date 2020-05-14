@@ -1,6 +1,12 @@
 import React from "react";
 import CreateUserForm from "views/admin/CreateUserForm.jsx";
 
+import counterpart from "counterpart";
+import * as Tr from "react-translate-component";
+import spanish from "../../langs/spanish.js";
+import english from "../../langs/english.js";
+import portuguese from "../../langs/portuguese.js";
+
 // reactstrap components
 import {
     Card,
@@ -9,6 +15,12 @@ import {
     Col, Button, Alert
 } from "reactstrap";
 import Axios from "axios";
+
+import { connect } from "react-redux";
+
+counterpart.registerTranslations('en', english);
+counterpart.registerTranslations('es', spanish);
+counterpart.registerTranslations('po', portuguese);
 
 class CreateUser extends React.Component {
     constructor(props) {
@@ -66,9 +78,9 @@ class CreateUser extends React.Component {
         .then(res => {
             let given = res.data;
             if(given.code === 200){
-                alert('Registro exitoso.');
+                alert(counterpart.translate('createUser.exito'));
             }else{
-                alert('Algo salió mal.');
+                alert(counterpart.translate('createUser.noExito'));
             }
         })
         .catch(err => {
@@ -87,12 +99,13 @@ class CreateUser extends React.Component {
                     <Alert color="success" key={key} toggle={() => this.onDismiss(key)}>
                         #{key + 1} <b>{n.name}</b> - {n.id_user}
                         <br></br>
-                        <i>{(n.user_type === 2) ? "Operador" : "Gerente" }</i>
+                        <i>{(n.user_type === 2) ? counterpart.translate('createUser.operator') : 
+                        counterpart.translate('createUser.manager')}</i>
                     </Alert>
                 )
             })
         } else {
-            news = <center><h6><i>No users yet</i></h6></center>;
+            news = <center><h6><Tr content="createClient.noUsers" component="i" /></h6></center>;
         }
 
         return (
@@ -112,7 +125,9 @@ class CreateUser extends React.Component {
                             </CardBody>
                         </Card>
                         <center>
-                            <Button color="success" onClick={this.sendNews}>CREATE</Button>
+                            <Button color="success" onClick={this.sendNews}>
+                                <Tr content="createClient.create"/>
+                            </Button>
                         </center>
 
                     </Col>
@@ -122,4 +137,11 @@ class CreateUser extends React.Component {
     }
 };
 
-export default CreateUser;
+const mapStateToProps = state => {
+    counterpart.setLocale(state.language);
+    return { lng: state.language }
+}
+
+const mapDispatchToProps = dispatch => ({});
+
+export default connect(mapStateToProps, mapDispatchToProps)(CreateUser);
