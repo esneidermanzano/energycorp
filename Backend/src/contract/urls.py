@@ -2,12 +2,15 @@ from django.urls import path
 
 from .views import (
 #   CRUDS
-    InvoiceServicesList,
-    InvoiceServicesDetail,
-    InvoiceServicesCreate,
-    InvoiceServicesUpdate,
-    InvoiceServicesDelete,
-    InvoiceServicesInactivate,    
+    ContractList,
+    CreateContract,
+
+    InvoiceList,
+    InvoiceDetail,
+    InvoiceCreate,
+    InvoiceUpdate,
+    InvoiceDelete,
+    InvoiceInactivate,    
 #   QUERY
 
 #   Generate pdf
@@ -16,13 +19,16 @@ from .views import (
 
 urlpatterns = [
     #CRUD
-    path('invoiceservices/', InvoiceServicesList.as_view()),
-    path('invoiceservices/create/', InvoiceServicesCreate.as_view()),
-    path('invoiceservices/<pk>', InvoiceServicesDetail.as_view()),
-    path('invoiceservices/update/<pk>', InvoiceServicesUpdate.as_view()),
-    path('invoiceservices/delete/<pk>', InvoiceServicesDelete.as_view()),
-    path('invoiceservices/inactivate/<pk>/', InvoiceServicesInactivate.as_view()),
+    path('', InvoiceList.as_view()),
+    path('create/', InvoiceCreate.as_view()),
+    path('update/<pk>', InvoiceUpdate.as_view()),
+    path('delete/<pk>', InvoiceDelete.as_view()),
+    path('inactivate/<pk>/', InvoiceInactivate.as_view()),
+    path('<pk>', InvoiceDetail.as_view()),
     #QUERY
     #PDf invoice generator
     path('pdf/', GeneratePdf.as_view()),
+
+    path('contract/', ContractList.as_view()),
+    path('contract/create/', CreateContract.as_view())
 ]

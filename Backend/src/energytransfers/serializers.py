@@ -153,7 +153,7 @@ class CreateCounterSerializer(serializers.ModelSerializer):
         fields = [
             'latitudeCounter',
             'lengthCounter',
-            'counter',
+            'value',
             'addressCounter',
             'is_active',
             'transformatorCounter',
@@ -165,7 +165,7 @@ class CreateCounterSerializer(serializers.ModelSerializer):
             latitudeCounter=validated_data['latitudeCounter'],
             lengthCounter=validated_data['lengthCounter'],
             is_active=validated_data['is_active'],
-            counter=validated_data['counter'],
+            value=validated_data['value'],
             addressCounter=validated_data['addressCounter'],
             transformatorCounter=validated_data['transformatorCounter'],
             clientCounter=validated_data['clientCounter']
@@ -187,7 +187,7 @@ class UpdateCounterSerializer(serializers.ModelSerializer):
         fields = [
             'latitudeCounter',
             'lengthCounter',
-            'counter',
+            'value',
             'addressCounter',
             'transformatorCounter'
             ]

@@ -10,7 +10,6 @@ from weasyprint import HTML
 
 from rest_framework.generics import (
     ListAPIView,
-    RetrieveAPIView,
     ListCreateAPIView,
     RetrieveAPIView,
     UpdateAPIView,
@@ -18,18 +17,20 @@ from rest_framework.generics import (
 )
 
 from .models import (
-    InvoiceServices
+    Contract,
+    Invoice
     )
 
 
 from .serializers import (
     # CRUD SERIALIZERS
+    ContractSerializer,
 
-    InvoiceServicesSerializer,
-    CreateInvoiceServicesSerializer,
-    UpdateInvoiceServicesSerializer,
-    InactivateInvoiceServicesSerializer,
-    DeleteInvoiceServicesSerializer
+    InvoiceSerializer,
+    CreateInvoiceSerializer,
+    UpdateInvoiceSerializer,
+    InactivateInvoiceSerializer,
+    DeleteInvoiceSerializer
     # QUERY SERIALIZERS
 )
 
@@ -43,41 +44,52 @@ from .permissions import (
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
-# ============================================Views para el modúlo de Facturas ==========================
+# ============================================Views para el modúlo de Contrato ==========================
 
-#------------------------------------------------InvoiceServices-------------------------------------
+#------------------------------------------------Contract-------------------------------------
+
+class ContractList(ListAPIView):
+    """View para retrive todos los Contratos"""
+    queryset = Contract.objects.all()
+    serializer_class = ContractSerializer
+
+class CreateContract(ListCreateAPIView):
+    """View para retrive todos los Contratos"""
+    queryset = Contract.objects.all()
+    serializer_class = ContractSerializer
+#------------------------------------------------Invoice-------------------------------------
 
 #                                                   CRUD
 
-class InvoiceServicesCreate(ListCreateAPIView):
-    """View para delete un InvoiceServices"""
-    queryset = InvoiceServices.objects.all()
-    serializer_class = CreateInvoiceServicesSerializer
+class InvoiceCreate(ListCreateAPIView):
+    """View para delete un Invoice"""
+    queryset = Invoice.objects.all()
+    serializer_class = CreateInvoiceSerializer
 
-class InvoiceServicesDetail(RetrieveAPIView):
-    """View para retrive un InvoiceServices"""
-    queryset = InvoiceServices.objects.all()
-    serializer_class = InvoiceServicesSerializer
+class InvoiceDetail(RetrieveAPIView):
+    """View para retrive un Invoice"""
+    queryset = Invoice.objects.all()
+    serializer_class = InvoiceSerializer
 
-class InvoiceServicesList(ListAPIView):
-    """View para retrive todos los InvoiceServicess"""
-    queryset = InvoiceServices.objects.all()
-    serializer_class = InvoiceServicesSerializer
+class InvoiceList(ListAPIView):
+    """View para retrive todos los Invoices"""
+    queryset = Invoice.objects.all()
+    serializer_class = InvoiceSerializer
 
-class InvoiceServicesUpdate(UpdateAPIView):
-    """View para update un InvoiceServices"""
-    queryset = InvoiceServices.objects.all()
-    serializer_class = UpdateInvoiceServicesSerializer
+class InvoiceUpdate(UpdateAPIView):
+    """View para update un Invoice"""
+    queryset = Invoice.objects.all()
+    serializer_class = UpdateInvoiceSerializer
 
-class InvoiceServicesDelete(DestroyAPIView):
-    """View para delete un InvoiceServices"""
-    queryset = InvoiceServices.objects.all()
-    serializer_class = DeleteInvoiceServicesSerializer
+class InvoiceDelete(DestroyAPIView):
+    """View para delete un Invoice"""
+    queryset = Invoice.objects.all()
+    serializer_class = DeleteInvoiceSerializer
 
-class InvoiceServicesInactivate(UpdateAPIView):
-    """View para inactivate un InvoiceServices"""
-    queryset = InvoiceServices.objects.all()
-    serializer_class = InactivateInvoiceServicesSerializer
+class InvoiceInactivate(UpdateAPIView):
+    """View para inactivate un Invoice"""
+    queryset = Invoice.objects.all()
+    serializer_class = InactivateInvoiceSerializer
 
 #                                               QUERY
 

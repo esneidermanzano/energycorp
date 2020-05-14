@@ -1,22 +1,36 @@
 # Modelos para los Transformadores de Energia.
 from .models import (
-    InvoiceServices
+    Contract,
+    Invoice
 )
 
 # Serializer
 from rest_framework import serializers
 
 
-# =========================== Serializador para el Modulo Factures ==========================
+# =========================== Serializador para el Modulo Contract ==========================
 
-# -----------------------------------------InvoiceServices------------------------------------------------
+# -----------------------------------------Contract------------------------------------------------
+
+class ContractSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = Contract
+        fields = [
+            'contractNumber',
+            'client',
+            'counter',
+            ]
+
+
+# -----------------------------------------Invoice------------------------------------------------
 
 #                                              CRUD
-class CreateInvoiceServicesSerializer(serializers.ModelSerializer):
-    """InvoiceServices para las operaciones Create"""
+class CreateInvoiceSerializer(serializers.ModelSerializer):
+    """Invoice para las operaciones Create"""
     #history = CreateHistorySerializer()
     class Meta:
-        model = InvoiceServices
+        model = Invoice
         fields = [
             'consumptiondaysInvoice',
             'paymentdeadlineInvoice',
@@ -31,20 +45,20 @@ class CreateInvoiceServicesSerializer(serializers.ModelSerializer):
         #history = validated_data.pop('history')
         #custom = History.objects.create(**history)
 
-        invoiceServices = InvoiceServices.objects.create(
+        Invoice = Invoice.objects.create(
             **validated_data
         )
         
-        invoiceServices.save()
-        return invoiceServices
+        Invoice.save()
+        return Invoice
 
-class InvoiceServicesSerializer(serializers.ModelSerializer):
-    """InvoiceServices para las operaciones Retrive"""
+class InvoiceSerializer(serializers.ModelSerializer):
+    """Invoice para las operaciones Retrive"""
     
     #history = HistorySerializer()
     
     class Meta:
-        model = InvoiceServices
+        model = Invoice
         fields = [
             'codeInvoice',
             'consumptiondaysInvoice',
@@ -56,10 +70,10 @@ class InvoiceServicesSerializer(serializers.ModelSerializer):
             'client',
             ]
 
-class UpdateInvoiceServicesSerializer(serializers.ModelSerializer):
-    """InvoiceServices para las operaciones Update"""
+class UpdateInvoiceSerializer(serializers.ModelSerializer):
+    """Invoice para las operaciones Update"""
     class Meta:
-        model = InvoiceServices
+        model = Invoice
         fields = [
             'consumptiondaysInvoice',
             'paymentdeadlineInvoice',
@@ -69,26 +83,26 @@ class UpdateInvoiceServicesSerializer(serializers.ModelSerializer):
             ]
 
     def update(self, instance, validated_data):
-        invoiceServices = super().update(instance, validated_data)
-        return invoiceServices
+        Invoice = super().update(instance, validated_data)
+        return Invoice
 
-class DeleteInvoiceServicesSerializer(serializers.ModelSerializer):
-    """InvoiceServices para las operaciones Delete"""
+class DeleteInvoiceSerializer(serializers.ModelSerializer):
+    """Invoice para las operaciones Delete"""
     class Meta:
-        model = InvoiceServices
+        model = Invoice
         fields = '__all__'
 
     def perform_destroy(self, instance):
         instance.delete()
 
-class InactivateInvoiceServicesSerializer(serializers.ModelSerializer):
-    """InvoiceServices para las operaciones Inactive"""
+class InactivateInvoiceSerializer(serializers.ModelSerializer):
+    """Invoice para las operaciones Inactive"""
     class Meta:
-        model = InvoiceServices
+        model = Invoice
         fields = ['stateInvoice']
 
     def patch(self, request, *args, **kwargs):
-        InvoiceServices = self.partial_update(request, *args, **kwargs)
-        return InvoiceServices
+        Invoice = self.partial_update(request, *args, **kwargs)
+        return Invoice
 
 #                                      Query

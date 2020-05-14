@@ -49,7 +49,7 @@ class Counter(models.Model):
         verbose_name='ID')
     latitudeCounter = models.CharField(max_length=255)
     lengthCounter = models.CharField(max_length=255)
-    counter = models.FloatField()
+    value = models.FloatField()
     is_active = models.BooleanField(default=True)
     addressCounter = models.CharField(max_length=255)
     clientCounter = models.ForeignKey(Client, related_name='counters',
