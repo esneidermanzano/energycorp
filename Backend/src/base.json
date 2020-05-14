@@ -1,10 +1,1122 @@
 [
-{
-  "model": "contract.contract",
-  "pk": 1,
-  "fields": {
-    "client": 1,
-    "counter": 1
+  {
+    "model": "users.CustomUser",
+    "pk": 1,
+    "fields": {
+      "id_user": "1045127441",
+      "name": "Cecilia Urquijo Barma",
+      "email": "Cecilia@hotmail.com",
+      "password": "pbkdf2_sha256$180000$JT8e0Cd32oKW$7Zei9Q+gAB7fEK+6iJRYdHxZnCoaCJKvCsXHBxEACqY=",
+      "phone": "4982762",
+      "address": "Diagonal 50B # 94 - 134",
+      "neighborhood": "El bronx",
+      "stratus": 4,
+      "is_active": true,
+      "is_staff": false,
+      "is_superuser": false
+    }
+  },
+  {
+    "model": "users.CustomUser",
+    "pk": 2,
+    "fields": {
+      "id_user": "619535150",
+      "name": "Teófilo Egusquiza Madariaga",
+      "email": "Teofilo@gmail.com",
+      "password": "pbkdf2_sha256$180000$xVVnACoVA4xP$PzEDus/RK8E8elJY4OhoEFoaRy4LYsX28yEWxiBsYYY=",
+      "phone": "3889018",
+      "address": "Carrera 42E # 5 - 79",
+      "neighborhood": "Calipso",
+      "stratus": 4,
+      "is_active": true,
+      "is_staff": false,
+      "is_superuser": false
+    }
+  },
+  {
+    "model": "users.CustomUser",
+    "pk": 3,
+    "fields": {
+      "id_user": "833527840",
+      "name": "Pancracio Ispuzua Chave",
+      "email": "Pancracio@yahoo.com",
+      "password": "pbkdf2_sha256$180000$JZpJqgQWZ6i1$8LYs7c5KiLtZsojQEeW8rraAWeCC6Xy6O0nIY2iWcwQ=",
+      "phone": "3075028",
+      "address": "Calle 11E # 46 - 158",
+      "neighborhood": "Calipso",
+      "stratus": 3,
+      "is_active": true,
+      "is_staff": false,
+      "is_superuser": false
+    }
+  },
+  {
+    "model": "users.CustomUser",
+    "pk": 4,
+    "fields": {
+      "id_user": "409524924",
+      "name": "Celeste Ganzo Vicente",
+      "email": "Celeste@hotmail.com",
+      "password": "pbkdf2_sha256$180000$X2NP4z8Gs61E$i2E/7s07vXzb1FOmbWO7i2kpSo8ogmoQY+FmPWnZ3Y8=",
+      "phone": "4463194",
+      "address": "Calle 1E # 46 - 81",
+      "neighborhood": "El vallado",
+      "stratus": 5,
+      "is_active": true,
+      "is_staff": false,
+      "is_superuser": false
+    }
+  },
+  {
+    "model": "users.CustomUser",
+    "pk": 5,
+    "fields": {
+      "id_user": "112176100",
+      "name": "Luis Valino Vango",
+      "email": "Luis@gmail.com",
+      "password": "pbkdf2_sha256$180000$785FgGhNFUNj$cWqQjmGi1JG+l9GlnU24NCzgQ9AbrG48Yk7mqy68eac=",
+      "phone": "3491339",
+      "address": "Avenida 44A # 58 - 68",
+      "neighborhood": "Calima",
+      "stratus": 5,
+      "is_active": true,
+      "is_staff": false,
+      "is_superuser": false
+    }
+  },
+  {
+    "model": "users.CustomUser",
+    "pk": 6,
+    "fields": {
+      "id_user": "855593141",
+      "name": "Florencia Cucho Ahedo",
+      "email": "Florencia@gmail.com",
+      "password": "pbkdf2_sha256$180000$nQqYkCL16TlV$Yx1s9PPIJaAw3mpcaMARHFGQflxbS2l1OvjVBZ9GZYQ=",
+      "phone": "3390809",
+      "address": "Diagonal 97C # 55 - 151",
+      "neighborhood": "Mojica",
+      "stratus": 2,
+      "is_active": true,
+      "is_staff": false,
+      "is_superuser": false
+    }
+  },
+  {
+    "model": "users.CustomUser",
+    "pk": 7,
+    "fields": {
+      "id_user": "474771475",
+      "name": "Mariano Mogrovejo Gante",
+      "email": "Mariano@hotmail.com",
+      "password": "pbkdf2_sha256$180000$HAci4sLddIOb$tRh7FNhU4RMm7+zEbv9TMDYxnZg8JWjTuYkZCUUeIOI=",
+      "phone": "4732153",
+      "address": "Avenida 73A # 74 - 137",
+      "neighborhood": "Calima",
+      "stratus": 3,
+      "is_active": true,
+      "is_staff": false,
+      "is_superuser": false
+    }
+  },
+  {
+    "model": "users.CustomUser",
+    "pk": 8,
+    "fields": {
+      "id_user": "483180644",
+      "name": "Angélica Ter Tosantos",
+      "email": "Angelica@yahoo.com",
+      "password": "pbkdf2_sha256$180000$tEfN4rWn6ALR$z7+LC1frcHXVJwjHFgPmez+n66NciNpvq7V48QTuKgs=",
+      "phone": "4926252",
+      "address": "Diagonal 91E # 29 - 150",
+      "neighborhood": "Sindical",
+      "stratus": 3,
+      "is_active": true,
+      "is_staff": false,
+      "is_superuser": false
+    }
+  },
+  {
+    "model": "users.CustomUser",
+    "pk": 9,
+    "fields": {
+      "id_user": "657697767",
+      "name": "Antonio Incera Fontoria",
+      "email": "Antonio@yahoo.com",
+      "password": "pbkdf2_sha256$180000$hXwsmbu4J0PY$kBBrjb0k5Gh+g8dKsb/G7SYbrshqY7THNRafhPMRKks=",
+      "phone": "3342966",
+      "address": "Transversal 66A # 39 - 21",
+      "neighborhood": "El bronx",
+      "stratus": 2,
+      "is_active": true,
+      "is_staff": false,
+      "is_superuser": false
+    }
+  },
+  {
+    "model": "users.CustomUser",
+    "pk": 10,
+    "fields": {
+      "id_user": "1072186755",
+      "name": "Lupita Soret Garmendia",
+      "email": "Lupita@yahoo.com",
+      "password": "pbkdf2_sha256$180000$qYTpkl46UFIs$bOTbNV3+q9d5BPCX33eVcGyhM1Eaw1hwAVB2Jt+Ur3Q=",
+      "phone": "3906026",
+      "address": "Calle 2C # 33 - 43",
+      "neighborhood": "Manuela Beltran",
+      "stratus": 2,
+      "is_active": true,
+      "is_staff": false,
+      "is_superuser": false
+    }
+  },
+  {
+    "model": "users.CustomUser",
+    "pk": 11,
+    "fields": {
+      "id_user": "1144189914",
+      "name": "Esneider Manzano",
+      "email": "esneider@gmail.com",
+      "password": "pbkdf2_sha256$180000$W4DSmgbKj7dK$s6p1mSZZ7bhhcbaKuQxpXLN8QP03eGULkW9/Rd+819w=",
+      "phone": "4455971",
+      "address": "cra28 C # 54-123",
+      "neighborhood": "sindical",
+      "stratus": 2,
+      "is_active": true,
+      "is_staff": true,
+      "is_superuser": false
+    }
+  },
+  {
+    "model": "users.CustomUser",
+    "pk": 12,
+    "fields": {
+      "id_user": "1144189915",
+      "name": "Luis de Huevosalva",
+      "email": "luis@gmail.com",
+      "password": "pbkdf2_sha256$180000$W4DSmgbKj7dK$s6p1mSZZ7bhhcbaKuQxpXLN8QP03eGULkW9/Rd+819w=",
+      "phone": "4455972",
+      "address": "cra28 C # 54-124",
+      "neighborhood": "sindical",
+      "stratus": 2,
+      "is_active": true,
+      "is_staff": true,
+      "is_superuser": false
+    }
+  },
+  {
+    "model": "users.CustomUser",
+    "pk": 13,
+    "fields": {
+      "id_user": "1144189910",
+      "name": "Taborda",
+      "email": "taborda@gmail.com",
+      "password": "pbkdf2_sha256$180000$W4DSmgbKj7dK$s6p1mSZZ7bhhcbaKuQxpXLN8QP03eGULkW9/Rd+819w=",
+      "phone": "4455970",
+      "address": "cra28 C # 54-127",
+      "neighborhood": "sindical",
+      "stratus": 2,
+      "is_active": true,
+      "is_staff": true,
+      "is_superuser": false
+    }
+  },
+  {
+    "model": "users.Worker",
+    "pk": 1,
+    "fields": {
+      "user": 11,
+      "user_type": 1
+    }
+  },
+  {
+    "model": "users.Worker",
+    "pk": 2,
+    "fields": {
+      "user": 12,
+      "user_type": 2
+    }
+  },
+  {
+    "model": "users.Worker",
+    "pk": 3,
+    "fields": {
+      "user": 13,
+      "user_type": 3
+    }
+  },
+  {
+    "model": "users.Client",
+    "pk": 1,
+    "fields": {
+      "user": 1,
+      "type_client": 1,
+      "interes_mora": 0,
+      "cycle": "1",
+      "financial_state": "libre",
+      "billing": "no se"
+    }
+  },
+  {
+    "model": "users.Client",
+    "pk": 2,
+    "fields": {
+      "user": 2,
+      "type_client": 1,
+      "interes_mora": 0,
+      "cycle": "1",
+      "financial_state": "libre",
+      "billing": "no se"
+    }
+  },
+  {
+    "model": "users.Client",
+    "pk": 3,
+    "fields": {
+      "user": 3,
+      "type_client": 1,
+      "interes_mora": 0,
+      "cycle": "1",
+      "financial_state": "libre",
+      "billing": "no se"
+    }
+  },
+  {
+    "model": "users.Client",
+    "pk": 4,
+    "fields": {
+      "user": 4,
+      "type_client": 1,
+      "interes_mora": 0,
+      "cycle": "1",
+      "financial_state": "libre",
+      "billing": "no se"
+    }
+  },
+  {
+    "model": "users.Client",
+    "pk": 5,
+    "fields": {
+      "user": 5,
+      "type_client": 1,
+      "interes_mora": 0,
+      "cycle": "1",
+      "financial_state": "libre",
+      "billing": "no se"
+    }
+  },
+  {
+    "model": "users.Client",
+    "pk": 6,
+    "fields": {
+      "user": 6,
+      "type_client": 1,
+      "interes_mora": 0,
+      "cycle": "1",
+      "financial_state": "libre",
+      "billing": "no se"
+    }
+  },
+  {
+    "model": "users.Client",
+    "pk": 7,
+    "fields": {
+      "user": 7,
+      "type_client": 1,
+      "interes_mora": 0,
+      "cycle": "1",
+      "financial_state": "libre",
+      "billing": "no se"
+    }
+  },
+  {
+    "model": "users.Client",
+    "pk": 8,
+    "fields": {
+      "user": 8,
+      "type_client": 1,
+      "interes_mora": 0,
+      "cycle": "1",
+      "financial_state": "libre",
+      "billing": "no se"
+    }
+  },
+  {
+    "model": "users.Client",
+    "pk": 9,
+    "fields": {
+      "user": 9,
+      "type_client": 1,
+      "interes_mora": 0,
+      "cycle": "1",
+      "financial_state": "libre",
+      "billing": "no se"
+    }
+  },
+  {
+    "model": "users.Client",
+    "pk": 10,
+    "fields": {
+      "user": 10,
+      "type_client": 1,
+      "interes_mora": 0,
+      "cycle": "1",
+      "financial_state": "libre",
+      "billing": "no se"
+    }
+  },
+  {
+    "model": "energytransfers.substation",
+    "pk": 1,
+    "fields": {
+      "latitudeSubstation": "3.372908",
+      "lengthSubstation": "-76.532479",
+      "is_active": true
+    }
+  },
+  {
+    "model": "energytransfers.substation",
+    "pk": 2,
+    "fields": {
+      "latitudeSubstation": "3.428119",
+      "lengthSubstation": "-76.479726",
+      "is_active": true
+    }
+  },
+  {
+    "model": "energytransfers.substation",
+    "pk": 3,
+    "fields": {
+      "latitudeSubstation": "3.425783",
+      "lengthSubstation": "-76.508505",
+      "is_active": true
+    }
+  },
+  {
+    "model": "energytransfers.substation",
+    "pk": 4,
+    "fields": {
+      "latitudeSubstation": "3.456173",
+      "lengthSubstation": "-76.532861",
+      "is_active": true
+    }
+  },
+  {
+    "model": "energytransfers.substation",
+    "pk": 5,
+    "fields": {
+      "latitudeSubstation": "3.467536",
+      "lengthSubstation": "-76.495797",
+      "is_active": true
+    }
+  },
+  {
+    "model": "energytransfers.transformator",
+    "pk": 1,
+    "fields": {
+      "latitudeTransformator": "3.395716",
+      "lengthTransformator": "-76.54822",
+      "is_active": true,
+      "substationTransformator": 1
+    }
+  },
+  {
+    "model": "energytransfers.transformator",
+    "pk": 2,
+    "fields": {
+      "latitudeTransformator": "3.380439",
+      "lengthTransformator": "-76.54449",
+      "is_active": true,
+      "substationTransformator": 1
+    }
+  },
+  {
+    "model": "energytransfers.transformator",
+    "pk": 3,
+    "fields": {
+      "latitudeTransformator": "3.42622",
+      "lengthTransformator": "-76.480782",
+      "is_active": true,
+      "substationTransformator": 2
+    }
+  },
+  {
+    "model": "energytransfers.transformator",
+    "pk": 4,
+    "fields": {
+      "latitudeTransformator": "3.418405",
+      "lengthTransformator": "-76.471679",
+      "is_active": true,
+      "substationTransformator": 2
+    }
+  },
+  {
+    "model": "energytransfers.transformator",
+    "pk": 5,
+    "fields": {
+      "latitudeTransformator": "3.427807",
+      "lengthTransformator": "-76.50048",
+      "is_active": true,
+      "substationTransformator": 3
+    }
+  },
+  {
+    "model": "energytransfers.transformator",
+    "pk": 6,
+    "fields": {
+      "latitudeTransformator": "3.433637",
+      "lengthTransformator": "-76.504623",
+      "is_active": true,
+      "substationTransformator": 3
+    }
+  },
+  {
+    "model": "energytransfers.transformator",
+    "pk": 7,
+    "fields": {
+      "latitudeTransformator": "3.44834",
+      "lengthTransformator": "-76.538648",
+      "is_active": true,
+      "substationTransformator": 4
+    }
+  },
+  {
+    "model": "energytransfers.transformator",
+    "pk": 8,
+    "fields": {
+      "latitudeTransformator": "3.448628",
+      "lengthTransformator": "-76.523636",
+      "is_active": true,
+      "substationTransformator": 4
+    }
+  },
+  {
+    "model": "energytransfers.transformator",
+    "pk": 9,
+    "fields": {
+      "latitudeTransformator": "3.465657",
+      "lengthTransformator": "-76.500669",
+      "is_active": true,
+      "substationTransformator": 5
+    }
+  },
+  {
+    "model": "energytransfers.transformator",
+    "pk": 10,
+    "fields": {
+      "latitudeTransformator": "3.484713",
+      "lengthTransformator": "-76.497644",
+      "is_active": true,
+      "substationTransformator": 5
+    }
+  },
+  {
+    "model": "energytransfers.counter",
+    "pk": 1,
+    "fields": {
+      "latitudeCounter": "3.429708",
+      "lengthCounter": "-76.501172",
+      "value": 227,
+      "is_active": true,
+      "addressCounter": "Cra. 28c #50-2 a 50-178",
+      "clientCounter": 1,
+      "transformatorCounter": 1
+    }
+  },
+  {
+    "model": "energytransfers.counter",
+    "pk": 2,
+    "fields": {
+      "latitudeCounter": "3.429556",
+      "lengthCounter": "-76.504896",
+      "value": 301,
+      "is_active": true,
+      "addressCounter": "Tv. 33g #28e-2 a 28e-64",
+      "clientCounter": 2,
+      "transformatorCounter": 1
+    }
+  },
+  {
+    "model": "energytransfers.counter",
+    "pk": 3,
+    "fields": {
+      "latitudeCounter": "3.428764",
+      "lengthCounter": "-76.506723",
+      "value": 384,
+      "is_active": true,
+      "addressCounter": "Dg. 28d #29-2 a 29-96",
+      "clientCounter": 3,
+      "transformatorCounter": 1
+    }
+  },
+  {
+    "model": "energytransfers.counter",
+    "pk": 4,
+    "fields": {
+      "latitudeCounter": "3.430769",
+      "lengthCounter": "-76.508757",
+      "value": 315,
+      "is_active": true,
+      "addressCounter": "Tv. 28a #27a-89 a 27a-1",
+      "clientCounter": 4,
+      "transformatorCounter": 1
+    }
+  },
+  {
+    "model": "energytransfers.counter",
+    "pk": 5,
+    "fields": {
+      "latitudeCounter": "3.43748",
+      "lengthCounter": "-76.508385",
+      "value": 364,
+      "is_active": true,
+      "addressCounter": "Cl. 33f #23-12 a 23-64",
+      "clientCounter": 5,
+      "transformatorCounter": 1
+    }
+  },
+  {
+    "model": "energytransfers.counter",
+    "pk": 6,
+    "fields": {
+      "latitudeCounter": "3.470128",
+      "lengthCounter": "-76.490096",
+      "value": 137,
+      "is_active": true,
+      "addressCounter": "Cl. 64a #2d-39 a 2d-1",
+      "clientCounter": 6,
+      "transformatorCounter": 2
+    }
+  },
+  {
+    "model": "energytransfers.counter",
+    "pk": 7,
+    "fields": {
+      "latitudeCounter": "3.462938",
+      "lengthCounter": "-76.504564",
+      "value": 136,
+      "is_active": true,
+      "addressCounter": "Cl. 46 #4b-8 a 4b-28",
+      "clientCounter": 7,
+      "transformatorCounter": 2
+    }
+  },
+  {
+    "model": "energytransfers.counter",
+    "pk": 8,
+    "fields": {
+      "latitudeCounter": "3.459106",
+      "lengthCounter": "-76.487694",
+      "value": 240,
+      "is_active": true,
+      "addressCounter": "Cra. 7f #64-65 a 64-1",
+      "clientCounter": 8,
+      "transformatorCounter": 2
+    }
+  },
+  {
+    "model": "energytransfers.counter",
+    "pk": 9,
+    "fields": {
+      "latitudeCounter": "3.475513",
+      "lengthCounter": "-76.50132",
+      "value": 250,
+      "is_active": true,
+      "addressCounter": "Cra. 1B #5450",
+      "clientCounter": 9,
+      "transformatorCounter": 2
+    }
+  },
+  {
+    "model": "energytransfers.counter",
+    "pk": 10,
+    "fields": {
+      "latitudeCounter": "3.471357",
+      "lengthCounter": "-76.498292",
+      "value": 140,
+      "is_active": true,
+      "addressCounter": "Cra. 1d 2 #56-94",
+      "clientCounter": 10,
+      "transformatorCounter": 2
+    }
+  },
+  {
+    "model": "energytransfers.history",
+    "pk": 1,
+    "fields": {
+      "consumption": 17,
+      "counter": 1,
+      "registryHistory": "2020-04-30"
+    }
+  },
+  {
+    "model": "energytransfers.history",
+    "pk": 2,
+    "fields": {
+      "consumption": 48,
+      "counter": 1,
+      "registryHistory": "2020-05-13"
+    }
+  },
+  {
+    "model": "energytransfers.history",
+    "pk": 3,
+    "fields": {
+      "consumption": 27,
+      "counter": 2,
+      "registryHistory": "2020-04-30"
+    }
+  },
+  {
+    "model": "energytransfers.history",
+    "pk": 4,
+    "fields": {
+      "consumption": 30,
+      "counter": 2,
+      "registryHistory": "2020-05-13"
+    }
+  },
+  {
+    "model": "energytransfers.history",
+    "pk": 5,
+    "fields": {
+      "consumption": 38,
+      "counter": 3,
+      "registryHistory": "2020-04-30"
+    }
+  },
+  {
+    "model": "energytransfers.history",
+    "pk": 6,
+    "fields": {
+      "consumption": 28,
+      "counter": 3,
+      "registryHistory": "2020-05-13"
+    }
+  },
+  {
+    "model": "energytransfers.history",
+    "pk": 7,
+    "fields": {
+      "consumption": 11,
+      "counter": 4,
+      "registryHistory": "2020-04-30"
+    }
+  },
+  {
+    "model": "energytransfers.history",
+    "pk": 8,
+    "fields": {
+      "consumption": 23,
+      "counter": 4,
+      "registryHistory": "2020-05-13"
+    }
+  },
+  {
+    "model": "energytransfers.history",
+    "pk": 9,
+    "fields": {
+      "consumption": 31,
+      "counter": 5,
+      "registryHistory": "2020-04-30"
+    }
+  },
+  {
+    "model": "energytransfers.history",
+    "pk": 10,
+    "fields": {
+      "consumption": 18,
+      "counter": 5,
+      "registryHistory": "2020-05-13"
+    }
+  },
+  {
+    "model": "energytransfers.history",
+    "pk": 11,
+    "fields": {
+      "consumption": 11,
+      "counter": 6,
+      "registryHistory": "2020-04-30"
+    }
+  },
+  {
+    "model": "energytransfers.history",
+    "pk": 12,
+    "fields": {
+      "consumption": 17,
+      "counter": 6,
+      "registryHistory": "2020-05-13"
+    }
+  },
+  {
+    "model": "energytransfers.history",
+    "pk": 13,
+    "fields": {
+      "consumption": 14,
+      "counter": 7,
+      "registryHistory": "2020-04-30"
+    }
+  },
+  {
+    "model": "energytransfers.history",
+    "pk": 14,
+    "fields": {
+      "consumption": 22,
+      "counter": 7,
+      "registryHistory": "2020-05-13"
+    }
+  },
+  {
+    "model": "energytransfers.history",
+    "pk": 15,
+    "fields": {
+      "consumption": 23,
+      "counter": 8,
+      "registryHistory": "2020-04-30"
+    }
+  },
+  {
+    "model": "energytransfers.history",
+    "pk": 16,
+    "fields": {
+      "consumption": 29,
+      "counter": 8,
+      "registryHistory": "2020-05-13"
+    }
+  },
+  {
+    "model": "energytransfers.history",
+    "pk": 17,
+    "fields": {
+      "consumption": 23,
+      "counter": 9,
+      "registryHistory": "2020-04-30"
+    }
+  },
+  {
+    "model": "energytransfers.history",
+    "pk": 18,
+    "fields": {
+      "consumption": 46,
+      "counter": 9,
+      "registryHistory": "2020-05-13"
+    }
+  },
+  {
+    "model": "energytransfers.history",
+    "pk": 19,
+    "fields": {
+      "consumption": 34,
+      "counter": 10,
+      "registryHistory": "2020-04-30"
+    }
+  },
+  {
+    "model": "energytransfers.history",
+    "pk": 20,
+    "fields": {
+      "consumption": 34,
+      "counter": 10,
+      "registryHistory": "2020-05-13"
+    }
+  },
+  {
+    "model": "contract.contract",
+    "pk": 20200515,
+    "fields": {
+      "client": 1,
+      "counter": 1
+    }
+  },
+  {
+    "model": "contract.contract",
+    "pk": 20200516,
+    "fields": {
+      "client": 2,
+      "counter": 2
+    }
+  },
+  {
+    "model": "contract.contract",
+    "pk": 20200517,
+    "fields": {
+      "client": 3,
+      "counter": 3
+    }
+  },
+  {
+    "model": "contract.contract",
+    "pk": 20200518,
+    "fields": {
+      "client": 4,
+      "counter": 4
+    }
+  },
+  {
+    "model": "contract.contract",
+    "pk": 20200519,
+    "fields": {
+      "client": 5,
+      "counter": 5
+    }
+  },
+  {
+    "model": "contract.contract",
+    "pk": 20200520,
+    "fields": {
+      "client": 6,
+      "counter": 6
+    }
+  },
+  {
+    "model": "contract.contract",
+    "pk": 20200521,
+    "fields": {
+      "client": 7,
+      "counter": 7
+    }
+  },
+  {
+    "model": "contract.contract",
+    "pk": 20200522,
+    "fields": {
+      "client": 8,
+      "counter": 8
+    }
+  },
+  {
+    "model": "contract.contract",
+    "pk": 20200523,
+    "fields": {
+      "client": 9,
+      "counter": 9
+    }
+  },
+  {
+    "model": "contract.contract",
+    "pk": 20200524,
+    "fields": {
+      "client": 10,
+      "counter": 10
+    }
+  },
+  {
+    "model": "contract.Invoice",
+    "pk": 1,
+    "fields": {
+      "consumptiondaysInvoice": 30,
+      "paymentdeadlineInvoice": "2020-05-05",
+      "billingdateInvoice": "2020-04-30",
+      "stateInvoice": true,
+      "referencecodeInvoice": "20200430(175915326153)3640602",
+      "total": 242415,
+      "contract": 20200515
+    }
+  },
+  {
+    "model": "contract.Invoice",
+    "pk": 2,
+    "fields": {
+      "consumptiondaysInvoice": 30,
+      "paymentdeadlineInvoice": "2020-05-05",
+      "billingdateInvoice": "2020-04-30",
+      "stateInvoice": true,
+      "referencecodeInvoice": "20200430(175915326153)7909492",
+      "total": 191451,
+      "contract": 20200516
+    }
+  },
+  {
+    "model": "contract.Invoice",
+    "pk": 3,
+    "fields": {
+      "consumptiondaysInvoice": 30,
+      "paymentdeadlineInvoice": "2020-05-05",
+      "billingdateInvoice": "2020-04-30",
+      "stateInvoice": true,
+      "referencecodeInvoice": "20200430(175915326153)4358456",
+      "total": 188156,
+      "contract": 20200517
+    }
+  },
+  {
+    "model": "contract.Invoice",
+    "pk": 4,
+    "fields": {
+      "consumptiondaysInvoice": 30,
+      "paymentdeadlineInvoice": "2020-05-05",
+      "billingdateInvoice": "2020-04-30",
+      "stateInvoice": true,
+      "referencecodeInvoice": "20200430(175915326153)1265373",
+      "total": 191966,
+      "contract": 20200518
+    }
+  },
+  {
+    "model": "contract.Invoice",
+    "pk": 5,
+    "fields": {
+      "consumptiondaysInvoice": 30,
+      "paymentdeadlineInvoice": "2020-05-05",
+      "billingdateInvoice": "2020-04-30",
+      "stateInvoice": true,
+      "referencecodeInvoice": "20200430(175915326153)8206428",
+      "total": 296296,
+      "contract": 20200519
+    }
+  },
+  {
+    "model": "contract.Invoice",
+    "pk": 6,
+    "fields": {
+      "consumptiondaysInvoice": 30,
+      "paymentdeadlineInvoice": "2020-05-05",
+      "billingdateInvoice": "2020-04-30",
+      "stateInvoice": true,
+      "referencecodeInvoice": "20200430(175915326153)5512995",
+      "total": 191488,
+      "contract": 20200520
+    }
+  },
+  {
+    "model": "contract.Invoice",
+    "pk": 7,
+    "fields": {
+      "consumptiondaysInvoice": 30,
+      "paymentdeadlineInvoice": "2020-05-05",
+      "billingdateInvoice": "2020-04-30",
+      "stateInvoice": true,
+      "referencecodeInvoice": "20200430(175915326153)5236504",
+      "total": 220974,
+      "contract": 20200521
+    }
+  },
+  {
+    "model": "contract.Invoice",
+    "pk": 8,
+    "fields": {
+      "consumptiondaysInvoice": 30,
+      "paymentdeadlineInvoice": "2020-05-05",
+      "billingdateInvoice": "2020-04-30",
+      "stateInvoice": true,
+      "referencecodeInvoice": "20200430(175915326153)6388472",
+      "total": 271617,
+      "contract": 20200522
+    }
+  },
+  {
+    "model": "contract.Invoice",
+    "pk": 9,
+    "fields": {
+      "consumptiondaysInvoice": 30,
+      "paymentdeadlineInvoice": "2020-05-05",
+      "billingdateInvoice": "2020-04-30",
+      "stateInvoice": true,
+      "referencecodeInvoice": "20200430(175915326153)6282820",
+      "total": 238093,
+      "contract": 20200523
+    }
+  },
+  {
+    "model": "contract.Invoice",
+    "pk": 10,
+    "fields": {
+      "consumptiondaysInvoice": 30,
+      "paymentdeadlineInvoice": "2020-05-05",
+      "billingdateInvoice": "2020-04-30",
+      "stateInvoice": true,
+      "referencecodeInvoice": "20200430(175915326153)9669528",
+      "total": 152680,
+      "contract": 20200524
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": 1,
+    "fields": {
+      "valuePayment": 242415,
+      "datePayment": "2020-05-01T01:53:37.426Z",
+      "facturaPayment": 1
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": 2,
+    "fields": {
+      "valuePayment": 191451,
+      "datePayment": "2020-05-01T01:53:37.426Z",
+      "facturaPayment": 2
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": 3,
+    "fields": {
+      "valuePayment": 188156,
+      "datePayment": "2020-05-01T01:53:37.426Z",
+      "facturaPayment": 3
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": 4,
+    "fields": {
+      "valuePayment": 191966,
+      "datePayment": "2020-05-01T01:53:37.426Z",
+      "facturaPayment": 4
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": 5,
+    "fields": {
+      "valuePayment": 296296,
+      "datePayment": "2020-05-01T01:53:37.426Z",
+      "facturaPayment": 5
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": 6,
+    "fields": {
+      "valuePayment": 191488,
+      "datePayment": "2020-05-01T01:53:37.426Z",
+      "facturaPayment": 6
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": 7,
+    "fields": {
+      "valuePayment": 220974,
+      "datePayment": "2020-05-01T01:53:37.426Z",
+      "facturaPayment": 7
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": 8,
+    "fields": {
+      "valuePayment": 271617,
+      "datePayment": "2020-05-01T01:53:37.426Z",
+      "facturaPayment": 8
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": 9,
+    "fields": {
+      "valuePayment": 238093,
+      "datePayment": "2020-05-01T01:53:37.426Z",
+      "facturaPayment": 9
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": 10,
+    "fields": {
+      "valuePayment": 152680,
+      "datePayment": "2020-05-01T01:53:37.426Z",
+      "facturaPayment": 10
+    }
   }
-}
 ]

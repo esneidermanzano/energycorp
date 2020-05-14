@@ -382,67 +382,54 @@ for i in range (len(transcoor)):
 
 contracts = []
 
-for i in range (1, len(counters+1)):
+for i in range (1, len(counters)+1):
     contract = {
         "model": "contract.contract",
-        "pk": i,
+        "pk": 20200514 + i,
         "fields": {
             "client": i,
             "counter": i
         }
     }
+    contracts.append(contract)
+
+basejson.extend(contracts)
 
 invoices = []
 
 for i in range (1, len(counters) + 1):
-    invoice1 = {
+    invoice = {
         "model": "contract.Invoice",
-        "pk": i*2 - 1,
+        "pk": i,
         "fields": {
             "consumptiondaysInvoice": 30,
             "paymentdeadlineInvoice": "2020-05-05",
             "billingdateInvoice": "2020-04-30",
             "stateInvoice": True,
             "referencecodeInvoice": "20200430(175915326153)" + str(random.randint(1111111,9999999)),
-            "total": 130000,
-            "client": i,
-            "history": i*2 - 1
+            "total": random.randint(80000,300000),
+            "contract": 20200514+i,
         }
     }
-    now = datetime.now()
-    code = str(now).replace(':', '').replace('.', '').replace('-','').split()
-    reference = code[0] + "("+ code[1]+")"+ str(random.randint(1111111,9999999))
 
-    invoice2 = {
-        "model": "contract.Invoice",
-        "pk": i*2,
-        "fields": {
-            "consumptiondaysInvoice": 13,
-            "paymentdeadlineInvoice": "2020-05-15",
-            "billingdateInvoice": "2020-05-13",
-            "stateInvoice": False,
-            "referencecodeInvoice": reference,
-            "total": 70000,
-            "client": i,
-            "history": i*2
-        }
-    }
-    
-    invoices.append(invoice1)
-    invoices.append(invoice2)
+    #now = datetime.now()
+    #code = str(now).replace(':', '').replace('.', '').replace('-','').split()
+    #reference = code[0] + "("+ code[1]+")"+ str(random.randint(1111111,9999999))
+
+    invoices.append(invoice)
     
 basejson.extend(invoices)
 
 payments = []
 
-for i in range (1,11):
+for i in range (1,len(invoices)+1):
     pay = {
         "model": "payments.payment",
         "pk": i,
         "fields": {
-            "valuePayment": 130000,
+            "valuePayment": invoices[i-1]['fields']['total'],
             "datePayment": "2020-05-01T01:53:37.426Z",
-            "facturaPayment": i*2 - 1
+            "facturaPayment": i
         }
     }
     payments.append(pay)
