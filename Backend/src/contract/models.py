@@ -8,21 +8,6 @@ from energytransfers.models import Counter
     publicity, invoice services and counters."""
 
 
-class History(models.Model):
-    """Modelo para representar el objero history"""
-    codeHistory = models.AutoField(
-        auto_created=True,
-        primary_key=True,
-        serialize=False,
-        verbose_name='ID'
-        )
-    consumption = models.PositiveIntegerField()
-    counter = models.ForeignKey(
-        Counter, related_name='historys', on_delete=models.CASCADE)
-    registryHistory = models.DateField(auto_now_add=True)
-
-
-
 class InvoiceServices(models.Model):
     """Modelo para reprsentar el objeto Recibo"""
     codeInvoice = models.AutoField(
@@ -39,5 +24,5 @@ class InvoiceServices(models.Model):
     total = models.FloatField(null=False)
     client = models.ForeignKey(
         Client, related_name='client', on_delete=models.PROTECT)
-    history = models.OneToOneField(History, on_delete=models.CASCADE)
+    #history = models.OneToOneField(History, on_delete=models.CASCADE)
 

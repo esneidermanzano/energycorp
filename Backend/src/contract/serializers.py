@@ -1,6 +1,5 @@
 # Modelos para los Transformadores de Energia.
 from .models import (
-    History,
     InvoiceServices
 )
 
@@ -10,67 +9,12 @@ from rest_framework import serializers
 
 # =========================== Serializador para el Modulo Factures ==========================
 
-# -------------------------------------------History-------------------------------------------
-
-#                                               CRUD
-
-class CreateHistorySerializer(serializers.ModelSerializer):
-    """Serializador para las operaciones Create"""
-    class Meta:
-        model = History
-        fields = [
-            'counter',
-            'consumption'
-            #'registryHistory'
-        ]
-
-    def create(self, validated_data):
-        history = History.objects.create(
-            counter=validated_data['counter'],
-            consumption=validated_data['consumption']
-            #registryHistory=validated_data['registryHistory']
-        )
-        history.save()
-        return history
-
-
-class HistorySerializer(serializers.ModelSerializer):
-    """Serializador para las operaciones Retrive"""
-    class Meta:
-        model = History
-        fields = '__all__'
-
-class UpdateHistorySerializer(serializers.ModelSerializer):
-    """Serializador para las operaciones Update"""
-    class Meta:
-        model = History
-        fields = [
-            'registryHistory',
-            'consumption'
-        ]
-
-    def update(self, instance, validated_data):
-        history = super().update(instance, validated_data)
-        return history
-
-class DeleteHistorySerializer(serializers.ModelSerializer):
-    """Serializador para las operaciones Delete"""
-    class Meta:
-        model = History
-        fields = '__all__'
-
-    def perform_destroy(self, instance):
-        instance.delete()
-
-
-#                                            Querys
-
 # -----------------------------------------InvoiceServices------------------------------------------------
 
 #                                              CRUD
 class CreateInvoiceServicesSerializer(serializers.ModelSerializer):
     """InvoiceServices para las operaciones Create"""
-    history = CreateHistorySerializer()
+    #history = CreateHistorySerializer()
     class Meta:
         model = InvoiceServices
         fields = [
@@ -81,15 +25,14 @@ class CreateInvoiceServicesSerializer(serializers.ModelSerializer):
             'referencecodeInvoice',
             'total',
             'client',
-            'history'
             ]
 
     def create(self, validated_data):
-        history = validated_data.pop('history')
-        custom = History.objects.create(**history)
+        #history = validated_data.pop('history')
+        #custom = History.objects.create(**history)
 
         invoiceServices = InvoiceServices.objects.create(
-            history=custom, **validated_data
+            **validated_data
         )
         
         invoiceServices.save()
@@ -98,7 +41,7 @@ class CreateInvoiceServicesSerializer(serializers.ModelSerializer):
 class InvoiceServicesSerializer(serializers.ModelSerializer):
     """InvoiceServices para las operaciones Retrive"""
     
-    history = HistorySerializer()
+    #history = HistorySerializer()
     
     class Meta:
         model = InvoiceServices
@@ -111,7 +54,6 @@ class InvoiceServicesSerializer(serializers.ModelSerializer):
             'referencecodeInvoice',
             'total',
             'client',
-            'history'
             ]
 
 class UpdateInvoiceServicesSerializer(serializers.ModelSerializer):
@@ -124,7 +66,6 @@ class UpdateInvoiceServicesSerializer(serializers.ModelSerializer):
             'billingdateInvoice',
             'stateInvoice',
             'referencecodeInvoice',
-            'history'
             ]
 
     def update(self, instance, validated_data):

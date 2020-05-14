@@ -61,3 +61,17 @@ class Counter(models.Model):
         return 'The Couter was created in the coordinates: {} , {}'.format(
             self.latitudeCounter,
              self.lengthCounter)
+
+
+class History(models.Model):
+    """Modelo para representar el objero history"""
+    codeHistory = models.AutoField(
+        auto_created=True,
+        primary_key=True,
+        serialize=False,
+        verbose_name='ID'
+        )
+    consumption = models.PositiveIntegerField()
+    counter = models.ForeignKey(
+        Counter, related_name='historys', on_delete=models.CASCADE)
+    registryHistory = models.DateField(auto_now_add=True)

@@ -18,17 +18,12 @@ from rest_framework.generics import (
 )
 
 from .models import (
-    History,
     InvoiceServices
     )
 
 
 from .serializers import (
     # CRUD SERIALIZERS
-    HistorySerializer,
-    UpdateHistorySerializer,
-    CreateHistorySerializer,
-    DeleteHistorySerializer,
 
     InvoiceServicesSerializer,
     CreateInvoiceServicesSerializer,
@@ -49,39 +44,6 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 
 # ============================================Views para el modúlo de Facturas ==========================
-
-#----------------------------------------------------Historys-------------------------------------                                      
-
-#                                                       CRUD
-
-
-class HistoryCreate(ListCreateAPIView):
-    """View para crear una Subestacion"""
-    queryset = History.objects.all()
-    serializer_class = CreateHistorySerializer
-
-class HistoryDetail(RetrieveAPIView):
-    """View para retrive una Subestacion""" 
-    queryset = History.objects.all()
-    serializer_class = HistorySerializer
-
-class HistoryList(ListAPIView):
-    """View para retrive todas las Subestaciones"""
-    queryset = History.objects.all()
-    serializer_class = HistorySerializer
-
-class HistoryUpdate(UpdateAPIView):
-    """View para update una Subestacion"""
-    queryset = History.objects.all()
-    serializer_class = UpdateHistorySerializer
-
-class HistoryDelete(DestroyAPIView):
-    """View para delete una Subestacion"""
-    queryset = History.objects.all()
-    serializer_class = DeleteHistorySerializer
-
-
-#                                                   QUERY
 
 #------------------------------------------------InvoiceServices-------------------------------------
 

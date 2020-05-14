@@ -83,7 +83,7 @@ class Client(models.Model):
     type_client = models.PositiveSmallIntegerField(choices=USER_TYPE_CHOICES)
     interes_mora = models.FloatField()
     cycle = models.CharField(max_length=10)
-    contrat_number = models.IntegerField(unique=True)
+    #contrat_number = models.IntegerField(unique=True)
     financial_state = models.CharField(max_length=10)
     billing = models.CharField(max_length=10)
     

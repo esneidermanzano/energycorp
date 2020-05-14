@@ -91,7 +91,7 @@ class Login(APIView):
 class UserList(ListAPIView):
     queryset = CustomUser.objects.all()
     serializer_class = UserSerializer
-    permission_classes = (AllowOperator,)
+    #spermission_classes = (AllowOperator,)
 
 
 #Listar un usuario por id

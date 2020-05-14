@@ -2,13 +2,6 @@ from django.urls import path
 
 from .views import (
 #   CRUDS
-    HistoryList,
-    HistoryDelete,
-    HistoryDetail,
-    HistoryCreate,
-    HistoryUpdate,
-    HistoryDelete,
-
     InvoiceServicesList,
     InvoiceServicesDetail,
     InvoiceServicesCreate,
@@ -22,13 +15,6 @@ from .views import (
 )
 
 urlpatterns = [
-    #CRUD
-    path('history/', HistoryList.as_view()),
-    path('history/create/', HistoryCreate.as_view()),
-    path('history/<pk>/', HistoryDetail.as_view()),
-    path('history/update/<pk>/', HistoryUpdate.as_view()),
-    path('history/delete/<pk>', HistoryDelete.as_view()),
-    #QUERY
     #CRUD
     path('invoiceservices/', InvoiceServicesList.as_view()),
     path('invoiceservices/create/', InvoiceServicesCreate.as_view()),
