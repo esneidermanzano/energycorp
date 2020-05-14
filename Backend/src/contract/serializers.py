@@ -3,7 +3,7 @@ from .models import (
     Contract,
     Invoice
 )
-
+from energytransfers.serializers import CounterWithHistoriesSerializer
 # Serializer
 from rest_framework import serializers
 
@@ -12,8 +12,9 @@ from rest_framework import serializers
 
 # -----------------------------------------Contract------------------------------------------------
 
+#get contrat with nested counter (that counter contains nested histories)
 class ContractSerializer(serializers.ModelSerializer):
-    
+    counter = CounterWithHistoriesSerializer()
     class Meta:
         model = Contract
         fields = [
