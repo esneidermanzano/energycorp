@@ -4,25 +4,9 @@ from .models import (
     Invoice
 )
 from energytransfers.serializers import CounterSerializer
+from users.serializers import ClientSerializer
 # Serializer
 from rest_framework import serializers
-
-
-# =========================== Serializador para el Modulo Contract ==========================
-
-# -----------------------------------------Contract------------------------------------------------
-
-
-#get contrat with nested counter (that counter contains nested histories)
-class ContractSerializer(serializers.ModelSerializer):
-    counter = CounterSerializer()
-    class Meta:
-        model = Contract
-        fields = [
-            'contractNumber',
-            'client',
-            'counter',
-            ]
 
 
 # -----------------------------------------Invoice------------------------------------------------
@@ -106,5 +90,26 @@ class InactivateInvoiceSerializer(serializers.ModelSerializer):
     def patch(self, request, *args, **kwargs):
         invoice = self.partial_update(request, *args, **kwargs)
         return invoice
+
+# =========================== Serializador para el Modulo Contract ==========================
+
+# -----------------------------------------Contract------------------------------------------------
+
+
+#get contrat with nested invoice and client(that client contains nested counter(that counter contains nested histories)) 
+class ContractSerializer(serializers.ModelSerializer):
+    
+    client = ClientSerializer()
+    invoice = InvoiceSerializer(many= True, read_only= True)
+
+    class Meta:
+        model = Contract
+        fields = [
+            'contractNumber',
+            'invoice',
+            'client',
+           
+            ]
+
 
 #                                      Query
