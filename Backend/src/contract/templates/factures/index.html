@@ -6,14 +6,15 @@
     <title>Example 1</title>
     <style>
       @page {
-        size: A4; /* Change from the default size of A4 */
-        margin: 8mm; /* Set margin on each page */
+        size: letter; /* Change from the default size of A4 */
+        margin: 0mm 0mm 0mm 0mm; /* Set margin on each page */
+        
       }
       .clearfix:after {
-  content: "";
-  display: table;
-  clear: both;
-}
+      content: "";
+      display: table;
+      clear: both;
+    }
 
 a {
   color: #5D6975;
@@ -22,60 +23,125 @@ a {
 
 body {
   position: relative;
-
   margin: 0 auto; 
   color: #001028;
   background: #FFFFFF; 
   font-family: Arial, sans-serif; 
   font-size: 12px; 
-  font-family: Arial;
+  font-family: Arial;  
 }
 
 header {
-  padding: 10px 0;
   margin-bottom: 0px;
+  background:  url('{% static 'factures/dimension.png' %}');
+  background-repeat: no-repeat;
+  background-size: 216mm 160px;
+  height: 170px;
 }
 
+main{
+  margin: 0 20px 0px 20px;
+}
 #logo {
-  text-align: center;
-  margin-bottom: 10px;
+  text-align: left;
+  margin-bottom: 0px;
+  padding-bottom: 90px;
 }
 
 #logo img {
-  width: 90px;
+  margin-top:30px;
+  margin-left:40px;
+  width: 50px;
+  position: absolute;
+
 }
+
+#incontec img{
+  width: 50px;
+  position: absolute;
+  right: 0px;
+  margin-right: 20px;
+  margin-top: -75px;
+  }
 
 h1 {
-  border-top: 1px solid  #5D6975;
-  border-bottom: 1px solid  #5D6975;
+  border-top: 0px solid  #797979;
+  margin-top:20px;
+
   color: #5D6975;
-  font-size: 2.4em;
-  line-height: 1.4em;
-  font-weight: normal;
-  text-align: center;
-  margin: 0 0 20px 0;
-  background: url('{% static 'factures/dimension.png' %}');
+  font-size: 20px;
+  font-weight: bold;
+  position: absolute;
+  margin-left: 100px;
 }
 
-#project {
+#info {
   float: left;
+  border-top: 1px solid #797979;
+  padding: 0px 10px 0px 10px;
+  margin-left: 40px;
+  font-size: 11px;
 }
 
-#project span {
+#info span {
   color: #5D6975;
-  text-align: right;
-  width: 52px;
-  margin-right: 10px;
+  text-align: left;
+  width: 80px;
+  margin-right: 120px;
   display: inline-block;
-  font-size: 0.8em;
+  font-size: 10px;
 }
+#main {
+  margin-top:-70px;
+  margin-right: 90px;
+  float: right;
+  padding: 0px 10px 0px 10px;
+  margin-left: 40px;
+  font-size: 11px;
+  line-height: 15px;
+}
+
+#main span {
+  color: #000;
+  font-weight: bold;
+  text-align: left;
+  width: 80px;
+  margin-right: 120px;
+  display: inline-block;
+  font-size: 10px;
+}
+#main #total {
+  padding: 5px 5px 5px 5px;
+  border-radius: 5px;
+  font-size: 15px;
+  margin-bottom: 10px;
+  margin-left: -5px;
+  color:#fff;  
+  font-weight: bold;
+  background-color: #b81818;
+}
+#main #total span{
+  font-size: 15px;
+  color:#fff;
+
+}
+
 
 #company {
   float: right;
   text-align: right;
 }
-
-#project div,
+#user {
+  position: absolute;
+  margin-top: -45px;
+  margin-left: 100px;
+  text-align: left;
+  font-size: 11px;
+  color: #444
+}
+#info div,
+#user div,
+#main div,
 #company div {
   white-space: nowrap;        
 }
@@ -149,25 +215,36 @@ footer {
   </head>
   <body>
     <header class="clearfix">
+      <h1>EnergyCuck</h1>
       <div id="logo">
         <img src="{% static 'factures/logo.png' %}">
       </div>
-      <h1>ENERGYCUCK</h1>
-      <div id="company" class="clearfix">
-        <div>Company Name</div>
-        <div>455 Foggy Heights,<br /> AZ 85004, US</div>
-        <div>(602) 519-0450</div>
-        <div><a href="mailto:company@example.com">company@example.com</a></div>
+      <div id="incontec">
+        <img src="{% static 'factures/incontec.png' %}">
       </div>
-      <div id="project">
-        <div><span>PROJECT</span> Website development</div>
-        <div><span>CLIENT</span> John Doe</div>
-        <div><span>ADDRESS</span> 796 Silver Harbour, TX 79273, US</div>
-        <div><span>EMAIL</span> <a href="mailto:john@example.com">john@example.com</a></div>
-        <div><span>DATE</span> August 17, 2015</div>
-        <div><span>DUE DATE</span> September 17, 2015</div>
+      <div id="user" class="clearfix">
+        <div>Cecilia Urquijo Barma</div>
+        <div>Diagonal 50B # 94 - 134</div>
+        <div>C.C./Nit 1045127441</div>
+      </div>
+
+      <div id="info">
+        <div><span>Mes Pago de Cuenta</span> Mayo 2020</div>
+        <div><span>Periodo Facturacion</span> 04-01 a 04-30</div>
+        <div><span>Dias Facturados</span> 30</div>
+        <div><span>Ciclo</span> 1</div>
+        <div><span>Fecha de Corte del periodo de Facturcion</span> 2020-04-30</div>
+      </div>
+
+      <div id="main">
+        <div id="total"><span>TOTAL A PAGAR</span> $242415</div>
+        <div><span>CONTRATO</span> 20200515</div>
+        <div><span>FECHA DE VENCIMIENTO</span> 2020-05-05</div>
+        <div><span>FECHA D EXPEDICION</span> 2020-04-30</div>
       </div>
     </header>
+
+
     <main>
       <table>
         <thead>
@@ -228,6 +305,12 @@ footer {
       </div>
     </main>
     <footer>
+      <div id="company" class="clearfix">
+        <div>Nit: 890.399.001-7</div>
+        <div>Gran Contribuyente</div>
+        <div>(602) 519-0450</div>
+        <div><a href="mailto:company@example.com">company@example.com</a></div>
+      </div>
       Invoice was created on a computer and is valid without the signature and seal.
     </footer>
   </body>
