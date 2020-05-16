@@ -101,18 +101,76 @@ class InvoiceInactivate(UpdateAPIView):
 
 #--------------------------------------Generate PDF invoice---------------------------------                                      
 
+data = {
+        "contractNumber": 20200515,
+        "invoice": [
+            {
+                "codeInvoice": 1,
+                "consumptiondaysInvoice": 30,
+                "paymentdeadlineInvoice": "2020-05-05",
+                "billingdateInvoice": "2020-04-30",
+                "stateInvoice": True,
+                "referencecodeInvoice": "20200430(175915326153)3640602",
+                "total": 242415.0,
+                "contract": 20200515
+            }
+        ],
+        "client": {
+            "id": 1,
+            "type_client": 1,
+            "interes_mora": 0.0,
+            "cycle": "1",
+            "financial_state": "libre",
+            "billing": "no se",
+            "user": {
+                "id": 1,
+                "id_user": "1045127441",
+                "name": "Cecilia Urquijo Barma",
+                "email": "Cecilia@hotmail.com",
+                "password": "pbkdf2_sha256$180000$JT8e0Cd32oKW$7Zei9Q+gAB7fEK+6iJRYdHxZnCoaCJKvCsXHBxEACqY=",
+                "phone": "4982762",
+                "address": "Diagonal 50B # 94 - 134",
+                "neighborhood": "El bronx",
+                "stratus": 4,
+                "is_active": True,
+                "is_staff": False,
+                "is_superuser": False
+            },
+            "counters": [
+                {
+                    "codeCounter": 1,
+                    "latitudeCounter": "3.429708",
+                    "lengthCounter": "-76.501172",
+                    "value": 227.0,
+                    "addressCounter": "Cra. 28c #50-2 a 50-178",
+                    "transformatorCounter": 1,
+                    "historys": [
+                        {
+                            "codeHistory": 1,
+                            "consumption": 17,
+                            "registryHistory": "2020-04-30",
+                            "counter": 1
+                        },
+                        {
+                            "codeHistory": 2,
+                            "consumption": 48,
+                            "registryHistory": "2020-05-13",
+                            "counter": 1
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+
 class GeneratePdf(View):
     def get(self, request, *args, **kwargs):
         """Generate pdf."""
         # Model data
-        data = {
-            'today': datetime.date.today(), 
-            'amount': 39.99,
-            'customer_name': 'Cooper Mann',
-            'order_id': 1233434,
-        }
+
         # Rendered
-        html_string = render_to_string('factures/index.html', data)
+        print(data['invoice'][0])
+        html_string = render_to_string('contract/index.html', data)
         html = HTML(string=html_string, base_url=request.build_absolute_uri())
         result = html.write_pdf()
 
@@ -159,7 +217,7 @@ class SendEmail(APIView):
                'order_id': 1233434,
            }
            # Rendered pdf
-          html_string = render_to_string('factures/index.html', data)
+          html_string = render_to_string('contract/index.html', data)
           html = HTML(string=html_string, base_url=request.build_absolute_uri())
           result = html.write_pdf()
 
