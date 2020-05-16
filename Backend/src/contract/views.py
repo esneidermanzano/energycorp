@@ -169,7 +169,8 @@ class GeneratePdf(View):
         # Model data
 
         # Rendered
-        html_string = render_to_string('factures/index.html', data)
+        print(data['invoice'][0])
+        html_string = render_to_string('contract/index.html', data)
         html = HTML(string=html_string, base_url=request.build_absolute_uri())
         result = html.write_pdf()
 
@@ -216,7 +217,7 @@ class SendEmail(APIView):
                'order_id': 1233434,
            }
            # Rendered pdf
-          html_string = render_to_string('factures/index.html', data)
+          html_string = render_to_string('contract/index.html', data)
           html = HTML(string=html_string, base_url=request.build_absolute_uri())
           result = html.write_pdf()
 

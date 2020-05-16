@@ -1,0 +1,466 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <title>Example 1</title>
+    <style>
+      @page {
+        size: letter; /* Change from the default size of A4 */
+        margin: 0mm 0mm 0mm 0mm; /* Set margin on each page */
+        
+      }
+      .clearfix:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+a {
+  color: #5D6975;
+  text-decoration: underline;
+}
+
+body {
+  position: relative;
+  margin: 0 auto; 
+  color: #001028;
+  background: #FFFFFF; 
+  font-family: Arial, sans-serif; 
+  font-size: 12px; 
+  font-family: Arial;  
+  
+}
+
+header {
+  margin-bottom: 0px;
+  background:  url('{% static 'contract/dimension.png' %}');
+  background-repeat: no-repeat;
+  background-size: 216mm 160px;
+  height: 170px;
+}
+
+main{
+  margin: 0 20px 0px 20px;
+  height: 650px!important;
+}
+
+#logo {
+  text-align: left;
+  margin-bottom: 0px;
+  padding-bottom: 90px;
+}
+
+#logo img, #logof img {
+  margin-top:30px;
+  margin-left:40px;
+  width: 50px;
+  position: absolute;
+}
+
+
+
+
+#incontec img{
+  width: 50px;
+  position: absolute;
+  right: 0px;
+  margin-right: 20px;
+  margin-top: -75px;
+  }
+
+#publicidad img{
+  width: 205mm;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+
+h1 {
+  border-top: 0px solid  #797979;
+  margin-top:20px;
+
+  color: #5D6975;
+  font-size: 20px;
+  font-weight: bold;
+  position: absolute;
+  margin-left: 100px;
+}
+
+#info {
+  float: left;
+  border-top: 1px solid #797979;
+  padding: 0px 10px 0px 10px;
+  margin-left: 40px;
+  font-size: 11px;
+}
+
+#info span {
+  color: #5D6975;
+  text-align: left;
+  width: 80px;
+  margin-right: 120px;
+  display: inline-block;
+  font-size: 10px;
+}
+
+#energy{
+  font-size: 11px;
+}
+
+#energy span {
+  text-align: left;
+  width: 100px;
+  margin-right: 20px;
+  display: inline-block;
+}
+
+#energy div:nth-child(2n){
+  background-color: #eee;
+}
+.main {
+  margin-top:-70px;
+  margin-right: 90px;
+  float: right;
+  padding: 0px 10px 0px 10px;
+  margin-left: 40px;
+  font-size: 11px;
+  line-height: 15px;
+}
+
+.main span {
+  color: #000;
+  font-weight: bold;
+  text-align: left;
+  width: 80px;
+  margin-right: 120px;
+  display: inline-block;
+  font-size: 10px;
+}
+.main #total {
+  padding: 5px 5px 5px 5px;
+  border-radius: 5px;
+  font-size: 15px;
+  margin-bottom: 10px;
+  margin-left: -5px;
+  color:#fff;  
+  font-weight: bold;
+  background-color: #b81818;
+}
+.main #total span{
+  font-size: 15px;
+  color:#fff;
+
+}
+
+
+#company {
+  margin-top: 0px;
+  float: right;
+  margin-right: 20px;
+  text-align: right;
+  color:#333;
+  font-size: 10px;
+}
+.user {
+  position: absolute;
+  margin-top: -45px;
+  margin-left: 100px;
+  text-align: left;
+  font-size: 11px;
+  color: #444
+}
+#info div,
+#energy div,
+.user div,
+.main div,
+#company div {
+  white-space: nowrap;        
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin-bottom: 20px;
+}
+
+table th {
+  padding: 5px 20px;
+  color: #333;
+  font-weight: bold;
+  background-color: #e1e1e1;
+  border-bottom: 1px solid #C1CED9;
+  white-space: nowrap;        
+}
+
+table .service,
+table .desc {
+  text-align: left;
+}
+
+table td {
+  padding: 2px;
+  border-right: 1px solid #797979;
+}
+
+table td.service,
+table td.desc {
+  vertical-align: top;
+}
+
+table td.unit,
+table td.qty,
+table td.total {
+  font-size: 1.2em;
+}
+
+.data {
+  font-size: 11px;
+  padding-left: 5px;
+}
+
+
+.money{
+  text-align: right;
+  padding-right: 5px;
+}
+
+
+
+#totalEnergy{
+  background-color: #eee;
+  text-align: right;
+  border-radius: 10px 0px 0 10px;
+}
+#concep{
+  font-size:12px;
+}
+#concep2{
+  font-size:11px;
+}
+#notices .notice {
+  color: #5D6975;
+  font-size: 1.2em;
+}
+
+footer {
+  bottom:0px!important;
+  color: #5D6975;
+  width: 100%;
+  position: relative;
+  border-top: 1px solid #797979;
+  border-top-style: dashed;
+  text-align: center;
+
+}
+    
+#barras img{
+  height: 80px;
+}
+#barras{
+  width: 70%;
+  text-align: center;
+}
+
+#comienzof{
+  position: relative;
+}
+#comienzof .main{
+  margin-top: 20px;
+  font-weight: bold;
+  margin-right: 20px;
+}
+#logof{
+  margin-top:-10px
+}
+
+#comienzof .comp{
+  font-weight: bold;
+  margin-top: 30px;
+  line-height: 15px;
+}
+
+#comienzof .datauser{
+  margin-top: 25px;
+  line-height: 15px;
+  left: 200px;
+}
+
+#finalf{
+  margin-top: 100px;
+}
+    </style> 
+  </head>
+  <body>
+    <header class="clearfix">
+      <h1>EnergyCuck</h1>
+      
+      <div id="logo">
+        <img src="{% static 'contract/logo.png' %}">
+      </div>
+      <div id="incontec">
+        <img src="{% static 'contract/incontec.png' %}">
+      </div>
+      <div class="user" class="clearfix">
+        <div>Cecilia Urquijo Barma</div>
+        <div>Diagonal 50B # 94 - 134</div>
+        <div>C.C./Nit 1045127441</div>
+      </div>
+
+      <div id="info">
+        <div><span>Mes Pago de Cuenta</span> Mayo 2020</div>
+        <div><span>Periodo Facturacion</span> 04-01 a 04-30</div>
+        <div><span>Dias Facturados</span> 30</div>
+        <div><span>Ciclo</span> 1</div>
+        <div><span>Fecha de Corte del periodo de Facturcion</span> 2020-04-30</div>
+      </div>
+
+      <div class="main">
+        <div id="total"><span>TOTAL A PAGAR</span> $242415</div>
+        <div><span>CONTRATO</span> 20200515</div>
+        <div><span>FECHA DE VENCIMIENTO</span> 2020-05-05</div>
+        <div><span>FECHA D EXPEDICION</span> 2020-04-30</div>
+      </div>
+    </header>
+
+
+    <main>
+      
+      <div id="publicidad">
+        <img src="{% static 'contract/publicidad.png' %}">
+      </div>
+      
+      <table>
+        <thead>
+          <tr>
+            <th colspan="7" class="service">ENERGIA</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div id="energy">
+                <div><span>Uso</span> Residencial</div>
+                <div><span>Estrato</span> 4</div>
+                <div><span>Numero de Medidor</span> C2AA_1</div>
+                <div><span>Lectura Actual</span> 8642</div>
+                <div><span>Lectura Anterior</span> 8051</div>
+                <div><span>Diferencia</span> 591</div>
+                <div><span>Consumo Actual</span> 591 KWH</div>
+                </div>
+            </td>
+            <td class="data">
+              <div id="concep"><b>CONCEPTOS</b></div>
+              <div><span>Consumo de Energia Activa</span></div>
+              <div><span>Consumo Basico Hasta 173</span></div>
+              <div><span>ConsumoMayor al Basico</span></div>
+              <div><span>Interes Mora 0.5%</span></div>
+              <div><span>Otros Cobros</span></div>
+              <div><span>Ajuste al Peso</span></div>
+            </td>
+
+            <td class="data">
+              <div id="concep2"><b>Cantidad</b></div>
+              <div><span>&nbsp;</span></div>
+              <div><span>173</span></div>
+              <div><span>369</span></div>
+              <div><span>&nbsp;</span></div>
+              <div><span>&nbsp;</span></div>
+              <div><span>&nbsp;</span></div>
+            </td>
+            
+            <td class="data">
+              <div id="concep2"><b>Valor Unitario</b></div>
+              <div><span>&nbsp;</span></div>
+              <div><span>384</span></div>
+              <div><span>384</span></div>
+              <div><span>&nbsp;</span></div>
+              <div><span>&nbsp;</span></div>
+              <div><span>&nbsp;</span></div>
+            </td>
+
+            <td class="data money">
+              <div id="concep2"><b>Valor Total</b></div>
+              <div><span>&nbsp;</span></div>
+              <div><span>66,408.15</span></div>
+              <div><span>141,845.13</span></div>
+              <div><span>&nbsp;</span></div>
+              <div><span>&nbsp;</span></div>
+              <div><span>&nbsp;</span></div>
+            </td>
+
+            <td class="data money">
+              <div id="concep2"><b>Subsidio</b></div>
+              <div><span>&nbsp;</span></div>
+              <div><span>-9,961.22</span></div>
+              <div><span>&nbsp;</span></div>
+              <div><span>&nbsp;</span></div>
+              <div><span>&nbsp;</span></div>
+              <div><span>&nbsp;</span></div>
+            </td>
+
+            <td class="data money">
+              <div id="concep2"><b>Total</b></div>
+              <div><span>&nbsp;</span></div>
+              <div><span>56,446.93</span></div>
+              <div><span>141,845.13</span></div>
+              <div><span>228.52</span></div>
+              <div><span>48,830.00</span></div>
+              <div><span>0</span></div>
+            </td>
+
+          </tr>
+          <tr>
+            <td></td>
+            <td colspan="6" id="totalEnergy">
+              <div><b>149,140.45</b></div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </main>
+    <footer>
+      <div id="comienzof">
+        <div id="logof">
+          <img src="{% static 'contract/logo.png' %}">
+        </div>
+        <div class="user comp" class="clearfix">
+          <div>ENERGYCUCK</div>
+          <div>EMPRESA DE ENERGIA</div>
+          <div>Nit: 890,399,033-8</div>
+        </div>
+        <div class="user datauser" class="clearfix">
+          <div><b>CECILIA URQUIJO BARMA</b></div>
+          <div>Diagonal 50B # 94 - 134</div>
+          <div>C.C./Nit 1045127441</div>
+          <div>Contrato: 20200515</div>
+        </div>
+        <div class="main">
+          <div id="total"><span>TOTAL A PAGAR</span> $242415</div>
+          <div><span>FECHA DE VENCIMIENTO</span> 2020-05-05</div>
+          <div><span>FECHA D EXPEDICION</span> 2020-04-30</div>
+        </div>
+      </div>
+     
+      <div id="finalf">
+        <div id="company" class="clearfix">
+          <div><b>VIGILADO POR:</b></div>
+          <div><b>SUPERINTENDENCIA DE SERVICIOS</b></div>
+          <div><b>PUBLICOS IMAGINARIOS</b></div>
+          <div>Linea Gratuita Nacional</div>
+          <div>01 8000 123654</div>
+          <div>sspi@fakeservicios.gov.co</div>
+          <div>Cra 18 No. 83-65 Bogota DC Colombia</div>
+        </div>
+        <div id="barras">
+          <img src="{% static 'contract/codigo.png' %}">
+          <spa>20200430(175915326153)3640602</spa>
+        </div>
+    </div>
+      <br/>
+      Los Cuchos S.A © (2019). Esta factura fue generada automaticamente por computadora..
+    </footer>
+  </body>
+</html>
