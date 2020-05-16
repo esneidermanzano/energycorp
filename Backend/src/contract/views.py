@@ -11,7 +11,7 @@ from django.template.loader import get_template
 from django.shortcuts import render
 from django.core.mail import EmailMultiAlternatives
 from django.conf import settings
-from users.models import CustomUser
+import json
 #============end=============
 
 from rest_framework.generics import (
@@ -132,15 +132,23 @@ class GeneratePdf(View):
 #=============================View send invoice=======================================
 class SendEmail(APIView):
   def post(self,request):      
-      id_user = request.data.get('id_user')
-      #client Query for extract email and name    
-      client_queryset = CustomUser.objects.filter(
-          id_user__iexact=id_user).values('email','name')
-      if (client_queryset.exists()): 
-          #Extract client of query
-          client= client_queryset[0]
-          fecha= datetime.date.today().month
+      contractNumber = request.data.get('contractNumber')
+      #Query for extract JOIN Invoice,Client, Contract, Counter, History with <pk> 
+      #Example: {"contractNumber": 20200515}
+      queryset = Contract.objects.filter(
+          contractNumber__iexact=contractNumber)
+      serializer_class = ContractSerializer(queryset, many=True).data
 
+      if (queryset.exists()):
+          #DICT->JSON       
+          query= json.dumps(serializer_class)
+          jsonQuery= json.loads(query)
+          
+          print(jsonQuery) 
+          
+
+
+          """fecha= datetime.date.today().month
           message_email= "Apreciado "\
                + client['name']+" generamos tu factura del mes " \
                  + str(fecha) + " con fecha limite de pago..."
@@ -164,8 +172,8 @@ class SendEmail(APIView):
           result = html.write_pdf()
 
           email.attach( client['name']+'.pdf',result, 'application/pdf')
-          email.send()
-          return Response({"message": "ok vamos a enviar el mensaje"})
+          email.send()"""
+          return Response({"message": jsonQuery})
       else:
            message = "El id proporcionado no existe o el usuario no está activo"
            return Response({"message": message , "code": 204, 'data': {}} )
