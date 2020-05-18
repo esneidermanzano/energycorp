@@ -1,6 +1,6 @@
 import datetime
 import random
-
+from energytransfers.models import Counter, History
 
 data = {
     "name": 0,
@@ -28,6 +28,14 @@ data = {
     "intakes": 1
 
 }
+def generateHistory():
+    contadores = Counter.objects.filter(is_active=True).values('codeCounter', 'value')
+    for counter in contadores:
+        history = History.objects.filter(
+            counter=counter['codeCounter']).order_by('-codeHistory').values('current')[:1]
+        print(history)
+
+    print(contadores)
 
 def generateInvoice(query):
     data['name'] = query['client']['user']['name']
@@ -92,4 +100,6 @@ def generateInvoice(query):
         reading = history['consumption']
         intakes.append([{"month":month}, {"reading": reading}])
     data['intakes'] = intakes
+
+    generateHistory()
     return data
