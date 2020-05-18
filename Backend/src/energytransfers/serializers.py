@@ -248,6 +248,7 @@ class CreateHistorySerializer(serializers.ModelSerializer):
         model = History
         fields = [
             'counter',
+            'current',
             'consumption'
             #'registryHistory'
         ]
@@ -255,6 +256,7 @@ class CreateHistorySerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         history = History.objects.create(
             counter=validated_data['counter'],
+            current=validated_data['current'],
             consumption=validated_data['consumption']
             #registryHistory=validated_data['registryHistory']
         )
@@ -298,6 +300,7 @@ class CounterHistoriesSerializer(serializers.ModelSerializer):
             'lengthCounter',
             'value',
             'addressCounter',
+            'stratum',
             'transformatorCounter',
             'historys'
             ]

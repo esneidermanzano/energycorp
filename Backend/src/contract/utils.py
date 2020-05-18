@@ -1,4 +1,5 @@
 import datetime
+import random
 
 data = {
     "name": 0,
@@ -7,7 +8,6 @@ data = {
     "payMonth":1,
     "rangeBilling": 1,
     "days":0,
-    "cycle": 0,
     "deadDatePay": 1,
     "stratum": 1,
     "counter":1,
@@ -23,7 +23,8 @@ data = {
     "totalBasicSubsidy": 1,
     "total": 1,
     "contract":0,
-    "reference": 1
+    "reference": 1,
+    "intakes": 1
 
 }
 
@@ -40,4 +41,50 @@ def generateInvoice(query):
     data['rangeBilling'] =frdate.replace(day=1).strftime('%m-%d') +" a " + frdate.strftime('%m-%d')
     data['days'] = frdate.strftime('%d')
     data['deadDatePay'] = payMonth.strftime("%b-%d-%Y")
+    data['stratum'] = query['counter']['stratum']
+    data['counter'] = query['counter']['codeCounter']
+    data['currentRecord'] = query['counter']['historys'][0]['consumption']
+    data['pastRecord'] = query['counter']['historys'][1]['consumption']
+    data['difference'] = data['currentRecord'] - data['pastRecord']
+    
+    basic = 173
+    if data['difference'] > basic:
+        data['basicTake'] = basic
+        data['remainder'] = data['difference'] - basic
+    else:
+        data['basicTake'] = data['difference']
+        data['remainder'] = 0
+    
+    unitaryValue = 598
+    data['interest'] = query['client']['interes_mora']
+    data['totalBasic'] = data['basicTake']*unitaryValue
+    data['totalRemainder'] = data['remainder']*unitaryValue
+
+    subsidyValue = 0
+
+    if data['stratum'] == 1:
+        subsidyValue = 0.6
+    elif data['stratum'] == 2:
+        subsidyValue = 0.5
+    elif data['stratum'] == 3:
+        subsidyValue = 0.15
+    else:
+        subsidyValue = 0
+    
+    data['subsidy'] = -data['totalBasic']*subsidyValue
+    data['totalBasicSubsidy'] = data['totalBasic'] + data['subsidy']
+
+    data['total'] = data['totalBasicSubsidy'] + data['totalRemainder']
+    data['contract'] = query['contractNumber']
+
+    now = datetime.datetime.now()
+    code = str(now).replace(':', '').replace('.', '').replace('-','').split()
+    reference = code[0] + "("+ code[1]+")"+ str(random.randint(1111111,9999999))
+
+    data['reference'] = reference
+
+    intakes = []
+
+    for history in query['counter']['historys']:
+        print("nle")
     return data
