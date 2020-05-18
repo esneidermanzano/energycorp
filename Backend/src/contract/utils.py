@@ -1,5 +1,7 @@
 import datetime
 import random
+import locale
+locale.setlocale(locale.LC_ALL, ("es_ES", "UTF-8"))
 
 data = {
     "name": 0,
@@ -37,8 +39,8 @@ def generateInvoice(query):
     frdate = datetime.datetime.strptime(finalRecordDate,'%Y-%m-%d')
     payMonth = frdate + datetime.timedelta(days=10)
 
-    data['payMonth'] = payMonth.strftime("%b-%Y")
-    data['rangeBilling'] =frdate.replace(day=1).strftime('%m-%d') +" a " + frdate.strftime('%m-%d')
+    data['payMonth'] = payMonth.strftime("%B-%Y")
+    data['rangeBilling'] =frdate.replace(day=1).strftime('%b-%d') +" a " + frdate.strftime('%b-%d')
     data['days'] = frdate.strftime('%d')
     data['deadDatePay'] = payMonth.strftime("%b-%d-%Y")
     data['stratum'] = query['counter']['stratum']
@@ -86,5 +88,9 @@ def generateInvoice(query):
     intakes = []
 
     for history in query['counter']['historys']:
-        print("nle")
+        month = datetime.datetime.strptime(history['registryHistory'],'%Y-%m-%d')
+        month = month.strftime('%B')
+        reading = history['consumption']
+        intakes.append([{"month":month}, {"reading": reading}])
+    data['intakes'] = intakes
     return data
