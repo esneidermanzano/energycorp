@@ -20,7 +20,6 @@ class UserSerializer(serializers.ModelSerializer):
             'phone', 
             'address', 
             'neighborhood', 
-            'stratus',
             'is_active', 
             'is_staff', 
             'is_superuser'
@@ -43,7 +42,6 @@ class CreateUserSerializer(serializers.ModelSerializer):
             'phone', 
             'address', 
             'neighborhood', 
-            'stratus',
             'is_active', 
             'is_staff', 
             'is_superuser'
@@ -59,7 +57,6 @@ class CreateUserSerializer(serializers.ModelSerializer):
             phone = validated_data['phone'],
             address=validated_data['address'],
             neighborhood=validated_data['neighborhood'],
-            stratus=validated_data['stratus'],
             #date_of_birth=validated_data['date_of_birth'],
             is_active=validated_data['is_active'],
             is_staff=validated_data['is_staff'],
@@ -83,7 +80,6 @@ class UpdateUserSerializer(serializers.ModelSerializer):
             'phone', 
             'address', 
             'neighborhood', 
-            'stratus',
             'is_active', 
             'is_staff', 
             'is_superuser'
@@ -105,9 +101,6 @@ class ClientSerializer(serializers.ModelSerializer):
             'id',            
             'type_client', 
             'interes_mora', 
-            'cycle', 
-            'financial_state',
-            'billing',
             'user',
         ]
 
@@ -119,10 +112,8 @@ class CreateClientSerializer(serializers.ModelSerializer):
         fields = [
             'user', 
             'type_client', 
-            'interes_mora', 
-            'cycle', 
-            'financial_state',
-            'billing'
+            'interes_mora'
+
         ]
 
 
@@ -136,9 +127,6 @@ class CreateNewClientSerializer(serializers.ModelSerializer):
         fields = [            
             'type_client', 
             'interes_mora', 
-            'cycle', 
-            'financial_state',
-            'billing',
             'user', 
         ]
 
@@ -160,9 +148,6 @@ class UpdateClientSerializer(serializers.ModelSerializer):
             'type_client', 
             'interes_mora',
             'category',
-            'cycle',
-            'financial_state',
-            'billing'
         ]
 
     def update(self, instance, validated_data):

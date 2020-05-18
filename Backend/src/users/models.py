@@ -50,7 +50,6 @@ class CustomUser(AbstractUser):
         validators=[phone_validate], max_length=10, unique=True)
     address = models.CharField(max_length=50)
     neighborhood = models.CharField(max_length=20)
-    stratus = models.PositiveSmallIntegerField()
     is_active = models.BooleanField(default=True)
     date_of_birth = models.DateField(default=datetime.date.today)
     is_staff = models.BooleanField(default=True)
@@ -82,10 +81,6 @@ class Client(models.Model):
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     type_client = models.PositiveSmallIntegerField(choices=USER_TYPE_CHOICES)
     interes_mora = models.FloatField()
-    cycle = models.CharField(max_length=10)
-    #contrat_number = models.IntegerField(unique=True)
-    financial_state = models.CharField(max_length=10)
-    billing = models.CharField(max_length=10)
     
     def __str__(self):
         return 'The Client: {}'.format(
