@@ -70,6 +70,7 @@ class History(models.Model):
         serialize=False,
         verbose_name='ID'
         )
+    current = models.PositiveIntegerField()
     consumption = models.PositiveIntegerField()
     counter = models.ForeignKey(
         Counter, related_name='historys', on_delete=models.CASCADE)
