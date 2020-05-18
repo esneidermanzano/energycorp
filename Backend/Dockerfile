@@ -1,9 +1,6 @@
 FROM python:3.6-stretch
 ENV PYTHONUNBUFFERED 1
 
-COPY ./.locales .
-RUN export LC_ALL="es_ES.UTF-8"
-
 RUN mkdir /app
 WORKDIR /app
 
