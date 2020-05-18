@@ -1,7 +1,6 @@
 import datetime
 import random
-import locale
-locale.setlocale(locale.LC_ALL, ("es_ES", "UTF-8"))
+
 
 data = {
     "name": 0,
