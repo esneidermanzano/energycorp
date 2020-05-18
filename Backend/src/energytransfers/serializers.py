@@ -1,3 +1,5 @@
+from rest_framework import serializers
+
 # Modelos para los Transformadores de Energia.
 from energytransfers.models import (
     Substation,
@@ -5,8 +7,7 @@ from energytransfers.models import (
     Counter,
     History
 )
-# Serializer
-from rest_framework import serializers
+
 
 # =========================== Serializador para el Modulo Energy Transfer ==========================
 
@@ -143,63 +144,24 @@ class InactivateTransformatorSerializer(serializers.ModelSerializer):
 
 #                                      Query
 
-# -------------------------------------------History-------------------------------------------
-
-#                                               CRUD
-
-class CreateHistorySerializer(serializers.ModelSerializer):
-    """Serializador para las operaciones Create"""
-    class Meta:
-        model = History
-        fields = [
-            'counter',
-            'consumption'
-            #'registryHistory'
-        ]
-
-    def create(self, validated_data):
-        history = History.objects.create(
-            counter=validated_data['counter'],
-            consumption=validated_data['consumption']
-            #registryHistory=validated_data['registryHistory']
-        )
-        history.save()
-        return history
-
-
-class HistorySerializer(serializers.ModelSerializer):
-    """Serializador para las operaciones Retrive"""
-    class Meta:
-        model = History
-        fields = '__all__'
-
-class UpdateHistorySerializer(serializers.ModelSerializer):
-    """Serializador para las operaciones Update"""
-    class Meta:
-        model = History
-        fields = [
-            'registryHistory',
-            'consumption'
-        ]
-
-    def update(self, instance, validated_data):
-        history = super().update(instance, validated_data)
-        return history
-
-class DeleteHistorySerializer(serializers.ModelSerializer):
-    """Serializador para las operaciones Delete"""
-    class Meta:
-        model = History
-        fields = '__all__'
-
-    def perform_destroy(self, instance):
-        instance.delete()
-
-
-#                                            Querys
 # -----------------------------------------Counter------------------------------------------------
 
 #                                              CRUD
+
+
+class CounterSerializer(serializers.ModelSerializer):
+    """Counter para las operaciones Retrive"""    
+    class Meta:
+        model = Counter
+        fields = [
+            'codeCounter',
+            'latitudeCounter',
+            'lengthCounter',
+            'value',
+            'addressCounter',
+            'transformatorCounter',
+            ]
+
 class CreateCounterSerializer(serializers.ModelSerializer):
     """Counter para las operaciones Create"""
     class Meta:
@@ -227,24 +189,7 @@ class CreateCounterSerializer(serializers.ModelSerializer):
         
         counter.save()
         return counter
-    
-class CounterSerializer(serializers.ModelSerializer):
-    """Counter para las operaciones Retrive"""
-    
-    
-    historys = HistorySerializer(many=True, read_only= True)
-    
-    class Meta:
-        model = Counter
-        fields = [
-            'codeCounter',
-            'latitudeCounter',
-            'lengthCounter',
-            'value',
-            'addressCounter',
-            'transformatorCounter',
-            'historys'
-            ]
+
         
 class UpdateCounterSerializer(serializers.ModelSerializer):
     """Counter para las operaciones Update"""
@@ -283,3 +228,72 @@ class InactivateCounterSerializer(serializers.ModelSerializer):
     
 #                                           Query
    
+# -------------------------------------------History-------------------------------------------
+
+#                                               CRUD
+
+class HistorySerializer(serializers.ModelSerializer):
+    """Serializador para las operaciones Retrive"""
+    class Meta:
+        model = History
+        fields = '__all__'
+        
+class CreateHistorySerializer(serializers.ModelSerializer):
+    """Serializador para las operaciones Create"""
+    class Meta:
+        model = History
+        fields = [
+            'counter',
+            'consumption'
+            #'registryHistory'
+        ]
+
+    def create(self, validated_data):
+        history = History.objects.create(
+            counter=validated_data['counter'],
+            consumption=validated_data['consumption']
+            #registryHistory=validated_data['registryHistory']
+        )
+        history.save()
+        return history
+
+class UpdateHistorySerializer(serializers.ModelSerializer):
+    """Serializador para las operaciones Update"""
+    class Meta:
+        model = History
+        fields = [
+            'registryHistory',
+            'consumption'
+        ]
+
+    def update(self, instance, validated_data):
+        history = super().update(instance, validated_data)
+        return history
+
+class DeleteHistorySerializer(serializers.ModelSerializer):
+    """Serializador para las operaciones Delete"""
+    class Meta:
+        model = History
+        fields = '__all__'
+
+    def perform_destroy(self, instance):
+        instance.delete()
+
+
+#                                            Querys
+
+
+#==================== obtener contador con historias les anidadas ==================
+class CounterHistoriesSerializer(serializers.ModelSerializer):
+    historys = HistorySerializer(many=True, read_only= True)
+    class Meta:
+        model = Counter
+        fields = [
+            'codeCounter',
+            'latitudeCounter',
+            'lengthCounter',
+            'value',
+            'addressCounter',
+            'transformatorCounter',
+            'historys'
+            ]
