@@ -102,66 +102,31 @@ class InvoiceInactivate(UpdateAPIView):
 #--------------------------------------Generate PDF invoice---------------------------------                                      
 
 data = {
-        "contractNumber": 20200515,
-        "invoice": [
-            {
-                "codeInvoice": 1,
-                "consumptiondaysInvoice": 30,
-                "paymentdeadlineInvoice": "2020-05-05",
-                "billingdateInvoice": "2020-04-30",
-                "stateInvoice": True,
-                "referencecodeInvoice": "20200430(175915326153)3640602",
-                "total": 242415.0,
-                "contract": 20200515
-            }
-        ],
-        "client": {
-            "id": 1,
-            "type_client": 1,
-            "interes_mora": 0.0,
-            "cycle": "1",
-            "financial_state": "libre",
-            "billing": "no se",
-            "user": {
-                "id": 1,
-                "id_user": "1045127441",
-                "name": "Cecilia Urquijo Barma",
-                "email": "Cecilia@hotmail.com",
-                "password": "pbkdf2_sha256$180000$JT8e0Cd32oKW$7Zei9Q+gAB7fEK+6iJRYdHxZnCoaCJKvCsXHBxEACqY=",
-                "phone": "4982762",
-                "address": "Diagonal 50B # 94 - 134",
-                "neighborhood": "El bronx",
-                "stratus": 4,
-                "is_active": True,
-                "is_staff": False,
-                "is_superuser": False
-            },
-            "counters": [
-                {
-                    "codeCounter": 1,
-                    "latitudeCounter": "3.429708",
-                    "lengthCounter": "-76.501172",
-                    "value": 227.0,
-                    "addressCounter": "Cra. 28c #50-2 a 50-178",
-                    "transformatorCounter": 1,
-                    "historys": [
-                        {
-                            "codeHistory": 1,
-                            "consumption": 17,
-                            "registryHistory": "2020-04-30",
-                            "counter": 1
-                        },
-                        {
-                            "codeHistory": 2,
-                            "consumption": 48,
-                            "registryHistory": "2020-05-13",
-                            "counter": 1
-                        }
-                    ]
-                }
-            ]
-        }
-    }
+    "name": 0,
+    "address": 0,
+    "identification": 0,
+    "payMonth":1,
+    "rangeBilling": 1,
+    "days":0,
+    "cycle": 0,
+    "deadDatePay": 1,
+    "stratum": 1,
+    "counter":1,
+    "currentRecord":1,
+    "pastRecord":1,
+    "difference":0,
+    "basicTake": 1,
+    "remainder": 1,
+    "interest": 1,
+    "totalBasic": 1,
+    "totalRemainder":1,
+    "subsidy": 1,
+    "totalBasicSubsidy": 1,
+    "total": 1,
+    "contract":0,
+    "reference": 1
+
+}
 
 class GeneratePdf(View):
     def get(self, request, contract):
@@ -171,7 +136,7 @@ class GeneratePdf(View):
         # Model data
         queryset = Contract.objects.filter(
             contractNumber__iexact=contractNumber)
-        serializer_class = ContractSerializer(queryset, many=True).data
+        data = ContractSerializer(queryset, many=True).data
 
         if (queryset.exists()):
             nel = "save"
@@ -179,11 +144,11 @@ class GeneratePdf(View):
         else:
             print("no existe")
         # Rendered
-        print(serializer_class.values().contractNumber)
-        print("================================================")
-        print(serializer_class[0]['invoice'][0]['consumptiondaysInvoice'])
-
-        html_string = render_to_string('contract/index.html', data)
+        #print(dict(data))
+        template = {
+            "name": "enersto"
+        }
+        html_string = render_to_string('contract/index.html', template)
         html = HTML(string=html_string, base_url=request.build_absolute_uri())
         result = html.write_pdf()
 

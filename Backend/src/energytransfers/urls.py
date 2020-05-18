@@ -67,5 +67,5 @@ urlpatterns = [
     path('history/update/<pk>/', HistoryUpdate.as_view()),
     path('history/delete/<pk>', HistoryDelete.as_view()),
     #QUERY
-    path('history/lastfive-bycounter/<counter>', HistoryListLastFive.as_view()),
+    path('history/last/<counter>', HistoryListLastFive.as_view()),
 ]

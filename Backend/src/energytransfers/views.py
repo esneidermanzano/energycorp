@@ -28,6 +28,7 @@ from energytransfers.serializers import (
     DeleteTransformatorSerializer,
 
     CounterSerializer,
+    CounterHistoriesSerializer,
     CreateCounterSerializer,
     UpdateCounterSerializer,
     InactivateCounterSerializer,
