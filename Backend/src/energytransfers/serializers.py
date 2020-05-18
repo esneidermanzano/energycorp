@@ -159,6 +159,7 @@ class CounterSerializer(serializers.ModelSerializer):
             'lengthCounter',
             'value',
             'addressCounter',
+            'stratum',
             'transformatorCounter',
             ]
 
@@ -171,6 +172,7 @@ class CreateCounterSerializer(serializers.ModelSerializer):
             'lengthCounter',
             'value',
             'addressCounter',
+            'stratum',
             'is_active',
             'transformatorCounter',
             'clientCounter'
@@ -183,6 +185,7 @@ class CreateCounterSerializer(serializers.ModelSerializer):
             is_active=validated_data['is_active'],
             value=validated_data['value'],
             addressCounter=validated_data['addressCounter'],
+            stratum=validated_data['stratum'],
             transformatorCounter=validated_data['transformatorCounter'],
             clientCounter=validated_data['clientCounter']
         )
@@ -200,6 +203,7 @@ class UpdateCounterSerializer(serializers.ModelSerializer):
             'lengthCounter',
             'value',
             'addressCounter',
+            'stratum',
             'transformatorCounter'
             ]
 
@@ -299,12 +303,9 @@ class CounterHistoriesSerializer(serializers.ModelSerializer):
             ]
 
     def get_historys(self, counter):
-        print("================================")
-        print(counter)
         qs = counter.historys.all().filter(
-            counter=counter).order_by('-codeHistory')[:2]
+            counter=counter).order_by('-codeHistory')[:6]
         historys = HistorySerializer(qs, many=True, read_only=True).data
-        print(historys)
         return historys
 
     

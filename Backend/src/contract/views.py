@@ -1,6 +1,6 @@
 #============ needed Imports to generate pdf file ===========
-import datetime
 import tempfile
+from .utils import generateInvoice 
 from django.http import HttpResponse
 from django.views.generic import View
 from django.template.loader import render_to_string
@@ -101,33 +101,6 @@ class InvoiceInactivate(UpdateAPIView):
 
 #--------------------------------------Generate PDF invoice---------------------------------                                      
 
-data = {
-    "name": 0,
-    "address": 0,
-    "identification": 0,
-    "payMonth":1,
-    "rangeBilling": 1,
-    "days":0,
-    "cycle": 0,
-    "deadDatePay": 1,
-    "stratum": 1,
-    "counter":1,
-    "currentRecord":1,
-    "pastRecord":1,
-    "difference":0,
-    "basicTake": 1,
-    "remainder": 1,
-    "interest": 1,
-    "totalBasic": 1,
-    "totalRemainder":1,
-    "subsidy": 1,
-    "totalBasicSubsidy": 1,
-    "total": 1,
-    "contract":0,
-    "reference": 1
-
-}
-
 class GeneratePdf(View):
     def get(self, request, contract):
         """Generate pdf."""
@@ -136,13 +109,15 @@ class GeneratePdf(View):
         # Model data
         queryset = Contract.objects.filter(
             contractNumber__iexact=contractNumber)
-        data = ContractSerializer(queryset, many=True).data
+        query = ContractSerializer(queryset, many=True).data[0]
 
         if (queryset.exists()):
             nel = "save"
             # print(serializer_class)
         else:
             print("no existe")
+
+        print(generateInvoice(query))
         # Rendered
         #print(dict(data))
         template = {
@@ -215,110 +190,3 @@ class SendEmail(APIView):
       else:
            message = "El id proporcionado no existe o el usuario no está activo"
            return Response({"message": message , "code": 204, 'data': {}} )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
