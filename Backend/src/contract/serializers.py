@@ -3,7 +3,7 @@ from .models import (
     Contract,
     Invoice
 )
-from energytransfers.serializers import CounterSerializer
+from energytransfers.serializers import CounterHistoriesSerializer
 from users.serializers import ClientSerializer
 # Serializer
 from rest_framework import serializers
@@ -100,15 +100,16 @@ class InactivateInvoiceSerializer(serializers.ModelSerializer):
 class ContractSerializer(serializers.ModelSerializer):
     
     client = ClientSerializer()
+    counter = CounterHistoriesSerializer()
     invoice = InvoiceSerializer(many= True, read_only= True)
 
     class Meta:
         model = Contract
         fields = [
             'contractNumber',
-            'invoice',
             'client',
-           
+            'counter',
+            'invoice',           
             ]
 
 

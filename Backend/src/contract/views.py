@@ -164,12 +164,25 @@ data = {
     }
 
 class GeneratePdf(View):
-    def get(self, request, *args, **kwargs):
+    def get(self, request, contract):
         """Generate pdf."""
+        contractNumber = contract
+        
         # Model data
+        queryset = Contract.objects.filter(
+            contractNumber__iexact=contractNumber)
+        serializer_class = ContractSerializer(queryset, many=True).data
 
+        if (queryset.exists()):
+            nel = "save"
+            # print(serializer_class)
+        else:
+            print("no existe")
         # Rendered
-        print(data['invoice'][0])
+        print(serializer_class.values().contractNumber)
+        print("================================================")
+        print(serializer_class[0]['invoice'][0]['consumptiondaysInvoice'])
+
         html_string = render_to_string('contract/index.html', data)
         html = HTML(string=html_string, base_url=request.build_absolute_uri())
         result = html.write_pdf()
@@ -199,11 +212,13 @@ class SendEmail(APIView):
 
       if (queryset.exists()):
           #DICT->JSON       
+          print(serializer_class)
+          
           query= json.dumps(serializer_class)
           jsonQuery= json.loads(query)
           
-          print(jsonQuery) 
           
+          print(jsonQuery) 
 
 
           """fecha= datetime.date.today().month
