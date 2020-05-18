@@ -17,15 +17,7 @@ class CreateInvoiceSerializer(serializers.ModelSerializer):
     #history = CreateHistorySerializer()
     class Meta:
         model = Invoice
-        fields = [
-            'consumptiondaysInvoice',
-            'paymentdeadlineInvoice',
-            'billingdateInvoice',
-            'stateInvoice',
-            'referencecodeInvoice',
-            'total',
-            'contract',
-            ]
+        fields = '__all__'
 
     def create(self, validated_data):
         #history = validated_data.pop('history')
@@ -45,27 +37,17 @@ class InvoiceSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Invoice
-        fields = [
-            'codeInvoice',
-            'consumptiondaysInvoice',
-            'paymentdeadlineInvoice',
-            'billingdateInvoice',
-            'stateInvoice',
-            'referencecodeInvoice',
-            'total',
-            'contract',
-            ]
+        fields = '__all__'
+ 
 
 class UpdateInvoiceSerializer(serializers.ModelSerializer):
     """Invoice para las operaciones Update"""
     class Meta:
         model = Invoice
+
+        
         fields = [
-            'consumptiondaysInvoice',
-            'paymentdeadlineInvoice',
-            'billingdateInvoice',
             'stateInvoice',
-            'referencecodeInvoice',
             ]
 
     def update(self, instance, validated_data):
