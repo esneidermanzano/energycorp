@@ -302,8 +302,10 @@ class CounterHistoriesSerializer(serializers.ModelSerializer):
         print("================================")
         print(counter)
         qs = counter.historys.all().filter(
-            counter=counter)[:5]
-        return HistorySerializer(qs, many=True, read_only=True).data
+            counter=counter).order_by('-codeHistory')[:2]
+        historys = HistorySerializer(qs, many=True, read_only=True).data
+        print(historys)
+        return historys
 
     
     
