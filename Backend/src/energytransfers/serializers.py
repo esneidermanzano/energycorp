@@ -237,7 +237,7 @@ class HistorySerializer(serializers.ModelSerializer):
     class Meta:
         model = History
         fields = '__all__'
-        
+ 
 class CreateHistorySerializer(serializers.ModelSerializer):
     """Serializador para las operaciones Create"""
     class Meta:
@@ -262,7 +262,6 @@ class UpdateHistorySerializer(serializers.ModelSerializer):
     class Meta:
         model = History
         fields = [
-            'registryHistory',
             'consumption'
         ]
 
@@ -285,7 +284,8 @@ class DeleteHistorySerializer(serializers.ModelSerializer):
 
 #==================== obtener contador con historias les anidadas ==================
 class CounterHistoriesSerializer(serializers.ModelSerializer):
-    historys = HistorySerializer(many=True, read_only= True)
+    historys = serializers.SerializerMethodField()
+    
     class Meta:
         model = Counter
         fields = [
@@ -297,3 +297,13 @@ class CounterHistoriesSerializer(serializers.ModelSerializer):
             'transformatorCounter',
             'historys'
             ]
+
+    def get_historys(self, counter):
+        print("================================")
+        print(counter)
+        qs = counter.historys.all().filter(
+            counter=counter)[:5]
+        return HistorySerializer(qs, many=True, read_only=True).data
+
+    
+    

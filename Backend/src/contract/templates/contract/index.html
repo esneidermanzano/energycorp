@@ -292,10 +292,6 @@ footer {
 }
     </style> 
 
-    <script>
-          var jsonObject = JSON.parse('{{ contractNumber | escapejs }}');
-          console.log(jsonObject)
-    </script>
   </head>
   <body>
     <header class="clearfix">
@@ -308,7 +304,7 @@ footer {
         <img src="{% static 'contract/incontec.png' %}">
       </div>
       <div class="user" class="clearfix">
-        <div>Cecilia Urquijo Barma</div>
+        <div>{{ name }}</div>
         <div>Diagonal 50B # 94 - 134</div>
         <div>C.C./Nit 1045127441</div>
       </div>
@@ -351,8 +347,8 @@ footer {
                 <div><span>Numero de Medidor</span> C2AA_1</div>
                 <div><span>Lectura Actual</span> 8642</div>
                 <div><span>Lectura Anterior</span> 8051</div>
-                <div><span>Diferencia</span> 591</div>
-                <div><span>Consumo Actual</span> 591 KWH</div>
+                <div><span>Diferencia</span> 542</div>
+                <div><span>Consumo Actual</span> 542 KWH</div>
                 </div>
             </td>
             <td class="data">

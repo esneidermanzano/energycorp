@@ -58,9 +58,7 @@ class Counter(models.Model):
                                       on_delete=models.CASCADE)
 
     def __str__(self):
-        return 'The Couter was created in the coordinates: {} , {}'.format(
-            self.latitudeCounter,
-             self.lengthCounter)
+        return str(self.codeCounter)
 
 
 class History(models.Model):
