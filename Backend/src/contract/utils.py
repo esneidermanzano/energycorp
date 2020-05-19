@@ -80,6 +80,7 @@ def generateHistory():
         interestMora = 0
         totalMora = 0
         overdue = 0
+        
         #================ necessary to total calcule ===============
         basic = 173
         if consumo > basic:
