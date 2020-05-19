@@ -66,8 +66,8 @@ class CustomUser(AbstractUser):
     def get_short_name(self):
         return self.name
 
-    def __str__(self):
-        return str(self.id_user)
+    #def __str__(self):
+        #return str(self.id_user)
 
 # ========== Modelo del cliente que contiene un usuario ==========
 
@@ -82,9 +82,9 @@ class Client(models.Model):
     type_client = models.PositiveSmallIntegerField(choices=USER_TYPE_CHOICES)
     interes_mora = models.FloatField()
     
-    def __str__(self):
-        return 'The Client: {}'.format(
-            self.user)
+    #def __str__(self):
+        #return 'The Client: {}'.format(
+            #self.user)
 
 # ==========  Modelo del trabajador que extiende de usuario basico ==========
 

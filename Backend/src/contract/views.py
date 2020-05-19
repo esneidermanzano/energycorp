@@ -1,6 +1,6 @@
 #============ needed Imports to generate pdf file ===========
 import tempfile
-from .utils import generateInvoice 
+from .utils import generateInvoice, generateHistory
 from django.http import HttpResponse
 from django.views.generic import View
 from django.template.loader import render_to_string
@@ -116,10 +116,10 @@ class GeneratePdf(View):
             # print(serializer_class)
         else:
             print("no existe")
-        print(query)
+        #print(query)
         #print(generateInvoice(query))
         # Rendered
-        #print(dict(data))
+        print(generateHistory())
         template = {
             "name": "enersto"
         }

@@ -1,6 +1,9 @@
 import datetime
 import random
+from .models import Contract
+from .serializers import ContractSerializer
 from energytransfers.models import Counter, History
+import json
 
 data = {
     "name": 0,
@@ -29,22 +32,38 @@ data = {
 
 }
 def generateHistory():
-    contadores = Counter.objects.filter(is_active=True)
+    contratos = Contract.objects.all()
+   
+    print(contratos)
+    #contadores = Counter.objects.filter(is_active=True)
     histories = []
-    for counter in contadores:
-        history = History.objects.filter(
-            counter=counter).order_by('-codeHistory').values('current')[:1][0]
+    #invoices = []
+    for contrato in contratos:
+
         print("=============================")
-        print(counter)
+        #contract = ContractSerializer(contrato, many=False)
+        #print(contrato.client.type_client)
+
+        #past = contract['counter']['historys'][0]['current']
+        #current = contract['counter']['value']
+        
+        history = History.objects.filter(
+            counter=contrato.counter).order_by('-codeHistory').values('current')[:1][0]
+
+        print(history)
+        """
+        #print(serializer_class)
         histories.append(History(
-                current=counter.value,
-                consumption=counter.value - history['current'],
-                counter=counter
+                current=current,
+                consumption=current-past,
+                counter=contract['counter']['codeCounter']
             )
-        )
-    print(histories)
+        )"""
+ 
     #History.objects.bulk_create(histories)
-    History.objects.all().delete()
+    #History.objects.all().delete()
+    return "hola"
+
 
 def generateInvoice(query):
     data['name'] = query['client']['user']['name']
