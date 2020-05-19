@@ -174,8 +174,7 @@ class CreateCounterSerializer(serializers.ModelSerializer):
             'addressCounter',
             'stratum',
             'is_active',
-            'transformatorCounter',
-            'clientCounter'
+            'transformatorCounter'
             ]
 
     def create(self, validated_data):
@@ -187,7 +186,6 @@ class CreateCounterSerializer(serializers.ModelSerializer):
             addressCounter=validated_data['addressCounter'],
             stratum=validated_data['stratum'],
             transformatorCounter=validated_data['transformatorCounter'],
-            clientCounter=validated_data['clientCounter']
         )
         
         counter.save()

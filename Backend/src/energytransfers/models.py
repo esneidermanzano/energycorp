@@ -1,5 +1,4 @@
 from django.db import models
-from users.models import Client # Para asociar los contadores a su respectivo Cliente
 
 # Create models here........................................................................
 """ The models in this File are the objetcs than respresent the substations, transformators and
