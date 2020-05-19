@@ -30,8 +30,8 @@ class TransformatorAdmin(admin.ModelAdmin):
 @admin.register(Counter)
 class TransformatorAdmin(admin.ModelAdmin):
     list_display = ('codeCounter', 'latitudeCounter',
-                    'lengthCounter', 'transformatorCounter', 'clientCounter',
+                    'lengthCounter', 'transformatorCounter',
                     'addressCounter', 'counter', 'is_active')
-    list_editable = ('clientCounter', 'is_active')
+    #list_editable = ('is_active')
     search_fields = ('counter__latitudeCounter',
                      'counter__lengthCounter')
