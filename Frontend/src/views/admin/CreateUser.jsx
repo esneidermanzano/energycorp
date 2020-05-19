@@ -65,7 +65,7 @@ class CreateUser extends React.Component {
                 phone: user.phone,
                 address: user.address,
                 neighborhood: user.neighborhood,
-                stratus: user.stratus,
+                // stratus: user.stratus,
                 is_active: user.is_active,
                 is_staff: user.is_staff,
                 is_superuser: user.is_superuser

@@ -69,6 +69,7 @@ class GetClients extends React.Component {
         const res = await fetch('https://energycorp.herokuapp.com/api/user/client/');
 
         const data = await res.json();
+        // console.log(data)
 
         this.setState({ persons: data });
     }
