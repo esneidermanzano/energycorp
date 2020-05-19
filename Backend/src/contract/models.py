@@ -39,6 +39,7 @@ class Invoice(models.Model):
     basicTake = models.PositiveIntegerField()
     remainder = models.PositiveIntegerField()
     unitaryValue = models.PositiveIntegerField()
+    mora = models.PositiveIntegerField()
     intakes = models.CharField(max_length=40)
     referencecodeInvoice = models.CharField(max_length=30)
     total = models.FloatField(null=False)
