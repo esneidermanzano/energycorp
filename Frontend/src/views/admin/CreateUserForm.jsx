@@ -30,7 +30,7 @@ class CreateUserForm extends React.Component {
             phone: '',
             address: '',
             neighborhood: '',
-            stratus: '',
+            // stratus: '',
             is_active: true,
             is_staff: true,
             is_superuser: false
@@ -90,7 +90,7 @@ class CreateUserForm extends React.Component {
             phone: '',
             address: '',
             neighborhood: '',
-            stratus: '',
+            // stratus: '',
             is_active: true,
             is_staff: true,
             is_superuser: false
@@ -124,7 +124,7 @@ class CreateUserForm extends React.Component {
         const placeholderAddress = counterpart.translate('clientForm.address');
         const placeholderNeighborhood = counterpart.translate('clientForm.neighborhood');
         const placeholderPhone = counterpart.translate('clientForm.phone');
-        const placeholderStratum = counterpart.translate('clientForm.stratum');
+        // const placeholderStratum = counterpart.translate('clientForm.stratum');
 
         const aditional = (this.state.user_type === 'Cliente') ? <div>
             <center style={{ marginTop: "2em" }}>
@@ -226,12 +226,12 @@ class CreateUserForm extends React.Component {
                                 </Label>
                                 <Input onChange={this.handleInput} value={this.state.neighborhood} type="text" name="neighborhood" placeholder={placeholderNeighborhood} required />
                             </Col>
-                            <Col>
+                            {/* <Col>
                                 <Label for="">
                                     <Tr content="clientForm.stratum"/>
                                 </Label>
                                 <Input onChange={this.handleInput} value={this.state.stratus} type="number" name="stratus" placeholder={placeholderStratum} required />
-                            </Col>
+                            </Col> */}
                         </Row>
 
                         <Label for="">

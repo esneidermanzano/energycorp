@@ -51,9 +51,16 @@ class ChatBot extends React.Component {
             const config = {
                 headers: { Authorization: 'Bearer 9121e7b53d944b4a8088cd12b17df3ac' }
             };
+
+            let LNG;
+            if (this.props.lng === "po") {
+                LNG = "pt-BR";
+            }else{
+                LNG = this.props.lng;
+            }
             
             var obj = {
-                "lang": this.props.lng,
+                "lang": LNG,
                 "query": this.state.msg,
                 "sessionId": "12345",
                 "timezone": "America/New_York",

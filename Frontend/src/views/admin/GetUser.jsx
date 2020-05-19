@@ -6,6 +6,7 @@ import * as Tr from "react-translate-component";
 import spanish from "../../langs/spanish.js";
 import english from "../../langs/english.js";
 import portuguese from "../../langs/portuguese.js";
+// import axios from "axios";
 
 import { connect } from "react-redux";
 
@@ -52,20 +53,28 @@ class GetUser extends React.Component {
         });
     }
 
-    editUser = () => {
+    editUser = s => {
+        // axios.post("https://energycorp.herokuapp.com/api/user/client/" + s.id + "/update/", s)
+        //     .then(res => {
+        //         alert("AXION REALIZADA CON EXITO");
+        //     })
+        //     .catch(err => {
+        //         console.log(err);
+        //     })
         this.closeToggle();
     }
 
     parseToShow = user => {
         let parsed = {
             user_type: '',
+            id: user.user.id, //OTRO ID DIFERENTE 
             id_user: user.user.id_user,
             name: user.user.name,
             email: user.user.email,
             address: user.user.address,
             neighborhood: user.user.neighborhood,
             phone: user.user.phone,
-            stratus: user.user.stratus,
+            // stratus: user.user.stratus,
             is_active: user.user.is_active,
         }
 
@@ -180,7 +189,7 @@ class GetUser extends React.Component {
     async componentDidMount() {
         const res = await fetch('https://energycorp.herokuapp.com/api/user/worker/');
         const data = await res.json();
-        // console.log(data)
+        console.log(data)
         var parsedData = [];
         for (let i = 0; i < data.length; i++) {
             if (data[i].user_type !== 1) {
