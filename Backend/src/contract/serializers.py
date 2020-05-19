@@ -76,6 +76,15 @@ class InactivateInvoiceSerializer(serializers.ModelSerializer):
 # =========================== Serializador para el Modulo Contract ==========================
 
 # -----------------------------------------Contract------------------------------------------------
+#get 6 newest invoices
+class NewestInvoiceSerializer(serializers.ModelSerializer):
+    """Invoice para las operaciones Retrive"""
+    
+    #history = HistorySerializer()
+    
+    class Meta:
+        model = Invoice
+        fields = '__all__'
 
 
 #get contrat with nested invoice and client(that client contains nested counter(that counter contains nested histories)) 
@@ -83,7 +92,7 @@ class ContractSerializer(serializers.ModelSerializer):
     
     client = ClientSerializer()
     counter = CounterHistoriesSerializer()
-    invoice = InvoiceSerializer(many= True, read_only= True)
+    invoice = serializers.SerializerMethodField()
 
     class Meta:
         model = Contract
@@ -94,5 +103,10 @@ class ContractSerializer(serializers.ModelSerializer):
             'invoice',           
             ]
 
+    def get_invoice(self, contract):
+        qs = Invoice.objects.all().filter(
+            contract=contract).order_by('-codeInvoice')[:5]
+        invoice = InvoiceSerializer(qs, many=True, read_only=True).data
+        return invoice
 
 #                                      Query

@@ -116,8 +116,8 @@ class GeneratePdf(View):
             # print(serializer_class)
         else:
             print("no existe")
-
-        print(generateInvoice(query))
+        print(query)
+        #print(generateInvoice(query))
         # Rendered
         #print(dict(data))
         template = {
