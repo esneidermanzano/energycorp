@@ -53,8 +53,8 @@ class Counter(models.Model):
     is_active = models.BooleanField(default=True)
     addressCounter = models.CharField(max_length=255)
     stratum = models.PositiveSmallIntegerField()
-    clientCounter = models.ForeignKey(Client, related_name='counters',
-                                       on_delete=models.CASCADE)
+   # clientCounter = models.ForeignKey(Client, related_name='counters',
+                                       #on_delete=models.CASCADE)
     transformatorCounter = models.ForeignKey(Transformator,
                                       on_delete=models.CASCADE)
 
