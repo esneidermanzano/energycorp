@@ -50,16 +50,20 @@ def generateHistory():
         lastRegistry = History.objects.filter(
             counter=contrato.counter).order_by('-codeHistory').values('current')[:1][0]['current']
         print("=============================")
-
+        """
         histories.append(History(
                 current=currentRegistry,
                 consumption=currentRegistry-lastRegistry,
                 counter=contrato.counter
             )
         )
+        """
+        date = datetime.datetime.now()
+        payMonth = date + datetime.timedelta(days=10)
+        print(payMonth)
 
 
-    print(histories)
+    #print(histories)
     #History.objects.bulk_create(histories)
     #History.objects.all().delete()
     return "hola"

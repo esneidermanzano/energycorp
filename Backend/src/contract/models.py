@@ -29,9 +29,8 @@ class Invoice(models.Model):
         serialize=False,
         verbose_name='invoicenumber'
     )
-    payMonth = models.DateField()
-    billingdateInvoice = models.DateField(default=datetime.date.today)
-    paymentdeadlineInvoice = models.DateField(default=datetime.datetime.now()+datetime.timedelta(days=10))
+    billingDate = models.DateField(default=datetime.date.today)
+    deadDatePay = models.DateField(default=datetime.datetime.now()+datetime.timedelta(days=10))
     counter =  models.PositiveIntegerField()
     address = models.CharField(max_length=50)
     stratum = models.PositiveSmallIntegerField()
