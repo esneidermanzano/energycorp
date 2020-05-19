@@ -53,12 +53,12 @@ def generateHistory():
 
         lastInvoice = Invoice.objects.filter(
             contract=contrato).order_by('-codeInvoice').values(
-                'mora', 'intakes', 'deadDatePay', 'total'
+                'mora', 'overdue', 'intakes', 'deadDatePay', 'total'
                 )[:1][0]
 
         
         print("=============================")
-        print(lastInvoice)
+        #print(lastInvoice)
         """
         histories.append(History(
                 current=currentRegistry,
@@ -78,7 +78,8 @@ def generateHistory():
         basicTake = 0
         remainder = 0
         unitaryValue = 589
-        
+        mora = 0
+        overdue = 0
         #================ necessary to total calcule ===============
         basic = 173
         if consumo > basic:
@@ -98,8 +99,14 @@ def generateHistory():
             subsidyValue = 0.15
         else:
             subsidyValue = 0
-        totalBasicSubsidy = (1-subsidyValue)*totalBasic
         
+        totalBasicSubsidy = (1-subsidyValue)*totalBasic
+        if contrato.client.interes_mora != 0:
+            #=============== NO MAGO MOROSO ============
+            mora = 0
+            lastInvoice['deadDatePay']
+            print("MOROSO============================")
+
         total = totalBasicSubsidy + totalRemainder
         #================ necessary to total calcule ===============
 
@@ -107,7 +114,7 @@ def generateHistory():
         referencecodeInvoice = code + str(random.randint(1111111,9999999))
 
 
-        print(referencecodeInvoice)
+        #print(referencecodeInvoice)
 
 
     #print(histories)
