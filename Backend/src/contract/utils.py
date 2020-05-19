@@ -53,7 +53,7 @@ def generateHistory():
 
         lastInvoice = Invoice.objects.filter(
             contract=contrato).order_by('-codeInvoice').values(
-                'intakes', 'deadDatePay', 'total'
+                'mora', 'intakes', 'deadDatePay', 'total'
                 )[:1][0]
 
         
