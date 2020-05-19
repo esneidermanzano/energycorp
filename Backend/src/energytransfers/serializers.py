@@ -158,6 +158,7 @@ class CounterSerializer(serializers.ModelSerializer):
             'latitudeCounter',
             'lengthCounter',
             'value',
+            'is_active',
             'addressCounter',
             'stratum',
             'transformatorCounter',

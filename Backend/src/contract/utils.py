@@ -1,6 +1,6 @@
 import datetime
 import random
-from .models import Contract
+from .models import Contract, Invoice
 from .serializers import ContractSerializer
 from energytransfers.models import Counter, History
 import json
@@ -49,18 +49,65 @@ def generateHistory():
         currentRegistry = contrato.counter.value
         lastRegistry = History.objects.filter(
             counter=contrato.counter).order_by('-codeHistory').values('current')[:1][0]['current']
+        consumo = currentRegistry-lastRegistry
+
+        lastInvoice = Invoice.objects.filter(
+            contract=contrato).order_by('-codeInvoice').values(
+                'intakes', 'deadDatePay', 'total'
+                )[:1][0]
+
+        
         print("=============================")
+        print(lastInvoice)
         """
         histories.append(History(
                 current=currentRegistry,
-                consumption=currentRegistry-lastRegistry,
+                consumption=consumo,
                 counter=contrato.counter
             )
         )
         """
-        date = datetime.datetime.now()
-        payMonth = date + datetime.timedelta(days=10)
-        print(payMonth)
+        billingDate = datetime.datetime.now()
+        deadDate = billingDate + datetime.timedelta(days=10)
+        deadDatePay = deadDate.strftime("%b-%d-%Y")
+        counter = contrato.counter.codeCounter
+        address = contrato.counter.addressCounter
+        stratum = contrato.counter.stratum
+        currentRecord = currentRegistry
+        pastRecord = lastRegistry
+        basicTake = 0
+        remainder = 0
+        unitaryValue = 589
+        
+        #================ necessary to total calcule ===============
+        basic = 173
+        if consumo > basic:
+            basicTake = basic
+            remainder = consumo - basic
+        else:
+            basicTake = consumo
+
+        totalBasic = basicTake*unitaryValue
+        totalRemainder = remainder*unitaryValue
+        subsidyValue = 0
+        if stratum == 1:
+            subsidyValue = 0.6
+        elif stratum == 2:
+            subsidyValue = 0.5
+        elif stratum == 3:
+            subsidyValue = 0.15
+        else:
+            subsidyValue = 0
+        totalBasicSubsidy = (1-subsidyValue)*totalBasic
+        
+        total = totalBasicSubsidy + totalRemainder
+        #================ necessary to total calcule ===============
+
+        code = str(billingDate).replace(':', '').replace('.', '').replace('-','').replace(' ', str(random.randint(1,9)))
+        referencecodeInvoice = code + str(random.randint(1111111,9999999))
+
+
+        print(referencecodeInvoice)
 
 
     #print(histories)
