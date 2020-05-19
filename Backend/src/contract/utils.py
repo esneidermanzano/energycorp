@@ -40,26 +40,26 @@ def generateHistory():
     #invoices = []
     for contrato in contratos:
 
-        print("=============================")
         #contract = ContractSerializer(contrato, many=False)
         #print(contrato.client.type_client)
 
         #past = contract['counter']['historys'][0]['current']
         #current = contract['counter']['value']
         
-        history = History.objects.filter(
-            counter=contrato.counter).order_by('-codeHistory').values('current')[:1][0]
+        currentRegistry = contrato.counter.value
+        lastRegistry = History.objects.filter(
+            counter=contrato.counter).order_by('-codeHistory').values('current')[:1][0]['current']
+        print("=============================")
 
-        print(history)
-        """
-        #print(serializer_class)
         histories.append(History(
-                current=current,
-                consumption=current-past,
-                counter=contract['counter']['codeCounter']
+                current=currentRegistry,
+                consumption=currentRegistry-lastRegistry,
+                counter=contrato.counter
             )
-        )"""
- 
+        )
+
+
+    print(histories)
     #History.objects.bulk_create(histories)
     #History.objects.all().delete()
     return "hola"
