@@ -76,16 +76,6 @@ class InactivateInvoiceSerializer(serializers.ModelSerializer):
 # =========================== Serializador para el Modulo Contract ==========================
 
 # -----------------------------------------Contract------------------------------------------------
-#get 6 newest invoices
-class NewestInvoiceSerializer(serializers.ModelSerializer):
-    """Invoice para las operaciones Retrive"""
-    
-    #history = HistorySerializer()
-    
-    class Meta:
-        model = Invoice
-        fields = '__all__'
-
 
 #get contrat with nested invoice and client(that client contains nested counter(that counter contains nested histories)) 
 class ContractSerializer(serializers.ModelSerializer):
