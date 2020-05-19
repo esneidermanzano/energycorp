@@ -51,5 +51,8 @@ export default {
         insert: 'Insert your ID',
         download: 'Download',
         home: 'Home'
+    },
+    bot: {
+        input: "Type Something"
     }
 }

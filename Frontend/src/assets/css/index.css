@@ -65,6 +65,18 @@
   background-color: coral;
 }
 
+.newConts{
+  background-color: green;
+  border-style: none;
+  border-radius: 30px;
+  font-size: 20px;
+  color: white;
+}
+
+.newConts:hover{
+  background-color: rgb(4, 230, 60);
+}
+
 
 /************************* CHAT BOT **********************/
 

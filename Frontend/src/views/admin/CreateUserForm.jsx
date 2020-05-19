@@ -22,7 +22,7 @@ class CreateUserForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = this.props.user || {
-            user_type: 2,
+            user_type: 3,
             id_user: '',
             name: '',
             email: '',
@@ -49,8 +49,16 @@ class CreateUserForm extends React.Component {
             }
         }else if (e.target.name === "stratus") {
             val = parseInt(val);
-        }else if (e.target.name === "user_type") {
-            val = parseInt(val);
+        }
+        else if (e.target.name === "user_type") {
+            // console.log(e.target.value)
+            // LO QUE PASA ES QUE ANTES RECIBIA NUMERO AHORA RECIBE 
+            // UN STRING POR LO QUE TOCA CAMBIARLO ANTES DE ENVIAR EN CreateUser
+            // if(val === "Manager" || "Gerente"){
+            //     val = 2;
+            // }else{
+            //     val = 3
+            // }
         }
 
         this.setState({
@@ -74,7 +82,7 @@ class CreateUserForm extends React.Component {
         this.cleanForm();
 
         this.setState({
-            user_type: 'operador',
+            user_type: 'Operador',
             id_user: '',
             name: '',
             email: '',
