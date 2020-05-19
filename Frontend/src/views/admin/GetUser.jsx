@@ -56,54 +56,47 @@ class GetUser extends React.Component {
         this.closeToggle();
     }
 
-    parseToShow = user => {      
+    parseToShow = user => {
         let parsed = {
-                user_type: '',
-                id_user: user.user.id_user,
-                name: user.user.name,
-                email: user.user.email,
-                address: user.user.address,
-                neighborhood: user.user.neighborhood,
-                phone: user.user.phone,
-                is_active: user.user.is_active,
-                client: {
-                    type_client: user.type_client,
-                    interes_mora: user.interes_mora,
-                    cycle: user.cycle,
-                    contrat_number: user.contrat_number,
-                    billing: user.billing,
-                    financial_state: user.financial_state,
-                }            
+            user_type: '',
+            id_user: user.user.id_user,
+            name: user.user.name,
+            email: user.user.email,
+            address: user.user.address,
+            neighborhood: user.user.neighborhood,
+            phone: user.user.phone,
+            stratus: user.user.stratus,
+            is_active: user.user.is_active,
         }
 
-        if(user.user_type === 2){
-            parsed.user_type = 'operador';
-        }else{
+        if (user.user_type === 2) {
             parsed.user_type = 'gerente';
+        } else if (user.user_type === 3) {
+            parsed.user_type = 'operador';
         }
-    
         return parsed;
+
     }
 
     render() {
 
         const trans = (tipo) => {
-            if(tipo === 'operador'){
+            if (tipo === 'operador') {
                 return counterpart.translate('createUser.operator');
-            }else{
+            } else {
                 return counterpart.translate('createUser.manager');
             }
         }
 
         var filteredPeople = [];
 
-        if (this.state.selected !== counterpart.translate('getUser.all')) { 
+        if (this.state.selected !== counterpart.translate('getUser.all')) {
             //Filtrar por ambas formas al tiempo
             filteredPeople = this.state.persons.filter(p => (
                 trans(p.user_type).toLowerCase() === this.state.selected.toLowerCase() &&
                 p.email.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1
             ));
-        }else{ //Filtrar solo por busqueda
+        } else { //Filtrar solo por busqueda
             filteredPeople = this.state.persons.filter(p => (
                 p.email.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1
             ));
@@ -137,9 +130,9 @@ class GetUser extends React.Component {
                                     <Row>
                                         <Col>
                                             <select onChange={this.handleInput} className="form-control" name="selected">
-                                                <Tr content="getUser.all" component="option"/>
-                                                <Tr content="createUser.operator" component="option"/>
-                                                <Tr content="createUser.manager" component="option"/>
+                                                <Tr content="getUser.all" component="option" />
+                                                <Tr content="createUser.operator" component="option" />
+                                                <Tr content="createUser.manager" component="option" />
                                             </select>
                                         </Col>
                                         <Col>
@@ -153,10 +146,10 @@ class GetUser extends React.Component {
                                         <thead>
                                             <tr>
                                                 <th>#</th>
-                                                <th><Tr content="clientForm.name"/></th>
+                                                <th><Tr content="clientForm.name" /></th>
                                                 <th>ID</th>
                                                 <th>Email</th>
-                                                <th><Tr content="clientForm.type"/></th>
+                                                <th><Tr content="clientForm.type" /></th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -171,10 +164,10 @@ class GetUser extends React.Component {
                     <div>
                         <Modal md="7" isOpen={this.state.modal} toggle={this.closeToggle} className="danger">
                             <ModalHeader toggle={this.closeToggle}>
-                                <Tr content="getClients.edit"/>
+                                <Tr content="getClients.edit" />
                             </ModalHeader>
                             <ModalBody>
-                                <CreateUserForm submitAction={this.editUser} user={this.state.user} editMode={true}/>
+                                <CreateUserForm submitAction={this.editUser} user={this.state.user} editMode={true} />
                             </ModalBody>
                         </Modal>
                     </div>
@@ -187,13 +180,15 @@ class GetUser extends React.Component {
     async componentDidMount() {
         const res = await fetch('https://energycorp.herokuapp.com/api/user/worker/');
         const data = await res.json();
-
+        // console.log(data)
         var parsedData = [];
-        for(let i=0; i<data.length; i++){
-            parsedData.push(this.parseToShow(data[i]));
+        for (let i = 0; i < data.length; i++) {
+            if (data[i].user_type !== 1) {
+                parsedData.push(this.parseToShow(data[i]));
+            }
         }
 
-        this.setState({persons: parsedData});
+        this.setState({ persons: parsedData });
     }
 
 };
