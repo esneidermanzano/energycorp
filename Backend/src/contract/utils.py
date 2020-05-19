@@ -29,13 +29,23 @@ data = {
 
 }
 def generateHistory():
-    contadores = Counter.objects.filter(is_active=True).values('codeCounter', 'value')
+    contadores = Counter.objects.filter(is_active=True)
+    histories = []
     for counter in contadores:
         history = History.objects.filter(
-            counter=counter['codeCounter']).order_by('-codeHistory').values('current')[:1]
-        print(history)
+            counter=counter).order_by('-codeHistory').values('current')[:1][0]
+        print("=============================")
+        print(counter)
+        histories.append(History(
+                current=counter.value,
+                consumption=counter.value - history['current'],
+                counter=counter
+            )
+        )
+    print(histories)
+    #History.objects.bulk_create(histories)
+    History.objects.all().delete()
 
-    print(contadores)
 
 def generateInvoice(query):
     data['name'] = query['client']['user']['name']

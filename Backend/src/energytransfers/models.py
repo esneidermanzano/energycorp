@@ -58,8 +58,8 @@ class Counter(models.Model):
     transformatorCounter = models.ForeignKey(Transformator,
                                       on_delete=models.CASCADE)
 
-    def __str__(self):
-        return str(self.codeCounter)
+    #def __str__(self):
+        #return str(self.codeCounter)
 
 
 class History(models.Model):
@@ -67,11 +67,10 @@ class History(models.Model):
     codeHistory = models.AutoField(
         auto_created=True,
         primary_key=True,
-        serialize=False,
         verbose_name='ID'
         )
     current = models.PositiveIntegerField()
     consumption = models.PositiveIntegerField()
+    registryHistory = models.DateField(auto_now_add=True)
     counter = models.ForeignKey(
         Counter, related_name='historys', on_delete=models.CASCADE)
-    registryHistory = models.DateField(auto_now_add=True)
