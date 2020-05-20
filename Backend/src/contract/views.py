@@ -160,9 +160,9 @@ class GeneratePdf(APIView):
                         response.write(output.read())
 
                     return response
-                except:
+                except Exception as e:
                     message = "Error al buscar la factura, confirme el numero"
-                    return Response({"error": False, "find": False, "message": message} )
+                    return Response({"error": False, "find": False, "message": str(e)} )
             else:
                 message = "Numero de contrato erroneo"
                 return Response({ "error": False, "find": False, "message": message} )           
