@@ -51,5 +51,8 @@ export default {
         insert: 'Digite seu ID',
         download: 'Baixar',
         home: 'Começo'
+    },
+    bot: {
+        input: "Escreva algo"
     }
 }

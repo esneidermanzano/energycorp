@@ -29,6 +29,10 @@ class Auth{
     getSession(){
         return JSON.parse(this.authenticated); 
     }
+
+    getObj(){
+        return JSON.parse(this.authenticated);
+    }
 }
 
 export default new Auth();

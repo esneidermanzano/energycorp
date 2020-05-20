@@ -6,6 +6,8 @@ import spanish from "../../langs/spanish.js";
 import english from "../../langs/english.js";
 import portuguese from "../../langs/portuguese.js";
 
+// import auth from "components/auth/auth.js";
+
 import { connect } from "react-redux";
 
 // reactstrap components
@@ -21,31 +23,8 @@ class CreateClientForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = this.props.user || {
-            // id_user: "",
-            // name: "",
-            // email: "",
-            // password: "loquendo",
-            // phone: "",
-            // address: "",
-            // neighborhood: "",
-            // stratus: null,
-            // is_active: true,
-            // is_staff: false,
-            // is_superuser: false,
-            // client: {
-            //     type_client: 1,
-            //     interes_mora: null,
-            //     cycle: "",
-            //     contrat_number: null,
-            //     financial_state: "mora",
-            //     billing: "",
-            // }
             type_client: 1,
-            interes_mora: null,
-            cycle: "",
-            contrat_number: null,
-            financial_state: "mora",
-            billing: "",
+            interes_mora: 0,
             user: {
                 id_user: "",
                 name: "",
@@ -64,7 +43,6 @@ class CreateClientForm extends React.Component {
     }
 
     handleInputClient = e => {
-
         var val = e.target.value;
 
         // Pre Process ////////////////////////
@@ -121,11 +99,7 @@ class CreateClientForm extends React.Component {
 
         this.setState({
             type_client: 1,
-            interes_mora: null,
-            cycle: "",
-            contrat_number: null,
-            financial_state: "mora",
-            billing: "",
+            interes_mora: 0,
             user: {
                 id_user: "",
                 name: "",
@@ -163,14 +137,10 @@ class CreateClientForm extends React.Component {
         </div> : true
 
         const placeholderRate = counterpart.translate('clientForm.rate');
-        const placeholderCycle = counterpart.translate('clientForm.cycle');
-        const placeholderContractN = counterpart.translate('clientForm.contractN');
-        const placeholderBilling = counterpart.translate('clientForm.billing');
         const placeholderName = counterpart.translate('clientForm.name');
         const placeholderAddress = counterpart.translate('clientForm.address');
         const placeholderNeighborhood = counterpart.translate('clientForm.neighborhood');
         const placeholderPhone = counterpart.translate('clientForm.phone');
-        const placeholderStratum = counterpart.translate('clientForm.stratum');
 
         const aditional =
             <div>
@@ -193,39 +163,6 @@ class CreateClientForm extends React.Component {
                             <Tr content="clientForm.rate"/>
                         </Label>
                         <Input onChange={this.handleInputClient} value={this.state.interes_mora} type="number" step="0.01" name="interes_mora" placeholder={placeholderRate} required />
-                    </Col>
-                </Row>
-
-                <Row>
-                    <Col>
-                        <Label for="">
-                            <Tr content="clientForm.cycle"/>
-                        </Label>
-                        <Input onChange={this.handleInputClient} value={this.state.cycle} type="number" name="cycle" placeholder={placeholderCycle} required />
-                    </Col>
-                    <Col>
-                        <Label for="">
-                            <Tr content="clientForm.contractN"/>
-                        </Label>
-                        <Input onChange={this.handleInputClient} value={this.state.contrat_number} type="text" name="contrat_number" placeholder={placeholderContractN} required />
-                    </Col>
-                </Row>
-
-                <Row>
-                    <Col>
-                        <Label for="">
-                            <Tr content="clientForm.billing"/>
-                        </Label>
-                        <Input onChange={this.handleInputClient} value={this.state.billing} type="number" name="billing" placeholder={placeholderBilling} required />
-                    </Col>
-                    <Col>
-                        <Label for="">
-                            <Tr content="clientForm.stateF"/>
-                        </Label>
-                        <select onChange={this.handleInputClient} value={this.state.financial_state} className="form-control" name="financial_state" required>
-                            <Tr content="clientForm.mora" component="option" value="Mora"/>
-                            <Tr content="clientForm.noMora" component="option" value="No Mora"/>
-                        </select>
                     </Col>
                 </Row>
 
@@ -266,12 +203,7 @@ class CreateClientForm extends React.Component {
                                 </Label>
                                 <Input onChange={this.handleInput} value={this.state.user.neighborhood} type="text" name="neighborhood" placeholder={placeholderNeighborhood} required />
                             </Col>
-                            <Col>
-                                <Label for="">
-                                    <Tr content="clientForm.stratum"/>
-                                </Label>
-                                <Input onChange={this.handleInput} value={this.state.user.stratus} type="number" name="stratus" placeholder={placeholderStratum} required />
-                            </Col>
+
                         </Row>
 
                         <Label for="">

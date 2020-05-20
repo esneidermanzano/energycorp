@@ -2,8 +2,9 @@ import React from "react";
 
 import counterpart from "counterpart";
 // import * as Tr from "react-translate-component";
-// import spanish from "../../langs/spanish.js";
-// import english from "../../langs/english.js";
+import spanish from "../../langs/spanish.js";
+import english from "../../langs/english.js";
+import portuguese from "../../langs/portuguese.js";
 
 import {
     Card, Row, CardBody,
@@ -17,9 +18,9 @@ import bot_gif from "./bot_gif.gif";
 
 import { connect } from "react-redux";
 
-// counterpart.registerTranslations('en', english);
-// counterpart.registerTranslations('es', spanish);
-
+counterpart.registerTranslations('en', english);
+counterpart.registerTranslations('es', spanish);
+counterpart.registerTranslations('po', portuguese);
 // counterpart.setLocale('en');
 
 class ChatBot extends React.Component {
@@ -51,8 +52,15 @@ class ChatBot extends React.Component {
                 headers: { Authorization: 'Bearer 9121e7b53d944b4a8088cd12b17df3ac' }
             };
 
+            let LNG;
+            if (this.props.lng === "po") {
+                LNG = "pt-BR";
+            }else{
+                LNG = this.props.lng;
+            }
+            
             var obj = {
-                "lang": "es",
+                "lang": LNG,
                 "query": this.state.msg,
                 "sessionId": "12345",
                 "timezone": "America/New_York",
@@ -72,18 +80,12 @@ class ChatBot extends React.Component {
                 .catch(err => {
                     console.log(err);
                 })
-
-
-
-            // setTimeout(() => {
-            //     var messageBody = document.querySelector('#chat_box');
-            //     messageBody.scrollTop = messageBody.scrollHeight;
-            // });
-
         }
     }
 
+    
     render() {
+        const placeholder = counterpart.translate('bot.input');
         return (
             <div>
                 <div className="floatingChat">
@@ -117,11 +119,8 @@ class ChatBot extends React.Component {
                                     <FormGroup>
                                         <Row>
                                             <Col md="12">
-                                                <Input onChange={this.handleInput} type="text" name="msg" id="exampleEmail" placeholder="Type something..." value={this.state.msg} requiered={this.state.msg.toString()} />
+                                                <Input onChange={this.handleInput} type="text" name="msg" id="exampleEmail" placeholder={placeholder} value={this.state.msg} requiered={this.state.msg.toString()} />
                                             </Col>
-                                            {/* <Button md="2" color="success" type="submit" disabled={this.state.disabledLoginBtn}>
-                                                <i className="nc-icon nc-send"></i>
-                                            </Button> */}
                                         </Row>
                                     </FormGroup>
                                 </Form>

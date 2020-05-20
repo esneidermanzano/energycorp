@@ -28,7 +28,22 @@ counterpart.registerTranslations('po', portuguese);
 class Start extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+            contract: "",
+        }
+    }
+
+    handleInput = e => {
+        this.setState({ contract: e.target.value });
+    }
+
+    handleSubmit = e => {
+        e.preventDefault();
+        if (this.state.contract !== "") {
+            console.log("dfd")
+            this.setState({ contract: "" })
+            window.open("https://energycorp.herokuapp.com/api/invoice/pdf/" + this.state.contract + "/");
+        }
     }
 
     render() {
@@ -36,39 +51,42 @@ class Start extends React.Component {
         const placeholderID = counterpart.translate('getBill.insert');
 
         return (
-            <Col md="4" id="login">
-                <Card>
-                    <CardHeader>
-                        <center>
-                            <img src={logo} width="80px" height="80px" alt="description"></img>
-                            <CardTitle tag="h5">
-                                <Tr content="home.download"/>
-                            </CardTitle>
-                        </center>
+            <div>
 
-                    </CardHeader>
-                    <CardBody>
-                        <Form>
-                            <FormGroup>
-                                <Label for="exampleEmail">ID</Label>
-                                <Input type="number" name="id" id="exampleEmail" placeholder={placeholderID} />
-                            </FormGroup>
+                <Col md="4" id="login">
+                    <Card>
+                        <CardHeader>
                             <center>
-                                <Button color="success">
-                                    <Tr content="getBill.download"/>
-                                </Button>
-                                <br />
-                                <Link to="/">
-                                    <Tr content="getBill.home"/>
-                                </Link>
+                                <img src={logo} width="80px" height="80px" alt="description"></img>
+                                <CardTitle tag="h5">
+                                    <Tr content="home.download" />
+                                </CardTitle>
                             </center>
-                        </Form>
-                    </CardBody>
-                    <CardFooter>
 
-                    </CardFooter>
-                </Card>
-            </Col>
+                        </CardHeader>
+                        <CardBody>
+                            <Form onSubmit={this.handleSubmit}>
+                                <FormGroup>
+                                    <Label for="exampleEmail">ID</Label>
+                                    <Input onChange={this.handleInput} type="number" name="contract" id="exampleEmail" value={this.state.contract} placeholder={placeholderID} />
+                                </FormGroup>
+                                <center>
+                                    <Button color="success">
+                                        <Tr content="getBill.download" />
+                                    </Button>
+                                    <br />
+                                    <Link to="/">
+                                        <Tr content="getBill.home" />
+                                    </Link>
+                                </center>
+                            </Form>
+                        </CardBody>
+                        <CardFooter>
+
+                        </CardFooter>
+                    </Card>
+                </Col>
+            </div>
         )
     }
 }

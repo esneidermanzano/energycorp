@@ -31,6 +31,16 @@ class CreateUser extends React.Component {
     }
 
     createEle = item => {
+        // Hay que cambiarlo a numero para que se envie con esa informacion
+        console.log(item.user_type)
+        if (item.user_type === 'Gerente' || item.user_type === 'Manager') {
+            item.user_type = 2;
+        } else if (item.user_type === 'Operador' || item.user_type === "Operator") {
+            item.user_type = 3;
+        }
+
+        // console.log(item)
+
         this.setState({
             list: [...this.state.list, item]
         })
@@ -44,7 +54,7 @@ class CreateUser extends React.Component {
         })
     }
 
-    parseToSend = user => {      
+    parseToSend = user => {
         let parsed = {
             user_type: user.user_type,
             user: {
@@ -55,7 +65,7 @@ class CreateUser extends React.Component {
                 phone: user.phone,
                 address: user.address,
                 neighborhood: user.neighborhood,
-                stratus: user.stratus,
+                // stratus: user.stratus,
                 is_active: user.is_active,
                 is_staff: user.is_staff,
                 is_superuser: user.is_superuser
@@ -68,24 +78,26 @@ class CreateUser extends React.Component {
     sendNews = () => {
         // AXIOS
         var data = [];
-        
+
         for (let i = 0; i < this.state.list.length; i++) {
             let user = this.state.list[i];
             data.push(this.parseToSend(user));
         }
 
+        // console.log(data)
+
         Axios.post('https://energycorp.herokuapp.com/api/user/worker/create/bulk/', data)
-        .then(res => {
-            let given = res.data;
-            if(given.code === 200){
-                alert(counterpart.translate('createUser.exito'));
-            }else{
-                alert(counterpart.translate('createUser.noExito'));
-            }
-        })
-        .catch(err => {
-            console.log(err);
-        })
+            .then(res => {
+                let given = res.data;
+                if (given.code === 200) {
+                    alert(counterpart.translate('createUser.exito'));
+                } else {
+                    alert(counterpart.translate('createUser.noExito'));
+                }
+            })
+            .catch(err => {
+                console.log(err);
+            })
 
         console.log(data);
         this.setState({ list: [] });
@@ -99,8 +111,8 @@ class CreateUser extends React.Component {
                     <Alert color="success" key={key} toggle={() => this.onDismiss(key)}>
                         #{key + 1} <b>{n.name}</b> - {n.id_user}
                         <br></br>
-                        <i>{(n.user_type === 2) ? counterpart.translate('createUser.operator') : 
-                        counterpart.translate('createUser.manager')}</i>
+                        <i>{(n.user_type === 3) ? counterpart.translate('createUser.operator') :
+                            counterpart.translate('createUser.manager')}</i>
                     </Alert>
                 )
             })
@@ -126,7 +138,7 @@ class CreateUser extends React.Component {
                         </Card>
                         <center>
                             <Button color="success" onClick={this.sendNews}>
-                                <Tr content="createClient.create"/>
+                                <Tr content="createClient.create" />
                             </Button>
                         </center>
 
