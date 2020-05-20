@@ -356,7 +356,7 @@ footer {
               <div><span>Consumo de Energia Activa</span></div>
               <div><span>Consumo Basico Hasta 173</span></div>
               <div><span>ConsumoMayor al Basico</span></div>
-              <div><span>Interes Mora 0.5%</span></div>
+              <div><span>Interes Mora {{interestMora}}%</span></div>
               <div><span>Otros Cobros</span></div>
               <div><span>Ajuste al Peso</span></div>
             </td>
@@ -364,8 +364,8 @@ footer {
             <td class="data">
               <div id="concep2"><b>Cantidad</b></div>
               <div><span>&nbsp;</span></div>
-              <div><span>173</span></div>
-              <div><span>369</span></div>
+              <div><span>{{basicTake}}</span></div>
+              <div><span>{{remainder}}</span></div>
               <div><span>&nbsp;</span></div>
               <div><span>&nbsp;</span></div>
               <div><span>&nbsp;</span></div>
@@ -374,8 +374,8 @@ footer {
             <td class="data">
               <div id="concep2"><b>Valor Unitario</b></div>
               <div><span>&nbsp;</span></div>
-              <div><span>384</span></div>
-              <div><span>384</span></div>
+              <div><span>{{unitaryValue}}</span></div>
+              <div><span>{{unitaryValue}}</span></div>
               <div><span>&nbsp;</span></div>
               <div><span>&nbsp;</span></div>
               <div><span>&nbsp;</span></div>
@@ -384,8 +384,8 @@ footer {
             <td class="data money">
               <div id="concep2"><b>Valor Total</b></div>
               <div><span>&nbsp;</span></div>
-              <div><span>66,408.15</span></div>
-              <div><span>141,845.13</span></div>
+              <div><span>{{totalBasic}}</span></div>
+              <div><span>{{totalRemainder}}</span></div>
               <div><span>&nbsp;</span></div>
               <div><span>&nbsp;</span></div>
               <div><span>&nbsp;</span></div>
@@ -394,7 +394,7 @@ footer {
             <td class="data money">
               <div id="concep2"><b>Subsidio</b></div>
               <div><span>&nbsp;</span></div>
-              <div><span>-9,961.22</span></div>
+              <div><span>{{subsidy}}</span></div>
               <div><span>&nbsp;</span></div>
               <div><span>&nbsp;</span></div>
               <div><span>&nbsp;</span></div>
