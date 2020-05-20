@@ -87,8 +87,25 @@ class CreateBanckPaymentSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         payment = validated_data.pop('payment')
-        paymentObj = Payment.objects.create(**payment,
-                                            **validated_data)
+        #traigo la factura asociada a ese pago:
+        numberInvocie =payment['facturaPayment']
+        invoice = Invoice.objects.get(codeInvoice=numberInvocie.codeInvoice)  
+        #caluclo la mora
+        mora = ((date.today() - invoice.paymentdeadlineInvoice ).days / 100)
+        print(mora)
+        #validaciones pendejas para no pasar el 30%
+        if (mora > 0.30):
+            mora = 0.30
+        if (mora < 0.0):
+            mora = 0.0
+        #Traigo el contrato asociada a esa factura:
+        codeClient = invoice.contract.client.id
+        #Traigo el Cliente asociado a ese contrato
+        client = Client.objects.get(id=codeClient)
+        #Inyecto el valor de mora al cliente correspondiente.
+        client.interes_mora = mora
+        client.save()  
+        paymentObj = Payment.objects.create(**payment)
         banckPayment = BanckPayment.objects.create(
             payment=paymentObj, **validated_data)
         return banckPayment
