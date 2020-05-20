@@ -34,10 +34,9 @@ data = {
 def generateHistory():
     contratos = Contract.objects.all()
    
-    print(contratos)
     #contadores = Counter.objects.filter(is_active=True)
     histories = []
-    #invoices = []
+    invoices = []
     for contrato in contratos:
 
         #contract = ContractSerializer(contrato, many=False)
@@ -58,29 +57,30 @@ def generateHistory():
 
         
         #print(lastInvoice)
-        """
+        
         histories.append(History(
                 current=currentRegistry,
                 consumption=consumo,
                 counter=contrato.counter
             )
         )
-        """
+        
         billingDate = datetime.datetime.now()
+
         deadDate = billingDate + datetime.timedelta(days=10)
-        deadDatePay = deadDate.strftime("%b-%d-%Y")
+        deadDatePay = deadDate.strftime("%Y-%m-%d")
         counter = contrato.counter.codeCounter
         address = contrato.counter.addressCounter
         stratum = contrato.counter.stratum
-        currentRecord = currentRegistry
-        pastRecord = lastRegistry
+        #currentRecord = currentRegistry
+        #pastRecord = lastRegistry
         basicTake = 0
         remainder = 0
         unitaryValue = 589
         interestMora = 0
         totalMora = 0
         overdue = 0
-        
+
         #================ necessary to total calcule ===============
         basic = 173
         if consumo > basic:
@@ -109,22 +109,51 @@ def generateHistory():
             totalMora = lastInvoice['total']*interestMora
 
         #================ Factura pendiente =========
-        print("=============================")
         if not lastInvoice['stateInvoice']:
             overdue = lastInvoice['total']
 
         total = totalBasicSubsidy + totalRemainder + totalMora +overdue
-        #================ necessary to total calcule ===============
+        #================ necessary to total calcule ===============       
+
+        print("=============================")
+
+        intakes = lastInvoice['intakes'].split(",")
+        combo = billingDate.month
+        combo = str(combo) + "-" + str(consumo)
+
+        if len(intakes) > 5:    
+            del intakes[-1]
+                            
+        intakes.insert(0, combo)
+        intakes = ','.join(intakes)
 
         code = str(billingDate).replace(':', '').replace('.', '').replace('-','').replace(' ', str(random.randint(1,9)))
         referencecodeInvoice = code + str(random.randint(1111111,9999999))
 
+        invoices.append(Invoice(
+                    billingDate=billingDate,
+                    deadDatePay=deadDatePay,
+                    counter=counter,
+                    address=address,
+                    stratum=stratum,
+                    currentRecord=currentRegistry,
+                    pastRecord=lastRegistry,
+                    basicTake=basicTake,
+                    remainder=remainder,
+                    unitaryValue=unitaryValue,
+                    interestMora=interestMora,
+                    totalMora=totalMora,
+                    overdue=overdue,
+                    intakes=intakes,
+                    referencecodeInvoice=referencecodeInvoice,
+                    total=total,
+                    contract=contrato
+                )
+            )
 
-        #print(referencecodeInvoice)
-
-
-    #print(histories)
-    #History.objects.bulk_create(histories)
+    #print(invoices)
+    History.objects.bulk_create(histories)
+    Invoice.objects.bulk_create(invoices)
     #History.objects.all().delete()
     return "hola"
 
