@@ -3,7 +3,10 @@ from .models import (
     Contract,
     Invoice
 )
-from energytransfers.serializers import CounterHistoriesSerializer
+from energytransfers.serializers import (
+    CounterHistoriesSerializer,
+    CounterSerializer
+)
 from users.serializers import ClientSerializer
 # Serializer
 from rest_framework import serializers
@@ -77,8 +80,31 @@ class InactivateInvoiceSerializer(serializers.ModelSerializer):
 
 # -----------------------------------------Contract------------------------------------------------
 
-#get contrat with nested invoice and client(that client contains nested counter(that counter contains nested histories)) 
 class ContractSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = Contract
+        fields = [
+            'contractNumber',
+            'client',
+            'counter',
+            ]
+
+class CreateFullContractSerializer(serializers.ModelSerializer):
+    
+    client = ClientSerializer()
+    counter = CounterSerializer()
+
+    class Meta:
+        model = Contract
+        fields = [
+            'contractNumber',
+            'client',
+            'counter',
+            ]
+
+#get contrat with nested invoice and client(that client contains nested counter(that counter contains nested histories)) 
+class SuperJoinSerializer(serializers.ModelSerializer):
     
     client = ClientSerializer()
     counter = CounterHistoriesSerializer()
