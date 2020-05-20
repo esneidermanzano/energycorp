@@ -117,19 +117,19 @@ class InvoiceInactivate(UpdateAPIView):
 #Obtener las  ultimas 6 facturas dado un numero de contrato
 class GetInvoiceByContract(APIView):
     def post(self,request):
-        try:
-            contractNumber = request.data.get('contractNumber')
-            queryset = Invoice.objects.filter(
-                contract=contractNumber).order_by('-codeInvoice')[:5]
-            serializer = InvoiceSerializer(queryset, many=True).data
-            if (queryset.exists()):
-                return Response({ "error": False,"find": True, "invoices": serializer})
-            else:
-                message = "Numero de contrato erroneo"
-                return Response({ "error": False, "find": False, "message": message} )
-        except:
-            message = "Error al buscar las facturas, intelo mas tarde"
-            return Response({"error": True, "message": message} )
+        #try:
+        contractNumber = request.data.get('contractNumber')
+        queryset = Invoice.objects.filter(
+            contract=contractNumber).order_by('-codeInvoice')[:5]
+        serializer = InvoiceSerializer(queryset, many=True).data
+        if (queryset.exists()):
+            return Response({ "error": False,"find": True, "invoices": serializer})
+        else:
+            message = "Numero de contrato erroneo"
+            return Response({ "error": False, "find": False, "message": message} )
+        #except:
+            #message = "Error al buscar las facturas, intelo mas tarde"
+            #return Response({"error": True, "message": message} )
 
 #obtener un afactura en formato pdf
 class GeneratePdf(View):
