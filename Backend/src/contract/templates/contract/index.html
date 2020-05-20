@@ -405,9 +405,9 @@ footer {
               <div id="concep2"><b>Total</b></div>
               <div><span>&nbsp;</span></div>
               <div><span>{{totalBasicSubsidy}}</span></div>
-              <div><span>141,845.13</span></div>
-              <div><span>228.52</span></div>
-              <div><span>48,830.00</span></div>
+              <div><span>{{totalRemainder}}</span></div>
+              <div><span>{{totalMora}}</span></div>
+              <div><span>{{overdue}}</span></div>
               <div><span>0</span></div>
             </td>
 
@@ -415,7 +415,7 @@ footer {
           <tr>
             <td></td>
             <td colspan="6" id="totalEnergy">
-              <div><b>149,140.45</b></div>
+              <div><b>{{total}}</b></div>
             </td>
           </tr>
         </tbody>
@@ -433,15 +433,15 @@ footer {
           <div>Nit: 890,399,033-8</div>
         </div>
         <div class="user datauser" class="clearfix">
-          <div><b>CECILIA URQUIJO BARMA</b></div>
-          <div>Diagonal 50B # 94 - 134</div>
-          <div>C.C./Nit 1045127441</div>
-          <div>Contrato: 20200515</div>
+          <div><b>{{name}}</b></div>
+          <div>{{address}}</div>
+          <div>C.C./Nit {{id_user}}</div>
+          <div>Contrato: {{contract}}</div>
         </div>
         <div class="main">
-          <div id="total"><span>TOTAL A PAGAR</span> $242415</div>
-          <div><span>FECHA DE VENCIMIENTO</span> 2020-05-05</div>
-          <div><span>FECHA D EXPEDICION</span> 2020-04-30</div>
+          <div id="total"><span>TOTAL A PAGAR</span> ${{total}}</div>
+          <div><span>FECHA DE VENCIMIENTO</span> {{deadDatePay}}</div>
+          <div><span>FECHA DE EXPEDICION</span> {{cutoffDate}}</div>
         </div>
       </div>
      
@@ -457,7 +457,7 @@ footer {
         </div>
         <div id="barras">
           <img src="{% static 'contract/codigo.png' %}">
-          <spa>20200430(175915326153)3640602</spa>
+          <spa>{{referencecodeInvoice}}</spa>
         </div>
     </div>
       <br/>
