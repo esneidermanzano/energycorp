@@ -117,55 +117,57 @@ class InvoiceInactivate(UpdateAPIView):
 #Obtener las  ultimas 6 facturas dado un numero de contrato
 class GetInvoiceByContract(APIView):
     def post(self,request):
-        #try:
-        contractNumber = request.data.get('contractNumber')
-        queryset = Invoice.objects.filter(
-            contract=contractNumber).order_by('-codeInvoice')[:5]
-        serializer = InvoiceSerializer(queryset, many=True).data
-        if (queryset.exists()):
-            return Response({ "error": False,"find": True, "invoices": serializer})
-        else:
-            message = "Numero de contrato erroneo"
-            return Response({ "error": False, "find": False, "message": message} )
-        #except:
-            #message = "Error al buscar las facturas, intelo mas tarde"
-            #return Response({"error": True, "message": message} )
+        try:
+            contractNumber = request.data.get('contractNumber')
+            queryset = Invoice.objects.filter(
+                contract=contractNumber).order_by('-codeInvoice')[:5]
+            serializer = InvoiceSerializer(queryset, many=True).data
+            if (queryset.exists()):
+                return Response({ "error": False,"find": True, "invoices": serializer})
+            else:
+                message = "Numero de contrato erroneo"
+                return Response({ "error": False, "find": False, "message": message} )
+        except:
+            message = "Error al buscar las facturas, intelo mas tarde"
+            return Response({"error": True, "message": message} )
 
 #obtener un afactura en formato pdf
-class GeneratePdf(View):
+class GeneratePdf(APIView):
     def get(self, request, contract, factura):
-        """Generate pdf."""
-        # Model data
-        queryset = Contract.objects.filter(contractNumber__iexact=contract)
-        query = ContractClienteInvoiceSerializer(
-            queryset, many=True, context={'codeInvoice': factura}
-        ).data[0]
+        try:
+            queryset = Contract.objects.filter(contractNumber__iexact=contract)
+            datos = {}
+            if (queryset.exists()):  
+                try:              
+                    query = ContractClienteInvoiceSerializer(
+                        queryset, many=True, context={'codeInvoice': factura}
+                    ).data[0]                
+                    datos = getInvoiceData(query)
+                    # Rendered
+                    html_string = render_to_string('contract/index.html', datos)
+                    html = HTML(string=html_string, base_url=request.build_absolute_uri())
+                    result = html.write_pdf()
 
-        datos = {}
-        if (queryset.exists()):
-            print("no existe")
-            datos = getInvoiceData(query)
-        else:
-            print("no existe")
+                    # Creating http response
+                    response = HttpResponse(content_type='application/pdf;')
+                    response['Content-Disposition'] = 'inline; filename=list_people.pdf'
+                    response['Content-Transfer-Encoding'] = 'binary'
+                    with tempfile.NamedTemporaryFile(delete=True) as output:
+                        output.write(result)
+                        output.flush()
+                        output = open(output.name, 'rb')
+                        response.write(output.read())
 
-        # Rendered
-        print("==================================0")
-        #print(datos)
-        html_string = render_to_string('contract/index.html', datos)
-        html = HTML(string=html_string, base_url=request.build_absolute_uri())
-        result = html.write_pdf()
-
-        # Creating http response
-        response = HttpResponse(content_type='application/pdf;')
-        response['Content-Disposition'] = 'inline; filename=list_people.pdf'
-        response['Content-Transfer-Encoding'] = 'binary'
-        with tempfile.NamedTemporaryFile(delete=True) as output:
-            output.write(result)
-            output.flush()
-            output = open(output.name, 'rb')
-            response.write(output.read())
-
-        return response
+                    return response
+                except:
+                    message = "Error al buscar la factura, confirme el numero"
+                    return Response({"error": False, "find": False, "message": message} )
+            else:
+                message = "Numero de contrato erroneo"
+                return Response({ "error": False, "find": False, "message": message} )           
+        except:
+            message = "Error al buscar la factura, intelo mas tarde"
+            return Response({"error": True, "message": message} )
 
 
 #=============================View send invoice=======================================
