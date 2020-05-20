@@ -38,8 +38,12 @@ class Start extends React.Component {
     }
 
     handleSubmit = e => {
-        this.setState({ contract: "" })
-        window.open("https://energycorp.herokuapp.com/api/invoice/pdf/" + this.state.contract + "/");
+        e.preventDefault();
+        if (this.state.contract !== "") {
+            console.log("dfd")
+            this.setState({ contract: "" })
+            window.open("https://energycorp.herokuapp.com/api/invoice/pdf/" + this.state.contract + "/");
+        }
     }
 
     render() {
