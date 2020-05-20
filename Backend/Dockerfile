@@ -8,10 +8,11 @@ COPY ./requirements.txt .
 COPY ./src .
 
 RUN pip install -r requirements.txt
-
-
 RUN useradd -s /bin/bash myuser
 USER myuser
+
+RUN apt-get install ttf-mscorefonts-installer && fc-cache
+
 
 #If you wanna test with compose, enable the follow lines
 
