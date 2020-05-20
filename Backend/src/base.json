@@ -3,14 +3,13 @@
     "model": "users.CustomUser",
     "pk": 1,
     "fields": {
-      "id_user": "1045127441",
+      "id_user": "397268253",
       "name": "Cecilia Urquijo Barma",
       "email": "Cecilia@hotmail.com",
-      "password": "pbkdf2_sha256$180000$JT8e0Cd32oKW$7Zei9Q+gAB7fEK+6iJRYdHxZnCoaCJKvCsXHBxEACqY=",
-      "phone": "4982762",
-      "address": "Diagonal 50B # 94 - 134",
-      "neighborhood": "El bronx",
-      "stratus": 4,
+      "password": "pbkdf2_sha256$180000$wsJr4TD2tVgF$82eqs1ABT8fxyZsvLZSEW0vWmHG/jCxTfWcFPxX/PDM=",
+      "phone": "4797360",
+      "address": "Avenida 70D # 97 - 190",
+      "neighborhood": "Calima",
       "is_active": true,
       "is_staff": false,
       "is_superuser": false
@@ -20,14 +19,13 @@
     "model": "users.CustomUser",
     "pk": 2,
     "fields": {
-      "id_user": "619535150",
+      "id_user": "822166056",
       "name": "Teófilo Egusquiza Madariaga",
       "email": "Teofilo@gmail.com",
-      "password": "pbkdf2_sha256$180000$xVVnACoVA4xP$PzEDus/RK8E8elJY4OhoEFoaRy4LYsX28yEWxiBsYYY=",
-      "phone": "3889018",
-      "address": "Carrera 42E # 5 - 79",
-      "neighborhood": "Calipso",
-      "stratus": 4,
+      "password": "pbkdf2_sha256$180000$1uwXJm6wBTWQ$dn97YdprdATpWqxqA7pSCrrDMMALlpXzDoBQmuGCdKw=",
+      "phone": "3122445",
+      "address": "Avenida 51A # 25 - 39",
+      "neighborhood": "Mojica",
       "is_active": true,
       "is_staff": false,
       "is_superuser": false
@@ -37,14 +35,13 @@
     "model": "users.CustomUser",
     "pk": 3,
     "fields": {
-      "id_user": "833527840",
+      "id_user": "171913920",
       "name": "Pancracio Ispuzua Chave",
-      "email": "Pancracio@yahoo.com",
-      "password": "pbkdf2_sha256$180000$JZpJqgQWZ6i1$8LYs7c5KiLtZsojQEeW8rraAWeCC6Xy6O0nIY2iWcwQ=",
-      "phone": "3075028",
-      "address": "Calle 11E # 46 - 158",
-      "neighborhood": "Calipso",
-      "stratus": 3,
+      "email": "Pancracio@gmail.com",
+      "password": "pbkdf2_sha256$180000$CR0JNmscXtQw$79+eL7egaca4jduqfNFD4FIK6U89TpUf4bZVlLUQurQ=",
+      "phone": "3311063",
+      "address": "Calle 40D # 55 - 177",
+      "neighborhood": "Eduardo Santos",
       "is_active": true,
       "is_staff": false,
       "is_superuser": false
@@ -54,14 +51,13 @@
     "model": "users.CustomUser",
     "pk": 4,
     "fields": {
-      "id_user": "409524924",
+      "id_user": "377309411",
       "name": "Celeste Ganzo Vicente",
       "email": "Celeste@hotmail.com",
-      "password": "pbkdf2_sha256$180000$X2NP4z8Gs61E$i2E/7s07vXzb1FOmbWO7i2kpSo8ogmoQY+FmPWnZ3Y8=",
-      "phone": "4463194",
-      "address": "Calle 1E # 46 - 81",
-      "neighborhood": "El vallado",
-      "stratus": 5,
+      "password": "pbkdf2_sha256$180000$wU0iDKWQqMdv$PbAJP/YDr76nNvtxsMA6e/bLGqiZStuVkV794d+SWPI=",
+      "phone": "3222160",
+      "address": "Transversal 99C # 20 - 89",
+      "neighborhood": "Aguablanca",
       "is_active": true,
       "is_staff": false,
       "is_superuser": false
@@ -71,14 +67,13 @@
     "model": "users.CustomUser",
     "pk": 5,
     "fields": {
-      "id_user": "112176100",
+      "id_user": "460714111",
       "name": "Luis Valino Vango",
-      "email": "Luis@gmail.com",
-      "password": "pbkdf2_sha256$180000$785FgGhNFUNj$cWqQjmGi1JG+l9GlnU24NCzgQ9AbrG48Yk7mqy68eac=",
-      "phone": "3491339",
-      "address": "Avenida 44A # 58 - 68",
-      "neighborhood": "Calima",
-      "stratus": 5,
+      "email": "Luis@hotmail.com",
+      "password": "pbkdf2_sha256$180000$i0S7vapLJLTP$ZJ6NATDD+E3eoy3qrkiLFvwf9H+olEuwZB8HIzW7NBY=",
+      "phone": "3116305",
+      "address": "Carrera 27A # 4 - 200",
+      "neighborhood": "El vergel",
       "is_active": true,
       "is_staff": false,
       "is_superuser": false
@@ -88,14 +83,13 @@
     "model": "users.CustomUser",
     "pk": 6,
     "fields": {
-      "id_user": "855593141",
+      "id_user": "909180144",
       "name": "Florencia Cucho Ahedo",
-      "email": "Florencia@gmail.com",
-      "password": "pbkdf2_sha256$180000$nQqYkCL16TlV$Yx1s9PPIJaAw3mpcaMARHFGQflxbS2l1OvjVBZ9GZYQ=",
-      "phone": "3390809",
-      "address": "Diagonal 97C # 55 - 151",
-      "neighborhood": "Mojica",
-      "stratus": 2,
+      "email": "Florencia@hotmail.com",
+      "password": "pbkdf2_sha256$180000$kxc3AaGw40HV$vkeEZOsntP7136l7V2MNy++sZAwD7O0HA/AbKFHkXrE=",
+      "phone": "4990934",
+      "address": "Diagonal 42B # 88 - 146",
+      "neighborhood": "El vergel",
       "is_active": true,
       "is_staff": false,
       "is_superuser": false
@@ -105,14 +99,13 @@
     "model": "users.CustomUser",
     "pk": 7,
     "fields": {
-      "id_user": "474771475",
+      "id_user": "506116909",
       "name": "Mariano Mogrovejo Gante",
       "email": "Mariano@hotmail.com",
-      "password": "pbkdf2_sha256$180000$HAci4sLddIOb$tRh7FNhU4RMm7+zEbv9TMDYxnZg8JWjTuYkZCUUeIOI=",
-      "phone": "4732153",
-      "address": "Avenida 73A # 74 - 137",
-      "neighborhood": "Calima",
-      "stratus": 3,
+      "password": "pbkdf2_sha256$180000$t7uiVBkzzatl$g6Zct5kudfa2KGEnnz/b1DIQfwP4GSyJO44qasdLwXs=",
+      "phone": "4333174",
+      "address": "Transversal 49A # 65 - 29",
+      "neighborhood": "Calipso",
       "is_active": true,
       "is_staff": false,
       "is_superuser": false
@@ -122,14 +115,13 @@
     "model": "users.CustomUser",
     "pk": 8,
     "fields": {
-      "id_user": "483180644",
+      "id_user": "917840045",
       "name": "Angélica Ter Tosantos",
-      "email": "Angelica@yahoo.com",
-      "password": "pbkdf2_sha256$180000$tEfN4rWn6ALR$z7+LC1frcHXVJwjHFgPmez+n66NciNpvq7V48QTuKgs=",
-      "phone": "4926252",
-      "address": "Diagonal 91E # 29 - 150",
-      "neighborhood": "Sindical",
-      "stratus": 3,
+      "email": "Angelica@gmail.com",
+      "password": "pbkdf2_sha256$180000$SZWNMKrXeJgi$y4J1GR53XEmmL7aAJNKqJTepfKT51FXlfNWjM5n8O+U=",
+      "phone": "3840610",
+      "address": "Avenida 73C # 55 - 129",
+      "neighborhood": "El bronx",
       "is_active": true,
       "is_staff": false,
       "is_superuser": false
@@ -139,14 +131,13 @@
     "model": "users.CustomUser",
     "pk": 9,
     "fields": {
-      "id_user": "657697767",
+      "id_user": "403719555",
       "name": "Antonio Incera Fontoria",
-      "email": "Antonio@yahoo.com",
-      "password": "pbkdf2_sha256$180000$hXwsmbu4J0PY$kBBrjb0k5Gh+g8dKsb/G7SYbrshqY7THNRafhPMRKks=",
-      "phone": "3342966",
-      "address": "Transversal 66A # 39 - 21",
-      "neighborhood": "El bronx",
-      "stratus": 2,
+      "email": "Antonio@hotmail.com",
+      "password": "pbkdf2_sha256$180000$Jb2Ahab1Jvzc$cHaXSfeceOmaHxrIBCOU0Ru3bVscrP2LdZU208aIZ4g=",
+      "phone": "3209086",
+      "address": "Transversal 32B # 85 - 109",
+      "neighborhood": "Aguablanca",
       "is_active": true,
       "is_staff": false,
       "is_superuser": false
@@ -156,14 +147,13 @@
     "model": "users.CustomUser",
     "pk": 10,
     "fields": {
-      "id_user": "1072186755",
+      "id_user": "382491506",
       "name": "Lupita Soret Garmendia",
       "email": "Lupita@yahoo.com",
-      "password": "pbkdf2_sha256$180000$qYTpkl46UFIs$bOTbNV3+q9d5BPCX33eVcGyhM1Eaw1hwAVB2Jt+Ur3Q=",
-      "phone": "3906026",
-      "address": "Calle 2C # 33 - 43",
-      "neighborhood": "Manuela Beltran",
-      "stratus": 2,
+      "password": "pbkdf2_sha256$180000$Ce0R8FgBqEMw$Mcpo+s1Wo6x6w4cYkj+zcvfLEqcEtxM45CdYnp5C1XY=",
+      "phone": "4239088",
+      "address": "Calle 12D # 1 - 142",
+      "neighborhood": "Sindical",
       "is_active": true,
       "is_staff": false,
       "is_superuser": false
@@ -180,7 +170,6 @@
       "phone": "4455971",
       "address": "cra28 C # 54-123",
       "neighborhood": "sindical",
-      "stratus": 2,
       "is_active": true,
       "is_staff": true,
       "is_superuser": false
@@ -197,7 +186,6 @@
       "phone": "4455972",
       "address": "cra28 C # 54-124",
       "neighborhood": "sindical",
-      "stratus": 2,
       "is_active": true,
       "is_staff": true,
       "is_superuser": false
@@ -214,7 +202,6 @@
       "phone": "4455970",
       "address": "cra28 C # 54-127",
       "neighborhood": "sindical",
-      "stratus": 2,
       "is_active": true,
       "is_staff": true,
       "is_superuser": false
@@ -250,10 +237,7 @@
     "fields": {
       "user": 1,
       "type_client": 1,
-      "interes_mora": 0,
-      "cycle": "1",
-      "financial_state": "libre",
-      "billing": "no se"
+      "interes_mora": 0
     }
   },
   {
@@ -262,10 +246,7 @@
     "fields": {
       "user": 2,
       "type_client": 1,
-      "interes_mora": 0,
-      "cycle": "1",
-      "financial_state": "libre",
-      "billing": "no se"
+      "interes_mora": 0
     }
   },
   {
@@ -274,10 +255,7 @@
     "fields": {
       "user": 3,
       "type_client": 1,
-      "interes_mora": 0,
-      "cycle": "1",
-      "financial_state": "libre",
-      "billing": "no se"
+      "interes_mora": 0
     }
   },
   {
@@ -286,10 +264,7 @@
     "fields": {
       "user": 4,
       "type_client": 1,
-      "interes_mora": 0,
-      "cycle": "1",
-      "financial_state": "libre",
-      "billing": "no se"
+      "interes_mora": 0
     }
   },
   {
@@ -298,10 +273,7 @@
     "fields": {
       "user": 5,
       "type_client": 1,
-      "interes_mora": 0,
-      "cycle": "1",
-      "financial_state": "libre",
-      "billing": "no se"
+      "interes_mora": 0
     }
   },
   {
@@ -310,10 +282,7 @@
     "fields": {
       "user": 6,
       "type_client": 1,
-      "interes_mora": 0,
-      "cycle": "1",
-      "financial_state": "libre",
-      "billing": "no se"
+      "interes_mora": 0
     }
   },
   {
@@ -322,10 +291,7 @@
     "fields": {
       "user": 7,
       "type_client": 1,
-      "interes_mora": 0,
-      "cycle": "1",
-      "financial_state": "libre",
-      "billing": "no se"
+      "interes_mora": 0
     }
   },
   {
@@ -334,10 +300,7 @@
     "fields": {
       "user": 8,
       "type_client": 1,
-      "interes_mora": 0,
-      "cycle": "1",
-      "financial_state": "libre",
-      "billing": "no se"
+      "interes_mora": 0
     }
   },
   {
@@ -346,10 +309,7 @@
     "fields": {
       "user": 9,
       "type_client": 1,
-      "interes_mora": 0,
-      "cycle": "1",
-      "financial_state": "libre",
-      "billing": "no se"
+      "interes_mora": 0
     }
   },
   {
@@ -358,10 +318,7 @@
     "fields": {
       "user": 10,
       "type_client": 1,
-      "interes_mora": 0,
-      "cycle": "1",
-      "financial_state": "libre",
-      "billing": "no se"
+      "interes_mora": 0
     }
   },
   {
@@ -513,310 +470,630 @@
     "model": "energytransfers.counter",
     "pk": 1,
     "fields": {
-      "latitudeCounter": "3.429708",
-      "lengthCounter": "-76.501172",
-      "value": 227,
+      "latitudeCounter": "3.4613754609402134",
+      "lengthCounter": "-76.50162220001222",
+      "value": 1602,
       "is_active": true,
-      "addressCounter": "Cra. 28c #50-2 a 50-178",
-      "clientCounter": 1,
-      "transformatorCounter": 1
+      "addressCounter": "Carrera 5 # 14-4",
+      "stratum": 1,
+      "transformatorCounter": 9
     }
   },
   {
     "model": "energytransfers.counter",
     "pk": 2,
     "fields": {
-      "latitudeCounter": "3.429556",
-      "lengthCounter": "-76.504896",
-      "value": 301,
+      "latitudeCounter": "3.463560148219834",
+      "lengthCounter": "-76.49715900421144",
+      "value": 1342,
       "is_active": true,
-      "addressCounter": "Tv. 33g #28e-2 a 28e-64",
-      "clientCounter": 2,
-      "transformatorCounter": 1
+      "addressCounter": "Carrera 5 con calle 56",
+      "stratum": 3,
+      "transformatorCounter": 9
     }
   },
   {
     "model": "energytransfers.counter",
     "pk": 3,
     "fields": {
-      "latitudeCounter": "3.428764",
-      "lengthCounter": "-76.506723",
-      "value": 384,
+      "latitudeCounter": "3.468572058805507",
+      "lengthCounter": "-76.50488376617432",
+      "value": 1113,
       "is_active": true,
-      "addressCounter": "Dg. 28d #29-2 a 29-96",
-      "clientCounter": 3,
-      "transformatorCounter": 1
+      "addressCounter": "Carrera 2 # 45",
+      "stratum": 2,
+      "transformatorCounter": 9
     }
   },
   {
     "model": "energytransfers.counter",
     "pk": 4,
     "fields": {
-      "latitudeCounter": "3.430769",
-      "lengthCounter": "-76.508757",
-      "value": 315,
+      "latitudeCounter": "3.4810374646865485",
+      "lengthCounter": "-76.49346828460695",
+      "value": 1741,
       "is_active": true,
-      "addressCounter": "Tv. 28a #27a-89 a 27a-1",
-      "clientCounter": 4,
-      "transformatorCounter": 1
+      "addressCounter": "Calle 66A #43",
+      "stratum": 6,
+      "transformatorCounter": 10
     }
   },
   {
     "model": "energytransfers.counter",
     "pk": 5,
     "fields": {
-      "latitudeCounter": "3.43748",
-      "lengthCounter": "-76.508385",
-      "value": 364,
+      "latitudeCounter": "3.488105405079248",
+      "lengthCounter": "-76.49904727935792",
+      "value": 1420,
       "is_active": true,
-      "addressCounter": "Cl. 33f #23-12 a 23-64",
-      "clientCounter": 5,
-      "transformatorCounter": 1
+      "addressCounter": "Calle 71 #42",
+      "stratum": 4,
+      "transformatorCounter": 10
     }
   },
   {
     "model": "energytransfers.counter",
     "pk": 6,
     "fields": {
-      "latitudeCounter": "3.470128",
-      "lengthCounter": "-76.490096",
-      "value": 137,
+      "latitudeCounter": "3.4357371374880414",
+      "lengthCounter": "-76.5101408958435",
+      "value": 1589,
       "is_active": true,
-      "addressCounter": "Cl. 64a #2d-39 a 2d-1",
-      "clientCounter": 6,
-      "transformatorCounter": 2
+      "addressCounter": "Carrera 24 #4B",
+      "stratum": 4,
+      "transformatorCounter": 6
     }
   },
   {
     "model": "energytransfers.counter",
     "pk": 7,
     "fields": {
-      "latitudeCounter": "3.462938",
-      "lengthCounter": "-76.504564",
-      "value": 136,
+      "latitudeCounter": "3.437086540149677",
+      "lengthCounter": "-76.504282951355",
+      "value": 1040,
       "is_active": true,
-      "addressCounter": "Cl. 46 #4b-8 a 4b-28",
-      "clientCounter": 7,
-      "transformatorCounter": 2
+      "addressCounter": "Carrera 24C #10",
+      "stratum": 3,
+      "transformatorCounter": 6
     }
   },
   {
     "model": "energytransfers.counter",
     "pk": 8,
     "fields": {
-      "latitudeCounter": "3.459106",
-      "lengthCounter": "-76.487694",
-      "value": 240,
+      "latitudeCounter": "3.4278120357529867",
+      "lengthCounter": "-76.4970088005066",
+      "value": 1781,
       "is_active": true,
-      "addressCounter": "Cra. 7f #64-65 a 64-1",
-      "clientCounter": 8,
-      "transformatorCounter": 2
+      "addressCounter": "Carrera 28B #9",
+      "stratum": 3,
+      "transformatorCounter": 5
     }
   },
   {
     "model": "energytransfers.counter",
     "pk": 9,
     "fields": {
-      "latitudeCounter": "3.475513",
-      "lengthCounter": "-76.50132",
-      "value": 250,
+      "latitudeCounter": "3.4380932361303143",
+      "lengthCounter": "-76.49919748306276",
+      "value": 1325,
       "is_active": true,
-      "addressCounter": "Cra. 1B #5450",
-      "clientCounter": 9,
-      "transformatorCounter": 2
+      "addressCounter": "Carrera 25 #33-17",
+      "stratum": 5,
+      "transformatorCounter": 6
     }
   },
   {
     "model": "energytransfers.counter",
     "pk": 10,
     "fields": {
-      "latitudeCounter": "3.471357",
-      "lengthCounter": "-76.498292",
-      "value": 140,
+      "latitudeCounter": "3.4223072642741497",
+      "lengthCounter": "-76.50091409683229",
+      "value": 1262,
       "is_active": true,
-      "addressCounter": "Cra. 1d 2 #56-94",
-      "clientCounter": 10,
-      "transformatorCounter": 2
+      "addressCounter": "Carrera 29A #12-89",
+      "stratum": 4,
+      "transformatorCounter": 5
     }
   },
   {
     "model": "energytransfers.history",
     "pk": 1,
     "fields": {
-      "consumption": 17,
-      "counter": 1,
-      "registryHistory": "2020-04-30"
+      "current": 240,
+      "consumption": 240,
+      "registryHistory": "2019-12-31",
+      "counter": 1
     }
   },
   {
     "model": "energytransfers.history",
     "pk": 2,
     "fields": {
-      "consumption": 48,
-      "counter": 1,
-      "registryHistory": "2020-05-13"
+      "current": 544,
+      "consumption": 304,
+      "registryHistory": "2020-01-31",
+      "counter": 1
     }
   },
   {
     "model": "energytransfers.history",
     "pk": 3,
     "fields": {
-      "consumption": 27,
-      "counter": 2,
-      "registryHistory": "2020-04-30"
+      "current": 864,
+      "consumption": 320,
+      "registryHistory": "2020-02-29",
+      "counter": 1
     }
   },
   {
     "model": "energytransfers.history",
     "pk": 4,
     "fields": {
-      "consumption": 30,
-      "counter": 2,
-      "registryHistory": "2020-05-13"
+      "current": 1216,
+      "consumption": 352,
+      "registryHistory": "2020-03-31",
+      "counter": 1
     }
   },
   {
     "model": "energytransfers.history",
     "pk": 5,
     "fields": {
-      "consumption": 38,
-      "counter": 3,
-      "registryHistory": "2020-04-30"
+      "current": 1600,
+      "consumption": 384,
+      "registryHistory": "2020-04-30",
+      "counter": 1
     }
   },
   {
     "model": "energytransfers.history",
     "pk": 6,
     "fields": {
-      "consumption": 28,
-      "counter": 3,
-      "registryHistory": "2020-05-13"
+      "current": 348,
+      "consumption": 348,
+      "registryHistory": "2019-12-31",
+      "counter": 2
     }
   },
   {
     "model": "energytransfers.history",
     "pk": 7,
     "fields": {
-      "consumption": 11,
-      "counter": 4,
-      "registryHistory": "2020-04-30"
+      "current": 576,
+      "consumption": 228,
+      "registryHistory": "2020-01-31",
+      "counter": 2
     }
   },
   {
     "model": "energytransfers.history",
     "pk": 8,
     "fields": {
-      "consumption": 23,
-      "counter": 4,
-      "registryHistory": "2020-05-13"
+      "current": 817,
+      "consumption": 241,
+      "registryHistory": "2020-02-29",
+      "counter": 2
     }
   },
   {
     "model": "energytransfers.history",
     "pk": 9,
     "fields": {
-      "consumption": 31,
-      "counter": 5,
-      "registryHistory": "2020-04-30"
+      "current": 1139,
+      "consumption": 322,
+      "registryHistory": "2020-03-31",
+      "counter": 2
     }
   },
   {
     "model": "energytransfers.history",
     "pk": 10,
     "fields": {
-      "consumption": 18,
-      "counter": 5,
-      "registryHistory": "2020-05-13"
+      "current": 1340,
+      "consumption": 201,
+      "registryHistory": "2020-04-30",
+      "counter": 2
     }
   },
   {
     "model": "energytransfers.history",
     "pk": 11,
     "fields": {
-      "consumption": 11,
-      "counter": 6,
-      "registryHistory": "2020-04-30"
+      "current": 211,
+      "consumption": 211,
+      "registryHistory": "2019-12-31",
+      "counter": 3
     }
   },
   {
     "model": "energytransfers.history",
     "pk": 12,
     "fields": {
-      "consumption": 17,
-      "counter": 6,
-      "registryHistory": "2020-05-13"
+      "current": 455,
+      "consumption": 244,
+      "registryHistory": "2020-01-31",
+      "counter": 3
     }
   },
   {
     "model": "energytransfers.history",
     "pk": 13,
     "fields": {
-      "consumption": 14,
-      "counter": 7,
-      "registryHistory": "2020-04-30"
+      "current": 722,
+      "consumption": 267,
+      "registryHistory": "2020-02-29",
+      "counter": 3
     }
   },
   {
     "model": "energytransfers.history",
     "pk": 14,
     "fields": {
-      "consumption": 22,
-      "counter": 7,
-      "registryHistory": "2020-05-13"
+      "current": 944,
+      "consumption": 222,
+      "registryHistory": "2020-03-31",
+      "counter": 3
     }
   },
   {
     "model": "energytransfers.history",
     "pk": 15,
     "fields": {
-      "consumption": 23,
-      "counter": 8,
-      "registryHistory": "2020-04-30"
+      "current": 1110,
+      "consumption": 166,
+      "registryHistory": "2020-04-30",
+      "counter": 3
     }
   },
   {
     "model": "energytransfers.history",
     "pk": 16,
     "fields": {
-      "consumption": 29,
-      "counter": 8,
-      "registryHistory": "2020-05-13"
+      "current": 313,
+      "consumption": 313,
+      "registryHistory": "2019-12-31",
+      "counter": 4
     }
   },
   {
     "model": "energytransfers.history",
     "pk": 17,
     "fields": {
-      "consumption": 23,
-      "counter": 9,
-      "registryHistory": "2020-04-30"
+      "current": 765,
+      "consumption": 452,
+      "registryHistory": "2020-01-31",
+      "counter": 4
     }
   },
   {
     "model": "energytransfers.history",
     "pk": 18,
     "fields": {
-      "consumption": 46,
-      "counter": 9,
-      "registryHistory": "2020-05-13"
+      "current": 1182,
+      "consumption": 417,
+      "registryHistory": "2020-02-29",
+      "counter": 4
     }
   },
   {
     "model": "energytransfers.history",
     "pk": 19,
     "fields": {
-      "consumption": 34,
-      "counter": 10,
-      "registryHistory": "2020-04-30"
+      "current": 1443,
+      "consumption": 261,
+      "registryHistory": "2020-03-31",
+      "counter": 4
     }
   },
   {
     "model": "energytransfers.history",
     "pk": 20,
     "fields": {
-      "consumption": 34,
-      "counter": 10,
-      "registryHistory": "2020-05-13"
+      "current": 1738,
+      "consumption": 295,
+      "registryHistory": "2020-04-30",
+      "counter": 4
+    }
+  },
+  {
+    "model": "energytransfers.history",
+    "pk": 21,
+    "fields": {
+      "current": 284,
+      "consumption": 284,
+      "registryHistory": "2019-12-31",
+      "counter": 5
+    }
+  },
+  {
+    "model": "energytransfers.history",
+    "pk": 22,
+    "fields": {
+      "current": 624,
+      "consumption": 340,
+      "registryHistory": "2020-01-31",
+      "counter": 5
+    }
+  },
+  {
+    "model": "energytransfers.history",
+    "pk": 23,
+    "fields": {
+      "current": 936,
+      "consumption": 312,
+      "registryHistory": "2020-02-29",
+      "counter": 5
+    }
+  },
+  {
+    "model": "energytransfers.history",
+    "pk": 24,
+    "fields": {
+      "current": 1205,
+      "consumption": 269,
+      "registryHistory": "2020-03-31",
+      "counter": 5
+    }
+  },
+  {
+    "model": "energytransfers.history",
+    "pk": 25,
+    "fields": {
+      "current": 1418,
+      "consumption": 213,
+      "registryHistory": "2020-04-30",
+      "counter": 5
+    }
+  },
+  {
+    "model": "energytransfers.history",
+    "pk": 26,
+    "fields": {
+      "current": 286,
+      "consumption": 286,
+      "registryHistory": "2019-12-31",
+      "counter": 6
+    }
+  },
+  {
+    "model": "energytransfers.history",
+    "pk": 27,
+    "fields": {
+      "current": 699,
+      "consumption": 413,
+      "registryHistory": "2020-01-31",
+      "counter": 6
+    }
+  },
+  {
+    "model": "energytransfers.history",
+    "pk": 28,
+    "fields": {
+      "current": 1080,
+      "consumption": 381,
+      "registryHistory": "2020-02-29",
+      "counter": 6
+    }
+  },
+  {
+    "model": "energytransfers.history",
+    "pk": 29,
+    "fields": {
+      "current": 1318,
+      "consumption": 238,
+      "registryHistory": "2020-03-31",
+      "counter": 6
+    }
+  },
+  {
+    "model": "energytransfers.history",
+    "pk": 30,
+    "fields": {
+      "current": 1588,
+      "consumption": 270,
+      "registryHistory": "2020-04-30",
+      "counter": 6
+    }
+  },
+  {
+    "model": "energytransfers.history",
+    "pk": 31,
+    "fields": {
+      "current": 249,
+      "consumption": 249,
+      "registryHistory": "2019-12-31",
+      "counter": 7
+    }
+  },
+  {
+    "model": "energytransfers.history",
+    "pk": 32,
+    "fields": {
+      "current": 405,
+      "consumption": 156,
+      "registryHistory": "2020-01-31",
+      "counter": 7
+    }
+  },
+  {
+    "model": "energytransfers.history",
+    "pk": 33,
+    "fields": {
+      "current": 613,
+      "consumption": 208,
+      "registryHistory": "2020-02-29",
+      "counter": 7
+    }
+  },
+  {
+    "model": "energytransfers.history",
+    "pk": 34,
+    "fields": {
+      "current": 810,
+      "consumption": 197,
+      "registryHistory": "2020-03-31",
+      "counter": 7
+    }
+  },
+  {
+    "model": "energytransfers.history",
+    "pk": 35,
+    "fields": {
+      "current": 1038,
+      "consumption": 228,
+      "registryHistory": "2020-04-30",
+      "counter": 7
+    }
+  },
+  {
+    "model": "energytransfers.history",
+    "pk": 36,
+    "fields": {
+      "current": 427,
+      "consumption": 427,
+      "registryHistory": "2019-12-31",
+      "counter": 8
+    }
+  },
+  {
+    "model": "energytransfers.history",
+    "pk": 37,
+    "fields": {
+      "current": 747,
+      "consumption": 320,
+      "registryHistory": "2020-01-31",
+      "counter": 8
+    }
+  },
+  {
+    "model": "energytransfers.history",
+    "pk": 38,
+    "fields": {
+      "current": 1210,
+      "consumption": 463,
+      "registryHistory": "2020-02-29",
+      "counter": 8
+    }
+  },
+  {
+    "model": "energytransfers.history",
+    "pk": 39,
+    "fields": {
+      "current": 1512,
+      "consumption": 302,
+      "registryHistory": "2020-03-31",
+      "counter": 8
+    }
+  },
+  {
+    "model": "energytransfers.history",
+    "pk": 40,
+    "fields": {
+      "current": 1779,
+      "consumption": 267,
+      "registryHistory": "2020-04-30",
+      "counter": 8
+    }
+  },
+  {
+    "model": "energytransfers.history",
+    "pk": 41,
+    "fields": {
+      "current": 318,
+      "consumption": 318,
+      "registryHistory": "2019-12-31",
+      "counter": 9
+    }
+  },
+  {
+    "model": "energytransfers.history",
+    "pk": 42,
+    "fields": {
+      "current": 583,
+      "consumption": 265,
+      "registryHistory": "2020-01-31",
+      "counter": 9
+    }
+  },
+  {
+    "model": "energytransfers.history",
+    "pk": 43,
+    "fields": {
+      "current": 781,
+      "consumption": 198,
+      "registryHistory": "2020-02-29",
+      "counter": 9
+    }
+  },
+  {
+    "model": "energytransfers.history",
+    "pk": 44,
+    "fields": {
+      "current": 1072,
+      "consumption": 291,
+      "registryHistory": "2020-03-31",
+      "counter": 9
+    }
+  },
+  {
+    "model": "energytransfers.history",
+    "pk": 45,
+    "fields": {
+      "current": 1323,
+      "consumption": 251,
+      "registryHistory": "2020-04-30",
+      "counter": 9
+    }
+  },
+  {
+    "model": "energytransfers.history",
+    "pk": 46,
+    "fields": {
+      "current": 227,
+      "consumption": 227,
+      "registryHistory": "2019-12-31",
+      "counter": 10
+    }
+  },
+  {
+    "model": "energytransfers.history",
+    "pk": 47,
+    "fields": {
+      "current": 529,
+      "consumption": 302,
+      "registryHistory": "2020-01-31",
+      "counter": 10
+    }
+  },
+  {
+    "model": "energytransfers.history",
+    "pk": 48,
+    "fields": {
+      "current": 857,
+      "consumption": 328,
+      "registryHistory": "2020-02-29",
+      "counter": 10
+    }
+  },
+  {
+    "model": "energytransfers.history",
+    "pk": 49,
+    "fields": {
+      "current": 1071,
+      "consumption": 214,
+      "registryHistory": "2020-03-31",
+      "counter": 10
+    }
+  },
+  {
+    "model": "energytransfers.history",
+    "pk": 50,
+    "fields": {
+      "current": 1260,
+      "consumption": 189,
+      "registryHistory": "2020-04-30",
+      "counter": 10
     }
   },
   {
@@ -901,222 +1178,1652 @@
   },
   {
     "model": "contract.Invoice",
-    "pk": 1,
+    "pk": 2001,
     "fields": {
-      "consumptiondaysInvoice": 30,
-      "paymentdeadlineInvoice": "2020-05-05",
-      "billingdateInvoice": "2020-04-30",
+      "billingDate": "2019-12-31",
+      "deadDatePay": "2020-01-10",
+      "counter": 1,
+      "address": "Carrera 5 # 14-4",
+      "stratum": 1,
+      "currentRecord": 240,
+      "pastRecord": 0,
+      "basicTake": 173,
+      "remainder": 67,
+      "unitaryValue": 589,
+      "interestMora": 0,
+      "totalMora": 0.0,
+      "overdue": 0.0,
+      "intakes": "12-240",
+      "referencecodeInvoice": "202004301759492261534652100",
+      "total": 80221.79999999999,
       "stateInvoice": true,
-      "referencecodeInvoice": "20200430(175915326153)3640602",
-      "total": 242415,
       "contract": 20200515
     }
   },
   {
     "model": "contract.Invoice",
-    "pk": 2,
+    "pk": 2002,
     "fields": {
-      "consumptiondaysInvoice": 30,
-      "paymentdeadlineInvoice": "2020-05-05",
-      "billingdateInvoice": "2020-04-30",
+      "billingDate": "2020-01-31",
+      "deadDatePay": "2020-02-10",
+      "counter": 1,
+      "address": "Carrera 5 # 14-4",
+      "stratum": 1,
+      "currentRecord": 544,
+      "pastRecord": 240,
+      "basicTake": 173,
+      "remainder": 131,
+      "unitaryValue": 589,
+      "interestMora": 0,
+      "totalMora": 0.0,
+      "overdue": 0.0,
+      "intakes": "1-304,12-240",
+      "referencecodeInvoice": "202004301759143261539336701",
+      "total": 117917.79999999999,
       "stateInvoice": true,
-      "referencecodeInvoice": "20200430(175915326153)7909492",
-      "total": 191451,
+      "contract": 20200515
+    }
+  },
+  {
+    "model": "contract.Invoice",
+    "pk": 2003,
+    "fields": {
+      "billingDate": "2020-02-29",
+      "deadDatePay": "2020-03-10",
+      "counter": 1,
+      "address": "Carrera 5 # 14-4",
+      "stratum": 1,
+      "currentRecord": 864,
+      "pastRecord": 544,
+      "basicTake": 173,
+      "remainder": 147,
+      "unitaryValue": 589,
+      "interestMora": 0,
+      "totalMora": 0.0,
+      "overdue": 0.0,
+      "intakes": "2-320,1-304,12-240",
+      "referencecodeInvoice": "202004301759507261538562330",
+      "total": 127341.79999999999,
+      "stateInvoice": true,
+      "contract": 20200515
+    }
+  },
+  {
+    "model": "contract.Invoice",
+    "pk": 2004,
+    "fields": {
+      "billingDate": "2020-03-31",
+      "deadDatePay": "2020-04-10",
+      "counter": 1,
+      "address": "Carrera 5 # 14-4",
+      "stratum": 1,
+      "currentRecord": 1216,
+      "pastRecord": 864,
+      "basicTake": 173,
+      "remainder": 179,
+      "unitaryValue": 589,
+      "interestMora": 0,
+      "totalMora": 0.0,
+      "overdue": 0.0,
+      "intakes": "3-352,2-320,1-304,12-240",
+      "referencecodeInvoice": "202004301759375261533399501",
+      "total": 146189.8,
+      "stateInvoice": true,
+      "contract": 20200515
+    }
+  },
+  {
+    "model": "contract.Invoice",
+    "pk": 2005,
+    "fields": {
+      "billingDate": "2020-04-30",
+      "deadDatePay": "2020-05-10",
+      "counter": 1,
+      "address": "Carrera 5 # 14-4",
+      "stratum": 1,
+      "currentRecord": 1600,
+      "pastRecord": 1216,
+      "basicTake": 173,
+      "remainder": 211,
+      "unitaryValue": 589,
+      "interestMora": 0,
+      "totalMora": 0.0,
+      "overdue": 0.0,
+      "intakes": "4-384,3-352,2-320,1-304,12-240",
+      "referencecodeInvoice": "202004301759628261534857961",
+      "total": 165037.8,
+      "stateInvoice": true,
+      "contract": 20200515
+    }
+  },
+  {
+    "model": "contract.Invoice",
+    "pk": 2006,
+    "fields": {
+      "billingDate": "2019-12-31",
+      "deadDatePay": "2020-01-10",
+      "counter": 2,
+      "address": "Carrera 5 con calle 56",
+      "stratum": 3,
+      "currentRecord": 348,
+      "pastRecord": 0,
+      "basicTake": 173,
+      "remainder": 175,
+      "unitaryValue": 589,
+      "interestMora": 0,
+      "totalMora": 0.0,
+      "overdue": 0.0,
+      "intakes": "12-348",
+      "referencecodeInvoice": "202004301759882261535718069",
+      "total": 189687.44999999998,
+      "stateInvoice": true,
       "contract": 20200516
     }
   },
   {
     "model": "contract.Invoice",
-    "pk": 3,
+    "pk": 2007,
     "fields": {
-      "consumptiondaysInvoice": 30,
-      "paymentdeadlineInvoice": "2020-05-05",
-      "billingdateInvoice": "2020-04-30",
+      "billingDate": "2020-01-31",
+      "deadDatePay": "2020-02-10",
+      "counter": 2,
+      "address": "Carrera 5 con calle 56",
+      "stratum": 3,
+      "currentRecord": 576,
+      "pastRecord": 348,
+      "basicTake": 173,
+      "remainder": 55,
+      "unitaryValue": 589,
+      "interestMora": 0,
+      "totalMora": 0.0,
+      "overdue": 0.0,
+      "intakes": "1-228,12-348",
+      "referencecodeInvoice": "202004301759986261533870339",
+      "total": 119007.45,
       "stateInvoice": true,
-      "referencecodeInvoice": "20200430(175915326153)4358456",
-      "total": 188156,
+      "contract": 20200516
+    }
+  },
+  {
+    "model": "contract.Invoice",
+    "pk": 2008,
+    "fields": {
+      "billingDate": "2020-02-29",
+      "deadDatePay": "2020-03-10",
+      "counter": 2,
+      "address": "Carrera 5 con calle 56",
+      "stratum": 3,
+      "currentRecord": 817,
+      "pastRecord": 576,
+      "basicTake": 173,
+      "remainder": 68,
+      "unitaryValue": 589,
+      "interestMora": 0,
+      "totalMora": 0.0,
+      "overdue": 0.0,
+      "intakes": "2-241,1-228,12-348",
+      "referencecodeInvoice": "202004301759147261532441421",
+      "total": 126664.45,
+      "stateInvoice": true,
+      "contract": 20200516
+    }
+  },
+  {
+    "model": "contract.Invoice",
+    "pk": 2009,
+    "fields": {
+      "billingDate": "2020-03-31",
+      "deadDatePay": "2020-04-10",
+      "counter": 2,
+      "address": "Carrera 5 con calle 56",
+      "stratum": 3,
+      "currentRecord": 1139,
+      "pastRecord": 817,
+      "basicTake": 173,
+      "remainder": 149,
+      "unitaryValue": 589,
+      "interestMora": 0,
+      "totalMora": 0.0,
+      "overdue": 0.0,
+      "intakes": "3-322,2-241,1-228,12-348",
+      "referencecodeInvoice": "202004301759276261537512472",
+      "total": 174373.44999999998,
+      "stateInvoice": true,
+      "contract": 20200516
+    }
+  },
+  {
+    "model": "contract.Invoice",
+    "pk": 2010,
+    "fields": {
+      "billingDate": "2020-04-30",
+      "deadDatePay": "2020-05-10",
+      "counter": 2,
+      "address": "Carrera 5 con calle 56",
+      "stratum": 3,
+      "currentRecord": 1340,
+      "pastRecord": 1139,
+      "basicTake": 173,
+      "remainder": 28,
+      "unitaryValue": 589,
+      "interestMora": 0,
+      "totalMora": 0.0,
+      "overdue": 0.0,
+      "intakes": "4-201,3-322,2-241,1-228,12-348",
+      "referencecodeInvoice": "202004301759566261536107278",
+      "total": 103104.45,
+      "stateInvoice": true,
+      "contract": 20200516
+    }
+  },
+  {
+    "model": "contract.Invoice",
+    "pk": 2011,
+    "fields": {
+      "billingDate": "2019-12-31",
+      "deadDatePay": "2020-01-10",
+      "counter": 3,
+      "address": "Carrera 2 # 45",
+      "stratum": 2,
+      "currentRecord": 211,
+      "pastRecord": 0,
+      "basicTake": 173,
+      "remainder": 38,
+      "unitaryValue": 589,
+      "interestMora": 0,
+      "totalMora": 0.0,
+      "overdue": 0.0,
+      "intakes": "12-211",
+      "referencecodeInvoice": "202004301759894261532080424",
+      "total": 73330.5,
+      "stateInvoice": true,
       "contract": 20200517
     }
   },
   {
     "model": "contract.Invoice",
-    "pk": 4,
+    "pk": 2012,
     "fields": {
-      "consumptiondaysInvoice": 30,
-      "paymentdeadlineInvoice": "2020-05-05",
-      "billingdateInvoice": "2020-04-30",
+      "billingDate": "2020-01-31",
+      "deadDatePay": "2020-02-10",
+      "counter": 3,
+      "address": "Carrera 2 # 45",
+      "stratum": 2,
+      "currentRecord": 455,
+      "pastRecord": 211,
+      "basicTake": 173,
+      "remainder": 71,
+      "unitaryValue": 589,
+      "interestMora": 0,
+      "totalMora": 0.0,
+      "overdue": 0.0,
+      "intakes": "1-244,12-211",
+      "referencecodeInvoice": "202004301759851261531266627",
+      "total": 92767.5,
       "stateInvoice": true,
-      "referencecodeInvoice": "20200430(175915326153)1265373",
-      "total": 191966,
+      "contract": 20200517
+    }
+  },
+  {
+    "model": "contract.Invoice",
+    "pk": 2013,
+    "fields": {
+      "billingDate": "2020-02-29",
+      "deadDatePay": "2020-03-10",
+      "counter": 3,
+      "address": "Carrera 2 # 45",
+      "stratum": 2,
+      "currentRecord": 722,
+      "pastRecord": 455,
+      "basicTake": 173,
+      "remainder": 94,
+      "unitaryValue": 589,
+      "interestMora": 0,
+      "totalMora": 0.0,
+      "overdue": 0.0,
+      "intakes": "2-267,1-244,12-211",
+      "referencecodeInvoice": "202004301759265261532076544",
+      "total": 106314.5,
+      "stateInvoice": true,
+      "contract": 20200517
+    }
+  },
+  {
+    "model": "contract.Invoice",
+    "pk": 2014,
+    "fields": {
+      "billingDate": "2020-03-31",
+      "deadDatePay": "2020-04-10",
+      "counter": 3,
+      "address": "Carrera 2 # 45",
+      "stratum": 2,
+      "currentRecord": 944,
+      "pastRecord": 722,
+      "basicTake": 173,
+      "remainder": 49,
+      "unitaryValue": 589,
+      "interestMora": 0,
+      "totalMora": 0.0,
+      "overdue": 0.0,
+      "intakes": "3-222,2-267,1-244,12-211",
+      "referencecodeInvoice": "202004301759253261536239320",
+      "total": 79809.5,
+      "stateInvoice": true,
+      "contract": 20200517
+    }
+  },
+  {
+    "model": "contract.Invoice",
+    "pk": 2015,
+    "fields": {
+      "billingDate": "2020-04-30",
+      "deadDatePay": "2020-05-10",
+      "counter": 3,
+      "address": "Carrera 2 # 45",
+      "stratum": 2,
+      "currentRecord": 1110,
+      "pastRecord": 944,
+      "basicTake": 166,
+      "remainder": 0,
+      "unitaryValue": 589,
+      "interestMora": 0,
+      "totalMora": 0.0,
+      "overdue": 0.0,
+      "intakes": "4-166,3-222,2-267,1-244,12-211",
+      "referencecodeInvoice": "202004301759630261535229763",
+      "total": 48887.0,
+      "stateInvoice": true,
+      "contract": 20200517
+    }
+  },
+  {
+    "model": "contract.Invoice",
+    "pk": 2016,
+    "fields": {
+      "billingDate": "2019-12-31",
+      "deadDatePay": "2020-01-10",
+      "counter": 4,
+      "address": "Calle 66A #43",
+      "stratum": 6,
+      "currentRecord": 313,
+      "pastRecord": 0,
+      "basicTake": 173,
+      "remainder": 140,
+      "unitaryValue": 589,
+      "interestMora": 0,
+      "totalMora": 0.0,
+      "overdue": 0.0,
+      "intakes": "12-313",
+      "referencecodeInvoice": "202004301759620261531492621",
+      "total": 184357,
+      "stateInvoice": true,
       "contract": 20200518
     }
   },
   {
     "model": "contract.Invoice",
-    "pk": 5,
+    "pk": 2017,
     "fields": {
-      "consumptiondaysInvoice": 30,
-      "paymentdeadlineInvoice": "2020-05-05",
-      "billingdateInvoice": "2020-04-30",
+      "billingDate": "2020-01-31",
+      "deadDatePay": "2020-02-10",
+      "counter": 4,
+      "address": "Calle 66A #43",
+      "stratum": 6,
+      "currentRecord": 765,
+      "pastRecord": 313,
+      "basicTake": 173,
+      "remainder": 279,
+      "unitaryValue": 589,
+      "interestMora": 0,
+      "totalMora": 0.0,
+      "overdue": 0.0,
+      "intakes": "1-452,12-313",
+      "referencecodeInvoice": "202004301759773261532664457",
+      "total": 266228,
       "stateInvoice": true,
-      "referencecodeInvoice": "20200430(175915326153)8206428",
-      "total": 296296,
+      "contract": 20200518
+    }
+  },
+  {
+    "model": "contract.Invoice",
+    "pk": 2018,
+    "fields": {
+      "billingDate": "2020-02-29",
+      "deadDatePay": "2020-03-10",
+      "counter": 4,
+      "address": "Calle 66A #43",
+      "stratum": 6,
+      "currentRecord": 1182,
+      "pastRecord": 765,
+      "basicTake": 173,
+      "remainder": 244,
+      "unitaryValue": 589,
+      "interestMora": 0,
+      "totalMora": 0.0,
+      "overdue": 0.0,
+      "intakes": "2-417,1-452,12-313",
+      "referencecodeInvoice": "202004301759532261535832711",
+      "total": 245613,
+      "stateInvoice": true,
+      "contract": 20200518
+    }
+  },
+  {
+    "model": "contract.Invoice",
+    "pk": 2019,
+    "fields": {
+      "billingDate": "2020-03-31",
+      "deadDatePay": "2020-04-10",
+      "counter": 4,
+      "address": "Calle 66A #43",
+      "stratum": 6,
+      "currentRecord": 1443,
+      "pastRecord": 1182,
+      "basicTake": 173,
+      "remainder": 88,
+      "unitaryValue": 589,
+      "interestMora": 0,
+      "totalMora": 0.0,
+      "overdue": 0.0,
+      "intakes": "3-261,2-417,1-452,12-313",
+      "referencecodeInvoice": "202004301759421261532943406",
+      "total": 153729,
+      "stateInvoice": true,
+      "contract": 20200518
+    }
+  },
+  {
+    "model": "contract.Invoice",
+    "pk": 2020,
+    "fields": {
+      "billingDate": "2020-04-30",
+      "deadDatePay": "2020-05-10",
+      "counter": 4,
+      "address": "Calle 66A #43",
+      "stratum": 6,
+      "currentRecord": 1738,
+      "pastRecord": 1443,
+      "basicTake": 173,
+      "remainder": 122,
+      "unitaryValue": 589,
+      "interestMora": 0,
+      "totalMora": 0.0,
+      "overdue": 0.0,
+      "intakes": "4-295,3-261,2-417,1-452,12-313",
+      "referencecodeInvoice": "202004301759560261534435042",
+      "total": 173755,
+      "stateInvoice": true,
+      "contract": 20200518
+    }
+  },
+  {
+    "model": "contract.Invoice",
+    "pk": 2021,
+    "fields": {
+      "billingDate": "2019-12-31",
+      "deadDatePay": "2020-01-10",
+      "counter": 5,
+      "address": "Calle 71 #42",
+      "stratum": 4,
+      "currentRecord": 284,
+      "pastRecord": 0,
+      "basicTake": 173,
+      "remainder": 111,
+      "unitaryValue": 589,
+      "interestMora": 0,
+      "totalMora": 0.0,
+      "overdue": 0.0,
+      "intakes": "12-284",
+      "referencecodeInvoice": "202004301759728261533241598",
+      "total": 167276,
+      "stateInvoice": true,
       "contract": 20200519
     }
   },
   {
     "model": "contract.Invoice",
-    "pk": 6,
+    "pk": 2022,
     "fields": {
-      "consumptiondaysInvoice": 30,
-      "paymentdeadlineInvoice": "2020-05-05",
-      "billingdateInvoice": "2020-04-30",
+      "billingDate": "2020-01-31",
+      "deadDatePay": "2020-02-10",
+      "counter": 5,
+      "address": "Calle 71 #42",
+      "stratum": 4,
+      "currentRecord": 624,
+      "pastRecord": 284,
+      "basicTake": 173,
+      "remainder": 167,
+      "unitaryValue": 589,
+      "interestMora": 0,
+      "totalMora": 0.0,
+      "overdue": 0.0,
+      "intakes": "1-340,12-284",
+      "referencecodeInvoice": "202004301759931261533756070",
+      "total": 200260,
       "stateInvoice": true,
-      "referencecodeInvoice": "20200430(175915326153)5512995",
-      "total": 191488,
+      "contract": 20200519
+    }
+  },
+  {
+    "model": "contract.Invoice",
+    "pk": 2023,
+    "fields": {
+      "billingDate": "2020-02-29",
+      "deadDatePay": "2020-03-10",
+      "counter": 5,
+      "address": "Calle 71 #42",
+      "stratum": 4,
+      "currentRecord": 936,
+      "pastRecord": 624,
+      "basicTake": 173,
+      "remainder": 139,
+      "unitaryValue": 589,
+      "interestMora": 0,
+      "totalMora": 0.0,
+      "overdue": 0.0,
+      "intakes": "2-312,1-340,12-284",
+      "referencecodeInvoice": "202004301759535261537631899",
+      "total": 183768,
+      "stateInvoice": true,
+      "contract": 20200519
+    }
+  },
+  {
+    "model": "contract.Invoice",
+    "pk": 2024,
+    "fields": {
+      "billingDate": "2020-03-31",
+      "deadDatePay": "2020-04-10",
+      "counter": 5,
+      "address": "Calle 71 #42",
+      "stratum": 4,
+      "currentRecord": 1205,
+      "pastRecord": 936,
+      "basicTake": 173,
+      "remainder": 96,
+      "unitaryValue": 589,
+      "interestMora": 0,
+      "totalMora": 0.0,
+      "overdue": 0.0,
+      "intakes": "3-269,2-312,1-340,12-284",
+      "referencecodeInvoice": "202004301759924261538187664",
+      "total": 158441,
+      "stateInvoice": true,
+      "contract": 20200519
+    }
+  },
+  {
+    "model": "contract.Invoice",
+    "pk": 2025,
+    "fields": {
+      "billingDate": "2020-04-30",
+      "deadDatePay": "2020-05-10",
+      "counter": 5,
+      "address": "Calle 71 #42",
+      "stratum": 4,
+      "currentRecord": 1418,
+      "pastRecord": 1205,
+      "basicTake": 173,
+      "remainder": 40,
+      "unitaryValue": 589,
+      "interestMora": 0,
+      "totalMora": 0.0,
+      "overdue": 0.0,
+      "intakes": "4-213,3-269,2-312,1-340,12-284",
+      "referencecodeInvoice": "202004301759901261533876214",
+      "total": 125457,
+      "stateInvoice": true,
+      "contract": 20200519
+    }
+  },
+  {
+    "model": "contract.Invoice",
+    "pk": 2026,
+    "fields": {
+      "billingDate": "2019-12-31",
+      "deadDatePay": "2020-01-10",
+      "counter": 6,
+      "address": "Carrera 24 #4B",
+      "stratum": 4,
+      "currentRecord": 286,
+      "pastRecord": 0,
+      "basicTake": 173,
+      "remainder": 113,
+      "unitaryValue": 589,
+      "interestMora": 0,
+      "totalMora": 0.0,
+      "overdue": 0.0,
+      "intakes": "12-286",
+      "referencecodeInvoice": "202004301759861261537433581",
+      "total": 168454,
+      "stateInvoice": true,
       "contract": 20200520
     }
   },
   {
     "model": "contract.Invoice",
-    "pk": 7,
+    "pk": 2027,
     "fields": {
-      "consumptiondaysInvoice": 30,
-      "paymentdeadlineInvoice": "2020-05-05",
-      "billingdateInvoice": "2020-04-30",
+      "billingDate": "2020-01-31",
+      "deadDatePay": "2020-02-10",
+      "counter": 6,
+      "address": "Carrera 24 #4B",
+      "stratum": 4,
+      "currentRecord": 699,
+      "pastRecord": 286,
+      "basicTake": 173,
+      "remainder": 240,
+      "unitaryValue": 589,
+      "interestMora": 0,
+      "totalMora": 0.0,
+      "overdue": 0.0,
+      "intakes": "1-413,12-286",
+      "referencecodeInvoice": "202004301759727261532279405",
+      "total": 243257,
       "stateInvoice": true,
-      "referencecodeInvoice": "20200430(175915326153)5236504",
-      "total": 220974,
+      "contract": 20200520
+    }
+  },
+  {
+    "model": "contract.Invoice",
+    "pk": 2028,
+    "fields": {
+      "billingDate": "2020-02-29",
+      "deadDatePay": "2020-03-10",
+      "counter": 6,
+      "address": "Carrera 24 #4B",
+      "stratum": 4,
+      "currentRecord": 1080,
+      "pastRecord": 699,
+      "basicTake": 173,
+      "remainder": 208,
+      "unitaryValue": 589,
+      "interestMora": 0,
+      "totalMora": 0.0,
+      "overdue": 0.0,
+      "intakes": "2-381,1-413,12-286",
+      "referencecodeInvoice": "202004301759528261537772004",
+      "total": 224409,
+      "stateInvoice": true,
+      "contract": 20200520
+    }
+  },
+  {
+    "model": "contract.Invoice",
+    "pk": 2029,
+    "fields": {
+      "billingDate": "2020-03-31",
+      "deadDatePay": "2020-04-10",
+      "counter": 6,
+      "address": "Carrera 24 #4B",
+      "stratum": 4,
+      "currentRecord": 1318,
+      "pastRecord": 1080,
+      "basicTake": 173,
+      "remainder": 65,
+      "unitaryValue": 589,
+      "interestMora": 0,
+      "totalMora": 0.0,
+      "overdue": 0.0,
+      "intakes": "3-238,2-381,1-413,12-286",
+      "referencecodeInvoice": "202004301759231261537048265",
+      "total": 140182,
+      "stateInvoice": true,
+      "contract": 20200520
+    }
+  },
+  {
+    "model": "contract.Invoice",
+    "pk": 2030,
+    "fields": {
+      "billingDate": "2020-04-30",
+      "deadDatePay": "2020-05-10",
+      "counter": 6,
+      "address": "Carrera 24 #4B",
+      "stratum": 4,
+      "currentRecord": 1588,
+      "pastRecord": 1318,
+      "basicTake": 173,
+      "remainder": 97,
+      "unitaryValue": 589,
+      "interestMora": 0,
+      "totalMora": 0.0,
+      "overdue": 0.0,
+      "intakes": "4-270,3-238,2-381,1-413,12-286",
+      "referencecodeInvoice": "202004301759143261532079907",
+      "total": 159030,
+      "stateInvoice": true,
+      "contract": 20200520
+    }
+  },
+  {
+    "model": "contract.Invoice",
+    "pk": 2031,
+    "fields": {
+      "billingDate": "2019-12-31",
+      "deadDatePay": "2020-01-10",
+      "counter": 7,
+      "address": "Carrera 24C #10",
+      "stratum": 3,
+      "currentRecord": 249,
+      "pastRecord": 0,
+      "basicTake": 173,
+      "remainder": 76,
+      "unitaryValue": 589,
+      "interestMora": 0,
+      "totalMora": 0.0,
+      "overdue": 0.0,
+      "intakes": "12-249",
+      "referencecodeInvoice": "202004301759505261532372096",
+      "total": 131376.44999999998,
+      "stateInvoice": true,
       "contract": 20200521
     }
   },
   {
     "model": "contract.Invoice",
-    "pk": 8,
+    "pk": 2032,
     "fields": {
-      "consumptiondaysInvoice": 30,
-      "paymentdeadlineInvoice": "2020-05-05",
-      "billingdateInvoice": "2020-04-30",
+      "billingDate": "2020-01-31",
+      "deadDatePay": "2020-02-10",
+      "counter": 7,
+      "address": "Carrera 24C #10",
+      "stratum": 3,
+      "currentRecord": 405,
+      "pastRecord": 249,
+      "basicTake": 156,
+      "remainder": 0,
+      "unitaryValue": 589,
+      "interestMora": 0,
+      "totalMora": 0.0,
+      "overdue": 0.0,
+      "intakes": "1-156,12-249",
+      "referencecodeInvoice": "202004301759989261535284682",
+      "total": 78101.4,
       "stateInvoice": true,
-      "referencecodeInvoice": "20200430(175915326153)6388472",
-      "total": 271617,
+      "contract": 20200521
+    }
+  },
+  {
+    "model": "contract.Invoice",
+    "pk": 2033,
+    "fields": {
+      "billingDate": "2020-02-29",
+      "deadDatePay": "2020-03-10",
+      "counter": 7,
+      "address": "Carrera 24C #10",
+      "stratum": 3,
+      "currentRecord": 613,
+      "pastRecord": 405,
+      "basicTake": 173,
+      "remainder": 35,
+      "unitaryValue": 589,
+      "interestMora": 0,
+      "totalMora": 0.0,
+      "overdue": 0.0,
+      "intakes": "2-208,1-156,12-249",
+      "referencecodeInvoice": "202004301759543261536021962",
+      "total": 107227.45,
+      "stateInvoice": true,
+      "contract": 20200521
+    }
+  },
+  {
+    "model": "contract.Invoice",
+    "pk": 2034,
+    "fields": {
+      "billingDate": "2020-03-31",
+      "deadDatePay": "2020-04-10",
+      "counter": 7,
+      "address": "Carrera 24C #10",
+      "stratum": 3,
+      "currentRecord": 810,
+      "pastRecord": 613,
+      "basicTake": 173,
+      "remainder": 24,
+      "unitaryValue": 589,
+      "interestMora": 0,
+      "totalMora": 0.0,
+      "overdue": 0.0,
+      "intakes": "3-197,2-208,1-156,12-249",
+      "referencecodeInvoice": "202004301759971261539784361",
+      "total": 100748.45,
+      "stateInvoice": true,
+      "contract": 20200521
+    }
+  },
+  {
+    "model": "contract.Invoice",
+    "pk": 2035,
+    "fields": {
+      "billingDate": "2020-04-30",
+      "deadDatePay": "2020-05-10",
+      "counter": 7,
+      "address": "Carrera 24C #10",
+      "stratum": 3,
+      "currentRecord": 1038,
+      "pastRecord": 810,
+      "basicTake": 173,
+      "remainder": 55,
+      "unitaryValue": 589,
+      "interestMora": 0,
+      "totalMora": 0.0,
+      "overdue": 0.0,
+      "intakes": "4-228,3-197,2-208,1-156,12-249",
+      "referencecodeInvoice": "202004301759766261539280476",
+      "total": 119007.45,
+      "stateInvoice": true,
+      "contract": 20200521
+    }
+  },
+  {
+    "model": "contract.Invoice",
+    "pk": 2036,
+    "fields": {
+      "billingDate": "2019-12-31",
+      "deadDatePay": "2020-01-10",
+      "counter": 8,
+      "address": "Carrera 28B #9",
+      "stratum": 3,
+      "currentRecord": 427,
+      "pastRecord": 0,
+      "basicTake": 173,
+      "remainder": 254,
+      "unitaryValue": 589,
+      "interestMora": 0,
+      "totalMora": 0.0,
+      "overdue": 0.0,
+      "intakes": "12-427",
+      "referencecodeInvoice": "202004301759983261535017066",
+      "total": 236218.44999999998,
+      "stateInvoice": true,
       "contract": 20200522
     }
   },
   {
     "model": "contract.Invoice",
-    "pk": 9,
+    "pk": 2037,
     "fields": {
-      "consumptiondaysInvoice": 30,
-      "paymentdeadlineInvoice": "2020-05-05",
-      "billingdateInvoice": "2020-04-30",
+      "billingDate": "2020-01-31",
+      "deadDatePay": "2020-02-10",
+      "counter": 8,
+      "address": "Carrera 28B #9",
+      "stratum": 3,
+      "currentRecord": 747,
+      "pastRecord": 427,
+      "basicTake": 173,
+      "remainder": 147,
+      "unitaryValue": 589,
+      "interestMora": 0,
+      "totalMora": 0.0,
+      "overdue": 0.0,
+      "intakes": "1-320,12-427",
+      "referencecodeInvoice": "202004301759763261534100260",
+      "total": 173195.44999999998,
       "stateInvoice": true,
-      "referencecodeInvoice": "20200430(175915326153)6282820",
-      "total": 238093,
+      "contract": 20200522
+    }
+  },
+  {
+    "model": "contract.Invoice",
+    "pk": 2038,
+    "fields": {
+      "billingDate": "2020-02-29",
+      "deadDatePay": "2020-03-10",
+      "counter": 8,
+      "address": "Carrera 28B #9",
+      "stratum": 3,
+      "currentRecord": 1210,
+      "pastRecord": 747,
+      "basicTake": 173,
+      "remainder": 290,
+      "unitaryValue": 589,
+      "interestMora": 0,
+      "totalMora": 0.0,
+      "overdue": 0.0,
+      "intakes": "2-463,1-320,12-427",
+      "referencecodeInvoice": "202004301759425261533767578",
+      "total": 257422.44999999998,
+      "stateInvoice": true,
+      "contract": 20200522
+    }
+  },
+  {
+    "model": "contract.Invoice",
+    "pk": 2039,
+    "fields": {
+      "billingDate": "2020-03-31",
+      "deadDatePay": "2020-04-10",
+      "counter": 8,
+      "address": "Carrera 28B #9",
+      "stratum": 3,
+      "currentRecord": 1512,
+      "pastRecord": 1210,
+      "basicTake": 173,
+      "remainder": 129,
+      "unitaryValue": 589,
+      "interestMora": 0,
+      "totalMora": 0.0,
+      "overdue": 0.0,
+      "intakes": "3-302,2-463,1-320,12-427",
+      "referencecodeInvoice": "202004301759770261535347314",
+      "total": 162593.44999999998,
+      "stateInvoice": true,
+      "contract": 20200522
+    }
+  },
+  {
+    "model": "contract.Invoice",
+    "pk": 2040,
+    "fields": {
+      "billingDate": "2020-04-30",
+      "deadDatePay": "2020-05-10",
+      "counter": 8,
+      "address": "Carrera 28B #9",
+      "stratum": 3,
+      "currentRecord": 1779,
+      "pastRecord": 1512,
+      "basicTake": 173,
+      "remainder": 94,
+      "unitaryValue": 589,
+      "interestMora": 0,
+      "totalMora": 0.0,
+      "overdue": 0.0,
+      "intakes": "4-267,3-302,2-463,1-320,12-427",
+      "referencecodeInvoice": "202004301759182261531142111",
+      "total": 141978.44999999998,
+      "stateInvoice": true,
+      "contract": 20200522
+    }
+  },
+  {
+    "model": "contract.Invoice",
+    "pk": 2041,
+    "fields": {
+      "billingDate": "2019-12-31",
+      "deadDatePay": "2020-01-10",
+      "counter": 9,
+      "address": "Carrera 25 #33-17",
+      "stratum": 5,
+      "currentRecord": 318,
+      "pastRecord": 0,
+      "basicTake": 173,
+      "remainder": 145,
+      "unitaryValue": 589,
+      "interestMora": 0,
+      "totalMora": 0.0,
+      "overdue": 0.0,
+      "intakes": "12-318",
+      "referencecodeInvoice": "202004301759880261537174832",
+      "total": 187302,
+      "stateInvoice": true,
       "contract": 20200523
     }
   },
   {
     "model": "contract.Invoice",
-    "pk": 10,
+    "pk": 2042,
     "fields": {
-      "consumptiondaysInvoice": 30,
-      "paymentdeadlineInvoice": "2020-05-05",
-      "billingdateInvoice": "2020-04-30",
+      "billingDate": "2020-01-31",
+      "deadDatePay": "2020-02-10",
+      "counter": 9,
+      "address": "Carrera 25 #33-17",
+      "stratum": 5,
+      "currentRecord": 583,
+      "pastRecord": 318,
+      "basicTake": 173,
+      "remainder": 92,
+      "unitaryValue": 589,
+      "interestMora": 0,
+      "totalMora": 0.0,
+      "overdue": 0.0,
+      "intakes": "1-265,12-318",
+      "referencecodeInvoice": "202004301759817261539804557",
+      "total": 156085,
       "stateInvoice": true,
-      "referencecodeInvoice": "20200430(175915326153)9669528",
-      "total": 152680,
+      "contract": 20200523
+    }
+  },
+  {
+    "model": "contract.Invoice",
+    "pk": 2043,
+    "fields": {
+      "billingDate": "2020-02-29",
+      "deadDatePay": "2020-03-10",
+      "counter": 9,
+      "address": "Carrera 25 #33-17",
+      "stratum": 5,
+      "currentRecord": 781,
+      "pastRecord": 583,
+      "basicTake": 173,
+      "remainder": 25,
+      "unitaryValue": 589,
+      "interestMora": 0,
+      "totalMora": 0.0,
+      "overdue": 0.0,
+      "intakes": "2-198,1-265,12-318",
+      "referencecodeInvoice": "202004301759611261535274268",
+      "total": 116622,
+      "stateInvoice": true,
+      "contract": 20200523
+    }
+  },
+  {
+    "model": "contract.Invoice",
+    "pk": 2044,
+    "fields": {
+      "billingDate": "2020-03-31",
+      "deadDatePay": "2020-04-10",
+      "counter": 9,
+      "address": "Carrera 25 #33-17",
+      "stratum": 5,
+      "currentRecord": 1072,
+      "pastRecord": 781,
+      "basicTake": 173,
+      "remainder": 118,
+      "unitaryValue": 589,
+      "interestMora": 0,
+      "totalMora": 0.0,
+      "overdue": 0.0,
+      "intakes": "3-291,2-198,1-265,12-318",
+      "referencecodeInvoice": "202004301759931261537851710",
+      "total": 171399,
+      "stateInvoice": true,
+      "contract": 20200523
+    }
+  },
+  {
+    "model": "contract.Invoice",
+    "pk": 2045,
+    "fields": {
+      "billingDate": "2020-04-30",
+      "deadDatePay": "2020-05-10",
+      "counter": 9,
+      "address": "Carrera 25 #33-17",
+      "stratum": 5,
+      "currentRecord": 1323,
+      "pastRecord": 1072,
+      "basicTake": 173,
+      "remainder": 78,
+      "unitaryValue": 589,
+      "interestMora": 0,
+      "totalMora": 0.0,
+      "overdue": 0.0,
+      "intakes": "4-251,3-291,2-198,1-265,12-318",
+      "referencecodeInvoice": "202004301759816261535733881",
+      "total": 147839,
+      "stateInvoice": true,
+      "contract": 20200523
+    }
+  },
+  {
+    "model": "contract.Invoice",
+    "pk": 2046,
+    "fields": {
+      "billingDate": "2019-12-31",
+      "deadDatePay": "2020-01-10",
+      "counter": 10,
+      "address": "Carrera 29A #12-89",
+      "stratum": 4,
+      "currentRecord": 227,
+      "pastRecord": 0,
+      "basicTake": 173,
+      "remainder": 54,
+      "unitaryValue": 589,
+      "interestMora": 0,
+      "totalMora": 0.0,
+      "overdue": 0.0,
+      "intakes": "12-227",
+      "referencecodeInvoice": "202004301759584261535826369",
+      "total": 133703,
+      "stateInvoice": true,
+      "contract": 20200524
+    }
+  },
+  {
+    "model": "contract.Invoice",
+    "pk": 2047,
+    "fields": {
+      "billingDate": "2020-01-31",
+      "deadDatePay": "2020-02-10",
+      "counter": 10,
+      "address": "Carrera 29A #12-89",
+      "stratum": 4,
+      "currentRecord": 529,
+      "pastRecord": 227,
+      "basicTake": 173,
+      "remainder": 129,
+      "unitaryValue": 589,
+      "interestMora": 0,
+      "totalMora": 0.0,
+      "overdue": 0.0,
+      "intakes": "1-302,12-227",
+      "referencecodeInvoice": "202004301759489261537612236",
+      "total": 177878,
+      "stateInvoice": true,
+      "contract": 20200524
+    }
+  },
+  {
+    "model": "contract.Invoice",
+    "pk": 2048,
+    "fields": {
+      "billingDate": "2020-02-29",
+      "deadDatePay": "2020-03-10",
+      "counter": 10,
+      "address": "Carrera 29A #12-89",
+      "stratum": 4,
+      "currentRecord": 857,
+      "pastRecord": 529,
+      "basicTake": 173,
+      "remainder": 155,
+      "unitaryValue": 589,
+      "interestMora": 0,
+      "totalMora": 0.0,
+      "overdue": 0.0,
+      "intakes": "2-328,1-302,12-227",
+      "referencecodeInvoice": "202004301759801261533865956",
+      "total": 193192,
+      "stateInvoice": true,
+      "contract": 20200524
+    }
+  },
+  {
+    "model": "contract.Invoice",
+    "pk": 2049,
+    "fields": {
+      "billingDate": "2020-03-31",
+      "deadDatePay": "2020-04-10",
+      "counter": 10,
+      "address": "Carrera 29A #12-89",
+      "stratum": 4,
+      "currentRecord": 1071,
+      "pastRecord": 857,
+      "basicTake": 173,
+      "remainder": 41,
+      "unitaryValue": 589,
+      "interestMora": 0,
+      "totalMora": 0.0,
+      "overdue": 0.0,
+      "intakes": "3-214,2-328,1-302,12-227",
+      "referencecodeInvoice": "202004301759534261536323530",
+      "total": 126046,
+      "stateInvoice": true,
+      "contract": 20200524
+    }
+  },
+  {
+    "model": "contract.Invoice",
+    "pk": 2050,
+    "fields": {
+      "billingDate": "2020-04-30",
+      "deadDatePay": "2020-05-10",
+      "counter": 10,
+      "address": "Carrera 29A #12-89",
+      "stratum": 4,
+      "currentRecord": 1260,
+      "pastRecord": 1071,
+      "basicTake": 173,
+      "remainder": 16,
+      "unitaryValue": 589,
+      "interestMora": 0,
+      "totalMora": 0.0,
+      "overdue": 0.0,
+      "intakes": "4-189,3-214,2-328,1-302,12-227",
+      "referencecodeInvoice": "202004301759869261532573663",
+      "total": 111321,
+      "stateInvoice": true,
       "contract": 20200524
     }
   },
   {
     "model": "payments.payment",
-    "pk": 1,
+    "pk": 40051,
     "fields": {
-      "valuePayment": 242415,
-      "datePayment": "2020-05-01T01:53:37.426Z",
-      "facturaPayment": 1
+      "valuePayment": 80221.79999999999,
+      "datePayment": "2020-01-03 00:00:00",
+      "facturaPayment": 2001
     }
   },
   {
     "model": "payments.payment",
-    "pk": 2,
+    "pk": 40052,
     "fields": {
-      "valuePayment": 191451,
-      "datePayment": "2020-05-01T01:53:37.426Z",
-      "facturaPayment": 2
+      "valuePayment": 117917.79999999999,
+      "datePayment": "2020-02-01 00:00:00",
+      "facturaPayment": 2002
     }
   },
   {
     "model": "payments.payment",
-    "pk": 3,
+    "pk": 40053,
     "fields": {
-      "valuePayment": 188156,
-      "datePayment": "2020-05-01T01:53:37.426Z",
-      "facturaPayment": 3
+      "valuePayment": 127341.79999999999,
+      "datePayment": "2020-03-09 00:00:00",
+      "facturaPayment": 2003
     }
   },
   {
     "model": "payments.payment",
-    "pk": 4,
+    "pk": 40054,
     "fields": {
-      "valuePayment": 191966,
-      "datePayment": "2020-05-01T01:53:37.426Z",
-      "facturaPayment": 4
+      "valuePayment": 146189.8,
+      "datePayment": "2020-04-07 00:00:00",
+      "facturaPayment": 2004
     }
   },
   {
     "model": "payments.payment",
-    "pk": 5,
+    "pk": 40055,
     "fields": {
-      "valuePayment": 296296,
-      "datePayment": "2020-05-01T01:53:37.426Z",
-      "facturaPayment": 5
+      "valuePayment": 165037.8,
+      "datePayment": "2020-05-02 00:00:00",
+      "facturaPayment": 2005
     }
   },
   {
     "model": "payments.payment",
-    "pk": 6,
+    "pk": 40056,
     "fields": {
-      "valuePayment": 191488,
-      "datePayment": "2020-05-01T01:53:37.426Z",
-      "facturaPayment": 6
+      "valuePayment": 189687.44999999998,
+      "datePayment": "2020-01-01 00:00:00",
+      "facturaPayment": 2006
     }
   },
   {
     "model": "payments.payment",
-    "pk": 7,
+    "pk": 40057,
     "fields": {
-      "valuePayment": 220974,
-      "datePayment": "2020-05-01T01:53:37.426Z",
-      "facturaPayment": 7
+      "valuePayment": 119007.45,
+      "datePayment": "2020-02-09 00:00:00",
+      "facturaPayment": 2007
     }
   },
   {
     "model": "payments.payment",
-    "pk": 8,
+    "pk": 40058,
     "fields": {
-      "valuePayment": 271617,
-      "datePayment": "2020-05-01T01:53:37.426Z",
-      "facturaPayment": 8
+      "valuePayment": 126664.45,
+      "datePayment": "2020-03-04 00:00:00",
+      "facturaPayment": 2008
     }
   },
   {
     "model": "payments.payment",
-    "pk": 9,
+    "pk": 40059,
     "fields": {
-      "valuePayment": 238093,
-      "datePayment": "2020-05-01T01:53:37.426Z",
-      "facturaPayment": 9
+      "valuePayment": 174373.44999999998,
+      "datePayment": "2020-04-01 00:00:00",
+      "facturaPayment": 2009
     }
   },
   {
     "model": "payments.payment",
-    "pk": 10,
+    "pk": 40060,
     "fields": {
-      "valuePayment": 152680,
-      "datePayment": "2020-05-01T01:53:37.426Z",
-      "facturaPayment": 10
+      "valuePayment": 103104.45,
+      "datePayment": "2020-05-06 00:00:00",
+      "facturaPayment": 2010
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": 40061,
+    "fields": {
+      "valuePayment": 73330.5,
+      "datePayment": "2020-01-07 00:00:00",
+      "facturaPayment": 2011
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": 40062,
+    "fields": {
+      "valuePayment": 92767.5,
+      "datePayment": "2020-02-01 00:00:00",
+      "facturaPayment": 2012
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": 40063,
+    "fields": {
+      "valuePayment": 106314.5,
+      "datePayment": "2020-03-07 00:00:00",
+      "facturaPayment": 2013
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": 40064,
+    "fields": {
+      "valuePayment": 79809.5,
+      "datePayment": "2020-04-05 00:00:00",
+      "facturaPayment": 2014
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": 40065,
+    "fields": {
+      "valuePayment": 48887.0,
+      "datePayment": "2020-05-09 00:00:00",
+      "facturaPayment": 2015
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": 40066,
+    "fields": {
+      "valuePayment": 184357,
+      "datePayment": "2020-01-02 00:00:00",
+      "facturaPayment": 2016
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": 40067,
+    "fields": {
+      "valuePayment": 266228,
+      "datePayment": "2020-02-01 00:00:00",
+      "facturaPayment": 2017
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": 40068,
+    "fields": {
+      "valuePayment": 245613,
+      "datePayment": "2020-03-04 00:00:00",
+      "facturaPayment": 2018
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": 40069,
+    "fields": {
+      "valuePayment": 153729,
+      "datePayment": "2020-04-02 00:00:00",
+      "facturaPayment": 2019
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": 40070,
+    "fields": {
+      "valuePayment": 173755,
+      "datePayment": "2020-05-05 00:00:00",
+      "facturaPayment": 2020
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": 40071,
+    "fields": {
+      "valuePayment": 167276,
+      "datePayment": "2020-01-06 00:00:00",
+      "facturaPayment": 2021
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": 40072,
+    "fields": {
+      "valuePayment": 200260,
+      "datePayment": "2020-02-02 00:00:00",
+      "facturaPayment": 2022
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": 40073,
+    "fields": {
+      "valuePayment": 183768,
+      "datePayment": "2020-03-01 00:00:00",
+      "facturaPayment": 2023
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": 40074,
+    "fields": {
+      "valuePayment": 158441,
+      "datePayment": "2020-04-05 00:00:00",
+      "facturaPayment": 2024
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": 40075,
+    "fields": {
+      "valuePayment": 125457,
+      "datePayment": "2020-05-05 00:00:00",
+      "facturaPayment": 2025
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": 40076,
+    "fields": {
+      "valuePayment": 168454,
+      "datePayment": "2020-01-04 00:00:00",
+      "facturaPayment": 2026
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": 40077,
+    "fields": {
+      "valuePayment": 243257,
+      "datePayment": "2020-02-05 00:00:00",
+      "facturaPayment": 2027
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": 40078,
+    "fields": {
+      "valuePayment": 224409,
+      "datePayment": "2020-03-05 00:00:00",
+      "facturaPayment": 2028
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": 40079,
+    "fields": {
+      "valuePayment": 140182,
+      "datePayment": "2020-04-04 00:00:00",
+      "facturaPayment": 2029
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": 40080,
+    "fields": {
+      "valuePayment": 159030,
+      "datePayment": "2020-05-01 00:00:00",
+      "facturaPayment": 2030
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": 40081,
+    "fields": {
+      "valuePayment": 131376.44999999998,
+      "datePayment": "2020-01-04 00:00:00",
+      "facturaPayment": 2031
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": 40082,
+    "fields": {
+      "valuePayment": 78101.4,
+      "datePayment": "2020-02-07 00:00:00",
+      "facturaPayment": 2032
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": 40083,
+    "fields": {
+      "valuePayment": 107227.45,
+      "datePayment": "2020-03-09 00:00:00",
+      "facturaPayment": 2033
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": 40084,
+    "fields": {
+      "valuePayment": 100748.45,
+      "datePayment": "2020-04-08 00:00:00",
+      "facturaPayment": 2034
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": 40085,
+    "fields": {
+      "valuePayment": 119007.45,
+      "datePayment": "2020-05-08 00:00:00",
+      "facturaPayment": 2035
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": 40086,
+    "fields": {
+      "valuePayment": 236218.44999999998,
+      "datePayment": "2020-01-03 00:00:00",
+      "facturaPayment": 2036
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": 40087,
+    "fields": {
+      "valuePayment": 173195.44999999998,
+      "datePayment": "2020-02-09 00:00:00",
+      "facturaPayment": 2037
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": 40088,
+    "fields": {
+      "valuePayment": 257422.44999999998,
+      "datePayment": "2020-03-08 00:00:00",
+      "facturaPayment": 2038
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": 40089,
+    "fields": {
+      "valuePayment": 162593.44999999998,
+      "datePayment": "2020-04-07 00:00:00",
+      "facturaPayment": 2039
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": 40090,
+    "fields": {
+      "valuePayment": 141978.44999999998,
+      "datePayment": "2020-05-03 00:00:00",
+      "facturaPayment": 2040
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": 40091,
+    "fields": {
+      "valuePayment": 187302,
+      "datePayment": "2020-01-08 00:00:00",
+      "facturaPayment": 2041
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": 40092,
+    "fields": {
+      "valuePayment": 156085,
+      "datePayment": "2020-02-04 00:00:00",
+      "facturaPayment": 2042
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": 40093,
+    "fields": {
+      "valuePayment": 116622,
+      "datePayment": "2020-03-08 00:00:00",
+      "facturaPayment": 2043
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": 40094,
+    "fields": {
+      "valuePayment": 171399,
+      "datePayment": "2020-04-02 00:00:00",
+      "facturaPayment": 2044
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": 40095,
+    "fields": {
+      "valuePayment": 147839,
+      "datePayment": "2020-05-09 00:00:00",
+      "facturaPayment": 2045
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": 40096,
+    "fields": {
+      "valuePayment": 133703,
+      "datePayment": "2020-01-08 00:00:00",
+      "facturaPayment": 2046
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": 40097,
+    "fields": {
+      "valuePayment": 177878,
+      "datePayment": "2020-02-07 00:00:00",
+      "facturaPayment": 2047
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": 40098,
+    "fields": {
+      "valuePayment": 193192,
+      "datePayment": "2020-03-07 00:00:00",
+      "facturaPayment": 2048
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": 40099,
+    "fields": {
+      "valuePayment": 126046,
+      "datePayment": "2020-04-03 00:00:00",
+      "facturaPayment": 2049
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": 40100,
+    "fields": {
+      "valuePayment": 111321,
+      "datePayment": "2020-05-06 00:00:00",
+      "facturaPayment": 2050
     }
   }
 ]

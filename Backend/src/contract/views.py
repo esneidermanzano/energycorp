@@ -1,6 +1,6 @@
 #============ needed Imports to generate pdf file ===========
 import tempfile
-from .utils import generateInvoice, generateHistory
+from .utils import getInvoice, generateHistoryAndInvoices
 from django.http import HttpResponse
 from django.views.generic import View
 from django.template.loader import render_to_string
@@ -31,6 +31,9 @@ from .models import (
 from .serializers import (
     # CRUD SERIALIZERS
     ContractSerializer,
+    CreateFullContractSerializer,
+    ContractClientSerializer,
+    SuperJoinSerializer,
 
     InvoiceSerializer,
     CreateInvoiceSerializer,
@@ -60,9 +63,19 @@ class ContractList(ListAPIView):
     serializer_class = ContractSerializer
 
 class CreateContract(ListCreateAPIView):
-    """View para retrive todos los Contratos"""
+    """View para crear contrato con cliente y contador existente"""
     queryset = Contract.objects.all()
     serializer_class = ContractSerializer
+
+class CreateFullContract(ListCreateAPIView):
+    """View para crear contrato+user+counter"""
+    queryset = Contract.objects.all()
+    serializer_class = CreateFullContractSerializer
+
+class GetFullContractJoin(ListCreateAPIView):
+    """View para ver contrato con cliente y contador"""
+    queryset = Contract.objects.all()
+    serializer_class = SuperJoinSerializer
 #------------------------------------------------Invoice-------------------------------------
 
 #                                                   CRUD
@@ -101,6 +114,23 @@ class InvoiceInactivate(UpdateAPIView):
 
 #--------------------------------------Generate PDF invoice---------------------------------                                      
 
+class GetInvoiceByContract(APIView):
+    def post(self,request):
+        try:
+            contractNumber = request.data.get('contractNumber')
+            queryset = Invoice.objects.filter(
+                contract=contractNumber).order_by('-codeInvoice')[:5]
+            serializer = InvoiceSerializer(queryset, many=True).data
+            if (queryset.exists()):
+                return Response({ "error": False,"find": True, "invoices": serializer})
+            else:
+                message = "Numero de contrato erroneo"
+                return Response({ "error": False, "find": False, "message": message} )
+        except:
+            message = "Error al buscar las facturas, intelo mas tarde"
+            return Response({"error": True, "message": message} )
+
+
 class GeneratePdf(View):
     def get(self, request, contract):
         """Generate pdf."""
@@ -109,7 +139,9 @@ class GeneratePdf(View):
         # Model data
         queryset = Contract.objects.filter(
             contractNumber__iexact=contractNumber)
-        query = ContractSerializer(queryset, many=True).data[0]
+        print("==================================0")
+        print(queryset)
+        query = ContractClientSerializer(queryset, many=True).data[0]
 
         if (queryset.exists()):
             nel = "save"
@@ -119,7 +151,7 @@ class GeneratePdf(View):
         #print(query)
         #print(generateInvoice(query))
         # Rendered
-        print(generateHistory())
+        print(query)
         template = {
             "name": "enersto"
         }
@@ -148,7 +180,7 @@ class SendEmail(APIView):
       #Example: {"contractNumber": 20200515}
       queryset = Contract.objects.filter(
           contractNumber__iexact=contractNumber)
-      serializer_class = ContractSerializer(queryset, many=True).data
+      serializer_class = SuperJoinSerializer(queryset, many=True).data
 
       if (queryset.exists()):
           #DICT->JSON       

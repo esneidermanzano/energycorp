@@ -3,6 +3,10 @@ import { Map, Marker, Popup, TileLayer, LayersControl, FeatureGroup, Circle, Lay
 import L from 'leaflet';
 import axios from "axios";
 import haversine from 'haversine-distance';
+import {
+  Button, Modal, ModalHeader, ModalBody, Form,
+  FormGroup, Input
+} from "reactstrap";
 
 class TransformersMap extends Component {
   constructor() {
@@ -16,12 +20,65 @@ class TransformersMap extends Component {
       block: true,
       blockSub: true,
       blockCo: true,
+      modal: false,
+      counterInfo: {
+        estrato: 0,
+        direccion: ""
+      }
     };
   }
 
   action = e => {
     // console.log([e.latlng.lat, e.latlng.lng]);
     this.setState({ movingMarker: [e.latlng.lat, e.latlng.lng] });
+  }
+
+  openToggle = obj => {
+    this.setState({
+      modal: true
+    });
+  }
+
+  closeToggle = () => {
+    this.setState({
+      modal: false
+    });
+  }
+
+  handleCounterInfo = e => {
+    var info = { ...this.state.counterInfo };
+    info[e.target.name] = e.target.value;
+    this.setState({ counterInfo: info });
+  }
+
+  handleSubmitCounterInfo = e => {
+    e.preventDefault();
+    var trans = this.NearTransformator();
+    // console.log(trans)
+    var obj = {
+      latitudeCounter: this.state.movingMarker[0].toString(),
+      lengthCounter: this.state.movingMarker[1].toString(),
+      value: 300,
+      stratum: this.state.counterInfo.estrato,
+      addressCounter: this.state.counterInfo.direccion,
+      transformatorCounter: trans,
+      is_active: true
+    };
+
+    axios.post("https://energycorp.herokuapp.com/api/energytransfers/counter/create/", obj)
+      .then(res => {
+        this.closeToggle();
+        this.setState({
+          counterInfo: {
+            estrato: 0,
+            direccion: ""
+          }
+        })
+        this.getAllMapData();
+      })
+      .catch(err => {
+        console.log(err);
+      })
   }
 
   NearSubstation = () => {
@@ -116,27 +173,7 @@ class TransformersMap extends Component {
           console.log(err);
         })
     } else {
-
-      var trans = this.NearTransformator();
-      console.log(trans)
-      obj = {
-        latitudeCounter: this.state.movingMarker[0].toString(),
-        lengthCounter: this.state.movingMarker[1].toString(),
-        value: 1,
-        stratum: 3,
-        addressCounter: "calle x #aaa",
-        // clientCounter: null,
-        transformatorCounter: trans,
-        is_active: true
-      };
-
-      axios.post("https://energycorp.herokuapp.com/api/energytransfers/counter/create/", obj)
-        .then(res => {
-          this.getAllMapData();
-        })
-        .catch(err => {
-          console.log(err);
-        })
+      this.openToggle();
     }
   }
 
@@ -161,6 +198,14 @@ class TransformersMap extends Component {
         .catch(err => {
           console.log(err);
         })
+    } else {
+      axios.delete("https://energycorp.herokuapp.com/api/energytransfers/counter/delete/" + key)
+        .then(res => {
+          this.getAllMapData();
+        })
+        .catch(err => {
+          console.log(err);
+        })
     }
   }
 
@@ -174,8 +219,16 @@ class TransformersMap extends Component {
           console.log(err);
         })
 
-    } else {
+    } else if (type === "substations") {
       axios.patch("https://energycorp.herokuapp.com/api/energytransfers/substation/inactivate/" + key + "/", { "is_active": !val })
+        .then(res => {
+          this.getAllMapData();
+        })
+        .catch(err => {
+          console.log(err);
+        })
+    } else {
+      axios.patch("https://energycorp.herokuapp.com/api/energytransfers/counter/inactivate/" + key + "/", { "is_active": !val })
         .then(res => {
           this.getAllMapData();
         })
@@ -281,13 +334,13 @@ class TransformersMap extends Component {
       iconSize: new L.Point(40, 40),
     });
 
-    // const countInactive = new L.Icon({
-    //   iconUrl: require('./countInactive.png'),
-    //   shadowUrl: '',
-    //   iconAnchor: [20, 40],
-    //   popupAnchor: [0, -40],
-    //   iconSize: new L.Point(40, 40),
-    // });
+    const countInactive = new L.Icon({
+      iconUrl: require('./countInactive.png'),
+      shadowUrl: '',
+      iconAnchor: [20, 40],
+      popupAnchor: [0, -40],
+      iconSize: new L.Point(40, 40),
+    });
     // ############  ##################
 
     const allMarkers = this.state.transformer.map((ele, i) => (
@@ -320,16 +373,16 @@ class TransformersMap extends Component {
     );
 
     const allCounters = this.state.counters.map((ele, i) => (
-      <Marker position={[ele.latitudeCounter, ele.lengthCounter]} key={i} icon={countIcon}>
+      <Marker position={[ele.latitudeCounter, ele.lengthCounter]} key={i} icon={ele.is_active ? countIcon : countInactive}>
         <Popup>
           <b>Counter</b>: {ele.codeCounter}<br></br>
             Lat: {ele.latitudeCounter}<br></br>
             Lng: {ele.lengthCounter}<br></br>
             Transformer: <b>{ele.transformatorCounter}</b><br></br>
-          <i>{ele.addressCounter}</i>
+          Address: <i>{ele.addressCounter}</i>
           <center>
-            {/* <button className="removeBtn" onClick={() => this.removePoint(i, "substations")}><b>Remove</b></button> */}
-            {/* <button className="inactiveBtn" onClick={() => this.inactiveActivePoint(i, "substations")}><b>{ele.is_active ? "Inactive" : "Active"}</b></button> */}
+            <button className="removeBtn" onClick={() => this.removePoint(ele.codeCounter, "counter")}><b>Remove</b></button>
+            <button className="inactiveBtn" onClick={() => this.inactiveActivePoint(ele.codeCounter, ele.is_active, "counter")}><b>{ele.is_active ? "Inactive" : "Active"}</b></button>
           </center>
         </Popup>
       </Marker>)
@@ -337,14 +390,34 @@ class TransformersMap extends Component {
 
     const Tbtn = this.state.block ? <button onClick={() => this.newPoint("transformer")} className="newTrans">TR</button> : false;
     const Sbtn = this.state.blockSub ? <button onClick={() => this.newPoint("substations")} className="newSubs">SU</button> : false;
-    const Cbtn = this.state.blockCo ? <button onClick={() => this.newPoint("")} className="newConts">CO</button> : false;
+    const Cbtn = this.state.blockCo ? <button onClick={() => this.newPoint("counter")} className="newConts">CO</button> : false;
 
     const newMaker = Tbtn === Sbtn && Sbtn === Cbtn && Tbtn === Cbtn ?
       <p>Check Layer</p> :
       <div>{Sbtn}{Tbtn}{Cbtn}</div>;
 
+    const modal = <div>
+      <Modal md="7" isOpen={this.state.modal} toggle={this.closeToggle} className="danger">
+        <ModalHeader toggle={this.closeToggle}>
+          Insert Data
+        </ModalHeader>
+        <ModalBody>
+          <Form onSubmit={this.handleSubmitCounterInfo}>
+            <FormGroup>
+              <Input onChange={this.handleCounterInfo} value={this.state.counterInfo.direccion} type="text" name="direccion" placeholder="Address" required />
+              <Input onChange={this.handleCounterInfo} value={this.state.counterInfo.estrato} type="number" name="estrato" placeholder="Stratus" required />
+              <Button color="success">
+                Create
+            </Button>
+            </FormGroup>
+          </Form>
+        </ModalBody>
+      </Modal>
+    </div>
+
     return (
       <Map className="amapa" center={this.state.position} zoom={13} onClick={this.action} onoverlayadd={this.blockMarkers} onoverlayremove={this.blockMarkers}>
+        {modal}
         <LayersControl position="topright">
           <LayersControl.BaseLayer name="BlackAndWhite">
             <TileLayer
