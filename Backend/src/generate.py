@@ -2,7 +2,7 @@ import json
 import random
 import math
 import geopy.distance
-from datetime import datetime
+import datetime
 
 from geopy.geocoders import Nominatim
 from django.contrib.auth.hashers import make_password
@@ -131,7 +131,6 @@ for i in range (1,11):
             "phone": str(random.randint(3000000,4999999)),
             "address": random.choice(ncalle) +" "+ str(random.randint(1,99)) + random.choice(nncalle) + " # " + str(random.randint(1,99)) + " - " + str(random.randint(10,200)),
             "neighborhood": random.choice(barrios),
-            "stratus": random.randint(2,6),
             "is_active": True,
             "is_staff": False,
             "is_superuser": False    
@@ -143,10 +142,7 @@ for i in range (1,11):
         "fields": {
             "user": i,
             "type_client": 1,
-            "interes_mora": 0,
-            "cycle": "1",
-            "financial_state": "libre",
-            "billing": "no se",
+            "interes_mora": 0
         }
     }    
     users.append(user)
@@ -166,7 +162,6 @@ workers = [
     "phone": "4455971",
     "address": "cra28 C # 54-123",
     "neighborhood": "sindical",
-    "stratus": 2,
     "is_active": True,
     "is_staff": True,
     "is_superuser": False    
@@ -183,7 +178,6 @@ workers = [
     "phone": "4455972",
     "address": "cra28 C # 54-124",
     "neighborhood": "sindical",
-    "stratus": 2,
     "is_active": True,
     "is_staff": True,
     "is_superuser": False
@@ -200,7 +194,6 @@ workers = [
         "phone": "4455970",
         "address": "cra28 C # 54-127",
         "neighborhood": "sindical",
-        "stratus": 2,
         "is_active": True,
         "is_staff": True,
         "is_superuser": False
@@ -288,82 +281,83 @@ for i in range (1,len(transcoor)+1):
 basejson.extend(ransformators)
 
 countercoors = [
-    #transf 1
-    [3.429708, -76.501172],
-    [3.429556, -76.504896],
-    [3.428764, -76.506723],
-    [3.430769, -76.508757],
-    [3.437480, -76.508385],
-
-    #transf2
-    [3.470128, -76.490096],
-    [3.462938, -76.504564],
-    [3.459106, -76.487694],
-    [3.475513, -76.501320],
-    [3.471357, -76.498292]
+    [3.4613754609402134, -76.50162220001222],
+    [3.463560148219834, -76.49715900421144],
+    [3.468572058805507, -76.50488376617432],
+    [3.4810374646865485, -76.49346828460695],
+    [3.488105405079248, -76.49904727935792],
+    [3.4357371374880414, -76.5101408958435],
+    [3.437086540149677, -76.504282951355],
+    [3.4278120357529867, -76.4970088005066],
+    [3.4380932361303143, -76.49919748306276],
+    [3.4223072642741497, -76.50091409683229]
 ]
 
 countdir = [
-    'Cra. 28c #50-2 a 50-178',
-    'Tv. 33g #28e-2 a 28e-64',
-    'Dg. 28d #29-2 a 29-96',
-    'Tv. 28a #27a-89 a 27a-1',
-    'Cl. 33f #23-12 a 23-64',
-
-    'Cl. 64a #2d-39 a 2d-1',
-    'Cl. 46 #4b-8 a 4b-28',
-    'Cra. 7f #64-65 a 64-1',
-    'Cra. 1B #5450',
-    'Cra. 1d 2 #56-94'
+    'Carrera 5 # 14-4',
+    'Carrera 5 con calle 56',
+    'Carrera 2 # 45',
+    'Calle 66A #43',
+    'Calle 71 #42',
+    'Carrera 24 #4B',
+    'Carrera 24C #10',
+    'Carrera 28B #9',
+    'Carrera 25 #33-17',
+    'Carrera 29A #12-89'
 ]
+
+transformador = [9, 9, 9, 10, 10, 6, 6, 5, 6, 5]
+stratos = [1,3,2,6,4, 4, 3,3,5,4]
 counters = []
 
 for i in range (1, 11):
-    number = 1
-    if i > 5:
-        number = 2
     counter = {
         "model": "energytransfers.counter",
         "pk": i,
         "fields": {
             "latitudeCounter": str(countercoors[i-1][0]),
             "lengthCounter": str(countercoors[i-1][1]),
-            "value": random.randint(100, 500),
+            "value": random.randint(1000, 2000),
             "is_active": True,
             "addressCounter": countdir[i-1],
+            "stratum": stratos[i-1],
             "clientCounter": i,
-            "transformatorCounter": number
+            "transformatorCounter": transformador[i-1]
         }
     }
     counters.append(counter)
 
 basejson.extend(counters)
 
-
 histories = []
-
+rand1 = [0.17, 0.15, 0.24, 0.18, 0.26]
+rand2 = [0.20, 0.15, 0.24, 0.19, 0.22]
+fechas = ['2019-12-31', '2020-01-31', '2020-02-29', '2020-03-31', '2020-04-30']
+pesos = []
 for i in range (1, len(counters) + 1):
-    history1 = {
-        "model": "energytransfers.history",
-        "pk": i*2 - 1,
-        "fields": {
-            "consumption": random.randint(10,50),
-            "counter": i,
-            "registryHistory": "2020-04-30"
+    totalcurrent = 0
+    if i%2==0:
+        random.shuffle(rand1)
+        pesos = rand1
+    else:
+        random.shuffle(rand2)
+        pesos = rand2
+
+    for j in range (1, 6):
+        consumption = math.floor(pesos[j-1]*counters[i-1]['fields']['value'])
+        totalcurrent = totalcurrent + consumption
+        current  = totalcurrent 
+        history = {
+            "model": "energytransfers.history",
+            "pk": (i-1)*5 + j,
+            "fields": {
+                "current": current,
+                "consumption": consumption,
+                "registryHistory": fechas[j-1],
+                "counter": i
+            }
         }
-    }
-    history2 = {
-        "model": "energytransfers.history",
-        "pk": i*2,
-        "fields": {
-            "consumption": random.randint(10,50),
-            "counter": i,
-            "registryHistory": "2020-05-13"
-        }
-    }
-    
-    histories.append(history1)
-    histories.append(history2)
+        histories.append(history)
 
 basejson.extend(histories)
 """
@@ -398,38 +392,93 @@ basejson.extend(contracts)
 invoices = []
 
 for i in range (1, len(counters) + 1):
-    invoice = {
-        "model": "contract.Invoice",
-        "pk": i,
-        "fields": {
-            "consumptiondaysInvoice": 30,
-            "paymentdeadlineInvoice": "2020-05-05",
-            "billingdateInvoice": "2020-04-30",
-            "stateInvoice": True,
-            "referencecodeInvoice": "20200430(175915326153)" + str(random.randint(1111111,9999999)),
-            "total": random.randint(80000,300000),
-            "contract": 20200514+i,
+    pastRecord = 0
+    anterior=0
+    intakes =[]
+    for j in range (1,6):
+        date = datetime.datetime.strptime(fechas[j-1],'%Y-%m-%d')
+        deadDate = date + datetime.timedelta(days=10)
+        deadDate.strftime("%Y-%m-%d")
+        deadDate=str(deadDate).split(" ")[0]
+        current = histories[(i-1)*5 + j - 1]['fields']['current']
+        pastRecord=anterior
+        consumo = histories[(i-1)*5 + j - 1]['fields']['consumption']
+        basic = 173
+        basicTake = 0  
+        remainder=0
+        if consumo > basic:
+            basicTake = basic
+            remainder = consumo - basic
+        else:
+            basicTake = consumo
+
+        intakes.insert(0,str(date.month)+"-"+str(consumo))
+        intk = ','.join(intakes)
+        
+        subsidyValue = 0
+        stratum = stratos[i-1]
+        if stratum == 1:
+            subsidyValue = 0.6
+        elif stratum == 2:
+            subsidyValue = 0.5
+        elif stratum == 3:
+            subsidyValue = 0.15
+        else:
+            subsidyValue = 0
+        
+        totalBasicSubsidy = (1-subsidyValue)*basicTake
+
+        total = (totalBasicSubsidy + remainder)*589
+
+        invoice = {
+            "model": "contract.Invoice",
+            "pk": 2000+(i-1)*5 + j,
+            "fields": {
+                "billingDate": fechas[j-1],
+                "deadDatePay": deadDate,
+                "consumptiondaysInvoice": str(date.day),
+                "counter": i,
+                "address": countdir[i-1],
+                "stratum": stratum,
+                "currentRecord": current,
+                "pastRecord": pastRecord,
+                "basicTake": basicTake,
+                "remainder": remainder,
+                "unitaryValue": 589,
+                "interestMora": 0,
+                "totalMora": 0.0,
+                "overdue": 0.0,
+                "intakes": intk,
+                "referencecodeInvoice": "202004301759"+str(random.randint(111,999))+"26153" + str(random.randint(1111111,9999999)),
+                "total": total,
+                "stateInvoice": True,
+                "contract": 20200514 + i
+            }
         }
-    }
+        invoices.append(invoice)
+        anterior=current
 
     #now = datetime.now()
     #code = str(now).replace(':', '').replace('.', '').replace('-','').split()
     #reference = code[0] + "("+ code[1]+")"+ str(random.randint(1111111,9999999))
 
-    invoices.append(invoice)
     
 basejson.extend(invoices)
 
 payments = []
 
 for i in range (1,len(invoices)+1):
+    date = datetime.datetime.strptime(invoices[i-1]['fields']['billingDate'],'%Y-%m-%d')
+    datePayment = date + datetime.timedelta(days=random.randint(1,9))
+    datePayment.strftime("%Y-%m-%d")
+    datePayment=str(datePayment).split(" ")[0]
     pay = {
         "model": "payments.payment",
-        "pk": i,
+        "pk": 40050+i,
         "fields": {
             "valuePayment": invoices[i-1]['fields']['total'],
-            "datePayment": "2020-05-01T01:53:37.426Z",
-            "facturaPayment": i
+            "datePayment": datePayment,
+            "facturaPayment": 2000+i
         }
     }
     payments.append(pay)
