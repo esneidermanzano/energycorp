@@ -119,7 +119,7 @@ class GeneratePdf(View):
         #print(query)
         #print(generateInvoice(query))
         # Rendered
-        print(generateHistory())
+        #print(generateHistory())
         template = {
             "name": "enersto"
         }
