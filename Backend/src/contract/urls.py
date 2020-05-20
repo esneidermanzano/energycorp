@@ -35,7 +35,6 @@ urlpatterns = [
     #Send invoice 
     path('sendemail/', SendEmail.as_view()),
 
-
     path('contract/', ContractList.as_view()),
     path('contract-full/', GetFullContractJoin.as_view()),
     path('contract/create/', CreateContract.as_view()),
