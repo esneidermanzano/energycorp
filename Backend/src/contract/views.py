@@ -131,6 +131,7 @@ class GetInvoiceByContract(APIView):
             message = "Error al buscar las facturas, intelo mas tarde"
             return Response({"error": True, "message": message} )
 
+
 #obtener un afactura en formato pdf
 class GeneratePdf(APIView):
     def get(self, request, contract, factura):
