@@ -90,6 +90,7 @@ class ContractSerializer(serializers.ModelSerializer):
             'counter',
             ]
 
+#create a contract, user, and counter at same time
 class CreateFullContractSerializer(serializers.ModelSerializer):
     
     client = ClientSerializer()
@@ -101,6 +102,18 @@ class CreateFullContractSerializer(serializers.ModelSerializer):
             'contractNumber',
             'client',
             'counter',
+            ]
+            
+#get a contract and client
+class ContractClientSerializer(serializers.ModelSerializer):
+    
+    client = ClientSerializer()
+    
+    class Meta:
+        model = Contract
+        fields = [
+            'contractNumber',
+            'client',
             ]
 
 #get contrat with nested invoice and client(that client contains nested counter(that counter contains nested histories)) 

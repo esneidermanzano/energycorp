@@ -5,6 +5,7 @@ from .views import (
     ContractList,
     CreateContract,
     CreateFullContract,
+    ContractClientSerializer,
     GetFullContractJoin,
 
     InvoiceList,
@@ -16,6 +17,7 @@ from .views import (
 #   QUERY
 
 #   Generate pdf
+    GetInvoiceByContract,
     GeneratePdf,
 #   Send email 
     SendEmail
@@ -28,6 +30,7 @@ urlpatterns = [
     path('update/<pk>', InvoiceUpdate.as_view()),
     path('delete/<pk>', InvoiceDelete.as_view()),
     path('inactivate/<pk>/', InvoiceInactivate.as_view()),
+    path('by-contract/', GetInvoiceByContract.as_view()),
     path('<pk>', InvoiceDetail.as_view()),
     #QUERY
     #PDf invoice generator
@@ -36,7 +39,7 @@ urlpatterns = [
     path('sendemail/', SendEmail.as_view()),
 
     path('contract/', ContractList.as_view()),
-    path('contract-full/', GetFullContractJoin.as_view()),
     path('contract/create/', CreateContract.as_view()),
+    path('contract-full/', GetFullContractJoin.as_view()),
     path('contract-full/create/', CreateFullContract.as_view()),
 ]

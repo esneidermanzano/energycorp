@@ -1,6 +1,6 @@
 #============ needed Imports to generate pdf file ===========
 import tempfile
-from .utils import generateInvoice, generateHistory
+from .utils import getInvoice, generateHistoryAndInvoices
 from django.http import HttpResponse
 from django.views.generic import View
 from django.template.loader import render_to_string
@@ -32,6 +32,7 @@ from .serializers import (
     # CRUD SERIALIZERS
     ContractSerializer,
     CreateFullContractSerializer,
+    ContractClientSerializer,
     SuperJoinSerializer,
 
     InvoiceSerializer,
@@ -113,6 +114,23 @@ class InvoiceInactivate(UpdateAPIView):
 
 #--------------------------------------Generate PDF invoice---------------------------------                                      
 
+class GetInvoiceByContract(APIView):
+    def post(self,request):
+        try:
+            contractNumber = request.data.get('contractNumber')
+            queryset = Invoice.objects.filter(
+                contract=contractNumber).order_by('-codeInvoice')[:5]
+            serializer = InvoiceSerializer(queryset, many=True).data
+            if (queryset.exists()):
+                return Response({ "error": False,"find": True, "invoices": serializer})
+            else:
+                message = "Numero de contrato erroneo"
+                return Response({ "error": False, "find": False, "message": message} )
+        except:
+            message = "Error al buscar las facturas, intelo mas tarde"
+            return Response({"error": True, "message": message} )
+
+
 class GeneratePdf(View):
     def get(self, request, contract):
         """Generate pdf."""
@@ -121,7 +139,9 @@ class GeneratePdf(View):
         # Model data
         queryset = Contract.objects.filter(
             contractNumber__iexact=contractNumber)
-        query = SuperJoinSerializer(queryset, many=True).data[0]
+        print("==================================0")
+        print(queryset)
+        query = ContractClientSerializer(queryset, many=True).data[0]
 
         if (queryset.exists()):
             nel = "save"
@@ -131,7 +151,7 @@ class GeneratePdf(View):
         #print(query)
         #print(generateInvoice(query))
         # Rendered
-        #print(generateHistory())
+        print(query)
         template = {
             "name": "enersto"
         }
