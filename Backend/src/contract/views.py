@@ -1,6 +1,6 @@
 #============ needed Imports to generate pdf file ===========
 import tempfile
-from .utils import getInvoice, generateHistoryAndInvoices
+from .utils import getInvoiceData, generateHistoryAndInvoices
 from django.http import HttpResponse
 from django.views.generic import View
 from django.template.loader import render_to_string
@@ -32,7 +32,7 @@ from .serializers import (
     # CRUD SERIALIZERS
     ContractSerializer,
     CreateFullContractSerializer,
-    ContractClientSerializer,
+    ContractClienteInvoiceSerializer,
     SuperJoinSerializer,
 
     InvoiceSerializer,
@@ -114,6 +114,7 @@ class InvoiceInactivate(UpdateAPIView):
 
 #--------------------------------------Generate PDF invoice---------------------------------                                      
 
+#Obtener las  ultimas 6 facturas dado un numero de contrato
 class GetInvoiceByContract(APIView):
     def post(self,request):
         try:
@@ -130,32 +131,27 @@ class GetInvoiceByContract(APIView):
             message = "Error al buscar las facturas, intelo mas tarde"
             return Response({"error": True, "message": message} )
 
-
+#obtener un afactura en formato pdf
 class GeneratePdf(View):
-    def get(self, request, contract):
+    def get(self, request, contract, factura):
         """Generate pdf."""
-        contractNumber = contract
-        
         # Model data
-        queryset = Contract.objects.filter(
-            contractNumber__iexact=contractNumber)
-        print("==================================0")
-        print(queryset)
-        query = ContractClientSerializer(queryset, many=True).data[0]
+        queryset = Contract.objects.filter(contractNumber__iexact=contract)
+        query = ContractClienteInvoiceSerializer(
+            queryset, many=True, context={'codeInvoice': factura}
+        ).data[0]
 
+        datos = {}
         if (queryset.exists()):
-            nel = "save"
-            # print(serializer_class)
+            print("no existe")
+            datos = getInvoiceData(query)
         else:
             print("no existe")
-        #print(query)
-        #print(generateInvoice(query))
+
         # Rendered
-        print(query)
-        template = {
-            "name": "enersto"
-        }
-        html_string = render_to_string('contract/index.html', template)
+        print("==================================0")
+        #print(datos)
+        html_string = render_to_string('contract/index.html', datos)
         html = HTML(string=html_string, base_url=request.build_absolute_uri())
         result = html.write_pdf()
 

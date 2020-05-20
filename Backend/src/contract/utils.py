@@ -117,66 +117,79 @@ def generateHistoryAndInvoices():
 
 
 
-def getInvoice(query):
+def getInvoiceData(query):
     data = {
-        "name": 0,
-        "address": 0,
-        "identification": 0,
-        "payMonth":1,
-        "rangeBilling": 1,
-        "days":0,
-        "deadDatePay": 1,
-        "stratum": 1,
-        "counter":1,
-        "currentRecord":1,
-        "pastRecord":1,
+        "name": "",
+        "id_user": "",
+        "payMonth": "",
+        "rangeBilling": "",
+        "days":"",
+        "cutoffDate":"",
+        "deadDatePay": "",
+        "counter":0,
+        "address": "",
+        "stratum": 0,
+        "currentRecord":0,
+        "pastRecord":0,
         "difference":0,
-        "basicTake": 1,
-        "remainder": 1,
-        "interest": 1,
-        "totalBasic": 1,
-        "totalRemainder":1,
-        "subsidy": 1,
-        "totalBasicSubsidy": 1,
-        "total": 1,
-        "contract":0,
-        "reference": 1,
-        "intakes": 1
+        "basicTake": 0,
+        "remainder": 0,
+        "unitaryValue":0,
+        "interestMora": 0,
+        "totalMora": 0,
+        "overdue": 0,
+        "totalBasic": 0,
+        "totalRemainder":0,
+        "subsidy": 0,
+        "totalBasicSubsidy": 0,
+        "total": 0,
+        "contract":"",
+        "referencecodeInvoice": "",
+        "intakesMonth": [],
+        "intakesConsu": []
+
     }
+    meses = [
+        "Ene", "Feb", "Mar", 
+        "Abr", "May", "Jun", 
+        "Jul", "Ago", "Sep", 
+        "Oct", "Nov", "Dic"
+    ]
+    meses2 = [
+        "Enero", "Febrero", "Marzo", 
+        "Abril", "Mayo", "Junio", 
+        "Julio", "Agosto", "Septiembre", 
+        "Octubre", "Noviembre", "Diciembre"
+    ]
 
     data['name'] = query['client']['user']['name']
-    data['address'] = query['counter']['addressCounter']
-    data['identification'] = query['client']['user']['id_user']
+    data['id_user'] = query['client']['user']['id_user']
+    
+    frdate = query['invoice']['billingDate']
+    frdate = datetime.datetime.strptime(frdate,'%Y-%m-%d')
+    aux = frdate+datetime.timedelta(days=10)
 
-    finalRecordDate = query['counter']['historys'][0]['registryHistory']
-    frdate = datetime.datetime.strptime(finalRecordDate,'%Y-%m-%d')
-    payMonth = frdate + datetime.timedelta(days=10)
-
-    data['payMonth'] = payMonth.strftime("%B-%Y")
-    data['rangeBilling'] =frdate.replace(day=1).strftime('%b-%d') +" a " + frdate.strftime('%b-%d')
-    data['days'] = frdate.strftime('%d')
-    data['deadDatePay'] = payMonth.strftime("%b-%d-%Y")
-    data['stratum'] = query['counter']['stratum']
-    data['counter'] = query['counter']['codeCounter']
-    data['currentRecord'] = query['counter']['historys'][0]['consumption']
-    data['pastRecord'] = query['counter']['historys'][1]['consumption']
+    data['payMonth'] = meses2[int(aux.strftime('%m'))-1] + " " + aux.strftime('%Y')
+    data['rangeBilling'] = frdate.replace(day=1).strftime('%m-%d') +" a " + frdate.strftime('%m-%d')
+    data['days'] = frdate.day
+    data['cutoffDate'] = query['invoice']['billingDate']
+    data['deadDatePay'] = query['invoice']['deadDatePay']
+    data['counter'] = "C2AA_"+str(query['invoice']['counter'])
+    data['address'] = query['invoice']['address']
+    data['stratum'] = query['invoice']['stratum']
+    data['currentRecord'] = query['invoice']['currentRecord']
+    data['pastRecord'] = query['invoice']['pastRecord']
     data['difference'] = data['currentRecord'] - data['pastRecord']
+    data['basicTake'] = query['invoice']['basicTake']
+    data['remainder'] = query['invoice']['remainder']
+    data['unitaryValue'] = query['invoice']['unitaryValue']
+    data['interestMora'] = query['invoice']['interestMora']
+    data['totalMora'] = query['invoice']['totalMora']
+    data['overdue'] = query['invoice']['overdue']
+    data['totalBasic'] = data['basicTake']*data['unitaryValue']
+    data['totalRemainder'] = data['remainder']*data['unitaryValue']
     
-    basic = 173
-    if data['difference'] > basic:
-        data['basicTake'] = basic
-        data['remainder'] = data['difference'] - basic
-    else:
-        data['basicTake'] = data['difference']
-        data['remainder'] = 0
-    
-    unitaryValue = 598
-    data['interest'] = query['client']['interes_mora']
-    data['totalBasic'] = data['basicTake']*unitaryValue
-    data['totalRemainder'] = data['remainder']*unitaryValue
-
     subsidyValue = 0
-
     if data['stratum'] == 1:
         subsidyValue = 0.6
     elif data['stratum'] == 2:
@@ -185,26 +198,19 @@ def getInvoice(query):
         subsidyValue = 0.15
     else:
         subsidyValue = 0
-    
+
     data['subsidy'] = -data['totalBasic']*subsidyValue
     data['totalBasicSubsidy'] = data['totalBasic'] + data['subsidy']
+    data['total'] = '%.2f' % query['invoice']['total']
+    data['contract'] = query['invoice']['contract']
+    data['referencecodeInvoice'] = query['invoice']['referencecodeInvoice']
 
-    data['total'] = data['totalBasicSubsidy'] + data['totalRemainder']
-    data['contract'] = query['contractNumber']
 
-    now = datetime.datetime.now()
-    code = str(now).replace(':', '').replace('.', '').replace('-','').split()
-    reference = code[0] + "("+ code[1]+")"+ str(random.randint(1111111,9999999))
+    intakes = query['invoice']['intakes'].split(",")
 
-    data['reference'] = reference
-
-    intakes = []
-
-    for history in query['counter']['historys']:
-        month = datetime.datetime.strptime(history['registryHistory'],'%Y-%m-%d')
-        month = month.strftime('%B')
-        reading = history['consumption']
-        intakes.append([{"month":month}, {"reading": reading}])
-    data['intakes'] = intakes
+    for intake in intakes:
+        aux = intake.split("-")
+        data['intakesMonth'].append(meses[int(aux[0])-1])
+        data['intakesConsu'].append(aux[1])
 
     return data
