@@ -321,7 +321,6 @@ for i in range (1, 11):
             "is_active": True,
             "addressCounter": countdir[i-1],
             "stratum": stratos[i-1],
-            "clientCounter": i,
             "transformatorCounter": transformador[i-1]
         }
     }
@@ -436,7 +435,6 @@ for i in range (1, len(counters) + 1):
             "fields": {
                 "billingDate": fechas[j-1],
                 "deadDatePay": deadDate,
-                "consumptiondaysInvoice": str(date.day),
                 "counter": i,
                 "address": countdir[i-1],
                 "stratum": stratum,
@@ -471,7 +469,7 @@ for i in range (1,len(invoices)+1):
     date = datetime.datetime.strptime(invoices[i-1]['fields']['billingDate'],'%Y-%m-%d')
     datePayment = date + datetime.timedelta(days=random.randint(1,9))
     datePayment.strftime("%Y-%m-%d")
-    datePayment=str(datePayment).split(" ")[0]
+    datePayment=str(datePayment)
     pay = {
         "model": "payments.payment",
         "pk": 40050+i,
