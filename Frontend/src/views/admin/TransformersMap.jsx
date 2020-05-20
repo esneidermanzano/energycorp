@@ -379,7 +379,7 @@ class TransformersMap extends Component {
             Lat: {ele.latitudeCounter}<br></br>
             Lng: {ele.lengthCounter}<br></br>
             Transformer: <b>{ele.transformatorCounter}</b><br></br>
-          Address:<i>{ele.addressCounter}</i>
+          Address: <i>{ele.addressCounter}</i>
           <center>
             <button className="removeBtn" onClick={() => this.removePoint(ele.codeCounter, "counter")}><b>Remove</b></button>
             <button className="inactiveBtn" onClick={() => this.inactiveActivePoint(ele.codeCounter, ele.is_active, "counter")}><b>{ele.is_active ? "Inactive" : "Active"}</b></button>
