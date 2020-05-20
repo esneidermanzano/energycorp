@@ -145,9 +145,7 @@ def getInvoiceData(query):
         "total": 0,
         "contract":"",
         "referencecodeInvoice": "",
-        "intakesMonth": [],
-        "intakesConsu": []
-
+        "intakes":[],
     }
     meses = [
         "Ene", "Feb", "Mar", 
@@ -201,16 +199,35 @@ def getInvoiceData(query):
 
     data['subsidy'] = -data['totalBasic']*subsidyValue
     data['totalBasicSubsidy'] = data['totalBasic'] + data['subsidy']
-    data['total'] = '%.2f' % query['invoice']['total']
+    data['total'] = "{:,.2f}".format(query['invoice']['total'])
+
+    #==========0Formato de moneda===========
+    data['subsidy'] = "{:,.2f}".format(data['subsidy'])
+    data['totalBasicSubsidy'] = "{:,.2f}".format(data['totalBasicSubsidy'])
+    data['totalMora'] = "{:,.2f}".format(data['totalMora'])
+    data['overdue'] = "{:,.2f}".format(data['overdue'])
+    data['totalBasic'] = "{:,.2f}".format(data['totalBasic'])
+    data['totalRemainder'] = "{:,.2f}".format(data['totalRemainder'])
+
     data['contract'] = query['invoice']['contract']
     data['referencecodeInvoice'] = query['invoice']['referencecodeInvoice']
 
 
     intakes = query['invoice']['intakes'].split(",")
 
+    intakesMonth=[]
+    intakesConsu=[]
+    percentage=[]
     for intake in intakes:
         aux = intake.split("-")
-        data['intakesMonth'].append(meses[int(aux[0])-1])
-        data['intakesConsu'].append(aux[1])
+        intakesMonth.append(meses[int(aux[0])-1])
+        intakesConsu.append(aux[1])
+    intakesConsu = list(map(int, intakesConsu))
+    maximo = max(intakesConsu)
+    
+    for number in intakesConsu:
+        percentage.append("{:.0f}".format(number*100/maximo))
+
+    data['intakes'] = zip(intakesMonth,intakesConsu,percentage)
 
     return data

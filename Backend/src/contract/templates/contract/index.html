@@ -115,6 +115,35 @@ h1 {
   display: inline-block;
 }
 
+#consumos{
+  font-size: 11px;
+  max-width: 18%;
+  border:1px solid #8c8c8c;
+  padding:5px;
+  border-radius: 0px 10px 10px 10px;
+  padding-right: 65px;
+  margin-top: -5px;
+}
+
+#consumos span {
+  text-align: left;
+  width: 10px;
+  margin-right: 20px;
+  display: inline-block;
+}
+#consumos div div {
+  text-align: left;
+  max-height: 6px;
+  display: inline-block;
+  border:1px solid #bdbdbd;
+  vertical-align: middle;
+}
+
+#titlec{
+  font-size: 10.5px;
+  margin-top: -20px!important;
+  position: absolute;
+}
 #energy div:nth-child(2n){
   background-color: #eee;
 }
@@ -174,6 +203,7 @@ h1 {
 #energy div,
 .user div,
 .main div,
+#consumos div,
 #company div {
   white-space: nowrap;        
 }
@@ -225,7 +255,6 @@ table td.total {
   text-align: right;
   padding-right: 5px;
 }
-
 
 
 #totalEnergy{
@@ -289,6 +318,10 @@ footer {
 
 #finalf{
   margin-top: 100px;
+}
+
+#creditos{
+  font-size: 10px;
 }
     </style> 
 
@@ -420,7 +453,15 @@ footer {
           </tr>
         </tbody>
       </table>
-
+      <b id="titlec">HISTORIAL DE CONSUMOS (kWh)</b>
+      <div id="consumos">
+        {% for mes, cons, porc in intakes reversed%}
+          <div><span><b>{{mes}}</b></span> {{cons}} 
+            <div style="width:{{porc}}%;background-color: #c8c8c8;">&nbsp;</div>
+          </div>
+        {% endfor %}
+      </div>
+      
     </main>
     <footer>
       <div id="comienzof">
@@ -461,7 +502,7 @@ footer {
         </div>
     </div>
       <br/>
-      Los Cuchos S.A © (2019). Esta factura fue generada automaticamente por computadora..
+      <span id="creditos">Los Cuchos S.A © (2019). Esta factura fue generada automaticamente por computadora.</span>
     </footer>
   </body>
 </html>
