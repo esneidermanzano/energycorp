@@ -34,16 +34,9 @@ data = {
 def generateHistory():
     contratos = Contract.objects.all()
    
-    #contadores = Counter.objects.filter(is_active=True)
     histories = []
     invoices = []
     for contrato in contratos:
-
-        #contract = ContractSerializer(contrato, many=False)
-        #print(contrato.client.type_client)
-
-        #past = contract['counter']['historys'][0]['current']
-        #current = contract['counter']['value']
         
         currentRegistry = contrato.counter.value
         lastRegistry = History.objects.filter(
@@ -54,9 +47,6 @@ def generateHistory():
             contract=contrato).order_by('-codeInvoice').values(
                 'overdue', 'intakes', 'deadDatePay', 'total', 'stateInvoice'
                 )[:1][0]
-
-        
-        #print(lastInvoice)
         
         histories.append(History(
                 current=currentRegistry,
@@ -72,8 +62,7 @@ def generateHistory():
         counter = contrato.counter.codeCounter
         address = contrato.counter.addressCounter
         stratum = contrato.counter.stratum
-        #currentRecord = currentRegistry
-        #pastRecord = lastRegistry
+
         basicTake = 0
         remainder = 0
         unitaryValue = 589
@@ -115,8 +104,6 @@ def generateHistory():
         total = totalBasicSubsidy + totalRemainder + totalMora +overdue
         #================ necessary to total calcule ===============       
 
-        print("=============================")
-
         intakes = lastInvoice['intakes'].split(",")
         combo = billingDate.month
         combo = str(combo) + "-" + str(consumo)
@@ -151,11 +138,8 @@ def generateHistory():
                 )
             )
 
-    #print(invoices)
     History.objects.bulk_create(histories)
     Invoice.objects.bulk_create(invoices)
-    #History.objects.all().delete()
-    return "hola"
 
 
 def generateInvoice(query):

@@ -31,6 +31,8 @@ from .models import (
 from .serializers import (
     # CRUD SERIALIZERS
     ContractSerializer,
+    CreateFullContractSerializer,
+    SuperJoinSerializer,
 
     InvoiceSerializer,
     CreateInvoiceSerializer,
@@ -60,9 +62,19 @@ class ContractList(ListAPIView):
     serializer_class = ContractSerializer
 
 class CreateContract(ListCreateAPIView):
-    """View para retrive todos los Contratos"""
+    """View para crear contrato con cliente y contador existente"""
     queryset = Contract.objects.all()
     serializer_class = ContractSerializer
+
+class CreateFullContract(ListCreateAPIView):
+    """View para crear contrato+user+counter"""
+    queryset = Contract.objects.all()
+    serializer_class = CreateFullContractSerializer
+
+class GetFullContractJoin(ListCreateAPIView):
+    """View para ver contrato con cliente y contador"""
+    queryset = Contract.objects.all()
+    serializer_class = SuperJoinSerializer
 #------------------------------------------------Invoice-------------------------------------
 
 #                                                   CRUD
@@ -109,7 +121,7 @@ class GeneratePdf(View):
         # Model data
         queryset = Contract.objects.filter(
             contractNumber__iexact=contractNumber)
-        query = ContractSerializer(queryset, many=True).data[0]
+        query = SuperJoinSerializer(queryset, many=True).data[0]
 
         if (queryset.exists()):
             nel = "save"
@@ -148,7 +160,7 @@ class SendEmail(APIView):
       #Example: {"contractNumber": 20200515}
       queryset = Contract.objects.filter(
           contractNumber__iexact=contractNumber)
-      serializer_class = ContractSerializer(queryset, many=True).data
+      serializer_class = SuperJoinSerializer(queryset, many=True).data
 
       if (queryset.exists()):
           #DICT->JSON       
