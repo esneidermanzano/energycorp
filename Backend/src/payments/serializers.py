@@ -4,6 +4,11 @@ from .models import (
     BanckPayment,
     DirectPayment
 )
+from datetime import date
+from contract.models import (Invoice, Contract)
+from users.models import (Client)
+
+
 # Serializer
 from rest_framework import serializers
 
@@ -82,7 +87,8 @@ class CreateBanckPaymentSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         payment = validated_data.pop('payment')
-        paymentObj = Payment.objects.create(**payment)
+        paymentObj = Payment.objects.create(**payment,
+                                            **validated_data)
         banckPayment = BanckPayment.objects.create(
             payment=paymentObj, **validated_data)
         return banckPayment
@@ -127,9 +133,9 @@ class DeleteBanckPaymentSerializer(serializers.ModelSerializer):
 
 class CreateDirectPaymentSerializer(serializers.ModelSerializer):
     """DirectPayment para las operaciones Create"""
-    
+
     payment = PaymentSerializer()
-    
+
     class Meta:
         model = DirectPayment
         fields = [
@@ -138,10 +144,33 @@ class CreateDirectPaymentSerializer(serializers.ModelSerializer):
         ]
 
     def create(self, validated_data):
+        #capturo el diccionario de pago:
         payment = validated_data.pop('payment')
+        #traigo la factura asociada a ese pago:
+        numberInvocie =payment['facturaPayment']
+        invoice = Invoice.objects.get(codeInvoice=numberInvocie.codeInvoice)  
+        #caluclo la mora
+        mora = ((date.today() - invoice.paymentdeadlineInvoice ).days / 100)
+        print(mora)
+        #validaciones pendejas para no pasar el 30%
+        if (mora > 0.30):
+            mora = 0.30
+        if (mora < 0.0):
+            mora = 0.0
+        #Traigo el contrato asociada a esa factura:
+        codeClient = invoice.contract.client.id
+        #Traigo el Cliente asociado a ese contrato
+        client = Client.objects.get(id=codeClient)
+        #Inyecto el valor de mora al cliente correspondiente.
+        client.interes_mora = mora
+        client.save()   
+        #Asemos la creación del pago y se asocia a el pago directo.
         paymentObj = Payment.objects.create(**payment)
         directPayment = DirectPayment.objects.create(
             payment=paymentObj, **validated_data)
+        #Desactiva la factura cuando crea el pago
+        invoice.stateInvoice = True
+        invoice.save()
         return directPayment
 
 
