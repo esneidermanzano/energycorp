@@ -305,23 +305,23 @@ footer {
       </div>
       <div class="user" class="clearfix">
         <div>{{ name }}</div>
-        <div>Diagonal 50B # 94 - 134</div>
-        <div>C.C./Nit 1045127441</div>
+        <div>{{ address }}</div>
+        <div>C.C./Nit {{ id_user }}</div>
       </div>
 
       <div id="info">
-        <div><span>Mes Pago de Cuenta</span> Mayo 2020</div>
-        <div><span>Periodo Facturacion</span> 04-01 a 04-30</div>
-        <div><span>Dias Facturados</span> 30</div>
+        <div><span>Mes Pago de Cuenta</span> {{ payMonth }}</div>
+        <div><span>Periodo Facturacion</span> {{rangeBilling}}</div>
+        <div><span>Dias Facturados</span> {{days}}</div>
         <div><span>Ciclo</span> 1</div>
-        <div><span>Fecha de Corte del periodo de Facturcion</span> 2020-04-30</div>
+        <div><span>Fecha de Corte del periodo de Facturcion</span> {{cutoffDate}}</div>
       </div>
 
       <div class="main">
-        <div id="total"><span>TOTAL A PAGAR</span> $242415</div>
-        <div><span>CONTRATO</span> 20200515</div>
-        <div><span>FECHA DE VENCIMIENTO</span> 2020-05-05</div>
-        <div><span>FECHA D EXPEDICION</span> 2020-04-30</div>
+        <div id="total"><span>TOTAL A PAGAR</span> ${{total}}</div>
+        <div><span>CONTRATO</span> {{contract}}</div>
+        <div><span>FECHA DE VENCIMIENTO</span> {{deadDatePay}}</div>
+        <div><span>FECHA DE EXPEDICION</span> {{cutoffDate}}</div>
       </div>
     </header>
 
@@ -343,10 +343,10 @@ footer {
             <td>
               <div id="energy">
                 <div><span>Uso</span> Residencial</div>
-                <div><span>Estrato</span> 4</div>
-                <div><span>Numero de Medidor</span> C2AA_1</div>
-                <div><span>Lectura Actual</span> 8642</div>
-                <div><span>Lectura Anterior</span> 8051</div>
+                <div><span>Estrato</span> {{stratum}}</div>
+                <div><span>Numero de Medidor</span> {{counter}}</div>
+                <div><span>Lectura Actual</span> {{currentRecord}}</div>
+                <div><span>Lectura Anterior</span> {{pastRecord}}</div>
                 <div><span>Diferencia</span> 542</div>
                 <div><span>Consumo Actual</span> 542 KWH</div>
                 </div>

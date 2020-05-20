@@ -103,7 +103,7 @@ class CreateFullContractSerializer(serializers.ModelSerializer):
             'client',
             'counter',
             ]
-            
+
 #get a contract and client
 class ContractClientSerializer(serializers.ModelSerializer):
     
@@ -115,6 +115,28 @@ class ContractClientSerializer(serializers.ModelSerializer):
             'contractNumber',
             'client',
             ]
+
+#get one invoice to print pdf
+class ContractClienteInvoiceSerializer(serializers.ModelSerializer):
+    
+    client = ClientSerializer()
+    invoice = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Contract
+        fields = [
+            'contractNumber',
+            'client',
+            'invoice',           
+            ]
+
+    def get_invoice(self, contract):
+        print("==================================")
+        codeInvoice= self.context.get('codeInvoice')
+        qs = Invoice.objects.all().filter(
+            codeInvoice=codeInvoice)
+        invoice = InvoiceSerializer(qs, many=True, read_only=True).data[0]
+        return invoice
 
 #get contrat with nested invoice and client(that client contains nested counter(that counter contains nested histories)) 
 class SuperJoinSerializer(serializers.ModelSerializer):
