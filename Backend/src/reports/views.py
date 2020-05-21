@@ -1,9 +1,8 @@
 from django.shortcuts import render
 from rest_framework.views import View
 
-from rest_framework.generics import ListAPIView 
 from users.models import Client
-from energytransfers.models import Counter,History
+from energytransfers.models import Counter
 from contract.models import Contract
 from rest_framework.response import Response
 
@@ -15,10 +14,10 @@ from django.http import HttpResponse
 from .serializers import (
     MoraSerializer,
     ServiceSuspendedSerializer,
-    UserSerializer,
-    TopFiveCounterSerializer
+   
 )
-from contract.serializers import ContractSerializer
+
+from django.db.models import Count
 # Create your views here.
 
 class MoraAndSuspended(View):
@@ -64,16 +63,20 @@ class MoraAndSuspended(View):
 
 
         return HttpResponse(json.dumps(response))   
+
 class TopFiveCounters(View):
      def get(self, request):
-        queryset1 =   Counter.objects.all().order_by('-value')[:5].values('codeCounter',
+        queryset1 =   Counter.objects.all(
+
+        ).order_by('-value')[:5].values('codeCounter',
             'latitudeCounter',
             'lengthCounter',
             'value',
             'addressCounter',
             'stratum',
             'transformatorCounter')
-        queryset2 =   Counter.objects.all().order_by('value')[:5].values('codeCounter',
+        queryset2 =   Counter.objects.all(
+        ).order_by('value')[:5].values('codeCounter',
             'latitudeCounter',
             'lengthCounter',
             'value',
@@ -89,4 +92,16 @@ class TopFiveCounters(View):
         response['topfive-']=list(queryset2)
    
 
-        return HttpResponse(json.dumps(response))     
+        return HttpResponse(json.dumps(response))  
+
+class QuantityCounterTransformator(View):
+    def get(self, request):
+        queryset=Counter.objects.values(
+            'transformatorCounter').annotate(
+                total=Count('codeCounter')).filter(
+                    transformatorCounter__is_active=True
+                )
+
+
+
+        return HttpResponse(json.dumps(list(queryset)))     
