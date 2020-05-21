@@ -262,4 +262,5 @@ def getInvoiceData(query):
     data['intakes'] = zip(intakesMonth,intakesConsu,percentage)
     data['paid'] = query['invoice']['stateInvoice']
 
+
     return data
