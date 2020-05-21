@@ -176,6 +176,7 @@ def getInvoiceData(query):
         "contract":"",
         "referencecodeInvoice": "",
         "intakes":[],
+        "paid": True
     }
     meses = [
         "Ene", "Feb", "Mar", 
@@ -259,5 +260,6 @@ def getInvoiceData(query):
         percentage.append("{:.0f}".format(number*100/maximo))
 
     data['intakes'] = zip(intakesMonth,intakesConsu,percentage)
+    data['paid'] = query['invoice']['stateInvoice']
 
     return data
