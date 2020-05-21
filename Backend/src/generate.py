@@ -450,6 +450,7 @@ for i in range (1, len(counters) + 1):
                 "referencecodeInvoice": "202004301759"+str(random.randint(111,999))+"26153" + str(random.randint(1111111,9999999)),
                 "total": total,
                 "stateInvoice": True,
+                "is_active": False,
                 "contract": 20200514 + i
             }
         }

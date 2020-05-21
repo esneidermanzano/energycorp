@@ -46,5 +46,6 @@ class Invoice(models.Model):
     referencecodeInvoice = models.CharField(max_length=30)
     total = models.FloatField(null=False)
     stateInvoice = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
     contract = models.ForeignKey(
         Contract, related_name='invoice', on_delete=models.PROTECT)
