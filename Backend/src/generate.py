@@ -464,7 +464,8 @@ for i in range (1, len(counters) + 1):
                 "total": total,
                 "stateInvoice": True,
                 "is_active": isActive,
-                "contract": 20200514 + i
+                "contract": 20200514 + i,
+                "publicity":1
             }
         }
         invoices.append(invoice)
@@ -482,7 +483,7 @@ invoices[48]['fields']['total'] = invoices[48]['fields']['total'] + invoices[48]
 
 invoices[49]['fields']['stateInvoice'] = False
 invoices[49]['fields']['interestMora'] = 0.3
-invoices[49]['fields']['overdue'] = invoices[48]['fields']['overdue'] + invoices[48]['fields']['total']
+invoices[49]['fields']['overdue'] = invoices[48]['fields']['total']
 invoices[49]['fields']['totalMora'] = invoices[49]['fields']['overdue']*0.3
 invoices[49]['fields']['total'] = invoices[49]['fields']['total'] + invoices[49]['fields']['overdue'] + invoices[49]['fields']['totalMora']
 
