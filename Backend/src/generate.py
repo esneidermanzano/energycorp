@@ -397,6 +397,25 @@ contracts[len(counters)-1]['fields']['interes_mora'] = 0.3
 
 basejson.extend(contracts)
 
+
+#====================publicidad====================
+publicidad = [
+    {
+        "model": "commercial.commercial",
+        "pk": 1,
+        "fields": {
+            "urlCommercial": "https://firebasestorage.googleapis.com/v0/b/energy-corp.appspot.com/o/publicidad.png?alt=media&token=e29e85d8-4da3-42be-965d-32a0ddc5c201",
+            "nameCommercial": "EnergyCop",
+            "contractorCommercial": "EnergyCop",
+            "resourceCommercial": "EnergyCop",
+            "is_active": True
+        }
+    }
+]
+
+basejson.extend(publicidad)
+
+
 invoices = []
 
 for i in range (1, len(counters) + 1):
@@ -498,6 +517,8 @@ invoices[49]['fields']['total'] = invoices[49]['fields']['total'] + invoices[49]
     
 basejson.extend(invoices)
 
+
+#===========================================PAGOS====================================0
 payments = []
 
 for i in range (1,len(invoices)+1):
@@ -507,7 +528,7 @@ for i in range (1,len(invoices)+1):
     datePayment=str(datePayment)
     pay = {
         "model": "payments.payment",
-        "pk": 40050+i,
+        "pk": 4000+i,
         "fields": {
             "valuePayment": invoices[i-1]['fields']['total'],
             "datePayment": datePayment,
@@ -530,6 +551,72 @@ payments[39]['fields']['datePayment'] = "2020-05-20"
 
 basejson.extend(payments)
 
+
+bancos =[
+    {
+        "model": "bancks.Banck",
+        "pk": 1,
+        "fields":{
+            "nameBanck": "Colpatria",
+            "referenceBanck": "775489523145698",
+            "is_active": True
+        }
+    },
+    {
+        "model": "bancks.Banck",
+        "pk": 2,
+        "fields":{
+            "nameBanck": "Davivienda",
+            "referenceBanck": "746987355681374",
+            "is_active": True
+        }
+    },
+    {
+        "model": "bancks.Banck",
+        "pk": 3,
+        "fields":{
+            "nameBanck": "Bancolombia",
+            "referenceBanck": "775489525681374",
+            "is_active": True
+        }
+    }
+
+]
+basejson.extend(bancos)
+
+
+pagoBanco = []
+pagoDirecto=[]
+pkBank = 1
+pkDirec =1
+
+for i in range (1,len(payments)+1):
+    valor = random.randint(1,10)
+    if valor > 4:
+        pay = {
+            "model": "payments.DirectPayment",
+            "pk": 200+pkDirec,
+            "fields": {
+                "payment": payments[i-1]['pk'],
+                "workerPayment": 3
+            }
+        }
+        pagoDirecto.append(pay)
+        pkDirec = pkDirec + 1
+    else:
+        pay = {
+            "model": "payments.BanckPayment",
+            "pk": 200+pkBank,
+            "fields": {
+                "payment": payments[i-1]['pk'],
+                "banckPayment": random.randint(1,3)
+            }
+        }
+        pagoBanco.append(pay)
+        pkBank = pkBank + 1
+
+basejson.extend(pagoBanco)
+basejson.extend(pagoDirecto)
 
 jsonData=json.dumps(basejson, ensure_ascii=False)
 
