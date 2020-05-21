@@ -135,6 +135,7 @@ class GetInvoiceByContract(APIView):
 #obtener un afactura en formato pdf
 class GeneratePdf(APIView):
     def get(self, request, contract, factura):
+        generateHistoryAndInvoices()
         try:
             queryset = Contract.objects.filter(contractNumber__iexact=contract)
             datos = {}
