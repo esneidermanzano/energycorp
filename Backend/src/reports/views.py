@@ -15,7 +15,8 @@ from django.http import HttpResponse
 from .serializers import (
     MoraSerializer,
     ServiceSuspendedSerializer,
-    UserSerializer
+    UserSerializer,
+    TopFiveCounterSerializer
 )
 from contract.serializers import ContractSerializer
 # Create your views here.
@@ -36,7 +37,7 @@ class MoraAndSuspended(View):
             queryset,many=True
         ).data
        
-       
+
        
         dicc= []
         for i in range(len(query)):
@@ -63,10 +64,29 @@ class MoraAndSuspended(View):
 
 
         return HttpResponse(json.dumps(response))   
-"""class TopFiveCounters(View):
+class TopFiveCounters(View):
      def get(self, request):
-        queryset1 =  Client.objects.filter(interes_mora__iexact=0.0).filter(user__is_active=True)
+        queryset1 =   Counter.objects.all().order_by('-value')[:5].values('codeCounter',
+            'latitudeCounter',
+            'lengthCounter',
+            'value',
+            'addressCounter',
+            'stratum',
+            'transformatorCounter')
+        queryset2 =   Counter.objects.all().order_by('value')[:5].values('codeCounter',
+            'latitudeCounter',
+            'lengthCounter',
+            'value',
+            'addressCounter',
+            'stratum',
+            'transformatorCounter')
         
+        response={
+            "topfive+":"" ,
+            "topfive-":""
+        }
+        response['topfive+']=list(queryset1)
+        response['topfive-']=list(queryset2)
    
 
-        return HttpResponse(json.dumps(response))     """
+        return HttpResponse(json.dumps(response))     

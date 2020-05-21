@@ -48,8 +48,7 @@ class ServiceSuspendedSerializer(serializers.ModelSerializer):
             'counter'          
             ]
 class TopFiveCounterSerializer(serializers.ModelSerializer):
-    historys = serializers.SerializerMethodField()
-    
+       
     class Meta:
         model = Counter
         fields = [
@@ -59,12 +58,11 @@ class TopFiveCounterSerializer(serializers.ModelSerializer):
             'value',
             'addressCounter',
             'stratum',
-            'transformatorCounter',
-            'historys'
+            'transformatorCounter'
         ]
 
-    def get_historys(self, counter):
+    """def get_historys(self, counter):
         qs = counter.historys.all().filter(
             counter=counter).order_by('-codeHistory')[:6]
         historys = HistorySerializer(qs, many=True, read_only=True).data
-        return historys
+        return historys"""
