@@ -117,6 +117,7 @@ class CreateBanckPaymentSerializer(serializers.ModelSerializer):
         contract.interes_mora = mora
         contract.save()   
         #Desactiva la factura cuando crea el pago
+        invoice.stateInvoice = True
         invoice.is_active = False
         invoice.save()
         paymentObj = Payment.objects.create(**payment)
@@ -211,6 +212,7 @@ class CreateDirectPaymentSerializer(serializers.ModelSerializer):
         directPayment = DirectPayment.objects.create(
             payment=paymentObj, **validated_data)
         #Desactiva la factura cuando crea el pago
+        invoice.stateInvoice = True
         invoice.is_active = False
         invoice.save()
         return directPayment
@@ -280,7 +282,7 @@ class ReactivateDirectPaymentSerializer(serializers.ModelSerializer):
         if (value != (invoice.total + 35000)):
             payment['valuePayment'] = (value + 35000)
         if ((invoice.is_active)and
-              (counter.is_active== False)):
+              (counter.is_active == False)):
             """Si el valor que entroduje en el pago es igual a el de la factura 
             + los 35000 de reconexion y es la ultima factura realiza el proceso"""
             #Activo el contador
@@ -288,6 +290,7 @@ class ReactivateDirectPaymentSerializer(serializers.ModelSerializer):
             counter.save()
             #Desactiva la factura cuando crea el pago
             invoice.is_active = False
+            invoice.stateInovoice = True
             invoice.save()
         #Asemos la creación del pago y se asocia a el pago directo.
         paymentObj = Payment.objects.create(**payment)
