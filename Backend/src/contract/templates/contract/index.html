@@ -60,7 +60,11 @@ main{
   position: absolute;
 }
 
-
+#paid img{
+  width: 350px;
+  position: absolute;
+  right: 0;
+}
 
 
 #incontec img{
@@ -331,7 +335,11 @@ footer {
   <body>
     <header class="clearfix">
       <h1>EnergyCuck</h1>
-      
+      {% if paid %}
+      <div id="paid">
+        <img src="{% static 'contract/paid.png' %}">
+      </div>
+      {% endif %}      
       <div id="logo">
         <img src="{% static 'contract/logo.png' %}">
       </div>
@@ -391,7 +399,7 @@ footer {
               <div><span>Consumo de Energia Activa</span></div>
               <div><span>Consumo Basico Hasta 173</span></div>
               <div><span>ConsumoMayor al Basico</span></div>
-              <div><span>Interes Mora {{interestMora}}%</span></div>
+              <div><span>Mora por Pago Vencido {{interestMora}}%</span></div>
               <div><span>Otros Cobros</span></div>
               <div><span>Ajuste al Peso</span></div>
             </td>
