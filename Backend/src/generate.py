@@ -325,6 +325,9 @@ for i in range (1, 11):
     }
     counters.append(counter)
 
+#================== el cortado ==================0
+counters[len(counters)-1]['fields']['is_active'] = False
+
 basejson.extend(counters)
 
 histories = []
@@ -385,6 +388,12 @@ for i in range (1, len(counters)+1):
         }
     }
     contracts.append(contract)
+#======================= morosos ================
+contracts[6]['fields']['interes_mora'] = 0.19
+contracts[7]['fields']['interes_mora'] = 0.20
+
+#================== el cortado ==================0
+contracts[len(counters)-1]['fields']['interes_mora'] = 0.3
 
 basejson.extend(contracts)
 
@@ -429,6 +438,10 @@ for i in range (1, len(counters) + 1):
 
         total = (totalBasicSubsidy + remainder)*589
 
+        isActive = False
+        if j==5:
+            isActive=True
+
         invoice = {
             "model": "contract.Invoice",
             "pk": 2000+(i-1)*5 + j,
@@ -450,13 +463,33 @@ for i in range (1, len(counters) + 1):
                 "referencecodeInvoice": "202004301759"+str(random.randint(111,999))+"26153" + str(random.randint(1111111,9999999)),
                 "total": total,
                 "stateInvoice": True,
-                "is_active": False,
+                "is_active": isActive,
                 "contract": 20200514 + i
             }
         }
         invoices.append(invoice)
         anterior=current
 
+
+#======================= el que no ha pagado ================
+invoices[44]['fields']['stateInvoice'] = False
+
+#======================= cortado ================
+invoices[47]['fields']['stateInvoice'] = False
+invoices[48]['fields']['stateInvoice'] = False
+invoices[48]['fields']['overdue'] = invoices[47]['fields']['total']
+invoices[48]['fields']['total'] = invoices[48]['fields']['total'] + invoices[48]['fields']['overdue']
+
+invoices[49]['fields']['stateInvoice'] = False
+invoices[49]['fields']['interestMora'] = 0.3
+invoices[49]['fields']['overdue'] = invoices[48]['fields']['overdue'] + invoices[48]['fields']['total']
+invoices[49]['fields']['totalMora'] = invoices[49]['fields']['overdue']*0.3
+invoices[49]['fields']['total'] = invoices[49]['fields']['total'] + invoices[49]['fields']['overdue'] + invoices[49]['fields']['totalMora']
+
+
+
+
+    
     #now = datetime.now()
     #code = str(now).replace(':', '').replace('.', '').replace('-','').split()
     #reference = code[0] + "("+ code[1]+")"+ str(random.randint(1111111,9999999))
@@ -482,6 +515,17 @@ for i in range (1,len(invoices)+1):
     }
     payments.append(pay)
 
+#===================== El cortado ====================
+del payments[49]
+del payments[48]
+del payments[47]
+
+#===================== El que no ha pagado ====================
+del payments[44]
+
+#===================== Loque pagaron tarde jajaja ====================
+payments[34]['fields']['datePayment'] = "2020-05-19"
+payments[39]['fields']['datePayment'] = "2020-05-20"
 
 basejson.extend(payments)
 
