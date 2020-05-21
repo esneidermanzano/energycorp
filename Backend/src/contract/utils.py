@@ -10,109 +10,140 @@ def generateHistoryAndInvoices():
     histories = []
     invoices = []
     for contrato in contratos:
-        print(contrato.counter.is_active)
-        currentRegistry = contrato.counter.value
-        lastRegistry = History.objects.filter(
-            counter=contrato.counter).order_by('-codeHistory').values('current')[:1][0]['current']
-        consumo = currentRegistry-lastRegistry
+        if contrato.counter.is_active:
+            #================== esta activo =====================
+            currentRegistry = contrato.counter.value
+            lastRegistry = History.objects.filter(
+                counter=contrato.counter).order_by('-codeHistory')
 
-        lastInvoice = Invoice.objects.filter(
-            contract=contrato).order_by('-codeInvoice').values(
-                'overdue', 'intakes', 'deadDatePay', 'total', 'stateInvoice'
-                )[:1][0]
-        
-        histories.append(History(
-                current=currentRegistry,
-                consumption=consumo,
-                counter=contrato.counter
-            )
-        )
-        
-        billingDate = datetime.datetime.now()
+            #================ verificar que hay historias existentes ==========
+            if lastRegistry.count()>0:
+                lastRegistry = lastRegistry.values('current')[:1][0]['current']
+            else:                
+                lastRegistry = 0
+            #=============== FIN verificar que hay historias existentes =========
 
-        deadDate = billingDate + datetime.timedelta(days=10)
-        deadDatePay = deadDate.strftime("%Y-%m-%d")
-        counter = contrato.counter.codeCounter
-        address = contrato.counter.addressCounter
-        stratum = contrato.counter.stratum
+            consumo = currentRegistry-lastRegistry
 
-        basicTake = 0
-        remainder = 0
-        unitaryValue = 589
-        interestMora = 0
-        totalMora = 0
-        overdue = 0
+            lastInvoice = Invoice.objects.filter(
+                contract=contrato).order_by('-codeInvoice')
+            existe = True
+            #================ verificar que hay facturas existentes ==========
+            if lastInvoice.count()>0:
+                lastInvoice = lastInvoice.values(
+                    'overdue', 'intakes', 'deadDatePay', 'total', 'stateInvoice'
+                    )[:1][0]
+            else:                
+                existe = False
+            #=============== FIN verificar que hay facturas existentes =========
 
-        #================ necessary to total calcule ===============
-        basic = 173
-        if consumo > basic:
-            basicTake = basic
-            remainder = consumo - basic
-        else:
-            basicTake = consumo
-
-        totalBasic = basicTake*unitaryValue
-        totalRemainder = remainder*unitaryValue
-        subsidyValue = 0
-        if stratum == 1:
-            subsidyValue = 0.6
-        elif stratum == 2:
-            subsidyValue = 0.5
-        elif stratum == 3:
-            subsidyValue = 0.15
-        else:
-            subsidyValue = 0
-        
-        totalBasicSubsidy = (1-subsidyValue)*totalBasic
-
-        #=============== ESTA MOROSO ============
-        if contrato.interes_mora != 0:
-            interestMora = contrato.interes_mora
-            totalMora = lastInvoice['total']*interestMora
-
-        #================ Factura pendiente =========
-        if not lastInvoice['stateInvoice']:
-            overdue = lastInvoice['total']
-
-        total = totalBasicSubsidy + totalRemainder + totalMora +overdue
-        #================ necessary to total calcule ===============       
-
-        intakes = lastInvoice['intakes'].split(",")
-        combo = billingDate.month
-        combo = str(combo) + "-" + str(consumo)
-
-        if len(intakes) > 5:    
-            del intakes[-1]
-                            
-        intakes.insert(0, combo)
-        intakes = ','.join(intakes)
-
-        code = str(billingDate).replace(':', '').replace('.', '').replace('-','').replace(' ', str(random.randint(1,9)))
-        referencecodeInvoice = code + str(random.randint(1111111,9999999))
-
-        invoices.append(Invoice(
-                    billingDate=billingDate,
-                    deadDatePay=deadDatePay,
-                    counter=counter,
-                    address=address,
-                    stratum=stratum,
-                    currentRecord=currentRegistry,
-                    pastRecord=lastRegistry,
-                    basicTake=basicTake,
-                    remainder=remainder,
-                    unitaryValue=unitaryValue,
-                    interestMora=interestMora,
-                    totalMora=totalMora,
-                    overdue=overdue,
-                    intakes=intakes,
-                    referencecodeInvoice=referencecodeInvoice,
-                    total=total,
-                    contract=contrato
+            histories.append(History(
+                    current=currentRegistry,
+                    consumption=consumo,
+                    counter=contrato.counter
                 )
             )
+            
+            billingDate = datetime.datetime.now()
 
-    #History.objects.bulk_create(histories)
-    #Invoice.objects.bulk_create(invoices)
+            deadDate = billingDate + datetime.timedelta(days=10)
+            deadDatePay = deadDate.strftime("%Y-%m-%d")
+            counter = contrato.counter.codeCounter
+            address = contrato.counter.addressCounter
+            stratum = contrato.counter.stratum
+
+            basicTake = 0
+            remainder = 0
+            unitaryValue = 589
+            interestMora = 0
+            totalMora = 0
+            overdue = 0
+            intakes = []
+
+            #================ necessary to total calcule ===============
+            basic = 173
+            if consumo > basic:
+                basicTake = basic
+                remainder = consumo - basic
+            else:
+                basicTake = consumo
+
+            totalBasic = basicTake*unitaryValue
+            totalRemainder = remainder*unitaryValue
+            subsidyValue = 0
+            if stratum == 1:
+                subsidyValue = 0.6
+            elif stratum == 2:
+                subsidyValue = 0.5
+            elif stratum == 3:
+                subsidyValue = 0.15
+            else:
+                subsidyValue = 0
+            
+            totalBasicSubsidy = (1-subsidyValue)*totalBasic
+
+            if existe:
+                #=============== ESTA MOROSO ============
+                if contrato.interes_mora != 0:
+                    interestMora = contrato.interes_mora
+                    totalMora = lastInvoice['total']*interestMora
+                    contrato.interes_mora = 0
+                    contrato.save()
+
+                #================ Factura pendiente =========
+                if not lastInvoice['stateInvoice']:
+                    overdue = lastInvoice['total']
+
+                #================ Cortar servicio =========
+                if lastInvoice['overdue']!= 0 and not lastInvoice['stateInvoice']:
+                    contrato.interes_mora = 0
+                    contrato.counter.is_active=True
+                    contrato.save()
+                    contrato.counter.save()
+                    overdue = lastInvoice['total'] + lastInvoice['overdue']
+                
+                intakes = lastInvoice['intakes'].split(",")
+
+            total = totalBasicSubsidy + totalRemainder + totalMora +overdue
+            #================ necessary to total calcule ===============       
+
+            combo = billingDate.month
+            combo = str(combo) + "-" + str(consumo)
+
+            if len(intakes) > 5:    
+                del intakes[-1]
+                                
+            intakes.insert(0, combo)
+            intakes = ','.join(intakes)
+
+            code = str(billingDate).replace(':', '').replace('.', '').replace('-','').replace(' ', str(random.randint(1,9)))
+            referencecodeInvoice = code + str(random.randint(1111111,9999999))
+
+            invoices.append(Invoice(
+                        billingDate=billingDate,
+                        deadDatePay=deadDatePay,
+                        counter=counter,
+                        address=address,
+                        stratum=stratum,
+                        currentRecord=currentRegistry,
+                        pastRecord=lastRegistry,
+                        basicTake=basicTake,
+                        remainder=remainder,
+                        unitaryValue=unitaryValue,
+                        interestMora=interestMora,
+                        totalMora=totalMora,
+                        overdue=overdue,
+                        intakes=intakes,
+                        referencecodeInvoice=referencecodeInvoice,
+                        total=total,
+                        contract=contrato
+                    )
+                )
+
+        #History.objects.bulk_create(histories)
+        #Invoice.objects.bulk_create(invoices)
+        #================== NO esta activo =====================
+
 
 
 
