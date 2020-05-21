@@ -18,6 +18,7 @@ def generateHistoryAndInvoices():
 
             #================ verificar que hay historias existentes ==========
             if lastRegistry.count()>0:
+
                 lastRegistry = lastRegistry.values('current')[:1][0]['current']
             else:                
                 lastRegistry = 0
@@ -26,13 +27,16 @@ def generateHistoryAndInvoices():
             consumo = currentRegistry-lastRegistry
 
             lastInvoice = Invoice.objects.filter(
-                contract=contrato).order_by('-codeInvoice')
+                contract=contrato).order_by('-codeInvoice')[:1]
             existe = True
             #================ verificar que hay facturas existentes ==========
             if lastInvoice.count()>0:
+                for invoice in lastInvoice:
+                    invoice.is_active=False
+                    invoice.save()
                 lastInvoice = lastInvoice.values(
                     'overdue', 'intakes', 'deadDatePay', 'total', 'stateInvoice'
-                    )[:1][0]
+                    )[0]
             else:                
                 existe = False
             #=============== FIN verificar que hay facturas existentes =========
