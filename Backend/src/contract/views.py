@@ -195,6 +195,7 @@ class SendEmail(APIView):
                        + datos['name']+" generamos tu factura del mes " \
                          + datos['payMonth'] + " con fecha limite de pago "+  datos['deadDatePay']
 
+
                     email= EmailMultiAlternatives(
                          'Tu factura del mes',        #Title
                           message_email,               #Message
