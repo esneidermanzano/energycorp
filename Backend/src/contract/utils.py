@@ -7,11 +7,10 @@ import json
 
 def generateHistoryAndInvoices():
     contratos = Contract.objects.all()
-   
     histories = []
     invoices = []
     for contrato in contratos:
-        
+        print(contrato.counter.is_active)
         currentRegistry = contrato.counter.value
         lastRegistry = History.objects.filter(
             counter=contrato.counter).order_by('-codeHistory').values('current')[:1][0]['current']
@@ -67,8 +66,8 @@ def generateHistoryAndInvoices():
         totalBasicSubsidy = (1-subsidyValue)*totalBasic
 
         #=============== ESTA MOROSO ============
-        if contrato.client.interes_mora != 0:
-            interestMora = contrato.client.interes_mora
+        if contrato.interes_mora != 0:
+            interestMora = contrato.interes_mora
             totalMora = lastInvoice['total']*interestMora
 
         #================ Factura pendiente =========
@@ -112,8 +111,8 @@ def generateHistoryAndInvoices():
                 )
             )
 
-    History.objects.bulk_create(histories)
-    Invoice.objects.bulk_create(invoices)
+    #History.objects.bulk_create(histories)
+    #Invoice.objects.bulk_create(invoices)
 
 
 

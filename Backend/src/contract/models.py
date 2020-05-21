@@ -15,10 +15,11 @@ class Contract(models.Model):
         serialize=False,
         verbose_name='ID'
     )
+    interes_mora = models.FloatField()
     client = models.ForeignKey(
         Client, related_name='client', on_delete=models.PROTECT)
-    counter = models.ForeignKey(
-        Counter, related_name='counter', on_delete=models.PROTECT)
+    counter = models.OneToOneField(
+        Counter, related_name='counter', on_delete=models.PROTECT, unique=True)
 
 
 class Invoice(models.Model):
