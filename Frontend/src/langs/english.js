@@ -48,9 +48,23 @@ export default {
         all: 'All'
     },
     getBill: {
-        insert: 'Insert your ID',
+        insert: 'Insert your Contract Number',
         download: 'Download',
-        home: 'Home'
+        home: 'Home',
+        contract: 'Contract',
+        billingDate: 'Billing Date',
+        deadDate: 'Limit Date',
+        state: 'State',
+        total: 'Total',
+        pago: 'Paid out',
+        noPagado: 'Not payed',
+
+        mail: "Send Mail",
+        show: "Show Invoice",
+
+        error: "There was a problem, check your input",
+        enviando: "Sending...",
+        exito: "successfully sent"
     },
     bot: {
         input: "Type Something"
