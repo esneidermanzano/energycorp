@@ -52,4 +52,4 @@ class Invoice(models.Model):
     contract = models.ForeignKey(
         Contract, related_name='invoice', on_delete=models.PROTECT)
     publicity =  models.ForeignKey(
-        Commercial,default = 1, on_delete=models.PROTECT)
+        Commercial,default = 1, on_delete=models.SET_DEFAULT)
