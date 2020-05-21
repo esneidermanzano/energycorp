@@ -7,3 +7,4 @@ from .views import (
 urlpatterns = [
     path('moraandsuspended/',MoraAndSuspended.as_view())
 ]
+

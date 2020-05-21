@@ -37,6 +37,7 @@ class MoraAndSuspended(View):
         ).data
        
        
+       
         dicc= []
         for i in range(len(query)):
             datos = {

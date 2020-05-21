@@ -37,6 +37,7 @@ class ReportsCounterSerializer(serializers.ModelSerializer):
             ]
 class ServiceSuspendedSerializer(serializers.ModelSerializer):
     
+    
     client = MoraSerializer()
     counter = ReportsCounterSerializer()
     class Meta:
