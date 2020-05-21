@@ -141,8 +141,7 @@ for i in range (1,11):
         "pk": i,
         "fields": {
             "user": i,
-            "type_client": 1,
-            "interes_mora": 0
+            "type_client": 1
         }
     }    
     users.append(user)
@@ -380,6 +379,7 @@ for i in range (1, len(counters)+1):
         "model": "contract.contract",
         "pk": 20200514 + i,
         "fields": {
+            "interes_mora": 0,
             "client": i,
             "counter": i
         }

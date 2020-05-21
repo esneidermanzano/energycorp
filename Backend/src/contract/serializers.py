@@ -86,6 +86,7 @@ class ContractSerializer(serializers.ModelSerializer):
         model = Contract
         fields = [
             'contractNumber',
+            'interes_mora', 
             'client',
             'counter',
             ]
@@ -100,6 +101,7 @@ class CreateFullContractSerializer(serializers.ModelSerializer):
         model = Contract
         fields = [
             'contractNumber',
+            'interes_mora',
             'client',
             'counter',
             ]
@@ -149,6 +151,7 @@ class SuperJoinSerializer(serializers.ModelSerializer):
         model = Contract
         fields = [
             'contractNumber',
+            'interes_mora',
             'client',
             'counter',
             'invoice',           
