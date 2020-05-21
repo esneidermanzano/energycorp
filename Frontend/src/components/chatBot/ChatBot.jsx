@@ -55,10 +55,10 @@ class ChatBot extends React.Component {
             let LNG;
             if (this.props.lng === "po") {
                 LNG = "pt-BR";
-            }else{
+            } else {
                 LNG = this.props.lng;
             }
-            
+
             var obj = {
                 "lang": LNG,
                 "query": this.state.msg,
@@ -83,7 +83,7 @@ class ChatBot extends React.Component {
         }
     }
 
-    
+
     render() {
         const placeholder = counterpart.translate('bot.input');
         return (
@@ -103,7 +103,7 @@ class ChatBot extends React.Component {
                                                 {
                                                     i % 2 !== 0 && i !== 0 ? (
                                                         <div>
-                                                            <b>Bot: </b> <i>{item}</i>
+                                                            <b>Bot: </b> <i dangerouslySetInnerHTML={{ __html: item }} ></i>
                                                         </div>
                                                     ) : <div>
                                                             {item}

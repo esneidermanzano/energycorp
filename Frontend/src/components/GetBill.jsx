@@ -34,7 +34,9 @@ class Start extends React.Component {
             contract: "",
             error: false,
             errorMsg: "",
-            bills: []
+            bills: [],
+            sended: false,
+            sendedMsg: ""
         }
     }
 
@@ -53,9 +55,8 @@ class Start extends React.Component {
                     var { error, find } = res.data;
                     if (error === true || find === false) {
                         // MENSAJE DE ERROR POR TRANSLATE
-                        var { message } = res.data;
                         // console.log(message)
-                        this.setState({ error: true, errorMsg: message });
+                        this.setState({ error: true, errorMsg: counterpart.translate('getBill.error') });
                         window.setTimeout(() => {
                             this.setState({ error: false, errorMsg: "" });
                         }, 2000);
@@ -73,6 +74,29 @@ class Start extends React.Component {
         window.open("https://energycorp.herokuapp.com/api/invoice/pdf/" + contract + "/" + bill + "/");
     }
 
+    sendMail = (contract, bill) => {
+        this.setState({ sended: true, sendedMsg: counterpart.translate('getBill.enviando') });
+        axios.get("https://energycorp.herokuapp.com/api/invoice/sendemail/" + contract + "/" + bill + "/")
+            .then(res => {
+                var { error, find } = res.data;
+                if (error === true || find === false) {
+                    // MENSAJE DE ERROR POR TRANSLATE
+                    this.setState({ error: true, errorMsg: counterpart.translate('getBill.error') });
+                    window.setTimeout(() => {
+                        this.setState({ error: false, errorMsg: "" });
+                    }, 2000);
+                } else {
+                    this.setState({ sendedMsg: counterpart.translate('getBill.exito') });
+                    window.setTimeout(() => {
+                        this.setState({ sended: false, errorMsg: "" });
+                    }, 2000);
+                }
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
+
     render() {
 
         const placeholderID = counterpart.translate('getBill.insert');
@@ -83,45 +107,60 @@ class Start extends React.Component {
             </center>
         </Alert> : true;
 
+        const alertMail = (this.state.sended) ? <Alert className="animated rubberBand" color="success">
+            <center>
+                <h6>{this.state.sendedMsg}</h6>
+            </center>
+        </Alert> : true;
+
         const bills = this.state.bills.length > 0 ?
 
             <Col md="8" id="login">
-                <Table responsive>
+                <Table responsive borderless hover>
                     <thead>
                         <tr>
                             <th>#</th>
                             <th>ID</th>
-                            <th>Contract</th>
-                            <th>Billing Date</th>
-                            <th>Dead Date</th>
-                            <th>Address</th>
-                            <th>Total</th>
+                            <th><Tr content="getBill.contract" /></th>
+                            <th><Tr content="getBill.billingDate" /></th>
+                            <th><Tr content="getBill.deadDate" /></th>
+                            <th><Tr content="getBill.state" /></th>
+                            <th><Tr content="getBill.total" /></th>
+                            <th><Tr content="getBill.mail" /></th>
+                            <th><Tr content="getBill.show" /></th>
                         </tr>
                     </thead>
                     <tbody>
                         {
                             this.state.bills.map((ele, i) => (
-                                <tr>
+                                <tr key={i}>
                                     <th>
                                         {i + 1}
                                     </th>
                                     <td>
-                                        {ele.codeInvoice} <br />
+                                        {ele.codeInvoice}
                                     </td>
                                     <td>
-                                        {ele.contract} <br />
+                                        {ele.contract}
                                     </td>
                                     <td>
-                                        {ele.billingDate} <br />
+                                        {ele.billingDate}
                                     </td>
                                     <td>
-                                        {ele.deadDatePay} <br />
+                                        {ele.deadDatePay}
                                     </td>
                                     <td>
-                                        {ele.address} <br />
+                                        {ele.stateInvoice ?
+                                            <Tr content="getBill.pago" /> :
+                                            <Tr content="getBill.noPagado" />}
                                     </td>
                                     <td>
                                         ${ele.total.toFixed(2)} <br />
+                                    </td>
+                                    <td>
+                                        <Button color="warning" onClick={() => this.sendMail(ele.contract, ele.codeInvoice)}>
+                                            <i className="nc-icon nc-email-85" />
+                                        </Button>
                                     </td>
                                     <td>
                                         <Button color="danger" onClick={() => this.showPDF(ele.contract, ele.codeInvoice)}>
@@ -171,6 +210,7 @@ class Start extends React.Component {
                         </CardFooter>
                     </Card>
                 </Col>
+                {alertMail}
                 {bills}
             </div>
         )

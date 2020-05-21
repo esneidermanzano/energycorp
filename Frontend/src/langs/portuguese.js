@@ -48,9 +48,23 @@ export default {
         all: 'Todos'
     },
     getBill: {
-        insert: 'Digite seu ID',
+        insert: 'Insira o número do seu contrato',
         download: 'Baixar',
-        home: 'Começo'
+        home: 'Começo',
+        contract: 'Contrato',
+        billingDate: 'data de cobrança',
+        deadDate: 'Data Limite',
+        state: 'estado',
+        total: 'Total',
+        pago: 'Pago',
+        noPagado: 'Não pago',
+
+        mail: "Enviar correo",
+        show: "Mostrar factura",
+
+        error: "houve um problema",
+        enviando: "enviando...",
+        exito: "enviada com sucesso"
     },
     bot: {
         input: "Escreva algo"

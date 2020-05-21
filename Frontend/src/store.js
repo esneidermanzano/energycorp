@@ -1,7 +1,7 @@
 import {createStore} from "redux";
 
 const initialState = {
-    language: 'en'
+    language: 'es'
 }
 
 const reducerLang = (state = initialState, action) => {
