@@ -96,11 +96,13 @@ def generateHistoryAndInvoices():
 
                 #================ Cortar servicio =========
                 if lastInvoice['overdue']!= 0 and not lastInvoice['stateInvoice']:
-                    contrato.interes_mora = 0
-                    contrato.counter.is_active=True
+                    contrato.interes_mora = 0.3
+                    contrato.counter.is_active=False
                     contrato.save()
                     contrato.counter.save()
                     overdue = lastInvoice['total'] + lastInvoice['overdue']
+                    interestMora = 0.3
+                    totalMora = overdue*0.3
                 
                 intakes = lastInvoice['intakes'].split(",")
 
