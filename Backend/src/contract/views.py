@@ -174,51 +174,45 @@ class GeneratePdf(APIView):
 
 #=============================View send invoice=======================================
 class SendEmail(APIView):
-  def post(self,request):      
-      contractNumber = request.data.get('contractNumber')
-      #Query for extract JOIN Invoice,Client, Contract, Counter, History with <pk> 
-      #Example: {"contractNumber": 20200515}
-      queryset = Contract.objects.filter(
-          contractNumber__iexact=contractNumber)
-      serializer_class = SuperJoinSerializer(queryset, many=True).data
+  def get(self, request, contract, factura):
+        generateHistoryAndInvoices()
+        try:
+            queryset = Contract.objects.filter(contractNumber__iexact=contract)
+            datos = {}
+            if (queryset.exists()):  
+                try:              
+                    query = ContractClienteInvoiceSerializer(
+                        queryset, many=True, context={'codeInvoice': factura}
+                    ).data[0]                
+                    datos = getInvoiceData(query)
+                    # Rendered
+                    html_string = render_to_string('contract/index.html', datos)
+                    html = HTML(string=html_string, base_url=request.build_absolute_uri())
+                    result = html.write_pdf()
 
-      if (queryset.exists()):
-          #DICT->JSON       
-          print(serializer_class)
-          
-          query= json.dumps(serializer_class)
-          jsonQuery= json.loads(query)
-          
-          
-          print(jsonQuery) 
+                    
+                    message_email= "Apreciado "\
+                       + datos['name']+" generamos tu factura del mes " \
+                         + datos['payMonth'] + " con fecha limite de pago "+  datos['deadDatePay']
 
+                    email= EmailMultiAlternatives(
+                         'Tu factura del mes',        #Title
+                          message_email,               #Message
+                          settings.EMAIL_HOST_USER,    #Email-corp
+                          [query['client']['user']['email']]            #Email-client
+                    )
+                    email.attach( datos['name']+'.pdf',result, 'application/pdf')
+                    email.send()
+                    message = "La factura fue enviada"
 
-          """fecha= datetime.date.today().month
-          message_email= "Apreciado "\
-               + client['name']+" generamos tu factura del mes " \
-                 + str(fecha) + " con fecha limite de pago..."
-
-          email= EmailMultiAlternatives(
-               'Tu factura del mes',        #Title
-                message_email,               #Message
-                settings.EMAIL_HOST_USER,    #Email-corp
-                [client['email']]            #Email-client
-          )
-      
-          data = {
-               'today': datetime.date.today(), 
-               'amount': 39.99,
-               'customer_name': 'Cooper Mann',
-               'order_id': 1233434,
-           }
-           # Rendered pdf
-          html_string = render_to_string('contract/index.html', data)
-          html = HTML(string=html_string, base_url=request.build_absolute_uri())
-          result = html.write_pdf()
-
-          email.attach( client['name']+'.pdf',result, 'application/pdf')
-          email.send()"""
-          return Response({"message": jsonQuery})
-      else:
-           message = "El id proporcionado no existe o el usuario no está activo"
-           return Response({"message": message , "code": 204, 'data': {}} )
+                    return Response({"error": False, "find": True, "message": message} )
+                except Exception as e:
+                    message = "Error al buscar la factura, confirme el numero"
+                    return Response({"error": False, "find": False, "message": str(e)} )
+            else:
+                message = "Numero de contrato erroneo"
+                return Response({ "error": False, "find": False, "message": message} )           
+        except:
+            message = "Error al buscar la factura, intelo mas tarde"
+            return Response({"error": True, "message": message} )  
+  

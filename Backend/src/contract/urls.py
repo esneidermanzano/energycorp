@@ -35,7 +35,7 @@ urlpatterns = [
     #PDf invoice generator
     path('pdf/<contract>/<factura>/', GeneratePdf.as_view()),
     #Send invoice 
-    path('sendemail/', SendEmail.as_view()),
+    path('sendemail/<contract>/<factura>/', SendEmail.as_view()),
 
     path('contract/', ContractList.as_view()),
     path('contract/create/', CreateContract.as_view()),
