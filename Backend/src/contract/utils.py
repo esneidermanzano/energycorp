@@ -100,7 +100,7 @@ def generateHistoryAndInvoices():
                     contrato.counter.is_active=False
                     contrato.save()
                     contrato.counter.save()
-                    overdue = lastInvoice['total'] + lastInvoice['overdue']
+                    overdue = lastInvoice['total']
                     interestMora = 0.3
                     totalMora = overdue*0.3
                 
