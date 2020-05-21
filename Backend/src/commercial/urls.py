@@ -10,29 +10,16 @@ from .views import (
     CommercialDelete,
     CommercialInactivate,
 
-    CommercialInvoiceList,
-    CommercialInvoiceDetail,
-    CommercialInvoiceCreate,
-    CommercialInvoiceUpdate,
-    CommercialInvoiceDelete
-    
 #   QUERY
 )
 
 urlpatterns = [
     #CRUD
-    path('commercial/', CommercialList.as_view()),
-    path('commercial/create/', CommercialCreate.as_view()),
-    path('commercial/<pk>/', CommercialDetail.as_view()),
-    path('commercial/update/<pk>/', CommercialUpdate.as_view()),
-    path('commercial/inactivate/<pk>/', CommercialInactivate.as_view()),
-    path('commercial/delete/<pk>', CommercialDelete.as_view()),
-    #QUERY
-    #CRUD
-    path('commercialinvoice/', CommercialInvoiceList.as_view()),
-    path('commercialinvoice/create/', CommercialInvoiceCreate.as_view()),
-    path('commercialinvoice/<pk>', CommercialInvoiceDetail.as_view()),
-    path('commercialinvoice/update/<pk>', CommercialInvoiceUpdate.as_view()),
-    path('commercialinvoice/delete/<pk>', CommercialInvoiceDelete.as_view())
+    path('', CommercialList.as_view()),
+    path('create/', CommercialCreate.as_view()),
+    path('<pk>/', CommercialDetail.as_view()),
+    path('update/<pk>/', CommercialUpdate.as_view()),
+    path('inactivate/<pk>/', CommercialInactivate.as_view()),
+    path('delete/<pk>', CommercialDelete.as_view())
     #QUERY
 ]

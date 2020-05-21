@@ -2,6 +2,7 @@ from django.db import models
 import datetime
 from users.models import Client
 from energytransfers.models import Counter
+from commercial.models import Commercial
 
 # Create your models here.
 """ The models in this File are the objetcs than respresent the history,
@@ -40,7 +41,7 @@ class Invoice(models.Model):
     basicTake = models.PositiveIntegerField()
     remainder = models.PositiveIntegerField()
     unitaryValue = models.PositiveIntegerField()
-    interestMora = models.PositiveIntegerField(default=0)
+    interestMora = models.FloatField(default=0.0)
     totalMora = models.FloatField(default=0)
     overdue = models.FloatField(default=0)
     intakes = models.CharField(max_length=40)
@@ -50,3 +51,5 @@ class Invoice(models.Model):
     is_active = models.BooleanField(default=True)
     contract = models.ForeignKey(
         Contract, related_name='invoice', on_delete=models.PROTECT)
+    publicity =  models.ForeignKey(
+        Commercial,default = 1, on_delete=models.CASCADE)

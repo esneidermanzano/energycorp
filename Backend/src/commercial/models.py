@@ -1,7 +1,6 @@
 from django.db import models
 # Para asociar los contadores a su respectivo Cliente
 from users.models import Client
-from contract.models import Invoice
 
 # Create models here........................................................................
 """ The models in this File are the objetcs than respresent the Publicity."""
@@ -22,23 +21,4 @@ class Commercial(models.Model):
     def __str__(self):
         return 'The Commercial was created: {}'.format(
             self.nameCommercial
-        )
-
-class CommercialInvoice(models.Model):
-    """Represent a substation object"""
-    codeCommercialInvoice = models.AutoField(
-        auto_created=True,
-        primary_key=True,
-        serialize=False,
-        verbose_name='ID')
-    Invoice =  models.ManyToManyField(
-        Invoice,
-        related_name='Invoice')
-    commercial = models.ManyToManyField(
-        Commercial,
-        related_name='commercials')
-
-    def __str__(self):
-        return 'The Commercialinvoice was created: {}'.format(
-            self.codeCommercialInvoice
         )

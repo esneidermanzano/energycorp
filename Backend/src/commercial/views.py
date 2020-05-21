@@ -7,8 +7,7 @@ from rest_framework.generics import (
 )
 
 from .models import (
-    Commercial,
-    CommercialInvoice
+    Commercial
     )
 
 from .serializers import (
@@ -17,12 +16,7 @@ from .serializers import (
     UpdateCommercialSerializer,
     CreateCommercialSerializer,
     InactivateCommercialSerializer,
-    DeleteCommercialSerializer,
-
-    CommercialInvoiceSerializer,
-    CreateCommercialInvoiceSerializer,
-    UpdateCommercialInvoiceSerializer,
-    DeleteCommercialInvoiceSerializer
+    DeleteCommercialSerializer
     
     # QUERY SERIALIZERS
 )
@@ -73,35 +67,3 @@ class CommercialInactivate(UpdateAPIView):
     serializer_class = InactivateCommercialSerializer
 
 #                                                   QUERY
-
-#------------------------------------------------CommercialInvoice-------------------------------------
-
-#                                                   CRUD
-
-class CommercialInvoiceCreate(ListCreateAPIView):
-    """View para delete un CommercialInvoice"""
-    queryset = CommercialInvoice.objects.all()
-    serializer_class = CommercialInvoiceSerializer
-
-class CommercialInvoiceDetail(RetrieveAPIView):
-    """View para retrive un CommercialInvoice"""
-    queryset = CommercialInvoice.objects.all()
-    serializer_class = CommercialInvoiceSerializer
-
-class CommercialInvoiceList(ListAPIView):
-    """View para retrive todos los CommercialInvoices"""
-    queryset = CommercialInvoice.objects.all()
-    serializer_class = CommercialInvoiceSerializer
-
-class CommercialInvoiceUpdate(UpdateAPIView):
-    """View para update un CommercialInvoice"""
-    queryset = CommercialInvoice.objects.all()
-    serializer_class = UpdateCommercialInvoiceSerializer
-
-class CommercialInvoiceDelete(DestroyAPIView):
-    """View para delete un CommercialInvoice"""
-    queryset = CommercialInvoice.objects.all()
-    serializer_class = DeleteCommercialInvoiceSerializer
-
-
-#                                               QUERY

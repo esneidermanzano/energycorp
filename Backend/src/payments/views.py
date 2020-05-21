@@ -28,8 +28,12 @@ from .serializers import (
     DirectPaymentSerializer,
     CreateDirectPaymentSerializer,
     UpdateDirectPaymentSerializer,
-    DeleteDirectPaymentSerializer
+    DeleteDirectPaymentSerializer,
     # QUERY SERIALIZERS
+    ReactivateDirectPaymentSerializer,
+    DirectPaymenByWorkerSerializer,
+    BanckPaymenByBanckSerializer,
+    PaymenByContractSerializer
 )
 
 from .permissions import (
@@ -75,6 +79,16 @@ class PaymentDelete(DestroyAPIView):
 
 
 #                                                   QUERY
+class PaymentByContractList(ListAPIView):
+    """View para retrive todas las Subestaciones"""
+    queryset = Payment.objects.all()
+    serializer_class = PaymenByContractSerializer
+    
+    def get_queryset(self):
+        pay = Payment.objects.all().filter(
+        facturaPayment__contract=self.kwargs['contract']
+        )
+        return pay
 
 #------------------------------------------------BanckPayment-------------------------------------
 
@@ -107,6 +121,12 @@ class BanckPaymentDelete(DestroyAPIView):
 
 
 #                                               QUERY
+class BanckPaymentByBanckList(ListAPIView):
+    """View para retrive todos los BanckPayments"""
+    queryset = BanckPayment.objects.all()
+    serializer_class = BanckPaymenByBanckSerializer
+
+
 
 #----------------------------------------------DirectPayment------------------------------------------------
 
@@ -137,3 +157,16 @@ class DirectPaymentDelete(DestroyAPIView):
     queryset = DirectPayment.objects.all()
     serializer_class = DeleteDirectPaymentSerializer
 
+#                           Query
+class DirectPaymentReactivate(ListCreateAPIView):
+    """View para delete un DirectPayment"""
+    queryset = DirectPayment.objects.all()
+    serializer_class = ReactivateDirectPaymentSerializer
+    
+
+class DirectPaymenByWorker(ListAPIView):
+    """View para retrive todos los DirectPayment"""
+    queryset = DirectPayment.objects.all()
+    serializer_class = DirectPaymenByWorkerSerializer
+    
+    

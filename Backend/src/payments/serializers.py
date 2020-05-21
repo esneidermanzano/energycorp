@@ -6,7 +6,8 @@ from .models import (
 )
 from datetime import date
 from contract.models import (Invoice, Contract)
-from users.models import (Client)
+from contract.serializers import InvoiceSerializer
+from energytransfers.models import Counter
 
 
 # Serializer
@@ -69,6 +70,16 @@ class DeletePaymentSerializer(serializers.ModelSerializer):
 
 
 #                                            Querys
+class PaymenByContractSerializer(serializers.ModelSerializer):
+    """Vista para ver los pagos hechos po un worker especifico pagos directos"""
+    
+    facturaPayment = InvoiceSerializer()
+    class Meta:
+        model = Payment
+        fields = ['codePayment',
+                  'valuePayment',
+                  'datePayment',
+                  'facturaPayment']
 
 # -----------------------------------------BanckPayment------------------------------------------------
 
@@ -98,13 +109,16 @@ class CreateBanckPaymentSerializer(serializers.ModelSerializer):
             mora = 0.30
         if (mora < 0.0):
             mora = 0.0
-        #Traigo el contrato asociada a esa factura:
-        codeClient = invoice.contract.client.id
-        #Traigo el Cliente asociado a ese contrato
-        client = Client.objects.get(id=codeClient)
-        #Inyecto el valor de mora al cliente correspondiente.
-        client.interes_mora = mora
-        client.save()  
+        #Traigo el codigo de contrato asociada a esa factura:
+        codeContract = invoice.contract.contractNumber
+        #Traigo el contrato asociado a ese codigo
+        contract = Contract.objects.get(contractNumber=codeContract)
+        #Inyecto el valor de mora al contrato correspondiente.
+        contract.interes_mora = mora
+        contract.save()   
+        #Desactiva la factura cuando crea el pago
+        invoice.is_active = False
+        invoice.save()
         paymentObj = Payment.objects.create(**payment)
         banckPayment = BanckPayment.objects.create(
             payment=paymentObj, **validated_data)
@@ -142,6 +156,18 @@ class DeleteBanckPaymentSerializer(serializers.ModelSerializer):
         instance.delete()
 
 #                                      Query
+class BanckPaymenByBanckSerializer(serializers.ModelSerializer):
+    """Vista para ver los pagos hechos po un worker especifico pagos directos"""
+    class Meta:
+        model = DirectPayment
+        fields = '__all__'
+
+    def get_queryset(self):
+        pay = BanckPayment.objects.all().filter(
+                banckPayment=self.kwargs['banckPayment']
+        )
+        return pay
+    
 
 # -----------------------------------------DirectPayment------------------------------------------------
 
@@ -168,25 +194,24 @@ class CreateDirectPaymentSerializer(serializers.ModelSerializer):
         invoice = Invoice.objects.get(codeInvoice=numberInvocie.codeInvoice)  
         #caluclo la mora
         mora = ((date.today() - invoice.paymentdeadlineInvoice ).days / 100)
-        print(mora)
         #validaciones pendejas para no pasar el 30%
         if (mora > 0.30):
             mora = 0.30
         if (mora < 0.0):
             mora = 0.0
-        #Traigo el contrato asociada a esa factura:
-        codeClient = invoice.contract.client.id
-        #Traigo el Cliente asociado a ese contrato
-        client = Client.objects.get(id=codeClient)
-        #Inyecto el valor de mora al cliente correspondiente.
-        client.interes_mora = mora
-        client.save()   
+        #Traigo el codigo de contrato asociada a esa factura:
+        codeContract = invoice.contract.contractNumber
+        #Traigo el contrato asociado a ese codigo
+        contract = Contract.objects.get(contractNumber=codeContract)
+        #Inyecto el valor de mora al contrato correspondiente.
+        contract.interes_mora = mora
+        contract.save()   
         #Asemos la creación del pago y se asocia a el pago directo.
         paymentObj = Payment.objects.create(**payment)
         directPayment = DirectPayment.objects.create(
             payment=paymentObj, **validated_data)
         #Desactiva la factura cuando crea el pago
-        invoice.stateInvoice = True
+        invoice.is_active = False
         invoice.save()
         return directPayment
 
@@ -223,3 +248,63 @@ class DeleteDirectPaymentSerializer(serializers.ModelSerializer):
 
 
 #                                           Query
+
+class ReactivateDirectPaymentSerializer(serializers.ModelSerializer):
+    """Pago para reactivar una factura"""
+
+    payment = PaymentSerializer()
+
+    class Meta:
+        model = DirectPayment
+        fields = [
+            'payment',
+            'workerPayment'
+        ]
+
+    def create(self, validated_data):
+        #capturo el diccionario de pago:
+        payment = validated_data.pop('payment')
+        #traigo la factura asociada a ese pago:
+        numberInvocie =payment['facturaPayment']
+        value = payment['valuePayment'] 
+        invoice = Invoice.objects.get(codeInvoice=numberInvocie.codeInvoice)
+        #Traigo el codigo de contrato asociada a esa factura:
+        codeContract = invoice.contract.contractNumber
+        #Traigo el contrato asociado a ese codigo
+        contract = Contract.objects.get(contractNumber=codeContract)
+        #Traigo el id del contador a activar
+        counterID = contract.counter.codeCounter
+        #Traigo el contador asociado a ese codigo
+        counter = Counter.objects.get(codeCounter=counterID)    
+        #Validamos que pague la reconexion
+        if (value != (invoice.total + 35000)):
+            payment['valuePayment'] = (value + 35000)
+        if ((invoice.is_active)and
+              (counter.is_active== False)):
+            """Si el valor que entroduje en el pago es igual a el de la factura 
+            + los 35000 de reconexion y es la ultima factura realiza el proceso"""
+            #Activo el contador
+            counter.is_active = True
+            counter.save()
+            #Desactiva la factura cuando crea el pago
+            invoice.is_active = False
+            invoice.save()
+        #Asemos la creación del pago y se asocia a el pago directo.
+        paymentObj = Payment.objects.create(**payment)
+        directPayment = DirectPayment.objects.create(
+            payment=paymentObj, **validated_data)
+        return directPayment
+
+
+class DirectPaymenByWorkerSerializer(serializers.ModelSerializer):
+    """Vista para ver los pagos hechos po un worker especifico pagos directos"""
+    class Meta:
+        model = DirectPayment
+        fields = '__all__'
+
+    def get_queryset(self):
+        pay = DirectPayment.objects.all().filter(
+            workerPayment=self.kwargs['workerPayment']
+        )
+        return pay
+    

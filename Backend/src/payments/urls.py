@@ -22,6 +22,11 @@ from .views import (
     DirectPaymentUpdate,
     
 #   QUERY
+    DirectPaymentReactivate,
+    DirectPaymenByWorker,
+    BanckPaymentByBanckList,
+    PaymentByContractList
+    
 )
 
 urlpatterns = [
@@ -32,6 +37,8 @@ urlpatterns = [
     path('payment/update/<pk>/', PaymentUpdate.as_view()),
     path('payment/delete/<pk>', PaymentDelete.as_view()),
     #QUERY
+    path('payment/bycontract/<contract>', PaymentByContractList.as_view()),
+
     #CRUD
     path('banckpayment/', BanckPaymentList.as_view()),
     path('banckpayment/create/', BanckPaymentCreate.as_view()),
@@ -39,6 +46,7 @@ urlpatterns = [
     path('banckpayment/update/<pk>', BanckPaymentUpdate.as_view()),
     path('banckpayment/delete/<pk>', BanckPaymentDelete.as_view()),
     #QUERY
+    path('banckpayment/bybanck/<banckPayment>', BanckPaymentByBanckList.as_view()),
     #CRUD
     path('directpayment/', DirectPaymentList.as_view()),
     path('directpayment/create/', DirectPaymentCreate.as_view()),
@@ -46,4 +54,7 @@ urlpatterns = [
     path('directpayment/update/<pk>', DirectPaymentUpdate.as_view()),
     path('directpayment/delete/<pk>', DirectPaymentDelete.as_view()),
     #QUERY
+    path('directpayment/reactivate/', DirectPaymentReactivate.as_view()),
+    path('directpayment/byworker/<workerPayment>', DirectPaymenByWorker.as_view()),
+
 ]

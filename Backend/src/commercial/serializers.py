@@ -1,7 +1,6 @@
 # Modelos para los Transformadores de Energia.
 from .models import (
-    Commercial,
-    CommercialInvoice
+    Commercial
 )
 # Serializer
 from rest_framework import serializers
@@ -84,57 +83,3 @@ class InactivateCommercialSerializer(serializers.ModelSerializer):
 
 
 #                                            Querys
-
-# -----------------------------------------CommercialInvoice------------------------------------------------
-
-#                                              CRUD
-class CreateCommercialInvoiceSerializer(serializers.ModelSerializer):
-    """CommercialInvoice para las operaciones Create"""
-    class Meta:
-        model = CommercialInvoice
-        fields = [
-            'invoiceservices',
-            'commercial'
-        ]
-
-    def create(self, validated_data):
-        commercialInvoice = CommercialInvoice.objects.create(
-            invoiceservices=validated_data['invoiceservices'],
-            commercial=validated_data['commercial']
-        )
-        commercialInvoice.save()
-        return commercialInvoice
-
-
-class CommercialInvoiceSerializer(serializers.ModelSerializer):
-    """CommercialInvoice para las operaciones Retrive"""
-    class Meta:
-        model = CommercialInvoice
-        fields = '__all__'
-
-
-class UpdateCommercialInvoiceSerializer(serializers.ModelSerializer):
-    """CommercialInvoice para las operaciones Update"""
-    class Meta:
-        model = CommercialInvoice
-        fields = [
-            'invoiceservices',
-            'commercial'
-        ]
-
-    def update(self, instance, validated_data):
-        commercialInvoice = super().update(instance, validated_data)
-        return commercialInvoice
-
-
-class DeleteCommercialInvoiceSerializer(serializers.ModelSerializer):
-    """CommercialInvoice para las operaciones Delete"""
-    class Meta:
-        model = CommercialInvoice
-        fields = '__all__'
-
-    def perform_destroy(self, instance):
-        instance.delete()
-
-
-#                                      Query
