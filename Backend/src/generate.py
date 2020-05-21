@@ -389,8 +389,8 @@ for i in range (1, len(counters)+1):
     }
     contracts.append(contract)
 #======================= morosos ================
-contracts[6]['fields']['interes_mora'] = 0.19
-contracts[7]['fields']['interes_mora'] = 0.20
+contracts[6]['fields']['interes_mora'] = 0.09
+contracts[7]['fields']['interes_mora'] = 0.10
 
 #================== el cortado ==================0
 contracts[len(counters)-1]['fields']['interes_mora'] = 0.3
