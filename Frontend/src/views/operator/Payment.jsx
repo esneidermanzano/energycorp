@@ -1,12 +1,10 @@
 import React from "react";
 
-import { Link } from "react-router-dom";
-
 import auth from "components/auth/auth.js";
 
 import {
     CardTitle,
-    Col, Form, FormGroup, Label, Input, Button, Alert, Table
+    Col, Form, FormGroup, Input, Button, Alert, Table
 } from "reactstrap";
 
 import axios from "axios";
