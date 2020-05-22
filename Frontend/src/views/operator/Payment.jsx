@@ -4,7 +4,7 @@ import auth from "components/auth/auth.js";
 
 import {
     CardTitle,
-    Col, Form, FormGroup, Input, Button, Table
+    Col, Form, FormGroup, Input, Button, Table,
 } from "reactstrap";
 
 import axios from "axios";
@@ -30,12 +30,14 @@ class Payment extends React.Component {
             errorMsg: "",
             bills: [],
             sended: false,
-            sendedMsg: ""
+            sendedMsg: "",
+            banks: [],
+            bank: "- - -"
         }
     }
 
     handleInput = e => {
-        this.setState({ contract: e.target.value });
+        this.setState({ [e.target.name]: e.target.value});
     }
 
     handleSubmit = e => {
@@ -61,18 +63,42 @@ class Payment extends React.Component {
         }
     }
 
+    getCodeBank = (bank) => {
+        for(let i=0; i<this.state.banks.length; i++){
+            if(this.state.banks[i].nameBanck === bank){
+                return this.state.banks[i].codeBanck;
+            }
+        }
+    }
+
     pay = (value, bill, worker) => {
-        const msg = {
-            payment: {
-                valuePayment: value,
-                facturaPayment: bill
-            },
-            workerPayment: worker
-        }    
 
+        const codeBank = this.getCodeBank(this.state.bank);
+        var route = "";
+        var msg = "";
+
+        if(this.state.bank === '- - -'){
+            msg = {
+                payment: {
+                    valuePayment: value,
+                    facturaPayment: bill
+                },
+                workerPayment: worker
+            }
+            route = "directpayment/create/";
+        }else{
+            msg = {
+                payment: {
+                    valuePayment: value,
+                    facturaPayment: bill
+                },
+                banckPayment: codeBank
+            }
+            route = "banckpayment/create/";
+        }        
+       
         console.log(msg);
-
-        axios.post("https://energycorp.herokuapp.com/api/pay/directpayment/create/", msg)
+        axios.post("https://energycorp.herokuapp.com/api/pay/" + route, msg)
             .then(res => {
                 alert(counterpart.translate('createClient.exito'));
             })
@@ -81,13 +107,33 @@ class Payment extends React.Component {
             })
     }
 
+    async componentDidMount() {
+        const res = await fetch('https://energycorp.herokuapp.com/api/bancks');
+
+        const data = await res.json();
+        this.setState({ banks: data });
+    }
+
     render() {
 
         const placeholderID = counterpart.translate('getBill.insert');
 
+        const banks = this.state.banks.map((b, k) => (
+            <option>
+                {b.nameBanck}
+            </option>
+        ));
+
         const bills = this.state.bills.length > 0 ?
 
-            <Col md="8" id="login">
+            <Col md="11" id="login">
+                <Col md="6" id="bank">
+                    <label><Tr content="getBill.bank" /></label>
+                    <select onChange={this.handleInput} className="form-control" name="bank">
+                        <option>- - -</option>
+                        {banks}    
+                    </select>
+                </Col>
                 <Table responsive borderless hover>
                     <thead>
                         <tr>

@@ -68,7 +68,8 @@ export default {
         pagando: "pagando...",
         exito: "enviada com sucesso",
         consult: 'Consultar',
-        pay: 'Pagar'
+        pay: 'Pagar',
+        bank: 'Banco',
     },
     bot: {
         input: "Escreva algo"
