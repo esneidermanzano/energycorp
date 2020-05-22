@@ -52,6 +52,7 @@ from .permissions import (
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from django.views.decorators.csrf import csrf_exempt
 
 
 # ============================================Views para el modúlo de Contrato ==========================
@@ -114,7 +115,7 @@ class InvoiceInactivate(UpdateAPIView):
 #                                               QUERY
 
 class CreateInvoices(APIView):
-    permission_classes = (AllowAdmin,)
+    #permission_classes = (AllowAdmin,)
 
     def get(self, request):
         try:
