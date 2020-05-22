@@ -176,7 +176,7 @@ class Payment extends React.Component {
                 </Col>
                 {alertMail}
                 {bills}
-                <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
             </div>
         )
     }
