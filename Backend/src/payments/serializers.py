@@ -102,7 +102,7 @@ class CreateBanckPaymentSerializer(serializers.ModelSerializer):
         numberInvocie =payment['facturaPayment']
         invoice = Invoice.objects.get(codeInvoice=numberInvocie.codeInvoice)  
         #caluclo la mora
-        mora = ((date.today() - invoice.paymentdeadlineInvoice ).days / 100)
+        mora = ((date.today() - invoice.deadDatePay ).days / 100)
         print(mora)
         #validaciones pendejas para no pasar el 30%
         if (mora > 0.30):
@@ -194,7 +194,7 @@ class CreateDirectPaymentSerializer(serializers.ModelSerializer):
         numberInvocie =payment['facturaPayment']
         invoice = Invoice.objects.get(codeInvoice=numberInvocie.codeInvoice)  
         #caluclo la mora
-        mora = ((date.today() - invoice.paymentdeadlineInvoice ).days / 100)
+        mora = ((date.today() - invoice.deadDatePay ).days / 100)
         #validaciones pendejas para no pasar el 30%
         if (mora > 0.30):
             mora = 0.30
