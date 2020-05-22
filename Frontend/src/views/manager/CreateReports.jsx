@@ -13,12 +13,6 @@ import {
   Col,
   Button
 } from "reactstrap";
-// core components
-/*import {
-  // dashboard24HoursPerformanceChart,
-  dashboardEmailStatisticsChart,
-  dashboardNASDAQChart
-} from "variables/charts.jsx";*/
 
 class CreateReports extends React.Component {
   constructor(props) {
