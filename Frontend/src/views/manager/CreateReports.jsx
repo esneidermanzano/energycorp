@@ -33,7 +33,6 @@ class CreateReports extends React.Component {
     const res = await fetch('https://energycorp.herokuapp.com/api/reports/moraandsuspended/');
 
     const data = await res.json();
-    console.log(data)
 
     let newPieChartData = {
       datasets: [{
