@@ -95,7 +95,6 @@ class CreateReports extends React.Component {
       }
       ]
     };
-    console.log('HOLA', newBarChartDataHighest);
     this.setState({barChartDataHighest: newBarChartDataHighest});
     this.setState({barChartDataLowest: newBarChartDataLowest});
 
