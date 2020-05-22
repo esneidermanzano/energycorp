@@ -97,7 +97,7 @@ class PaymentByContractList(ListAPIView):
 class BanckPaymentCreate(ListCreateAPIView):
     """View para delete un BanckPayment"""
     queryset = BanckPayment.objects.all()
-    serializer_class = BanckPaymentSerializer
+    serializer_class = CreateBanckPaymentSerializer
 
 class BanckPaymentDetail(RetrieveAPIView):
     """View para retrive un BanckPayment"""
