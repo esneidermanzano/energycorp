@@ -93,11 +93,11 @@ class TopFiveCounters(View):
             'transformatorCounter')
         
         response={
-            "topfive+":"" ,
-            "topfive-":""
+            "topfiveplus":"" ,
+            "topfiveminus":""
         }
-        response['topfive+']=list(queryset1)
-        response['topfive-']=list(queryset2)
+        response['topfiveplus']=list(queryset1)
+        response['topfiveminus']=list(queryset2)
    
 
         return HttpResponse(json.dumps(response))  
