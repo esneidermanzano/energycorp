@@ -69,7 +69,8 @@ export default {
         exito: "successfully sent",
         consult: 'Consult',
         pay: 'Pay',
-        bank: 'Bank'
+        bank: 'Bank',
+        reactive: 'Reactivate'
     },
     bot: {
         input: "Type Something"

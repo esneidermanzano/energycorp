@@ -70,6 +70,7 @@ export default {
         consult: 'Consultar',
         pay: 'Pagar',
         bank: 'Banco',
+        reactive: 'Reactivar'
     },
     bot: {
         input: "Escribe algo"
