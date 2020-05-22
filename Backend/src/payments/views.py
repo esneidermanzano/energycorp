@@ -126,6 +126,11 @@ class BanckPaymentByBanckList(ListAPIView):
     queryset = BanckPayment.objects.all()
     serializer_class = BanckPaymenByBanckSerializer
 
+    def get_queryset(self):
+        pay = BanckPayment.objects.all().filter(
+                banckPayment=self.kwargs['banckPayment']
+        )
+        return pay
 
 
 #----------------------------------------------DirectPayment------------------------------------------------

@@ -160,7 +160,7 @@ class DeleteBanckPaymentSerializer(serializers.ModelSerializer):
 class BanckPaymenByBanckSerializer(serializers.ModelSerializer):
     """Vista para ver los pagos hechos po un worker especifico pagos directos"""
     class Meta:
-        model = DirectPayment
+        model = BanckPayment
         fields = '__all__'
 
     def get_queryset(self):
