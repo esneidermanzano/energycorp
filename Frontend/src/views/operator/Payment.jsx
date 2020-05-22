@@ -107,6 +107,27 @@ class Payment extends React.Component {
             })
     }
 
+    reactivate = (value, bill, worker) => {
+
+        value += 35000;
+
+        const msg = {
+            payment: {
+                valuePayment: value,
+                facturaPayment: bill
+            },
+            workerPayment: worker
+        }
+            
+        axios.post("https://energycorp.herokuapp.com/api/pay/directpayment/reactivate/", msg)
+            .then(res => {
+                alert(counterpart.translate('createClient.exito'));
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
+
     async componentDidMount() {
         const res = await fetch('https://energycorp.herokuapp.com/api/bancks');
 
@@ -145,6 +166,7 @@ class Payment extends React.Component {
                             <th><Tr content="getBill.state" /></th>
                             <th><Tr content="getBill.total" /></th>
                             <th><Tr content="getBill.pay" /></th>
+                            <th><Tr content="getBill.reactive" /></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -175,11 +197,20 @@ class Payment extends React.Component {
                                         ${ele.total.toFixed(2)} <br />
                                     </td>
                                     <td>
-                                        {ele.stateInvoice ? "" :
+                                        {!ele.stateInvoice && ele.is_active ? 
                                         <Button color="success" onClick={() => 
                                             this.pay(ele.total,ele.codeInvoice,auth.getObj().id)}>
                                             <i className="nc-icon nc-money-coins" />
-                                        </Button>}
+                                        </Button> : ""}
+                                    </td>
+                                    <td>
+                                        {!ele.is_active && !ele.stateInvoice ?
+                                        <Col md="6">
+                                            <Button color="primary" onClick={() => 
+                                                this.reactivate(ele.total,ele.codeInvoice,auth.getObj().id)}>
+                                                <i className="nc-icon nc-refresh-69" />
+                                            </Button>
+                                        </Col> : ""}
                                     </td>
                                 </tr >
                             ))
