@@ -165,7 +165,7 @@ class GeneratePdf(APIView):
 
                     # Creating http response
                     response = HttpResponse(content_type='application/pdf;')
-                    response['Content-Disposition'] = 'inline; filename=list_people.pdf'
+                    response['Content-Disposition'] = 'inline; filename='+datos['id_user']+'.pdf'
                     response['Content-Transfer-Encoding'] = 'binary'
                     with tempfile.NamedTemporaryFile(delete=True) as output:
                         output.write(result)
