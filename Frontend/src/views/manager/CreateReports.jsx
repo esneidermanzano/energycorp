@@ -96,8 +96,8 @@ class CreateReports extends React.Component {
         backgroundColor: ['red', 'yellow']
       }],
       labels: [
-        'clientes en mora',
-        'clientes suspendidos'
+        'Slow Payers',
+        'Suspended Clients'
       ]
     };
 
