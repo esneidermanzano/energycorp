@@ -51,7 +51,6 @@ class CreateReports extends React.Component {
     const resBar = await fetch('https://energycorp.herokuapp.com/api/reports/topfive/');
 
     const dataBar = await resBar.json();
-    console.log(dataBar)
 
     let newBarChartDataHighest = {
       labels: [dataBar.topfiveplus[0].codeCounter, dataBar.topfiveplus[1].codeCounter, dataBar.topfiveplus[2].codeCounter, dataBar.topfiveplus[4].codeCounter, dataBar.topfiveplus[4].codeCounter],
