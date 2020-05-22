@@ -6,7 +6,7 @@ from rest_framework.generics import (
     UpdateAPIView,
     DestroyAPIView
 )
-from rest_framework.permissions import IsAdminUser, BasePermission
+from rest_framework.permissions import BasePermission
 from rest_framework import viewsets
 from django.contrib.auth.hashers import make_password
 

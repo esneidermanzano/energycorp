@@ -53,6 +53,7 @@ from .permissions import (
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
+
 # ============================================Views para el modúlo de Contrato ==========================
 
 #------------------------------------------------Contract-------------------------------------
@@ -112,6 +113,18 @@ class InvoiceInactivate(UpdateAPIView):
 
 #                                               QUERY
 
+class CreateInvoices(APIView):
+    permission_classes = (AllowAdmin,)
+
+    def get(self, request):
+        try:
+            generateHistoryAndInvoices()
+            message = "El proceso se completo correctamente"
+            return Response({"message": message} )
+        except:
+            message = "Error interno, estamos trabajando en ello"
+            return Response({"error": True, "message": message} )
+
 #--------------------------------------Generate PDF invoice---------------------------------                                      
 
 #Obtener las  ultimas 6 facturas dado un numero de contrato
@@ -136,7 +149,6 @@ class GetInvoiceByContract(APIView):
 #obtener un afactura en formato pdf
 class GeneratePdf(APIView):
     def get(self, request, contract, factura):
-        generateHistoryAndInvoices()
         try:
             queryset = Contract.objects.filter(contractNumber__iexact=contract)
             datos = {}
@@ -164,7 +176,7 @@ class GeneratePdf(APIView):
                     return response
                 except Exception as e:
                     message = "Error al buscar la factura, confirme el numero"
-                    return Response({"error": False, "find": False, "message": str(e)} )
+                    return Response({"error": False, "find": False, "message":message} )
             else:
                 message = "Numero de contrato erroneo"
                 return Response({ "error": False, "find": False, "message": message} )           
