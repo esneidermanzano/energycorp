@@ -2,7 +2,8 @@ export default {
     home: {
         title: 'The best service in your hands',
         download: 'Download your Bill!',
-        pay: 'Pay bill'
+        pay: 'Pay bill',
+        consult: 'Consult payments'
     },
     createClient: {
         client: 'Client',
@@ -57,6 +58,7 @@ export default {
         deadDate: 'Limit Date',
         state: 'State',
         total: 'Total',
+        vPayment: 'Value paid',
         pago: 'Paid out',
         noPagado: 'Not payed',
 
@@ -70,7 +72,8 @@ export default {
         consult: 'Consult',
         pay: 'Pay',
         bank: 'Bank',
-        reactive: 'Reactivate'
+        reactive: 'Reactivate',
+        criterio: 'Search criteria'
     },
     bot: {
         input: "Type Something"
