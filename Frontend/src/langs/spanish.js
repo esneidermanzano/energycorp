@@ -2,7 +2,8 @@ export default {
     home: {
         title: 'El mejor servicio en tus manos',
         download: 'Descarga tu factura!',
-        pay: 'Pagar factura'
+        pay: 'Pagar factura',
+        consult: 'Consultar pagos'
     },
     createClient: {
         client: 'Cliente',
@@ -57,6 +58,7 @@ export default {
         deadDate: 'Fecha Limite',
         state: 'Estado',
         total: 'Total',
+        vPayment: 'Valor Pagado',
         pago: 'Pagado',
         noPagado: 'No pagado',
 
@@ -70,7 +72,8 @@ export default {
         consult: 'Consultar',
         pay: 'Pagar',
         bank: 'Banco',
-        reactive: 'Reactivar'
+        reactive: 'Reactivar',
+        criterio: 'Criterio de búsqueda'
     },
     bot: {
         input: "Escribe algo"
