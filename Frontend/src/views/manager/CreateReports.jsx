@@ -21,16 +21,7 @@ class CreateReports extends React.Component {
         rInit: true,
         r1: false,
         r2: false,
-        pieChartData: {
-          datasets: [{
-            data: [3, 7],
-            backgroundColor: ['red', 'yellow']
-          }],
-          labels: [
-            'Slow payers',
-            'Suspended Users'
-          ]
-        },
+        pieChartData: {},
         barChartDataHighest: {},
         barChartDataLowest: {}
     }
