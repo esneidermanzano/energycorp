@@ -27,7 +27,7 @@ counterpart.registerTranslations('en', english);
 counterpart.registerTranslations('es', spanish);
 counterpart.registerTranslations('po', portuguese);
 
-class Start extends React.Component {
+class GetBill extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -224,4 +224,4 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Start);
+export default connect(mapStateToProps, mapDispatchToProps)(GetBill);
