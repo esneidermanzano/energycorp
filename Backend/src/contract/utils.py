@@ -146,8 +146,8 @@ def generateHistoryAndInvoices():
                     )
                 )
 
-        #History.objects.bulk_create(histories)
-        #Invoice.objects.bulk_create(invoices)
+        History.objects.bulk_create(histories)
+        Invoice.objects.bulk_create(invoices)
         #================== NO esta activo =====================
 
 
