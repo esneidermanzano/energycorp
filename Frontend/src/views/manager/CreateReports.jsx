@@ -138,7 +138,7 @@ class CreateReports extends React.Component {
                   <p className="card-category">From the following options</p>
                 </CardHeader>
                 <CardBody>
-                  <Button color="primary" onClick={this.renderR1}>Clients' financial status (number of each)
+                  <Button color="primary" onClick={this.renderR1}>Slow Payers and Suspended Users
                   </Button>
                   <br/>
                   <Button color="primary" onClick={this.renderR2}>Highest Consuming Transformers
