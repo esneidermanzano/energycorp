@@ -23,7 +23,7 @@ from django.db.models import Count
 class MoraAndSuspended(View):
     def get(self, request):
         queryset1 =  Contract.objects.exclude(
-            interes_mora__iexact=0.0).filter(
+            interes_mora__iexact=0.0).exclude(counter__is_active=False).filter(
                 client__user__is_active=True).annotate(
                         id=F( 'client__id'),
                         name= F('client__user__name')
@@ -36,6 +36,8 @@ class MoraAndSuspended(View):
         query = ServiceSuspendedSerializer(
             queryset,many=True
         ).data
+
+        
        
 
        
