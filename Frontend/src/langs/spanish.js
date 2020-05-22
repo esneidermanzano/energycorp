@@ -1,7 +1,8 @@
 export default {
     home: {
         title: 'El mejor servicio en tus manos',
-        download: 'Descarga tu factura!'
+        download: 'Descarga tu factura!',
+        pay: 'Pagar factura'
     },
     createClient: {
         client: 'Cliente',
@@ -64,7 +65,10 @@ export default {
 
         error: "Hubo un problema, verifica tu entrada",
         enviando: "enviando...",
-        exito: "enviada con exito"
+        pagando: "pagando...",
+        exito: "enviada con exito",
+        consult: 'Consultar',
+        pay: 'Pagar'
     },
     bot: {
         input: "Escribe algo"

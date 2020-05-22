@@ -1,7 +1,8 @@
 export default {
     home: {
         title: 'The best service in your hands',
-        download: 'Download your Bill!'
+        download: 'Download your Bill!',
+        pay: 'Pay bill'
     },
     createClient: {
         client: 'Client',
@@ -64,7 +65,10 @@ export default {
 
         error: "There was a problem, check your input",
         enviando: "Sending...",
-        exito: "successfully sent"
+        pagando: "Paying...",
+        exito: "successfully sent",
+        consult: 'Consult',
+        pay: 'Pay'
     },
     bot: {
         input: "Type Something"
