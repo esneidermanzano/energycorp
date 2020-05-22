@@ -15,6 +15,9 @@ from .views import (
     InvoiceInactivate,    
 #   QUERY
 
+#   Generate invoices
+    CreateInvoices,
+
 #   Generate pdf
     GetInvoiceByContract,
     GeneratePdf,
@@ -30,7 +33,6 @@ urlpatterns = [
     path('delete/<pk>', InvoiceDelete.as_view()),
     path('inactivate/<pk>/', InvoiceInactivate.as_view()),
     path('by-contract/', GetInvoiceByContract.as_view()),
-    path('<pk>', InvoiceDetail.as_view()),
     #QUERY
     #PDf invoice generator
     path('pdf/<contract>/<factura>/', GeneratePdf.as_view()),
@@ -41,4 +43,7 @@ urlpatterns = [
     path('contract/create/', CreateContract.as_view()),
     path('contract-full/', GetFullContractJoin.as_view()),
     path('contract-full/create/', CreateFullContract.as_view()),
+
+    path('generate/', CreateInvoices.as_view()),
+    path('<pk>/', InvoiceDetail.as_view()),
 ]
