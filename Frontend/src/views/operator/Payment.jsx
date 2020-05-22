@@ -4,7 +4,7 @@ import auth from "components/auth/auth.js";
 
 import {
     CardTitle,
-    Col, Form, FormGroup, Input, Button, Alert, Table
+    Col, Form, FormGroup, Input, Button, Table
 } from "reactstrap";
 
 import axios from "axios";
@@ -85,18 +85,6 @@ class Payment extends React.Component {
 
         const placeholderID = counterpart.translate('getBill.insert');
 
-        const alert = (this.state.error) ? <Alert className="animated rubberBand" color="danger">
-            <center>
-                <h6>{this.state.errorMsg}</h6>
-            </center>
-        </Alert> : true;
-
-        const alertMail = (this.state.sended) ? <Alert className="animated rubberBand" color="success">
-            <center>
-                <h6>{this.state.sendedMsg}</h6>
-            </center>
-        </Alert> : true;
-
         const bills = this.state.bills.length > 0 ?
 
             <Col md="8" id="login">
@@ -174,7 +162,6 @@ class Payment extends React.Component {
                                 </center>
                             </Form>
                 </Col>
-                {alertMail}
                 {bills}
                 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
             </div>
