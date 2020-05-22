@@ -30,7 +30,8 @@ class MoraAndSuspended(View):
                     
                 ).values('id','interes_mora', 'name')
        
-        queryset = Contract.objects.exclude(counter__is_active=True)
+        queryset = Contract.objects.exclude(counter__is_active=True).filter(
+                client__user__is_active=True)
        
         query = ServiceSuspendedSerializer(
             queryset,many=True
@@ -56,10 +57,15 @@ class MoraAndSuspended(View):
         
         response={
             "mora":"",
-            "suspended":""
+            "suspended":"",
+            "numclientsmora":"",
+            "numclientsuspended":""
         }
         response['mora']=list(queryset1)
         response['suspended']=dicc
+        response['numclientsmora']=len(queryset1)
+        response['numclientsuspended']=len(dicc)
+
 
 
         return HttpResponse(json.dumps(response))   
