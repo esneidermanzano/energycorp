@@ -13,7 +13,7 @@ luis@gmail.com ( manager)<br />
 taborda@gmail.com (operador)<br />
 All passwords are the same: loquendo<br />
 <br />
-User with Contract number **20200524** have 3 bill unpaid and has the electric service suspended. Moreover his debt include 30% of interest over the overdue bills.<br />
+User with Contract number **20200524** has 3 unpaid bills and has the electric service suspended. Moreover his debt include 30% of interest over the overdue bills.<br />
 User of contract N° **20200523** has still the last invoice unpaid.<br />
 
 Finally, users with contract' numbers **20200522** and **20200521** have interest because they pay after the specific date to do it.
