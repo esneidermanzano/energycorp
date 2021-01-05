@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "https://energy-corp.web.app/",
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "bootstrap": "4.3.1",
     "chart.js": "2.8.0",
     "counterpart": "^0.18.6",
