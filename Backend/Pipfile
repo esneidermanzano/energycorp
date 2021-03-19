@@ -7,7 +7,7 @@ verify_ssl = true
 
 [packages]
 django = "==3.0.3"
-djangorestframework = "==3.11.0"
+djangorestframework = "==3.11.2"
 django-cors-headers = "==3.2.1"
 weasyprint = "*"
 dj-database-url = "~=0.5.0"
